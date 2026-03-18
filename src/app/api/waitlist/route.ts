@@ -3,7 +3,6 @@ import { Resend } from 'resend';
 
 const RATE_LIMIT_WINDOW = 60_000;
 const RATE_LIMIT_MAX = 5;
-const AUDIENCE_ID = process.env.RESEND_AUDIENCE_ID || 'cc2b9e12-4514-4528-b974-f46cae3b6bbe';
 
 const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
 
@@ -57,11 +56,15 @@ export async function POST(request: NextRequest) {
 
 	try {
 		const resend = new Resend(process.env.RESEND_API_KEY);
-		await resend.contacts.create({
+		const { error } = await resend.contacts.create({
 			email: normalizedEmail,
-			audienceId: AUDIENCE_ID,
 			unsubscribed: false,
 		});
+
+		if (error) {
+			console.error('[waitlist] Resend API error:', error);
+			return NextResponse.json({ error: 'Failed to join waitlist. Please try again.' }, { status: 500 });
+		}
 
 		const src = typeof source === 'string' ? source.slice(0, 50) : 'hero';
 		console.log(`[waitlist] New signup: ${normalizedEmail} (source: ${src})`);
@@ -88,7 +91,13 @@ export async function GET(request: NextRequest) {
 
 	try {
 		const resend = new Resend(process.env.RESEND_API_KEY);
-		const { data } = await resend.contacts.list({ audienceId: AUDIENCE_ID });
+		const { data, error } = await resend.contacts.list();
+
+		if (error) {
+			console.error('[waitlist] Resend API error:', error);
+			return NextResponse.json({ error: 'Failed to retrieve contacts.' }, { status: 500 });
+		}
+
 		const contacts = data?.data ?? [];
 		return NextResponse.json({ count: contacts.length, contacts });
 	} catch (err) {
