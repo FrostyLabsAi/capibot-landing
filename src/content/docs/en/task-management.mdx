@@ -1,0 +1,541 @@
+# Task Management
+
+The Tasks panel gives you complete control over work flowing through your AI workforce.
+
+## Accessing the Task Board
+
+**Nav Rail:** Click **Tasks**
+
+You'll see the Kanban board with columns for each status.
+
+![Task Board Placeholder]
+_Screenshot: Full Kanban board showing tasks across all columns_
+
+## Kanban Board Layout
+
+```
+┌────────────────────────────────────────────────────────────────┐
+│ Tasks                                     [+ New Task] [Filter] │
+├────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  Inbox (4)  | In Progress (2) | Review (1) | Done (12)         │
+│  ────────────────────────────────────────────────────────────  │
+│                                                                 │
+│  ┌──────────┐ ┌──────────┐ ┌──────────┐                         │
+│  │ T-42     │ │ T-38     │ │ T-35     │                         │
+│  │ Research │ │ Build API│ │ Edit     │                         │
+│  │ Top 5    │ │ endpoint │ │ blog     │                         │
+│  │ Competitors│ │         │ │ post     │                         │
+│  │          │ │          │ │          │                         │
+│  │ 🟡 Medium│ │ 🔴 High  │ │ 🟢 Low   │                         │
+│  │ Scout    │ │ Nova     │ │ Echo     │                         │
+│  │ Due: Fri │ │ Due: Wed │ │ Due: Mon │                         │
+│  └──────────┘ └──────────┘ └──────────┘                         │
+│                                                                 │
+│  ┌──────────┐                                                   │
+│  │ T-43     │                                                   │
+│  │ Design   │                                                   │
+│  │ landing  │                                                   │
+│  │ page     │                                                   │
+│  │          │                                                   │
+│  │ 🟠 High  │                                                   │
+│  │ Pixel    │                                                   │
+│  └──────────┘                                                   │
+│                                                                 │
+└────────────────────────────────────────────────────────────────┘
+```
+
+## Task Cards
+
+Each card shows:
+
+- **ID** — Unique identifier (T-42)
+- **Title** — Brief description
+- **Priority** — Color-coded importance
+- **Assignee** — Who's working on it
+- **Due Date** — When it's due
+- **Tags** — Categories (if any)
+
+## Columns Explained
+
+### Inbox
+
+New tasks waiting to be started.
+
+**What happens here:**
+
+- Tasks created but not assigned
+- Assigned tasks agent hasn't started
+- Backlog of future work
+
+**Your actions:**
+
+- Drag to In Progress when ready
+- Reassign if needed
+- Set priorities
+
+### In Progress
+
+Active work happening now.
+
+**What happens here:**
+
+- Agent checked out the task
+- Work actively being done
+- Progress updates logged
+
+**Your actions:**
+
+- Monitor progress
+- Answer questions from agents
+- Move to Blocked if issues arise
+
+### Review
+
+Work complete, needs quality check.
+
+**What happens here:**
+
+- Agent marked task done
+- Aegis/Sentinel reviews quality
+- Approved or sent back
+
+**Your actions:**
+
+- Review approved work
+- Check Reviewer comments
+
+### Human Review
+
+_(Managed AI Companies only)_
+
+Work complete, waiting for your approval.
+
+**What happens here:**
+
+- Task passed quality review
+- Needs human approval
+- Won't move to Done until you approve
+
+**Your actions:**
+
+- Review deliverables
+- Click Approve or Request Changes
+
+### Blocked
+
+Can't proceed due to dependency or issue.
+
+**What happens here:**
+
+- Waiting for another task
+- Agent has a question
+- Missing information
+- External blocker
+
+**Your actions:**
+
+- Check comments for blocker details
+- Unblock by resolving dependency
+- Answer questions
+- Reassign if needed
+
+### Done
+
+Completed and approved work.
+
+**What happens here:**
+
+- Task fully complete
+- Deliverables saved
+- Time logged
+- Available for reference
+
+## Creating Tasks
+
+### Method 1: Quick Create
+
+1. Click **"+ New Task"** button
+2. Fill basic info:
+   ```
+   Title: Write blog post about AI trends
+   Description: 800-word article covering
+                top AI trends for 2024
+   Assignee: [Echo ▼]
+   Priority: [High ▼]
+   Due Date: [Date picker]
+   ```
+3. Click **Create**
+
+### Method 2: From Column
+
+1. Click **"+"** in any column
+2. Task starts in that column
+3. Fill in details
+4. Save
+
+### Method 3: Via Message
+
+```
+You: @Atlas Create task: Research competitors
+Atlas: Created task T-45 "Research competitors"
+      Assigned to: Scout
+      Status: Inbox
+```
+
+## Task Details
+
+Click any task to open full details:
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ T-42: Research Top 5 Competitors           [Edit] [×]   │
+├─────────────────────────────────────────────────────────┤
+│ Status: In Progress                                     │
+│ Assignee: Scout (Research Analyst)                     │
+│ Priority: 🟡 Medium                                     │
+│ Due: Friday, Dec 15                                     │
+│ Company: Q1 Marketing                                   │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ Description:                                           │
+│ Research and analyze the top 5 competitors in our     │
+│ space. Focus on pricing, features, and positioning.   │
+│                                                         │
+│ Acceptance Criteria:                                   │
+│ ☐ Identify top 5 competitors                          │
+│ ☐ Document pricing for each                           │
+│ ☐ Compare key features                                 │
+│ ☐ Provide positioning analysis                         │
+│ ☐ Deliver 2-page report                                │
+│                                                         │
+├─────────────────────────────────────────────────────────┤
+│ Tags: research, competitors, q1-campaign               │
+│ Milestone: Market Research Phase                       │
+│ Estimated: 4 hours                                     │
+│ Actual: 2.5 hours (so far)                             │
+├─────────────────────────────────────────────────────────┤
+│ Dependencies:                                          │
+│ Blocks: T-43 (Competitive Analysis Writeup)            │
+├─────────────────────────────────────────────────────────┤
+│ Comments                                               │
+│ Scout (2 hours ago): Started research. Found 3        │
+│                     competitors so far. Need more     │
+│                     time for the other 2.             │
+│                                                         │
+│ You (1 hour ago): Take your time, quality over speed. │
+│                                                         │
+│ [Add a comment...]                                    │
+└─────────────────────────────────────────────────────────┘
+```
+
+## Moving Tasks
+
+### Drag and Drop
+
+Click and drag cards between columns:
+
+- Inbox → In Progress
+- In Progress → Review
+- Review → Done (if approved)
+- Any → Blocked
+
+### Status Dropdown
+
+Click status badge on task card:
+
+```
+[In Progress ▼]
+  ├─ Inbox
+  ├─ In Progress
+  ├─ Review
+  ├─ Human Review
+  ├─ Blocked
+  └─ Done
+```
+
+### Keyboard Shortcuts
+
+- **E** — Edit task
+- **M** — Move task
+- **C** — Add comment
+- **D** — Delete task
+
+## Filtering and Search
+
+### Filter Bar
+
+Filter tasks by:
+
+- **Status** — One or multiple columns
+- **Assignee** — Specific agent or unassigned
+- **Priority** — Urgent, High, Medium, Low
+- **Company** — Specific AI Company
+- **Tags** — Categories
+- **Due Date** — Overdue, today, this week
+
+### Search
+
+Search tasks by:
+
+- Title keywords
+- Description content
+- Task ID
+- Assignee name
+- Comments
+
+**Global Search:** Cmd/Ctrl + K from anywhere
+
+## Working with Tasks
+
+### Assigning Tasks
+
+**Change Assignee:**
+
+1. Open task details
+2. Click Assignee dropdown
+3. Select agent
+4. Agent gets notified
+
+**Auto-Assignment:**
+
+- AI Companies auto-assign based on skills
+- Round-robin for support
+- Load balancing for availability
+
+### Setting Priorities
+
+Visual priority system:
+
+| Color     | Priority | When to Use                         |
+| --------- | -------- | ----------------------------------- |
+| 🔴 Red    | Urgent   | Critical, blockers, deadlines today |
+| 🟠 Orange | High     | Important, due soon                 |
+| 🟡 Yellow | Medium   | Normal work                         |
+| 🟢 Green  | Low      | Nice to have, flexible timing       |
+
+**Best Practice:**
+
+- Most tasks should be Medium
+- Use High/Urgent sparingly
+- Re-prioritize daily
+
+### Managing Dependencies
+
+Set task dependencies when:
+
+- Task B can't start until Task A finishes
+- Sequential workflow needed
+- Resources shared between tasks
+
+**To Set Dependency:**
+
+1. Open task details
+2. Go to Dependencies section
+3. Click "Add Dependency"
+4. Select blocking task
+5. Task automatically marked Blocked
+
+**Example:**
+
+```
+T-42: Research competitors (must complete first)
+   ↓
+T-43: Write competitive analysis (blocked until T-42 done)
+   ↓
+T-44: Create presentation (blocked until T-43 done)
+```
+
+### Adding Comments
+
+**Why Comment:**
+
+- Ask questions
+- Provide feedback
+- Share context
+- Log decisions
+
+**How:**
+
+1. Open task details
+2. Scroll to Comments
+3. Type and send
+4. Mention agents with @name
+
+**Notifications:**
+
+- Assignee notified of new comments
+- Mentioned agents get alerts
+- Can reply via messaging apps
+
+### Attaching Files
+
+**Upload Deliverables:**
+
+1. Open task details
+2. Click "Attach Files"
+3. Select or drag files
+4. Files stored with task
+
+**Auto-Attachment:**
+
+- Agents can attach their work
+- Deliverables auto-saved to Knowledge Base
+- Files linked in task history
+
+## Task Workflows by Use Case
+
+### Content Creation Pipeline
+
+```
+Research → Write → Edit → Review → Publish
+```
+
+1. **Research** task (Scout)
+   - Gathers information
+   - Moves to Review
+
+2. **Write** task (Echo)
+   - Depends on Research
+   - Creates draft
+   - Moves to Review
+
+3. **Edit** task (Aegis)
+   - Quality review
+   - Approves or requests changes
+   - Moves to Human Review (if Managed)
+
+4. **You Approve**
+   - Review final content
+   - Approve → Done
+
+5. **Publish** task scheduled
+   - Goes live automatically
+
+### Feature Development
+
+```
+Design → Develop → Test → Deploy
+```
+
+1. **Design** (Pixel)
+   - Creates mockups
+   - Review → Done
+
+2. **Develop** (Nova)
+   - Implements code
+   - Depends on Design
+   - Review → Done
+
+3. **Test** (Test agent)
+   - QA testing
+   - Bugs → back to Develop
+   - Pass → Done
+
+4. **Deploy** (scheduled)
+   - Goes to production
+
+### Support Ticket
+
+```
+New → In Progress → Resolved
+```
+
+1. Customer message → Auto-creates task
+2. Support agent claims → In Progress
+3. Agent resolves → Review
+4. Auto-approved → Done
+5. Customer notified
+
+## Standup Reports
+
+Generate daily summaries:
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ Daily Standup — December 15, 2024                      │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ Team Summary                                           │
+│ • 3 Tasks Completed                                    │
+│ • 2 In Progress                                        │
+│ • 1 In Review                                          │
+│ • 0 Blocked                                            │
+│                                                         │
+│ By Agent:                                              │
+│ Scout:                                                 │
+│   ✅ Completed: Competitor Research (T-42)            │
+│   🔄 In Progress: Market Analysis (T-46)              │
+│                                                         │
+│ Echo:                                                  │
+│   ✅ Completed: Blog Post 1 (T-38)                    │
+│   📋 Assigned: Blog Post 2 (T-47)                     │
+│                                                         │
+│ Blockers: None                                         │
+│ Overdue: None                                          │
+└─────────────────────────────────────────────────────────┘
+```
+
+**Access:**
+
+- Standup panel in nav rail
+- Or click "Standup" in task board
+- Select date range
+- Export as report
+
+## Best Practices
+
+### Task Creation
+
+- **Clear Titles** — Understand from title alone
+- **Specific Criteria** — Define "done"
+- **Right Size** — 2-8 hours ideal
+- **One Assignee** — Clear ownership
+- **Realistic Dates** — Buffer for quality
+
+### Task Management
+
+- **Review Board Daily** — Know what's happening
+- **Unblock Quickly** — Don't let tasks stall
+- **Re-prioritize Often** — Focus changes
+- **Archive Done Tasks** — Keep board clean
+- **Use Tags** — Filter and organize
+
+### Working with Agents
+
+- **Answer Questions** — Check Blocked column
+- **Review Promptly** — Don't bottleneck in Review
+- **Give Feedback** — Help agents improve
+- **Trust but Verify** — Spot-check work
+
+## Troubleshooting
+
+**Task Stuck in Inbox:**
+
+- Agent may be offline
+- Reassign to available agent
+- Check if too large — break down
+
+**Task in Progress Too Long:**
+
+- Agent may be blocked — check comments
+- Task too big — split into smaller tasks
+- Need help — add assisting agent
+
+**Too Many in Review:**
+
+- Reviewers overwhelmed — add more
+- Quality issues — clarify standards
+- Bottleneck — review process needs tuning
+
+**Tasks Bouncing Back:**
+
+- Unclear requirements — update description
+- Wrong agent — reassign
+- Missing context — add details
+
+## Next Steps
+
+- Explore [Knowledge & Memory](knowledge-memory)
+- Set up [Automation](automation)
+- Learn [Monitoring](monitoring)

@@ -1,0 +1,559 @@
+# Automatisation
+
+Automatisez le travail répétitif avec des jobs planifiés, des webhooks et des alertes intelligentes.
+
+## Jobs Cron
+
+Planifiez des tâches pour qu'elles s'exécutent automatiquement.
+
+**Accès :** Nav rail → **Cron**
+
+### Panneau de Gestion Cron
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ Jobs Cron                                   [+ New Job] │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ Rapport Standup Quotidien                               │
+│ Tous les jours à 9:00 AM                       [Edit] [▶️] │
+│ Dernière exécution: Aujourd'hui 9:00 AM | Prochaine: Demain 9:00 AM│
+│ Statut: ✅ Enabled                                      │
+│                                                         │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ Vérification Santé Site Web                             │
+│ Toutes les 5 minutes                         [Edit] [▶️] │
+│ Dernière exécution: il y a 2 min | Prochaine: dans 3 min│
+│ Statut: ✅ Enabled                                      │
+│                                                         │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ Newsletter Hebdomadaire                                 │
+│ Tous les lundis à 10:00 AM                   [Edit] [▶️] │
+│ Dernière exécution: Jamais | Prochaine: Lundi 10:00 AM │
+│ Statut: ⏸️ Disabled                                     │
+│                                                         │
+└─────────────────────────────────────────────────────────┘
+```
+
+### Créer un Job Cron
+
+**Étape 1 : Infos de Base**
+
+```
+Nom: Rapport Standup Quotidien
+Description: Générer et envoyer le standup quotidien par email
+```
+
+**Étape 2 : Planification**
+
+Choisissez le type de planification :
+
+| Type | Exemple | Cas d'Usage |
+| --------- | ------------------- | -------------------- |
+| **At** | À 9:00 AM demain | Tâche future ponctuelle |
+| **Every** | Toutes les 30 minutes | Intervalles réguliers |
+| **Cron** | 0 9 \* \* 1-5 | Patterns complexes |
+
+**Patterns Cron Courants :**
+
+```
+Toutes les minutes:      * * * * *
+Toutes les 5 minutes:   */5 * * * *
+Toutes les heures:        0 * * * *
+Quotidien à 9h:        0 9 * * *
+Jours de semaine à 9h:  0 9 * * 1-5
+Hebdomadaire le lundi:  0 9 * * 1
+Mensuel le 1er:       0 9 1 * *
+```
+
+**Étape 3 : Action**
+
+Que faire quand déclenché :
+
+**Option A : Envoyer un Message à un Agent**
+
+```
+Action: Envoyer message
+À: @Atlas
+Message: Générer le rapport standup quotidien
+```
+
+**Option B : Créer une Tâche**
+
+```
+Action: Créer tâche
+Titre: Vérifier la santé du site web
+Assigné à: Scout
+Priorité: High
+```
+
+**Option C : Exécuter un Webhook**
+
+```
+Action: Appeler webhook
+URL: https://api.example.com/health-check
+Méthode: GET
+```
+
+**Étape 4 : Options**
+
+- **Activer immédiatement** — Commencer à s'exécuter selon la planification
+- **Supprimer après exécution** — Pour les jobs ponctuels
+- **Canal de livraison** — Où envoyer les résultats
+
+### Gérer les Jobs
+
+**Activer/Désactiver :**
+Basculez le job on/off sans supprimer
+
+**Déclenchement Manuel :**
+Cliquez sur ▶️ pour exécuter immédiatement (pour tester)
+
+**Éditer :**
+Changez la planification, l'action ou les paramètres
+
+**Supprimer :**
+Supprimez le job définitivement
+
+### Historique des Jobs
+
+Voyez l'historique d'exécution :
+
+```
+Log d'Exécution: Rapport Standup Quotidien
+
+✅ Aujourd'hui 9:00 AM     Succès (2.3s)
+✅ Hier 9:00 AM     Succès (2.1s)
+✅ 13 Déc 9:00 AM    Succès (2.5s)
+❌ 12 Déc 9:00 AM    Échec — Agent offline
+```
+
+### Heartbeat Système
+
+Cron spécial intégré qui vérifie la santé du système :
+
+**Par défaut :** Toutes les 30 minutes
+
+**Ce qu'il vérifie :**
+
+- Approbations en attente
+- Tâches bloquées
+- Agents bloqués (5+ minutes actifs)
+- Tâches inbox non démarrées
+
+**Actions :**
+
+- Active automatiquement les tâches inbox stagnantes
+- Envoie des alertes pour les agents bloqués
+- Génère un rapport récapitulatif
+
+**Personnaliser :**
+Créez `HEARTBEAT.md` dans le workspace avec des instructions personnalisées.
+
+## Webhooks
+
+Recevez des données de systèmes externes et envoyez des données vers eux.
+
+**Accès :** Nav rail → **Webhooks**
+
+### Webhooks Entrants
+
+Des systèmes externes envoient des données à CapiBot.
+
+**Exemple : Webhook GitHub**
+
+```
+Quand: Nouvelle issue créée dans GitHub
+Action: CapiBot crée la tâche correspondante
+```
+
+**Configuration :**
+
+1. Allez dans le panneau Webhooks
+2. Cliquez sur **"+ Incoming"**
+3. Configurez :
+   ```
+   Nom: GitHub Issues
+   URL: /webhooks/github
+   Événements: issues.opened, issues.edited
+   Secret: [clé de signature HMAC]
+   ```
+4. Copiez l'URL du webhook
+5. Collez dans les paramètres webhook de GitHub
+6. Sélectionnez l'action : "Créer tâche depuis issue GitHub"
+
+**Sources Supportées :**
+
+- GitHub (issues, PRs)
+- GitLab
+- Linear
+- Jira
+- Custom (n'importe quel HTTP POST)
+
+### Webhooks Sortants
+
+CapiBot envoie des données vers des systèmes externes.
+
+**Exemple : Notification Slack**
+
+```
+Quand: Tâche terminée
+Action: Envoyer message au canal Slack
+```
+
+**Configuration :**
+
+1. Allez dans le panneau Webhooks
+2. Cliquez sur **"+ Outgoing"**
+3. Configurez :
+   ```
+   Nom: Notifications Slack
+   URL: https://hooks.slack.com/services/...
+   Méthode: POST
+   Événements: task.completed, agent.error
+   Payload: JSON
+   ```
+4. Testez le webhook
+5. Activez
+
+**Types d'Événements :**
+
+- Événements de tâche (créée, terminée, assignée)
+- Événements d'agent (généré, erreur)
+- Événements d'entreprise (créée, archivée)
+- Événements d'alerte (déclenchée)
+- Événements système (heartbeat)
+
+### Test de Webhook
+
+Testez les webhooks avant d'activer :
+
+```
+Test Webhook: GitHub Issues
+
+Envoyer payload de test:
+{
+  "action": "opened",
+  "issue": {
+    "title": "Test Issue",
+    "body": "This is a test"
+  }
+}
+
+[Envoyer Test]
+
+Réponse:
+✅ 200 OK
+{
+  "taskId": "T-123",
+  "status": "created"
+}
+```
+
+### Historique de Livraison
+
+Suivez les livraisons de webhooks :
+
+```
+Livraisons Récentes
+
+✅ 15 Déc 14:32:01  GitHub → Tâche créée
+✅ 15 Déc 14:30:45  Tâche terminée → Slack
+❌ 15 Déc 14:28:12  Alerte → Webhook échoué (timeout)
+✅ 15 Déc 14:25:33  GitHub → Tâche créée
+```
+
+**Logique de Retry :**
+
+- Les livraisons échouées sont réessayées 3 fois
+- Backoff exponentiel
+- Retry manuel disponible
+
+### Sécurité
+
+**Signatures HMAC :**
+Vérifiez l'authenticité du webhook :
+
+```
+Secret: your-webhook-secret
+Algorithme: SHA-256
+Header: X-Webhook-Signature
+```
+
+**Rate Limiting :**
+
+- 100 requêtes/minute par source
+- Prévient les abus
+- Blocage IP automatique en cas d'abus
+
+## Règles d'Alerte
+
+Soyez notifié quand des conditions spécifiques surviennent.
+
+**Accès :** Nav rail → **Alerts**
+
+### Créer des Règles d'Alerte
+
+**Étape 1 : Condition**
+
+Définissez quand déclencher :
+
+```
+Quand: Tâche
+Champ: Statut
+Opérateur: equals
+Valeur: Blocked
+
+AND
+
+Champ: Jours dans le statut
+Opérateur: greater than
+Valeur: 1
+```
+
+**Conditions Disponibles :**
+
+| Entité | Champs | Opérateurs |
+| ----------- | ---------------------------------------------------- | ---------------------------- |
+| **Tâche** | Statut, Priorité, Assigné, Date d'échéance, Jours dans le statut | `=`, `≠`, `>`, `<`, contains |
+| **Agent** | Statut, Entreprise, Rôle | =, ≠, contains |
+| **Entreprise** | Phase, Mode, Budget | `=`, `≠`, `>`, `<` |
+
+**Exemples :**
+
+```
+Alerte: Tâche bloquée en review
+Quand: Statut tâche = Review
+AND Jours dans le statut supérieur à 2 jours
+
+Alerte: Erreur d'agent
+Quand: Statut agent = Error
+
+Alerte: Avertissement budget
+Quand: Budget entreprise dépensé à plus de 80%
+
+Alerte: Haute priorité en retard
+Quand: Priorité tâche = Urgent
+AND Date d'échéance avant aujourd'hui
+```
+
+**Étape 2 : Action**
+
+Que faire quand déclenché :
+
+**Option A : Envoyer une Notification**
+
+```
+Canal: Telegram
+À: @yourusername
+Message: ⚠️ La tâche {taskId} est bloquée depuis 2+ jours
+```
+
+**Option B : Créer une Tâche**
+
+```
+Titre: Suivre la tâche bloquée
+Assigné à: Manager
+Priorité: High
+```
+
+**Option C : Appeler un Webhook**
+
+```
+URL: https://api.example.com/alerts
+Méthode: POST
+Payload: { alert: details }
+```
+
+**Étape 3 : Paramètres**
+
+- **Cooldown** — Ne pas déclencher à nouveau pendant X minutes
+- **Activer** — Actif ou désactivé
+- **Tester** — Simuler le déclenchement
+
+### Gestion des Alertes
+
+**Voir les Alertes Actives :**
+
+```
+Alertes Actives
+
+🔴 Tâche T-42 bloquée depuis 3 jours
+   Règle: Tâches Bloquées
+   Déclenchée: il y a 2 heures
+   [Voir Tâche] [Ignorer]
+
+🔴 Agent Nova en statut Error
+   Règle: Erreurs d'Agent
+   Déclenchée: il y a 10 min
+   [Voir Agent] [Ignorer]
+```
+
+**Historique des Alertes :**
+
+```
+Alertes Récentes (7 Derniers Jours)
+
+🔴 15 Déc 14:32  Tâche bloquée plus de 2 jours
+🔴 15 Déc 12:10  Erreur d'agent
+🟡 14 Déc 09:00  Budget à 75%
+🟡 13 Déc 16:45  Tâche approchant l'échéance
+```
+
+### Alerting Intelligent
+
+**Périodes de Cooldown :**
+Prévenir la fatigue d'alerte :
+
+```
+Règle: Tâche bloquée
+Cooldown: 4 heures
+
+Résultat: L'alerte se déclenche une fois, puis attend 4 heures
+         avant d'alerter à nouveau sur la même tâche
+```
+
+**Escalade :**
+
+```
+Niveau 1: Tâche bloquée 1 jour → Notifier l'assigné
+Niveau 2: Tâche bloquée 3 jours → Notifier le manager
+Niveau 3: Tâche bloquée 5 jours → Notifier l'admin
+```
+
+## Patterns d'Automatisation Courants
+
+### Pattern 1 : Standup Quotidien
+
+**Configuration :**
+
+```
+Cron: Tous les jours à 9:00 AM
+Action: Message à Atlas
+Message: "Générer le rapport standup quotidien"
+
+Résultat: Atlas crée le résumé standup
+```
+
+### Pattern 2 : Surveillance Site Web
+
+**Configuration :**
+
+```
+Cron: Toutes les 5 minutes
+Action: Appeler webhook
+URL: https://my-site.com/health
+
+Alerte: Si le webhook retourne une erreur
+Action: Notifier l'admin via Telegram
+```
+
+### Pattern 3 : Intégration GitHub
+
+**Configuration :**
+
+```
+Webhook Entrant: GitHub
+Événement: issues.opened
+Action: Créer tâche
+Assigné à: Auto-assigner basé sur les labels
+
+Résultat: Les issues GitHub deviennent des tâches CapiBot
+```
+
+### Pattern 4 : Avertissements d'Échéance
+
+**Configuration :**
+
+```
+Alerte: Tâche due demain
+Condition: Date d'échéance = demain
+AND Statut ≠ Done
+Action: Envoyer rappel à l'assigné
+```
+
+### Pattern 5 : Surveillance Budget
+
+**Configuration :**
+
+```
+Alerte: Budget 80% dépensé
+Condition: Coût entreprise supérieur à 80% du budget
+Action: Notifier l'admin
+Action: Créer tâche de review pour le CEO
+```
+
+### Pattern 6 : Récupération d'Erreur
+
+**Configuration :**
+
+```
+Alerte: Erreur d'agent
+Condition: Statut agent = Error
+Action: Notifier l'admin
+Action: Redémarrer l'agent automatiquement
+```
+
+## Bonnes Pratiques
+
+### Jobs Cron
+
+1. **Intervalles Raisonnables** — Ne pas exécuter chaque minute sauf nécessaire
+2. **Idempotent** — Le job devrait être sûr à exécuter plusieurs fois
+3. **Surveillez les Échecs** — Vérifiez les logs d'exécution
+4. **Testez D'abord** — Déclenchement manuel avant d'activer
+5. **Documentez** — Noms et descriptions clairs
+
+### Webhooks
+
+1. **Vérifiez les Signatures** — Validez toujours HMAC
+2. **Gérez les Retries** — Concevez pour les livraisons dupliquées
+3. **Gestion des Timeouts** — Définissez des timeouts raisonnables
+4. **Logging d'Erreurs** — Loggez les échecs pour débogage
+5. **Testez les Endpoints** — Vérifiez que les systèmes récepteurs fonctionnent
+
+### Alertes
+
+1. **Actionnable** — Chaque alerte devrait avoir une réponse
+2. **Pas Trop Bavarde** — Utilisez les cooldowns pour prévenir le spam
+3. **Escaladez** — Notifiez les personnes appropriées
+4. **Révisez les Règles** — Mettez à jour selon les besoins changeants
+5. **Testez les Conditions** — Simulez avant de passer en production
+
+## Dépannage
+
+**Job Cron qui ne S'exécute Pas :**
+
+- Vérifiez s'il est activé
+- Vérifiez le format de planification
+- Vérifiez le fuseau horaire système
+- Révisez les logs d'exécution
+
+**Webhook qui ne Reçoit Pas :**
+
+- Vérifiez que l'URL est correcte
+- Vérifiez les règles firewall
+- Testez avec curl/postman
+- Révisez les logs webhook
+
+**Alerte qui ne Se Déclenche Pas :**
+
+- Vérifiez la logique de condition
+- Vérifiez si l'entité correspond aux critères
+- Testez la règle manuellement
+- Révisez les paramètres de cooldown
+
+**Trop de Notifications :**
+
+- Augmentez les périodes de cooldown
+- Affinez les conditions d'alerte
+- Utilisez le batching
+- Révisez les paramètres de notification
+
+## Prochaines Étapes
+
+- Explorez les [Intégrations](integrations)
+- Apprenez l'[Administration](administration)
+- Révisez la [Sécurité](security)

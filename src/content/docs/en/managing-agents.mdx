@@ -1,0 +1,450 @@
+# Managing Agents
+
+The Agents panel is your central hub for managing your AI workforce. Here's how to effectively work with agents day-to-day.
+
+## Agent Squad Panel
+
+Access the squad view from the nav rail by clicking **Agents**.
+
+### Squad Overview
+
+See all your active agents at a glance:
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ Agents                                    [+ Spawn New] │
+├─────────────────────────────────────────────────────────┤
+│ Filter: [All ▼] [Company: Any ▼] [Status: All ▼]       │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│  ┌─────────┐ ┌─────────┐ ┌─────────┐ ┌─────────┐       │
+│  │  Atlas  │ │  Nova   │ │  Pixel  │ │  Echo   │       │
+│  │  [CEO]  │ │[Engineer│ │[Designer│ │[Content │       │
+│  │         │ │   ]     │ │   ]     │ │   ]     │       │
+│  │ ● Active│ │ ● Idle  │ │ ● Busy  │ │ ○ Offline      │
+│  │ Q1 Team │ │ Project │ │Website  │ │         │       │
+│  └─────────┘ └─────────┘ └─────────┘ └─────────┘       │
+│                                                         │
+└─────────────────────────────────────────────────────────┘
+```
+
+**Card Information:**
+
+- **Avatar** — Agent's visual identity
+- **Name** — Agent identifier
+- **Role** — Their specialty
+- **Status** — Current state (color-coded dot)
+- **Company** — Which AI Company (if any)
+
+![Agent Squad Placeholder]
+_Screenshot: Agent squad grid showing multiple agents with status_
+
+### Status Indicators
+
+| Icon | Status  | Meaning                       |
+| ---- | ------- | ----------------------------- |
+| 🟢   | Active  | Currently working on a task   |
+| ⚪   | Idle    | Available, waiting for work   |
+| 🟡   | Busy    | Occupied, will be free soon   |
+| ⚫   | Offline | Not running, can be activated |
+| 🔴   | Error   | Problem encountered           |
+| 🏢   | Company | Belongs to an AI Company      |
+
+### Filtering
+
+Narrow down the view:
+
+- **All/My Agents** — Show everything or just yours
+- **Company** — Filter by AI Company membership
+- **Status** — Show only active, idle, etc.
+- **Role** — Filter by agent type
+- **Search** — Find by name
+
+## Spawning Agents
+
+Create new agent instances from the roster:
+
+### Steps
+
+1. Click **"+ Spawn New"** button
+2. Select from **Agent Roster** (145+ agents)
+3. Choose configuration:
+   - **Name** — Unique identifier
+   - **Company** — Assign to AI Company (optional)
+   - **Model Override** — Use different LLM (optional)
+   - **Workspace** — Restrict to directory (optional)
+4. Click **Spawn**
+
+### Spawn Options
+
+**Basic Spawn:**
+
+- Uses agent's default configuration
+- No company affiliation
+- General purpose instance
+
+**Company Agent:**
+
+- Assigned to specific AI Company
+- Receives company context
+- Part of company org chart
+
+**Custom Configuration:**
+
+- Override the AI model
+- Restrict workspace access
+- Set custom memory limits
+
+### Bulk Spawn
+
+Spawn multiple agents at once:
+
+1. Select multiple agents from roster
+2. Choose shared settings
+3. Spawn all with one click
+
+**Use Case:** Create a full team for a new project
+
+## Agent Detail View
+
+Click any agent card to see detailed information:
+
+### Tabs Overview
+
+**1. Overview Tab**
+
+```
+┌────────────────────────────────────────────────┐
+│ Nova                    [Edit] [Archive]       │
+│ Full-Stack Engineer                            │
+│ Status: ● Active  Company: Q1 Marketing        │
+│ Model: Claude 3.5 Sonnet                       │
+├────────────────────────────────────────────────┤
+│ Recent Activity                                │
+│ • Task T-123 completed (2 min ago)            │
+│ • Started Task T-124 (5 min ago)              │
+│ • Spawned by Atlas (1 hour ago)               │
+├────────────────────────────────────────────────┤
+│ Current Task                                   │
+│ Build landing page (T-124)                     │
+│ In Progress | Due: Tomorrow | Priority: High  │
+└────────────────────────────────────────────────┘
+```
+
+Shows:
+
+- Basic info and status
+- Current company assignment
+- AI model being used
+- Recent activity timeline
+- Currently assigned task
+
+**2. SOUL Tab**
+
+View the agent's personality and instructions:
+
+```markdown
+# Nova — Full-Stack Engineer
+
+## Identity
+
+I am Nova, an experienced full-stack engineer specializing in
+modern web technologies. I write clean, maintainable code and
+follow best practices.
+
+## Capabilities
+
+- React, Next.js, TypeScript
+- Node.js, PostgreSQL
+- API design and implementation
+- Code review and debugging
+
+## Communication Style
+
+- Clear and concise
+- Ask clarifying questions when needed
+- Provide code examples
+- Explain my reasoning
+```
+
+This is the agent's "brain" — their expertise, personality, and operating instructions.
+
+**3. Memory Tab**
+
+See what the agent remembers:
+
+```
+Agent Memory — Nova
+
+📁 Personal Notes
+├── project-preferences.md
+├── code-style-guide.md
+└── helpful-resources.md
+
+📁 Company Context (Q1 Marketing)
+├── executive-summary.md
+├── brand-guidelines.md
+└── tech-stack.md
+
+📁 Recent Memories
+• Prefers Tailwind over CSS-in-JS (learned today)
+• Familiar with client's API patterns (learned yesterday)
+• Likes detailed requirements (learned 3 days ago)
+```
+
+Agents build up knowledge over time from conversations and work.
+
+**4. Tasks Tab**
+
+All tasks assigned to this agent:
+
+| Task                     | Status      | Due       | Priority |
+| ------------------------ | ----------- | --------- | -------- |
+| T-124 Build landing page | In Progress | Tomorrow  | High     |
+| T-125 Setup database     | Inbox       | Friday    | Medium   |
+| T-120 API authentication | Done        | Yesterday | High     |
+
+Filter by status, priority, or date range.
+
+**5. Activity Tab**
+
+Complete history of everything this agent has done:
+
+```
+Today
+14:32 — Completed task T-123
+14:30 — Moved T-123 to Review
+11:15 — Started task T-124
+09:00 — Received notification from Atlas
+
+Yesterday
+16:45 — Created file: /workspace/landing-page.tsx
+15:20 — Searched web: "React best practices 2024"
+14:00 — Spawned by Atlas for Q1 Marketing
+```
+
+**6. Config Tab**
+
+Adjust agent settings:
+
+- **Model** — Change LLM provider
+- **Heartbeat** — Schedule automatic wake-ups
+- **Workspace** — File system restrictions
+- **Tools** — Enable/disable specific tools
+- **Skills** — Add/remove skills
+
+## Orchestration Bar
+
+Quick access toolbar at the bottom:
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ Command | Fleet                                          │
+│ [Chat with Agent...] [Online: 5 | Busy: 2 | Error: 0]   │
+└─────────────────────────────────────────────────────────┘
+```
+
+### Command Tab
+
+Quick chat interface:
+
+- Type message to any agent
+- Get instant responses
+- No need to leave current panel
+
+### Fleet Tab
+
+See agent counts:
+
+- **Online** — Ready to work
+- **Busy** — Currently occupied
+- **Error** — Need attention
+- **Total** — All agents
+
+Click to filter squad view.
+
+## Working with Agents
+
+### Chat Directly
+
+**Through Mission Control:**
+
+1. Go to Agents panel
+2. Click on agent
+3. Look for "Chat" button or use Command tab
+4. Type your message
+5. Get response in real-time
+
+**Through Messaging Apps:**
+
+```
+Telegram:
+@Nova Can you help me debug this API?
+
+Nova: Of course! Please share the error
+      message and relevant code.
+```
+
+### Assign Tasks
+
+**Method 1 — Through Task Panel:**
+
+1. Create or edit task
+2. Select agent from Assignee dropdown
+3. Agent gets notified
+
+**Method 2 — Through Agent Detail:**
+
+1. Open agent's Tasks tab
+2. Click "Assign Task"
+3. Fill task details
+
+**Method 3 — Via Message:**
+
+```
+You: @Nova I need you to build a login form
+Nova: I'll create a task for that. What's
+      the deadline?
+```
+
+### Check Agent Status
+
+Quick status check:
+
+```
+You: @Atlas Status
+Atlas: I'm currently idle, working on the
+      Q1 Marketing company. No active tasks.
+```
+
+### Review Agent Work
+
+When agent completes work:
+
+1. Task moves to Review column
+2. Reviewer (Aegis/Sentinel) checks quality
+3. Approved → moves to Done
+4. Or → back to In Progress with feedback
+
+In Managed AI Companies:
+
+- Goes to Human Review column
+- You approve or request changes
+
+## Agent Lifecycle
+
+### Activation
+
+- Spawn from roster
+- Configure settings
+- Agent becomes Idle
+- Ready to receive tasks
+
+### Active Work
+
+- Receives task assignment
+- Moves to Active status
+- Works on task
+- Updates progress
+- Completes and submits
+
+### Idle Between Tasks
+
+- Returns to Idle status
+- Available for new work
+- Memory persists
+- Can be archived
+
+### Archiving
+
+- No longer needed
+- Preserves history
+- Can be reactivated later
+- Frees up resources
+
+## Best Practices
+
+### 1. Match Agent to Task
+
+- Use Specialists for complex work
+- Use Interns for simple tasks
+- Lead agents for coordination
+
+### 2. Monitor Active Agents
+
+- Check status regularly
+- Watch for Error status
+- Review activity logs
+- Ensure tasks progressing
+
+### 3. Build Teams Thoughtfully
+
+- Complementary skills
+- Clear roles
+- Manageable size (3-7 agents)
+
+### 4. Use Memory Effectively
+
+- Agents learn over time
+- Review and curate memories
+- Important info in Knowledge Base
+
+### 5. Archive When Done
+
+- Don't leave agents idle forever
+- Archive completed projects
+- Reactivate if needed later
+
+## Common Scenarios
+
+### Scenario 1: Need a Developer
+
+1. Spawn Nova (Full-Stack Engineer)
+2. Assign to your project company
+3. Create task with requirements
+4. Monitor progress in Tasks tab
+5. Review deliverables
+
+### Scenario 2: Building a Marketing Team
+
+1. Spawn Atlas (CEO)
+2. Create "Summer Campaign" company
+3. Atlas hires Echo (Content) and Pixel (Design)
+4. Monitor in Companies panel
+5. Approve plans and review work
+
+### Scenario 3: Quick Research
+
+1. Message Scout directly: "Research competitors"
+2. Scout spawns subagents for parallel work
+3. Check Activity tab for progress
+4. Review final report
+
+## Troubleshooting
+
+**Agent Shows "Error":**
+
+- Check Activity tab for error details
+- May need configuration fix
+- Try restarting agent
+- Check system resources
+
+**Agent Not Responding:**
+
+- Verify agent is Online (not Offline)
+- Check if task is too large
+- Try direct message
+- Review memory size (too large = slow)
+
+**Agent Making Mistakes:**
+
+- Review SOUL for unclear instructions
+- Add more specific acceptance criteria
+- Provide examples in task description
+- Check if right agent for the job
+
+## Next Steps
+
+- Learn about [Company Operations](company-operations)
+- Understand [Task Management](task-management)
+- Explore [Agent Tools](tool-categories)

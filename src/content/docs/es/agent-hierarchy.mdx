@@ -1,0 +1,315 @@
+# Jerarquía de Agentes
+
+CapiBot organiza los agentes en una jerarquía de tres niveles. Entender estos niveles te ayuda a elegir el agente correcto para el trabajo y construir equipos efectivos.
+
+## Los Tres Niveles
+
+### Líder (CEO/Ejecutivo)
+
+**Líderes estratégicos con amplia autoridad**
+
+Los agentes Líder son tus ejecutivos. Pueden:
+
+- Crear planes de negocio y estrategias
+- Contratar otros agentes para construir equipos
+- Delegar trabajo a través de la organización
+- Acceder a todas las herramientas y canales de comunicación
+- Tomar decisiones de alto nivel
+
+**Ejemplos:**
+
+- **Atlas** — CEO que redacta planes de negocio y orquesta operaciones
+- **Helios** — CTO que lidera iniciativas técnicas
+- **Aura** — CMO que supervisa estrategia de marketing
+
+**Cuándo usar:** Dirigiendo Empresas AI, planificación estratégica, coordinación multifuncional
+
+### Especialista
+
+**Expertos de dominio con habilidades profundas**
+
+Los agentes Especialistas son tus miembros profesionales del equipo. Ellos:
+
+- Tienen experiencia profunda en áreas específicas
+- Ejecutan tareas complejas independientemente
+- Pueden generar subagentes para trabajo paralelo
+- Reportan a agentes Líder
+- Usan herramientas avanzadas dentro de su dominio
+
+**Ejemplos:**
+
+- **Nova** — Ingeniero Full-Stack (construye funcionalidades de extremo a extremo)
+- **Pixel** — Diseñador UI/UX (crea interfaces y prototipos)
+- **Echo** — Estratega de Contenido (escribe copia y contenido de marketing)
+- **Scout** — Analista de Investigación (investigación de mercado y análisis competitivo)
+
+**Cuándo usar:** Trabajo técnico, proyectos creativos, tareas de investigación, cualquier trabajo especializado
+
+### Pasante
+
+**Agentes junior para tareas más simples**
+
+Los agentes Pasante manejan trabajo rutinario y delimitado:
+
+- Ejecutan tareas bien definidas
+- Trabajan bajo supervisión de Especialista
+- Acceso limitado a herramientas por seguridad
+- Excelentes para trabajo repetitivo
+- Menor costo que Especialistas
+
+**Ejemplos:**
+
+- Agentes de entrada de datos
+- Asistentes de formato de contenido
+- Asistentes de pruebas
+- Recolectores de investigación
+
+**Cuándo usar:** Tareas simples y repetitivas, ejercicios de aprendizaje, operaciones sensibles a costos
+
+## Roster de Agentes
+
+CapiBot incluye **145+ agentes pre-construidos** organizados en categorías:
+
+| Categoría | Descripción | Agentes de Ejemplo |
+| ------------- | --------------------- | ---------------------- |
+| CEOs | Liderazgo ejecutivo | Atlas, Helios, Aura |
+| Ingeniería | Desarrollo de software | Nova, Cipher, Syntax |
+| Diseño | Diseño visual y UX | Pixel, Canvas, Vista |
+| Marketing | Campañas y contenido | Echo, Pulse, Reach |
+| Ventas | Alcance y transacciones | Hunter, Closer, Scout |
+| Soporte | Servicio al cliente | Guide, Helper, Assist |
+| Producto | Gestión de producto | Vision, Roadmap, Scope |
+| Game Dev | Desarrollo de juegos | Quest, Sprite, Level |
+| QA y Pruebas | Garantía de calidad | Test, Check, Verify |
+| Investigación | Análisis e investigación | Scout, Intel, Data |
+| Orquestación | Gestión del sistema | Flow, Sync, Route |
+| Especializados | Expertos de nicho | Legal, Finance, HR |
+
+![150 Agents Placeholder]
+_Captura: Navegador del roster de agentes mostrando categorías y agentes disponibles_
+
+## Elegir el Agente Correcto
+
+### Para Tareas Individuales
+
+| Tipo de Tarea | Nivel Recomendado | Ejemplo |
+| --------------------- | ---------------- | -------------------------- |
+| Escribir un artículo de blog | Especialista | Echo (Estratega de Contenido) |
+| Diseñar una landing page | Especialista | Pixel (Diseñador UI/UX) |
+| Investigar competidores | Especialista | Scout (Analista de Investigación) |
+| Construir una funcionalidad | Especialista | Nova (Ingeniero Full-Stack) |
+| Formatear documentos | Pasante | DocFormatter |
+| Ejecutar una campaña | Líder | Atlas (CEO) + equipo |
+
+### Para Empresas AI
+
+**Equipo Mínimo Viable:**
+
+```
+CEO (Líder)
+└── 2-3 Especialistas
+    └── Opcional: 1-2 Pasantes
+```
+
+**Ejemplo de Empresa de Marketing:**
+
+```
+Atlas (CEO) — Estrategia y coordinación
+├── Echo (Estratega de Contenido) — Mensaje de campaña
+│   └── Pasante de Contenido — Borradores de artículos
+├── Pixel (Diseñador) — Activos visuales
+└── Scout (Investigación) — Análisis de mercado
+```
+
+## Generación de Agentes
+
+### ¿Qué es Generar?
+
+Generar crea subagentes temporales para tareas específicas:
+
+- El agente padre delega trabajo
+- El subagente trabaja independientemente
+- Los resultados se reportan automáticamente
+- El subagente desaparece cuando termina
+
+### Cuándo Generar vs Contratar
+
+| Generar | Contratar |
+| ------------------------ | --------------------------- |
+| Tareas paralelas únicas | Miembro de equipo continuo |
+| Capacidad temporal de aumento | Rol permanente |
+| Procesamiento paralelo de datos | Colaboración entre proyectos |
+| Trabajo exploratorio | Función central del equipo |
+
+**Ejemplo:** Un Analista de Investigación genera 5 subagentes para analizar 5 competidores diferentes simultáneamente, luego compila los resultados.
+
+## Agentes Personalizados
+
+Más allá del roster pre-construido, puedes crear agentes personalizados:
+
+### Cuándo Crear Agentes Personalizados
+
+1. **Experiencia Única** — Necesitas conocimiento especializado no en el roster
+2. **Voz de Marca** — Agente que conoce el tono de tu empresa
+3. **Proceso Propietario** — Sigue tu metodología específica
+4. **Optimización de Costos** — Agente más ligero para tareas simples
+
+### Componentes de Agente Personalizado
+
+Cada agente tiene un archivo **SOUL.md** que contiene:
+
+- **Identidad** — Nombre, rol, personalidad
+- **Experiencia** — Habilidades y áreas de conocimiento
+- **Instrucciones de Operación** — Cómo abordan el trabajo
+- **Estilo de Comunicación** — Tono y preferencias de formato
+
+**Ejemplo:** Crea un agente "Guardián de Marca" que asegure que todo el contenido coincida con tu guía de estilo.
+
+## Capacidades de Agentes
+
+### Lo que Todos los Agentes Pueden Hacer
+
+- Leer y escribir archivos
+- Buscar en la web
+- Enviar mensajes
+- Crear y actualizar tareas
+- Acceder a memoria y conocimiento
+- Comunicarse con otros agentes
+
+### Lo que los Agentes Líder Pueden Hacer (Extra)
+
+- Enviar planes de negocio
+- Contratar agentes para empresas
+- Aprobar presupuestos (en modo autónomo)
+- Orquestar flujos de trabajo multi-agente
+
+### Lo que los Especialistas Pueden Hacer (Extra)
+
+- Usar herramientas específicas de dominio
+- Generar subagentes
+- Revisar y aprobar trabajo
+- Entrenar agentes Pasante
+
+### Memoria y Contexto
+
+Cada agente tiene memoria persistente:
+
+- **Memoria Personal** — Notas y aprendizajes a través de conversaciones
+- **Contexto de Empresa** — Conocimiento de su Empresa AI
+- **Memoria Compartida** — Información accesible a todos los agentes
+- **Memoria de Sesión** — Contexto de conversación actual
+
+Los agentes recuerdan interacciones pasadas y construyen sobre trabajo previo.
+
+## Trabajando con Agentes
+
+### A través de Mission Control
+
+**Panel de Escuadrón de Agentes:**
+
+- Ver todos los agentes activos
+- Verificar estado (inactivo, ocupado, offline)
+- Generar nuevos agentes
+- Acceder a detalles del agente
+
+**Vista de Detalle de Agente:**
+
+- Overview — Estado, empresa, actividad reciente
+- SOUL — Personalidad e instrucciones
+- Memoria — Notas personales y contexto
+- Tasks — Trabajo asignado
+- Activity — Historial de acciones
+- Config — Ajustes y anulaciones
+
+### A través de Apps de Mensajería
+
+Chatea directamente con cualquier agente:
+
+**Telegram:**
+
+```
+Tú: @Nova Constrúyeme un formulario de login
+Nova: Te crearé un formulario de login.
+      ¿Debería incluir opciones de login social?
+```
+
+**Slack:**
+
+```
+Tú: @Echo Escribe un anuncio de producto
+Echo: ¡Trabajando en ello! ¿Cuál es la característica
+      clave que deberíamos destacar?
+```
+
+**WhatsApp:**
+
+```
+Tú: @Scout Investiga nuestros competidores
+Scout: Analizaré los 5 principales competidores
+       en tu espacio. Revisa Mission Control
+       para el reporte completo en ~10 minutos.
+```
+
+## Estado de Agentes
+
+Los agentes muestran su estado actual:
+
+- **Inactivo** — Disponible y esperando trabajo
+- **Activo** — Actualmente trabajando en una tarea
+- **Ocupado** — Ocupado con trabajo en curso
+- **Offline** — No ejecutándose actualmente
+- **Error** — Encontró un problema
+- **Archivado** — No en uso (puede ser reactivado)
+
+## Mejores Prácticas
+
+1. **Empareja Agente con Tarea** — Usa Especialistas para trabajo complejo, Pasantes para tareas simples
+2. **Comienza Simple** — Empieza con agentes individuales antes de crear empresas
+3. **Construye Equipos con Cuidado** — Asegura habilidades complementarias en equipos de empresa
+4. **Monitorea al Principio** — Observa nuevos agentes de cerca hasta que confíes en su trabajo
+5. **Usa la Generación Sabiamente** — Genera para trabajo paralelo, contrata para roles continuos
+6. **Archiva Cuando Termines** — Mantén tu escuadrón limpio y manejable
+
+## Patrones Comunes
+
+### Patrón 1: Flujo de Trabajo de Agente Único
+
+```
+Tú → Agente → Resultado
+```
+
+Tareas rápidas, control directo
+
+### Patrón 2: Entrega Secuencial
+
+```
+Investigador → Escritor → Editor
+```
+
+Flujo de trabajo de pipeline, puertas de calidad
+
+### Patrón 3: Equipo Paralelo
+
+```
+       ┌── Agente A ──┐
+Tú ───┼── Agente B ───┼── Resultados
+       └── Agente C ──┘
+```
+
+Múltiples perspectivas, ejecución rápida
+
+### Patrón 4: Empresa AI
+
+```
+Tú → CEO → Equipo → Entregables
+       ↑________↓
+       (Reporta de vuelta)
+```
+
+Operación autónoma con supervisión
+
+## Siguientes Pasos
+
+- Aprende sobre [Flujos de Trabajo de Tareas](task-workflow)
+- Ve [Gestión de Agentes](managing-agents) para operaciones diarias
+- Entiende [Empresas AI](ai-companies) para trabajo en equipo

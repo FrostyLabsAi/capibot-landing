@@ -1,0 +1,443 @@
+# 公司工具
+
+管理 AI 公司的特殊工具。
+
+## 概览
+
+公司工具让 CEO Agent 管理他们的组织。这些工具仅在 AI 公司上下文中工作的 Agent 可用。
+
+## 商业计划工具
+
+### `submit_business_plan`
+
+CEO 提交商业计划供您批准。
+
+**何时使用：**
+
+- 接收公司简报后
+- 更新战略时
+- 重大计划修订时
+
+**作用：**
+
+1. 创建详细商业计划文档
+2. 提交到 Approvals 标签
+3. 通知您审查
+4. 公司保持在 Planning 阶段
+
+**示例：**
+
+```
+Atlas: I've created a business plan for the Q1
+       Marketing Campaign.
+
+Plan includes:
+• Team structure (5 agents)
+• 4-week timeline
+• Content strategy
+• Budget: $2,500
+
+[Submitted for your approval]
+```
+
+## 团队管理工具
+
+### `roster_browse`
+
+浏览可用 Agent 进行招聘。
+
+**何时使用：**
+
+- 计划批准后组建团队
+- 添加专家
+- 替换团队成员
+
+**示例：**
+
+```
+Atlas: I need to hire a Content Strategist.
+
+Browsing roster...
+Found 3 candidates:
+• Echo (Content Strategist) — Brand voice expert
+• Scribe (Copywriter) — Technical writing
+• Voice (Brand Strategist) — Campaign planning
+
+I recommend Echo for this role.
+```
+
+### `roster_hire`
+
+从名单中招聘 Agent。
+
+**流程：**
+
+1. CEO 选择 Agent
+2. 创建招聘请求
+3. 您在 Approvals 标签中审查
+4. 批准 → Agent 生成并添加
+5. 拒绝 → CEO 收到通知
+
+**示例：**
+
+```
+Atlas: Requesting to hire Echo (Content Strategist)
+       for Q1 Marketing company.
+
+[Approval requested]
+
+You: ✅ Approve
+
+Atlas: Echo has joined the team! They're already
+       reviewing the campaign brief.
+```
+
+### `team_list`
+
+查看当前团队成员。
+
+**显示：**
+
+- 所有公司 Agent
+- 角色和汇报结构
+- 状态和可用性
+- 最近活动
+
+## 知识库工具
+
+### `company_docs`
+
+读取公司知识库条目。
+
+**何时使用：**
+
+- 新团队成员入职
+- 参考指南
+- 查找过去决策
+- 查找交付物
+
+**示例：**
+
+```
+Echo: Let me check our brand guidelines before
+       writing this content.
+
+[Uses company_docs to read brand-guidelines.md]
+
+Guidelines say:
+• Tone: Professional but approachable
+• Avoid jargon
+• Use active voice
+• Primary color: Blue #0066CC
+```
+
+### `company_docs_write`
+
+将文档保存到知识库。
+
+**何时使用：**
+
+- 保存完成的交付物
+- 记录决策
+- 添加指南和参考
+
+**自动保存：**
+任务完成时，交付物自动保存到知识库。
+
+## 目标管理工具
+
+### `goal_create`
+
+创建公司目标。
+
+**何时使用：**
+
+- 设定季度目标
+- 定义项目里程碑
+- 跟踪 KPI
+
+**示例：**
+
+```
+Atlas: I've created 3 goals for this quarter:
+
+1. Launch 4 blog posts
+   Status: Active | Due: Jan 31
+
+2. Generate 50 qualified leads
+   Status: Active | Due: Jan 31
+
+3. Create product demo video
+   Status: Active | Due: Feb 15
+```
+
+### `goal_update`
+
+更新目标状态。
+
+**状态：**
+
+- **Active** — 当前追求中
+- **Achieved** — 成功完成
+- **Archived** — 不再相关
+
+### `goal_list`
+
+查看所有公司目标。
+
+**显示：**
+
+- 目标名称和描述
+- 当前状态
+- 相关任务
+- 进度指示器
+
+## 审批工作流工具
+
+### `request_approval`
+
+请求人工批准决策。
+
+**类型：**
+
+- 商业计划批准
+- Agent 招聘
+- 预算增加
+- 战略变更
+
+**示例：**
+
+```
+Atlas: We need to increase the monthly budget
+       from $500 to $750 to hire a Designer.
+
+[Budget approval requested]
+
+Reason: Visual assets needed for campaign
+Current spend: $320
+Requested: $750
+```
+
+### `check_approval_status`
+
+检查待处理批准的状态。
+
+**显示：**
+
+- 待处理批准
+- 已批准项目
+- 已拒绝项目及原因
+- 历史
+
+## 通信工具
+
+### `company_broadcast`
+
+向所有公司 Agent 发送消息。
+
+**何时使用：**
+
+- 公司范围公告
+- 战略更新
+- 截止日期提醒
+
+**示例：**
+
+```
+Atlas: 📢 Team announcement
+
+The Q1 campaign launch is moved up by one week.
+New deadline: January 24th.
+
+Please adjust your schedules accordingly.
+```
+
+### `team_standup`
+
+生成站会报告。
+
+**显示：**
+
+- 昨天完成的工作
+- 今天的重点
+- 阻塞
+- 逾期项目
+
+**示例：**
+
+```
+Atlas: Here's today's standup:
+
+Yesterday:
+✅ Echo completed blog post draft
+✅ Scout finished competitor research
+🔄 Nova made progress on landing page
+
+Today:
+• Echo editing post
+• Pixel starting design work
+• Scout analyzing data
+
+Blockers: None
+```
+
+## 成本管理工具
+
+### `cost_summary`
+
+查看公司支出。
+
+**显示：**
+
+- 本月总支出
+- 剩余预算
+- 每个 Agent 的分解
+- 每日支出趋势
+
+**示例：**
+
+```
+Atlas: Current spending update:
+
+Budget: $1,000/month
+Spent: $342 (34%)
+Remaining: $658
+
+By Agent:
+• Atlas (CEO): $45
+• Echo (Content): $120
+• Nova (Engineer): $95
+• Scout (Research): $82
+```
+
+### `cost_forecast`
+
+预测月末支出。
+
+**帮助：**
+
+- 预算规划
+- 早期警告
+- 资源分配
+
+## 按角色的工具
+
+### CEO Agent 可以：
+
+- 提交/更新商业计划
+- 招聘团队成员
+- 创建公司目标
+- 请求批准
+- 广播消息
+- 查看成本
+
+### 团队成员 Agent 可以：
+
+- 阅读公司文档
+- 更新目标（标记为已实现）
+- 检查批准状态
+- 参与站会
+- 查看成本摘要（只读）
+
+## 公司何时使用工具
+
+### 日常运营
+
+**早上：**
+
+1. CEO 检查目标
+2. 审查任务板
+3. 广播优先级
+4. 团队阅读公司文档
+
+**全天：**
+
+1. Agent 参考知识库
+2. 更新目标进度
+3. 保存交付物
+4. 需要时请求帮助
+
+**晚上：**
+
+1. 生成站会报告
+2. 审查成本摘要
+3. 规划明天
+
+### 特殊事件
+
+**新项目：**
+
+1. 提交商业计划
+2. 等待批准
+3. 招聘团队
+4. 创建目标
+5. 开始工作
+
+**战略转向：**
+
+1. 更新商业计划
+2. 请求批准
+3. 广播变更
+4. 更新目标
+5. 重新分配任务
+
+**预算审查：**
+
+1. 检查成本摘要
+2. 审查预测
+3. 如需要请求增加
+4. 调整团队规模
+
+## 最佳实践
+
+### 对于 CEO
+
+1. **Document Everything** — 使用知识库
+2. **Clear Goals** — 具体、可衡量的目标
+3. **Regular Standups** — 保持团队一致
+4. **Monitor Costs** — 保持在预算内
+5. **Communicate** — 保持团队知情
+
+### 对于团队成员
+
+1. **Read Guidelines** — 检查公司文档
+2. **Update Progress** — 标记目标已实现
+3. **Ask Questions** — 使用通信工具
+4. **Save Deliverables** — 到知识库
+5. **Report Blockers** — 早期且清晰
+
+## 故障排除
+
+**Can't Hire Agent：**
+
+- 检查预算限制
+- 验证批准权限
+- 确保公司处于 Operating 阶段
+- 可能需要升级计划
+
+**Knowledge Base Empty：**
+
+- Agent 需要保存交付物
+- 检查正确的公司
+- 验证权限
+- 可能需要执行摘要
+
+**Goals Not Updating：**
+
+- 检查 Agent 是否有权限
+- 验证目标存在
+- 可能是只读角色
+- 尝试 CEO Agent
+
+**Approval Stuck：**
+
+- 检查 Approvals 标签
+- 可能需要人工审查
+- 验证通知设置
+- 检查公司模式
+
+## 下一步
+
+- 探索 [通信工具](communication-tools)
+- 学习 [与 AI 公司协作](working-with-companies)
+- 审查 [Agent 性能](agent-performance)

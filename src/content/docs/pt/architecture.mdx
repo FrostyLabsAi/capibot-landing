@@ -1,0 +1,187 @@
+# Visão Geral da Arquitetura
+
+O CapiBot é projetado como uma plataforma completa de força de trabalho de IA. Entender como as peças se conectam ajuda você a usá-la de forma eficaz.
+
+## A Visão Geral
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                    VOCÊ (Usuário Humano)                     │
+└──────────────┬──────────────────────────────────────────────┘
+               │
+     ┌──────────┼──────────┬──────────┐
+     │          │          │          │
+     ▼          ▼          ▼          ▼
+┌───────┐  ┌───────┐  ┌───────┐  ┌───────┐
+│Mission│  │Telegram│  │WhatsApp│  │ Slack │
+│Control│  │  Bot   │  │  Bot   │  │  Bot  │
+│(Web UI)│  │        │  │        │  │       │
+└───┬───┘  └───┬───┘  └───┬───┘  └───┬───┘
+    │          │          │          │
+    └──────────┴────┬─────┴──────────┘
+                    │
+           ┌────────▼────────┐
+           │  CapiBot Core   │
+           │  (AI Engine)    │
+           └────────┬────────┘
+                    │
+        ┌───────────┼───────────┐
+        │           │           │
+        ▼           ▼           ▼
+   ┌────────┐  ┌────────┐  ┌────────┐
+   │ Agents │  │ Tasks  │  │ Memory │
+   │ (150+) │  │Kanban  │  │   &    │
+   │        │  │ Board  │  │Knowledge│
+   └────────┘  └────────┘  └────────┘
+```
+
+## Três Formas de Interagir
+
+### 1. Mission Control (Painel Web)
+
+Seu centro de comando para gerenciar tudo:
+
+- Visualizar todos os agentes e seus status
+- Gerenciar tarefas em quadros Kanban
+- Monitorar atividade em tempo real
+- Configurar integrações
+- Acessar memória e base de conhecimento
+
+**Melhor para:** Gerenciamento diário, revisão de trabalho, configuração do sistema
+
+### 2. Apps de Mensagens (Telegram, WhatsApp, Slack)
+
+Converse diretamente com seus agentes de IA:
+
+- Envie mensagens e receba respostas
+- Compartilhe arquivos e documentos
+- Obtenha transcrições de mensagens de voz
+- Receba notificações
+
+**Melhor para:** Interações rápidas, acesso em qualquer lugar, colaboração em equipe
+
+### 3. Empresas de IA (Modo Autônomo)
+
+Deixe os agentes executarem de forma independente:
+
+- Agente CEO cria planos de negócio
+- Equipes se auto-organizam e executam
+- Supervisão humana quando você quiser
+- Delegação automática de tarefas
+
+**Melhor para:** Projetos complexos, operações contínuas, automação sem intervenção
+
+## Componentes Principais
+
+### Agentes
+
+O CapiBot vem com mais de 150 agentes pré-construídos organizados por especialidade:
+
+- **CEOs** — Líderes estratégicos que comandam empresas
+- **Engenheiros** — Constroem recursos e escrevem código
+- **Designers** — Criam UI/UX e visuais
+- **Marketers** — Gerenciam campanhas e conteúdo
+- **Pesquisadores** — Analisam dados e concorrentes
+- **E mais...**
+
+Cada agente tem:
+
+- Uma personalidade única (SOUL.md)
+- Capacidades específicas
+- Memória que persiste entre conversas
+- Rastreamento de status (ocioso, ocupado, offline)
+
+### Tarefas
+
+O trabalho é organizado em tarefas que fluem através de um quadro Kanban:
+
+- **Inbox** — Novas tarefas esperando para começar
+- **In Progress** — Sendo trabalhadas atualmente
+- **Review** — Prontas para verificação de qualidade
+- **Human Review** — Precisam da sua aprovação
+- **Blocked** — Esperando por algo
+- **Done** — Concluídas
+
+### Memória e Conhecimento
+
+Sua IA lembra de tudo:
+
+- **Memória do Agente** — Notas pessoais e contexto de cada agente
+- **Base de Conhecimento** — Informações compartilhadas acessíveis a todos os agentes
+- **Conhecimento da Empresa** — Específico para cada empresa de IA
+- **Busca Semântica** — Encontre informações por significado, não apenas por palavras-chave
+
+### Canais
+
+Conecte-se através da sua plataforma preferida:
+
+- **Telegram** — Bot completo com transcrição de voz
+- **WhatsApp** — Mensagens empresariais com suporte a mídia
+- **Slack** — Colaboração em equipe com consciência de threads
+- **Web Chat** — Integrado ao Mission Control
+
+## Como os Dados Fluem
+
+### Exemplo: Você Pede a um Agente para Pesquisar Concorrentes
+
+1. **Você** envia uma mensagem via Telegram: _"Pesquise nossos 5 principais concorrentes"_
+2. **Serviço de Canal** recebe a mensagem e a direciona
+3. **Serviço DeepAgent** seleciona o agente Analista de Pesquisa
+4. **Agente** usa ferramentas para buscar na web e analisar dados
+5. **Tarefa** é criada e rastreada no quadro Kanban
+6. **Resultados** são armazenados na memória e enviados de volta para você
+7. **Atividade** é registrada para sua revisão
+
+### Exemplo: Empresa de IA Executando uma Campanha de Marketing
+
+1. **Agente CEO** cria um plano de negócio para a campanha
+2. **Você** aprova o plano no Mission Control
+3. **CEO** contrata um Estrategista de Marketing e um Redator
+4. **Agentes** criam tarefas automaticamente
+5. **Tarefas** movem-se através do fluxo de trabalho Kanban
+6. **Entregáveis** são salvos na base de conhecimento da empresa
+7. **Você** revisa e aprova decisões importantes
+
+## Quando Usar o Quê
+
+### Use Agentes Individuais Quando:
+
+- Você tem uma tarefa específica e única
+- Você quer controle direto sobre o trabalho
+- Você precisa de respostas rápidas ou pesquisa
+- Você está explorando ideias
+
+**Exemplo:** _"Atlas, escreva um blog post sobre tendências de IA"_
+
+### Use Múltiplos Agentes Quando:
+
+- A tarefa abrange diferentes especialidades
+- Você quer que os agentes colaborem
+- Você precisa de perspectivas diversas
+- O trabalho pode acontecer em paralelo
+
+**Exemplo:** Analista de Pesquisa coleta dados, Redator cria cópia, Designer faz visuais
+
+### Use Empresas de IA Quando:
+
+- Você tem operações contínuas
+- Você quer que os agentes se auto-organizem
+- Você precisa de processos consistentes
+- Você quer escalar sem micromanagement
+
+**Exemplo:** Uma empresa de marketing que executa campanhas mensais automaticamente
+
+### Use Subagentes Quando:
+
+- Uma tarefa precisa de execução paralela
+- Você quer delegar sub-tarefas
+- O agente pai precisa focar na coordenação
+- O trabalho pode acontecer de forma assíncrona
+
+**Exemplo:** CEO cria 5 pesquisadores para analisar diferentes concorrentes simultaneamente
+
+## Próximos Passos
+
+- Aprenda sobre [Empresas de IA](ai-companies) e quando usá-las
+- Entenda a [Hierarquia de Agentes](agent-hierarchy)
+- Veja como as [Tarefas](task-workflow) fluem pelo sistema

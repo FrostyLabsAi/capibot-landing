@@ -1,0 +1,526 @@
+# Administration
+
+Configuration et paramètres de gestion système.
+
+**Accès :** Nav rail → **Paramètres**
+
+## Panneau des Paramètres
+
+Le panneau des paramètres est organisé en catégories :
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ Paramètres                                              │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ Catégories:                                             │
+│ • Général                    ← Actuel                 │
+│ • Fournisseurs LLM                                     │
+│ • Canaux                                               │
+│ • Conservation des Données                             │
+│ • Sécurité                                             │
+│ • Avancé                                               │
+│                                                         │
+└─────────────────────────────────────────────────────────┘
+```
+
+## Paramètres Généraux
+
+### Configuration Système
+
+```
+Paramètres Généraux
+
+Nom du Système
+[Ma Main-d'Œuvre IA                    ]
+
+Langue par Défaut
+[English ▼]
+
+Fuseau Horaire
+[America/New_York ▼]
+
+Format de Date
+[MM/DD/YYYY ▼]
+```
+
+### Préférences d'Affichage
+
+```
+Affichage
+
+Thème
+○ Light  ● Dark  ○ Auto
+
+Densité
+○ Comfortable  ● Compact
+
+Barre Latérale
+☑️ Afficher le Live Feed par défaut
+☑️ Réduire automatiquement les tâches terminées
+☐ Afficher les avatars des agents dans les listes
+```
+
+### Notifications
+
+```
+Préférences de Notification
+
+Notifications In-App
+☑️ Activer les notifications desktop
+☑️ Jouer un son sur alerte
+☐ Afficher le compteur de notifications dans le titre
+
+Notifications Email
+☐ Envoyer le résumé quotidien
+☐ Notifier sur les erreurs système
+☐ Rapport hebdomadaire d'analytics
+```
+
+## Paramètres des Fournisseurs LLM
+
+Configurez quels modèles IA utiliser.
+
+### Priorité des Fournisseurs
+
+```
+Priorité des Fournisseurs LLM
+
+Quand CapiBot a besoin d'IA, il essaie les fournisseurs dans cet ordre :
+
+1. 🥇 Anthropic Claude
+2. 🥈 Google Gemini
+3. 🥉 Kimi (Moonshot)
+4.    GLM (Zhipu AI)
+5.    MiniMax
+6.    Ollama (local)
+
+[Ajouter Fournisseur] [Réorganiser]
+```
+
+**Comment Fonctionne le Failover :**
+
+1. Le fournisseur principal (Claude) tente la requête
+2. Si échoue, essaie automatiquement le fournisseur configuré suivant
+3. Continue jusqu'à succès ou tous échouent
+
+### Configuration des Fournisseurs
+
+**Anthropic :**
+
+```
+Clé API: [sk-ant-********************************    ]
+Modèle: [Claude 3.5 Sonnet ▼]
+Max Tokens: 4096
+Temperature: 0.7
+[Test Connection]
+```
+
+**Ollama (Local) :**
+
+```
+Base URL: [http://localhost:11434           ]
+Modèle: [llama3.1:latest ▼]
+[Refresh Models]
+```
+
+**Google Gemini :**
+
+```
+Clé API: [************************************    ]
+Modèle: [Gemini 1.5 Pro ▼]
+[Verify Key]
+```
+
+### Remplacement de Modèle
+
+Sélection de modèle par agent :
+
+```
+Morgan (CEO) → Claude (défaut)
+Nova (Engineer) → Gemini (codage plus rapide)
+Scout (Research) → Claude (meilleure analyse)
+```
+
+## Paramètres des Canaux
+
+Configurez les canaux de messagerie.
+
+### Telegram
+
+```
+Configuration Bot Telegram
+
+Bot Token: [123456789:ABCdefGHIjkl...      ]
+Statut: ✅ Connecté
+Nom d'Utilisateur Bot: @MyCapiBot
+
+Liste d'Autorisation Utilisateurs
+☑️ Activer la liste d'autorisation
+Utilisateurs autorisés: @username1, @username2
+☐ Autoriser tout utilisateur (non recommandé)
+
+Fonctionnalités
+☑️ Transcription de messages vocaux
+☑️ Gestion de fichiers
+☑️ Indicateurs de frappe
+[Save] [Test Connection]
+```
+
+### WhatsApp
+
+```
+WhatsApp Business API
+
+Clé API: [********************************    ]
+Numéro de Téléphone: +1 (555) 123-4567
+Statut: ✅ Connecté
+
+URL Webhook: https://your-domain.com/webhooks/whatsapp
+Token de Vérification: [********************************    ]
+
+Gestion des Médias
+☑️ Télécharger les images
+☑️ Télécharger les documents
+☐ Télécharger l'audio (nécessite du stockage)
+Taille maximale de fichier: 16 MB
+[Save] [Test Message]
+```
+
+### Slack
+
+```
+Configuration App Slack
+
+Bot Token: [xoxb-1234-5678-...              ]
+Statut: ✅ Connecté
+Workspace: MyWorkspace
+
+Canaux
+#general — ✅ Active
+#engineering — ✅ Active
+#marketing — ⏸️ Paused
+
+Fonctionnalités
+☑️ Messagerie thread-aware
+☑️ Formatage enrichi
+☑️ Partage de fichiers
+[Save] [Invite to Channel]
+```
+
+## Conservation des Données
+
+Contrôlez combien de temps les données sont conservées.
+
+```
+Politiques de Conservation des Données
+
+Le nettoyage automatique supprime les anciennes données.
+
+Activités        Conserver pendant [30 ▼] jours
+Notifications     Conserver pendant [7 ▼] jours
+Logs d'Audit        Conserver pendant [90 ▼] jours
+Comms/Messages    Conserver pendant [15 ▼] jours
+Historique Webhook   Conserver pendant [30 ▼] jours
+Traces            Conserver pendant [30 ▼] jours
+Fichiers             Conserver pendant [90 ▼] jours
+Tâches Terminées  Conserver pendant [365 ▼] jours
+
+☑️ Activer le nettoyage automatique
+☐ Archiver avant suppression
+[Save Changes]
+```
+
+**Pourquoi le Nettoyage Auto ?**
+
+- Réduit la taille de la base de données
+- Améliore les performances
+- Maintient la confidentialité
+- Contrôle les coûts
+
+**Données Importantes Jamais Supprimées :**
+
+- Tâches actives
+- Mémoires des agents
+- Base de connaissances
+- Informations d'entreprise
+- Paramètres
+
+## Paramètres de Sécurité
+
+### Authentification
+
+```
+Authentification
+
+Authentification par Clé API
+Master API Key: [CAPIBOT_************************    ]
+[Régénérer] [Copier]
+
+Paramètres de Session
+Durée de session: [7 ▼] jours
+☑️ Exiger des cookies sécurisés
+☑️ Valider l'adresse IP
+☐ Autoriser plusieurs sessions par utilisateur
+
+Mode Dev
+☐ Activer le mode dev (⚠️ Pas pour la production)
+```
+
+### Contrôle d'Accès
+
+```
+Contrôle d'Accès
+
+Liste d'Autorisation IP
+☐ Activer les restrictions IP
+IPs autorisées: 192.168.1.0/24, 10.0.0.5
+
+Liste d'Autorisation Utilisateurs (Telegram)
+@username1, @username2, @username3
+☐ Autoriser tout utilisateur Telegram
+
+Liste d'Autorisation Hôtes
+localhost, capibot.io, *.internal.com
+```
+
+### Sécurité du Contenu
+
+```
+Politique de Sécurité du Contenu
+
+☑️ Activer les headers CSP
+☑️ Bloquer les scripts inline
+☑️ Restreindre les sources d'objets
+☑️ Valider les actions de formulaire
+
+Sécurité Shell
+☑️ Bloquer les patterns shell dangereux
+☑️ Restreindre au workspace
+☑️ Timeout des commandes (défaut: 30s)
+Sortie shell maximale: ~10KB par appel
+```
+
+## Paramètres Avancés
+
+### Performance Système
+
+```
+Performance
+
+Pooling de Connexions
+Max connexions base de données: [10 ▼]
+Timeout de connexion: [30 ▼] secondes
+
+Caching
+☑️ Activer le caching des réponses
+Durée du cache: [60 ▼] secondes
+
+Rate Limiting
+Limite de débit API: [100 ▼] requêtes/minute
+Limite de débit webhook: [100 ▼] requêtes/minute
+```
+
+### Logging
+
+```
+Logging
+
+Niveau de Log
+[Info ▼] (Debug, Info, Warn, Error)
+
+Destinations des Logs
+☑️ Console
+☐ Fichier: /var/log/capibot/
+☐ Externe (syslog)
+
+Données Sensibles
+☐ Logger les clés API (non recommandé)
+☐ Logger les prompts complets
+☑️ Masquer les données sensibles
+```
+
+### Sauvegarde & Récupération
+
+```
+Paramètres de Sauvegarde
+
+Sauvegardes Automatiques
+☑️ Activer les sauvegardes quotidiennes
+Heure de sauvegarde: [02:00 ▼]
+Rétention: [7 ▼] jours
+
+Contenu des Sauvegardes
+☑️ Base de données
+☑️ Stockage de fichiers
+☑️ Configuration
+☐ Logs
+
+Sauvegarde Manuelle
+[Créer Sauvegarde Maintenant]
+
+Dernière Sauvegarde: 14 Déc 2024 02:00 AM
+Statut: ✅ Succès (245 MB)
+[Télécharger] [Restaurer]
+```
+
+## Gestion des Utilisateurs
+
+Si vous exécutez CapiBot multi-utilisateur :
+
+```
+Gestion des Utilisateurs
+
+Utilisateurs Actuels: 3
+
+┌─────────────────┬──────────────┬────────────┐
+│ Utilisateur     │ Rôle         │ Dernière   │
+│                 │              │ Activité   │
+├─────────────────┼──────────────┼────────────┤
+│ admin@capibot.io│ Admin        │ il y a 2 min│
+│ user1@company.io│ User         │ il y a 1 h │
+│ user2@company.io│ User         │ il y a 1 jour│
+└─────────────────┴──────────────┴────────────┘
+
+[Inviter Utilisateur] [Exporter Utilisateurs]
+```
+
+### Rôles Utilisateur
+
+**Admin :**
+
+- Accès complet au système
+- Gérer les paramètres
+- Gérer les utilisateurs
+- Voir les logs d'audit
+
+**User :**
+
+- Créer/gérer des entreprises
+- Gérer les agents assignés
+- Voir ses propres tâches
+- Accès limité aux paramètres
+
+## Import / Export
+
+### Exporter les Données
+
+```
+Exporter Vos Données
+
+Quoi Exporter
+☑️ Entreprises et équipes
+☑️ Agents et configurations
+☑️ Tâches et historique
+☑️ Base de connaissances
+☐ Logs et traces
+
+Format
+● JSON (lisible par machine)
+○ Markdown (lisible par humain)
+○ CSV (tableurs)
+
+[Exporter Données]
+```
+
+### Importer des Données
+
+```
+Importer des Données
+
+⚠️ L'import fusionnera avec les données existantes.
+Les éléments en conflit seront ignorés.
+
+Sélectionnez le fichier: [Parcourir...]
+Formats supportés: .json, .zip
+
+[Aperçu Import] [Importer Données]
+```
+
+## Information Système
+
+Voyez le statut système :
+
+```
+Information Système
+
+Version: CapiBot v1.2.3
+Build: 2024.12.15-abc123
+Licence: MIT (Open Source)
+
+Runtime
+Node.js: v20.10.0
+Uptime: 14 jours, 3 heures
+Memory: 2.3GB / 8GB
+
+Base de Données
+PostgreSQL: 16.1
+Taille: 1.2 GB
+Connexions: 3 / 10
+
+Vérifier les Mises à Jour
+Actuel: v1.2.3
+Dernier: v1.2.3 ✅ À jour
+```
+
+## Bonnes Pratiques
+
+### Configuration
+
+1. **Documentez les Changements** — Notez pourquoi vous avez changé les paramètres
+2. **Testez D'abord** — Essayez les changements dans l'environnement dev
+3. **Sauvegardez D'abord** — Avant les changements majeurs
+4. **Commencez Conservateur** — Resserrez progressivement
+5. **Révisez Régulièrement** — Audit mensuel des paramètres
+
+### Sécurité
+
+1. **Clés API Fortes** — Utilisez des clés auto-générées
+2. **Rotation Régulière** — Tous les 90 jours
+3. **Privilège Minimal** — Accès minimum requis
+4. **Surveillez les Logs** — Regardez l'activité inhabituelle
+5. **Gardez à Jour** — Dernière version pour les correctifs de sécurité
+
+### Performance
+
+1. **Pool de Bonne Taille** — Faites correspondre les connexions DB à l'utilisation
+2. **Cachez Sagement** — Ne cachez pas le contenu dynamique
+3. **Nettoyez Régulièrement** — Nettoyage auto des anciennes données
+4. **Surveillez les Ressources** — Regardez la mémoire et le disque
+5. **Optimisez les Requêtes** — Vérifiez les logs de requêtes lentes
+
+## Dépannage
+
+**Paramètres qui ne Sauvegardent Pas :**
+
+- Vérifiez les permissions
+- Vérifiez que les valeurs sont valides
+- Révisez les messages d'erreur
+- Essayez de rafraîchir la page
+
+**Échec du Test de Connexion :**
+
+- Vérifiez les clés API
+- Vérifiez la connectivité réseau
+- Révisez les règles firewall
+- Vérifiez le statut du service
+
+**Problèmes de Performance :**
+
+- Réduisez la taille du pool de connexions
+- Réduisez la durée du cache
+- Activez le nettoyage auto
+- Vérifiez la taille de la base de données
+
+**Alertes de Sécurité :**
+
+- Révisez les logs d'audit
+- Vérifiez les patterns d'accès
+- Vérifiez les listes d'autorisation
+- Faites des rotations des clés compromises
+
+## Prochaines Étapes
+
+- Révisez les [Bonnes Pratiques de Sécurité](security)
+- Apprenez la [Performance des Agents](agent-performance)
+- Explorez les [Catégories d'Outils](tool-categories)

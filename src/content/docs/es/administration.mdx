@@ -1,0 +1,525 @@
+# Administración
+
+Configuración del sistema y ajustes de gestión.
+
+**Acceso:** Barra de navegación → **Settings**
+
+## Panel de Configuración
+
+El panel de configuración está organizado en categorías:
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ Settings                                                │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ Categories:                                             │
+│ • General                    ← Current                │
+│ • LLM Providers                                        │
+│ • Channels                                             │
+│ • Data Retention                                       │
+│ • Security                                             │
+│ • Advanced                                             │
+│                                                         │
+└─────────────────────────────────────────────────────────┘
+```
+
+## Configuración General
+
+### Configuración del Sistema
+
+```
+General Settings
+
+System Name
+[My AI Workforce                    ]
+
+Default Language
+[English ▼]
+
+Time Zone
+[America/New_York ▼]
+
+Date Format
+[MM/DD/YYYY ▼]
+```
+
+### Preferencias de Visualización
+
+```
+Display
+
+Theme
+○ Light  ● Dark  ○ Auto
+
+Density
+○ Comfortable  ● Compact
+
+Sidebar
+☑️ Show Live Feed by default
+☑️ Auto-collapse completed tasks
+☐ Show agent avatars in lists
+```
+
+### Notificaciones
+
+```
+Notification Preferences
+
+In-App Notifications
+☑️ Enable desktop notifications
+☑️ Play sound on alert
+☐ Show notification count in title
+
+Email Notifications
+☐ Send daily summary
+☐ Notify on system errors
+☐ Weekly analytics report
+```
+
+## Configuración de Proveedores LLM
+
+Configura qué modelos de AI usar.
+
+### Prioridad de Proveedores
+
+```
+LLM Provider Priority
+
+When CapiBot needs AI, it tries providers in this order:
+
+1. 🥇 Anthropic Claude
+2. 🥈 Google Gemini
+3. 🥉 Kimi (Moonshot)
+4.    GLM (Zhipu AI)
+5.    MiniMax
+6.    Ollama (local)
+
+[Add Provider] [Reorder]
+```
+
+**Cómo Funciona el Failover:**
+
+1. El proveedor primario (Claude) intenta la solicitud
+2. Si falla, automáticamente intenta el siguiente proveedor configurado
+3. Continúa hasta éxito o que todos fallen
+
+### Configuración de Proveedores
+
+**Anthropic:**
+
+```
+API Key: [sk-ant-********************************    ]
+Model: [Claude 3.5 Sonnet ▼]
+Max Tokens: 4096
+Temperature: 0.7
+[Test Connection]
+```
+
+**Ollama (Local):**
+
+```
+Base URL: [http://localhost:11434           ]
+Model: [llama3.1:latest ▼]
+[Refresh Models]
+```
+
+**Google Gemini:**
+
+```
+API Key: [************************************    ]
+Model: [Gemini 1.5 Pro ▼]
+[Verify Key]
+```
+
+### Anulación de Modelo
+
+Selección de modelo por agente:
+
+```
+Morgan (CEO) → Claude (default)
+Nova (Engineer) → Gemini (faster coding)
+Scout (Research) → Claude (better analysis)
+```
+
+## Configuración de Canales
+
+Configura canales de mensajería.
+
+### Telegram
+
+```
+Telegram Bot Configuration
+
+Bot Token: [123456789:ABCdefGHIjkl...      ]
+Status: ✅ Connected
+Bot Username: @MyCapiBot
+
+User Allowlist
+☑️ Enable allowlist
+Allowed users: @username1, @username2
+☐ Allow any user (not recommended)
+
+Features
+☑️ Voice message transcription
+☑️ File handling
+☑️ Typing indicators
+[Save] [Test Connection]
+```
+
+### WhatsApp
+
+```
+WhatsApp Business API
+
+API Key: [********************************    ]
+Phone Number: +1 (555) 123-4567
+Status: ✅ Connected
+
+Webhook URL: https://your-domain.com/webhooks/whatsapp
+Verify Token: [********************************    ]
+
+Media Handling
+☑️ Download images
+☑️ Download documents
+☐ Download audio (requires storage)
+Maximum file size: 16 MB
+[Save] [Test Message]
+```
+
+### Slack
+
+```
+Slack App Configuration
+
+Bot Token: [xoxb-1234-5678-...              ]
+Status: ✅ Connected
+Workspace: MyWorkspace
+
+Channels
+#general — ✅ Active
+#engineering — ✅ Active
+#marketing — ⏸️ Paused
+
+Features
+☑️ Thread-aware messaging
+☑️ Rich formatting
+☑️ File sharing
+[Save] [Invite to Channel]
+```
+
+## Retención de Datos
+
+Controla cuánto tiempo se mantienen los datos.
+
+```
+Data Retention Policies
+
+Auto-cleanup automatically removes old data.
+
+Activities        Keep for [30 ▼] days
+Notifications     Keep for [7 ▼] days
+Audit Logs        Keep for [90 ▼] days
+Comms/Messages    Keep for [15 ▼] days
+Webhook History   Keep for [30 ▼] days
+Traces            Keep for [30 ▼] days
+Files             Keep for [90 ▼] days
+Completed Tasks   Keep for [365 ▼] days
+
+☑️ Enable auto-cleanup
+☐ Archive before delete
+[Save Changes]
+```
+
+**¿Por qué Auto-Cleanup?**
+
+- Reduce tamaño de base de datos
+- Mejora rendimiento
+- Mantiene privacidad
+- Controla costos
+
+**Datos Importantes Nunca se Eliminan:**
+
+- Tareas activas
+- Memorias de agentes
+- Base de conocimiento
+- Información de empresa
+- Configuración
+
+## Configuración de Seguridad
+
+### Autenticación
+
+```
+Authentication
+
+API Key Authentication
+Master API Key: [CAPIBOT_************************    ]
+[Regenerate] [Copy]
+
+Session Settings
+Session duration: [7 ▼] days
+☑️ Require secure cookies
+☑️ Validate IP address
+☐ Allow multiple sessions per user
+
+Dev Mode
+☐ Enable dev mode (⚠️ Not for production)
+```
+
+### Control de Acceso
+
+```
+Access Control
+
+IP Allowlist
+☐ Enable IP restrictions
+Allowed IPs: 192.168.1.0/24, 10.0.0.5
+
+User Allowlist (Telegram)
+@username1, @username2, @username3
+☐ Allow any Telegram user
+
+Host Allowlist
+localhost, capibot.io, *.internal.com
+```
+
+### Seguridad de Contenido
+
+```
+Content Security Policy
+
+☑️ Enable CSP headers
+☑️ Block inline scripts
+☑️ Restrict object sources
+☑️ Validate form actions
+
+Shell Security
+☑️ Block dangerous shell patterns
+☑️ Restrict to workspace
+☑️ Timeout commands (default: 30s)
+Maximum shell output: ~10KB per call
+```
+
+## Configuración Avanzada
+
+### Rendimiento del Sistema
+
+```
+Performance
+
+Connection Pooling
+Max database connections: [10 ▼]
+Connection timeout: [30 ▼] seconds
+
+Caching
+☑️ Enable response caching
+Cache duration: [60 ▼] seconds
+
+Rate Limiting
+API rate limit: [100 ▼] requests/minute
+Webhook rate limit: [100 ▼] requests/minute
+```
+
+### Logging
+
+```
+Logging
+
+Log Level
+[Info ▼] (Debug, Info, Warn, Error)
+
+Log Destinations
+☑️ Console
+☐ File: /var/log/capibot/
+☐ External (syslog)
+
+Sensitive Data
+☐ Log API keys (not recommended)
+☐ Log full prompts
+☑️ Mask sensitive data
+```
+
+### Backup y Recuperación
+
+```
+Backup Settings
+
+Automatic Backups
+☑️ Enable daily backups
+Backup time: [02:00 ▼]
+Retention: [7 ▼] days
+
+Backup Contents
+☑️ Database
+☑️ File storage
+☑️ Configuration
+☐ Logs
+
+Manual Backup
+[Create Backup Now]
+
+Last Backup: Dec 14, 2024 02:00 AM
+Status: ✅ Success (245 MB)
+[Download] [Restore]
+```
+
+## Gestión de Usuarios
+
+Si ejecutas CapiBot multi-usuario:
+
+```
+User Management
+
+Current Users: 3
+
+┌─────────────────┬──────────────┬────────────┐
+│ User            │ Role         │ Last Active│
+├─────────────────┼──────────────┼────────────┤
+│ admin@capibot.io│ Admin        │ 2 min ago  │
+│ user1@company.io│ User         │ 1 hour ago │
+│ user2@company.io│ User         │ 1 day ago  │
+└─────────────────┴──────────────┴────────────┘
+
+[Invite User] [Export Users]
+```
+
+### Roles de Usuario
+
+**Admin:**
+
+- Acceso completo al sistema
+- Gestiona configuración
+- Gestiona usuarios
+- Ver logs de auditoría
+
+**User:**
+
+- Crear/gestionar empresas
+- Gestionar agentes asignados
+- Ver tareas propias
+- Acceso limitado a configuración
+
+## Importar / Exportar
+
+### Exportar Datos
+
+```
+Export Your Data
+
+What to Export
+☑️ Companies and teams
+☑️ Agents and configurations
+☑️ Tasks and history
+☑️ Knowledge base
+☐ Logs and traces
+
+Format
+● JSON (machine readable)
+○ Markdown (human readable)
+○ CSV (spreadsheets)
+
+[Export Data]
+```
+
+### Importar Datos
+
+```
+Import Data
+
+⚠️ Import will merge with existing data.
+Conflicting items will be skipped.
+
+Select file: [Browse...]
+Supported formats: .json, .zip
+
+[Preview Import] [Import Data]
+```
+
+## Información del Sistema
+
+Ver estado del sistema:
+
+```
+System Information
+
+Version: CapiBot v1.2.3
+Build: 2024.12.15-abc123
+License: MIT (Open Source)
+
+Runtime
+Node.js: v20.10.0
+Uptime: 14 days, 3 hours
+Memory: 2.3GB / 8GB
+
+Database
+PostgreSQL: 16.1
+Size: 1.2 GB
+Connections: 3 / 10
+
+Check for Updates
+Current: v1.2.3
+Latest: v1.2.3 ✅ Up to date
+```
+
+## Mejores Prácticas
+
+### Configuración
+
+1. **Documenta Cambios** — Anota por qué cambiaste configuraciones
+2. **Prueba Primero** — Intenta cambios en ambiente de desarrollo
+3. **Respalda Primero** — Antes de cambios mayores
+4. **Comienza Conservador** — Ajusta gradualmente
+5. **Revisa Regularmente** — Auditoría mensual de configuración
+
+### Seguridad
+
+1. **Keys de API Fuertes** — Usa keys auto-generadas
+2. **Rota Regularmente** — Cada 90 días
+3. **Mínimo Privilegio** — Acceso mínimo requerido
+4. **Monitorea Logs** — Observa actividad inusual
+5. **Mantén Actualizado** — Última versión para parches de seguridad
+
+### Rendimiento
+
+1. **Tamaño Correcto del Pool** — Coincide conexiones de BD con uso
+2. **Cache Inteligente** — No hagas cache de contenido dinámico
+3. **Limpia Regularmente** — Auto-cleanup de datos viejos
+4. **Monitorea Recursos** — Observa memoria y disco
+5. **Optimiza Consultas** — Revisa logs de consultas lentas
+
+## Solución de Problemas
+
+**Configuración No se Guarda:**
+
+- Revisa permisos
+- Verifica que los valores sean válidos
+- Revisa mensajes de error
+- Intenta refrescar la página
+
+**Prueba de Conexión Falla:**
+
+- Verifica API keys
+- Revisa conectividad de red
+- Revisa reglas de firewall
+- Revisa estado del servicio
+
+**Issues de Rendimiento:**
+
+- Reduce tamaño del pool de conexiones
+- Reduce duración del cache
+- Habilita auto-cleanup
+- Revisa tamaño de base de datos
+
+**Alertas de Seguridad:**
+
+- Revisa logs de auditoría
+- Revisa patrones de acceso
+- Verifica allowlists
+- Rota keys comprometidas
+
+## Siguientes Pasos
+
+- Revisa [Mejores Prácticas de Seguridad](security)
+- Aprende sobre [Rendimiento de Agentes](agent-performance)
+- Explora [Categorías de Herramientas](tool-categories)

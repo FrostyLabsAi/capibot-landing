@@ -1,0 +1,445 @@
+# Categorias de Ferramentas
+
+Agentes CapiBot têm acesso a 25+ ferramentas organizadas em categorias. Entender quais ferramentas estão disponíveis ajuda você a delegar trabalho efetivamente.
+
+## Como Agentes Usam Ferramentas
+
+Agentes escolhem ferramentas automaticamente baseado no que precisam fazer:
+
+```
+Você: Pesquise top 5 concorrentes
+
+Scout (Analista de Pesquisa):
+  1. Analisa requisição
+  2. Decide usar ferramenta web_search
+  3. Busca por "top SaaS analytics competitors"
+  4. Lê resultados
+  5. Escreve achados em arquivo
+  6. Reporta de volta para você
+```
+
+**Você não precisa dizer aos agentes quais ferramentas usar** — eles sabem suas capacidades e selecionam as ferramentas certas para o trabalho.
+
+## Operações de Arquivo
+
+Leia, escreva e gerencie arquivos.
+
+### Ferramentas Disponíveis
+
+**`read_file`**
+
+- Leia conteúdo de qualquer arquivo
+- Especifique offset de linha e limite para arquivos grandes
+- Suporta todos os formatos de texto
+
+**`write_file`**
+
+- Crie novos arquivos
+- Sobrescreva arquivos existentes
+- Crie diretórios pai automaticamente
+
+**`edit_file`**
+
+- Edições cirúrgicas em nível de linha
+- Encontre e substitua dentro de arquivos
+- Insira ou delete linhas específicas
+
+**`list_dir`**
+
+- Liste conteúdo de diretório
+- Veja arquivos e subdiretórios
+- Filtre por padrão
+
+### Quando Agentes Usam Essas
+
+| Tarefa                      | Ferramenta Usada  |
+| ------------------------- | ---------- |
+| Ler suas instruções    | read_file  |
+| Salvar trabalho completado       | write_file |
+| Corrigir um bug no código         | edit_file  |
+| Explorar estrutura de projeto | list_dir   |
+| Atualizar documentação      | edit_file  |
+
+### Exemplo
+
+```
+Você: Escreva um script Python para analisar dados CSV
+
+Nova: Vou criar esse script para você.
+
+[Usa write_file para criar analyze_csv.py]
+
+Pronto! Criei analyze_csv.py com funções
+para carregar dados, calcular estatísticas e
+gerar gráficos.
+```
+
+## Web e Busca
+
+Busque na internet e obtenha conteúdo da web.
+
+### Ferramentas Disponíveis
+
+**`web_search`**
+
+- Busca alimentada por Google
+- Retorna títulos, URLs, snippets
+- Top 10 resultados por padrão
+
+**`web_fetch`**
+
+- Baixe e parseie qualquer webpage
+- Extraia conteúdo principal
+- Manuseie vários formatos
+
+### Quando Agentes Usam Essas
+
+| Tarefa                      | Ferramenta Usada  |
+| ------------------------- | ---------- |
+| Pesquisar concorrentes      | web_search |
+| Ler documentação        | web_fetch  |
+| Verificar notícias atuais        | web_search |
+| Coletar material de referência | web_fetch  |
+| Encontrar exemplos             | web_search |
+
+### Exemplo
+
+```
+Você: Quais são as últimas tendências de IA em 2024?
+
+Scout: Deixe-me buscar tendências atuais de IA.
+
+[Usa web_search: "tendências de IA 2024"]
+
+Aqui estão as top 5 tendências de IA para 2024:
+1. Modelos de IA multimodais
+2. Agentes de IA e automação
+3. Deploy de IA na edge
+4. Regulação e conformidade de IA
+5. IA sustentável
+
+Gostaria que eu aprofundasse em alguma dessas?
+```
+
+## Automação de Navegador
+
+Controle um navegador web programaticamente.
+
+### Ferramentas Disponíveis
+
+**`browser_navigate`** — Vá para URL
+**`browser_click`** — Clique em elementos
+**`browser_type`** — Digite texto em inputs
+**`browser_scroll`** — Role página
+**`browser_screenshot`** — Capture screenshot
+**`browser_extract`** — Extraia conteúdo de página
+**`browser_wait`** — Espere por elementos
+
+### Quando Agentes Usam Essas
+
+| Tarefa                      | Ferramentas Usadas                        |
+| ------------------------- | --------------------------------- |
+| Testar uma aplicação web    | navigate, click, type, screenshot |
+| Preencher formulários            | navigate, type, click             |
+| Raspar dados de websites | navigate, extract, scroll         |
+| Tirar screenshots de websites  | navigate, screenshot              |
+| Verificar aparência visual   | navigate, screenshot              |
+
+### Exemplo
+
+```
+Você: Tire um screenshot da nossa landing page
+
+Nova: Vou capturar um screenshot do seu site.
+
+[Usa browser_navigate + browser_screenshot]
+
+Screenshot salvo: /workspace/screenshots/landing-page-20241215.png
+
+Eu também posso testar o formulário de contato se você quiser.
+```
+
+## Shell e Sistema
+
+Execute comandos e gerencie processos.
+
+### Ferramentas Disponíveis
+
+**`exec`**
+
+- Execute comandos shell
+- Padrões perigosos automaticamente bloqueados
+- Timeout configurável (padrão 30s)
+- Saída limitada a ~10KB por chamada
+
+**`spawn`**
+
+- Inicie processos em background
+- Tarefas de longa duração
+- Gerenciamento de processos
+
+### Recursos de Segurança
+
+**Comandos Bloqueados:**
+
+```bash
+# Estes são automaticamente bloqueados:
+rm -rf /
+mkfs.*
+dd if=/dev/zero
+fork bombs
+network scans
+escalação de privilégios
+```
+
+**Seguro por Padrão:**
+
+- Restrição de workspace
+- Limites de timeout
+- Limites de saída
+- Logging de comandos
+
+### Quando Agentes Usam Essas
+
+| Tarefa                 | Ferramenta Usada                 |
+| -------------------- | ------------------------- |
+| Rodar um script Python  | exec: python script.py    |
+| Instalar dependências | exec: npm install         |
+| Operações Git       | exec: git commit -m "..." |
+| Build de projeto        | exec: npm run build       |
+| Migrações de database  | exec: migrate up          |
+
+### Exemplo
+
+```
+Você: Rode a suite de testes
+
+Nova: Rodando testes agora.
+
+[Usa exec: npm test]
+
+✅ 45 testes passaram
+⚠️  2 testes pulados
+❌ 0 testes falharam
+
+Todos os testes passando! O build está pronto para deploy.
+```
+
+## Agendamento
+
+Crie e gerencie tarefas recorrentes.
+
+### Ferramentas Disponíveis
+
+**`cron`**
+
+- Agende tarefas futuras
+- Uma vez ou recorrente
+- Sintaxe de expressão cron
+- De dentro da conversa
+
+### Quando Agentes Usam Essas
+
+| Tarefa                   | Ferramenta Usada                  |
+| ---------------------- | -------------------------- |
+| Agendar relatório diário  | cron: todo dia às 9h     |
+| Definir lembrete de prazo  | cron: em 2024-12-20 17h    |
+| Verificação de saúde recorrente | cron: a cada 5 minutos      |
+| Resumo semanal         | cron: toda segunda às 10h |
+
+### Exemplo
+
+```
+Você: Lembre-me de revisar o blog post amanhã
+
+Echo: Vou agendar um lembrete para você.
+
+[Usa cron: às 9:00 AM amanhã]
+
+✅ Lembrete agendado para amanhã às 9:00 AM.
+Você receberá uma notificação para revisar o blog post.
+```
+
+## Gerenciamento de Agentes e Tarefas
+
+Gerencie outros agentes e tarefas.
+
+### Ferramentas Disponíveis
+
+**`sessions_send`** — Envie mensagem para outros agentes
+**`sessions_list`** — Veja agentes disponíveis
+**`task_create`** — Crie novas tarefas
+**`task_update`** — Atualize status de tarefa
+**`task_list`** — Visualize tarefas
+
+### Quando Agentes Usam Essas
+
+| Tarefa                   | Ferramenta Usada            |
+| ---------------------- | -------------------- |
+| Pedir ajuda a colega  | sessions_send        |
+| Delegar trabalho          | task_create + assign |
+| Atualizar progresso        | task_update          |
+| Verificar carga de trabalho da equipe    | task_list            |
+| Coordenar com agentes | sessions_send        |
+
+### Exemplo
+
+```
+Você: Peça ao designer para revisar a landing page
+
+Nova: Vou mandar mensagem para Pixel sobre a revisão.
+
+[Usa sessions_send para mensagem para Pixel]
+
+Pixel confirmou! Eles estão revisando agora
+e vão atualizar a tarefa quando terminar.
+```
+
+## Comunicação
+
+Envie mensagens e notificações.
+
+### Ferramentas Disponíveis
+
+**`message`** — Envie para qualquer canal
+**`message_owner`** — Envie diretamente para você
+**`agent_notify`** — Notifique um agente específico
+
+### Canais
+
+- Telegram
+- WhatsApp
+- Slack
+- Web Chat (Mission Control)
+- Email (se configurado)
+
+### Quando Agentes Usam Essas
+
+| Tarefa                    | Ferramenta Usada            |
+| ----------------------- | -------------------- |
+| Reportar conclusão       | message_owner        |
+| Fazer pergunta esclarecedora | message_owner        |
+| Enviar arquivo para você        | message + attachment |
+| Alerta urgente            | agent_notify         |
+
+### Exemplo
+
+```
+Scout: Sua pesquisa de concorrentes está completa!
+
+[Usa message_owner via Telegram]
+
+Analisei 5 concorrentes e salvei o
+relatório em /workspace/competitor-analysis.pdf
+
+Achados principais:
+• Concorrente A foca em enterprise
+• Concorrente B tem melhor preço
+• Lacuna no segmento mid-market
+```
+
+## Memória e Conhecimento
+
+Armazene e recupere informação.
+
+### Ferramentas Disponíveis
+
+**`write_file`** — Salve na memória do agente
+**`read_file`** — Leia da memória
+**`company_docs`** — Leia base de conhecimento da empresa
+
+### Quando Agentes Usam Essas
+
+| Tarefa                     | Ferramenta Usada            |
+| ------------------------ | -------------------- |
+| Lembrar preferências     | write_file para memória |
+| Aprender com feedback      | write_file para memória |
+| Ler diretrizes da empresa  | company_docs         |
+| Verificar decisões anteriores | company_docs         |
+
+### Exemplo
+
+```
+Você: Lembre-se que eu prefiro azul para botões primários
+
+Pixel: Entendido! Vou salvar essa preferência.
+
+[Usa write_file para salvar na memória]
+
+✅ Preferência salva: "Botões primários devem
+   usar azul (#0066CC) conforme preferência do usuário"
+
+Vou aplicar isso a todos os designs futuros.
+```
+
+## Segurança de Ferramentas
+
+### O Que Agentes Não Podem Fazer
+
+**Automaticamente Bloqueado:**
+
+- Comandos de sistema destrutivos
+- Acesso fora do workspace
+- Comandos que excedem timeout
+- Padrões de shell perigosos conhecidos
+
+### O Que Você Pode Controlar
+
+**Configurações Por-Agente:**
+
+- Habilitar/desabilitar ferramentas específicas
+- Restringir acesso ao sistema de arquivos
+- Definir timeouts de comandos
+- Limitar tamanho de saída
+
+**Configurações Globais:**
+
+- Restrições de workspace
+- Bloqueio de padrões perigosos
+- Logging de comandos
+- Trilhas de auditoria
+
+## Boas Práticas
+
+### Para Você
+
+1. **Confie nos Agentes** — Eles sabem quais ferramentas usar
+2. **Revise Entregáveis** — Verifique arquivos que eles criam
+3. **Peça Explicações** — "Como você fez isso?"
+4. **Defina Limites** — Restrinja quando necessário
+
+### Para Agentes
+
+1. **Use a Ferramenta Certa** — Combine ferramenta à tarefa
+2. **Lide com Erros** — Falha graciosa
+3. **Reporte Ações** — Diga o que eles fizeram
+4. **Respeite Limites** — Trabalhe dentro das restrições
+
+## Solução de Problemas
+
+**Agente Diz "Não Posso Fazer Isso":**
+
+- Ferramenta pode estar desabilitada
+- Fora de suas capacidades
+- Restrição de segurança
+- Verifique ferramentas permitidas do agente
+
+**Comando Falhou:**
+
+- Verifique mensagem de erro
+- Pode precisar de abordagem diferente
+- Pode ser problema de permissão
+- Tente dividir em passos menores
+
+**Arquivo Não Encontrado:**
+
+- Verifique se caminho está correto
+- Pode precisar criar diretórios pai
+- Verifique se arquivo existe
+- Verifique permissões
+
+## Próximos Passos
+
+- Aprenda sobre [Ferramentas de Empresa](company-tools)
+- Explore [Ferramentas de Comunicação](communication-tools)
+- Veja [Boas Práticas de Segurança](security)

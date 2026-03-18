@@ -1,0 +1,338 @@
+# Visão Geral do Painel
+
+O Mission Control é seu centro de comando para gerenciar o CapiBot. Este guia mostra a interface e a navegação principal.
+
+## Acessando o Mission Control
+
+**Acesso:** Abra seu navegador e vá para `http://localhost:3002` (ou sua URL configurada)
+
+**Login:** Use suas credenciais (padrão para testes: admin / admin)
+
+## Layout Principal
+
+O Mission Control tem três áreas principais:
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│  Barra de Cabeçalho (Busca, Notificações, Configurações, Relógio)        │
+├──────────────┬──────────────────────────────┬───────────────┤
+│              │                              │               │
+│   Nav Rail   │       Conteúdo Principal     │  Feed ao Vivo │
+│   (Ícones)   │      (Muda baseado na        │  (Stream de   │
+│              │       seleção)               │   Atividade)  │
+│              │                              │               │
+└──────────────┴──────────────────────────────┴───────────────┘
+```
+
+![Placeholder de Visão Geral Principal]
+_Screenshot: Dashboard completo do Mission Control mostrando todos os três painéis_
+
+## Barra de Navegação
+
+A barra lateral esquerda contém ícones para alternar entre painéis:
+
+### Grupo Principal
+
+- **Overview** — Dashboard com estatísticas e status
+- **Agents** — Gerencie seu squad de IA
+- **Skills** — Navegue e instale skills de agentes
+- **Tasks** — Quadro Kanban para gerenciamento de trabalho
+
+### Empresas
+
+- **Companies** — Gerenciamento de Empresas de IA
+
+### Observar
+
+- **Activity** — Fluxo de eventos em tempo real
+- **Logs** — Logs do sistema e debugging
+- **Memory** — Navegue pela memória e conhecimento de agentes
+- **Analytics** — Métricas de performance
+- **Files** — Navegador do sistema de arquivos
+
+### Automatizar
+
+- **Cron** — Jobs agendados
+- **Webhooks** — Webhooks de entrada e saída
+- **Alerts** — Regras de alerta e notificações
+
+### Integrar
+
+- **Integrations** — Conexões GitHub, Composio
+- **GitHub Sync** — Importar issues do GitHub
+
+### Admin
+
+- **Settings** — Configuração do sistema
+- **Audit Trail** — Logs de segurança e acesso
+- **Users** — Gerenciamento de usuários (se multi-usuário)
+
+**Mobile:** Em telas pequenas, a barra de navegação vira uma barra inferior com itens prioritários.
+
+## Barra de Cabeçalho
+
+Topo da tela mostra:
+
+### Lado Esquerdo
+
+- **Nome do Painel Atual** — Onde você está
+- **Breadcrumbs** — Caminho de navegação (em sub-páginas)
+
+### Centro
+
+- **Busca** (Cmd/Ctrl + K) — Busca rápida entre tarefas, agentes e mais
+
+### Lado Direito
+
+- **Notificações** — Ícone de sino com contagem de não lidas
+- **Alternar Feed** — Mostrar/esconder barra lateral direita
+- **Configurações** — Acesso rápido às configurações
+- **Alternar Tema** — Modo claro/escuro
+- **Relógio Digital** — Hora atual
+- **Status do Gateway** — Indicador de conexão (verde = conectado)
+
+## Painel de Overview
+
+Seu dashboard inicial mostrando:
+
+### Cards de Métricas
+
+Números principais de relance:
+
+- **Sessões Ativas** — Conversas acontecendo agora
+- **Agentes Online** — Quantos agentes estão rodando
+- **Tarefas Rodando** — Trabalho em progresso
+- **Erros (24h)** — Problemas nas últimas 24 horas
+
+### Saúde do Sistema
+
+- **Status do Gateway** — Conexão WebSocket
+- **Uso de Memória** — Recursos do sistema
+- **Database** — Conexão e tamanho
+- **Uptime** — Quanto tempo rodando
+
+### Atividade Recente
+
+Últimos eventos com timestamps
+
+### Ações Rápidas
+
+- Criar nova empresa
+- Criar agente
+- Adicionar tarefa
+- Ver notificações
+
+![Placeholder de Overview]
+_Screenshot: Painel de visão geral com métricas e atividade_
+
+## Feed ao Vivo (Barra Lateral Direita)
+
+Stream em tempo real de toda a atividade do sistema:
+
+### O Que Você Vê
+
+- Tarefa criada/atualizada/completada
+- Agente criado/ativado/ocioso
+- Mensagens enviadas/recebidas
+- Arquivos criados/modificados
+- Alertas disparados
+
+### Recursos
+
+- **Auto-scroll** — Eventos mais recentes no topo
+- **Filtros** — Mostrar apenas certos tipos de eventos
+- **Busca** — Encontrar eventos específicos
+- **Pausa** — Parar auto-scroll para ler
+
+### Tipos de Eventos
+
+- 📝 Eventos de tarefa (criar, atualizar, completar)
+- 🤖 Eventos de agente (criar, mudança de status)
+- 💬 Eventos de mensagem (enviar, receber)
+- 📁 Eventos de arquivo (criar, editar)
+- 🔔 Eventos de alerta (disparado, resolvido)
+- 🏢 Eventos de empresa (criada, mudança de fase)
+
+**Alternar:** Clique no botão « para esconder/mostrar o feed ao vivo.
+
+## Ações Comuns
+
+### Atalhos de Teclado
+
+| Atalho       | Ação              |
+| ------------ | ----------------- |
+| Cmd/Ctrl + K | Busca global      |
+| Cmd/Ctrl + / | Mostrar ajuda de atalhos |
+| Escape       | Fechar modais/painéis |
+
+### Busca Global
+
+Pressione Cmd/Ctrl + K para buscar entre:
+
+- Tarefas (por título, ID, responsável)
+- Agentes (por nome, papel)
+- Empresas (por nome)
+- Arquivos (por caminho)
+- Entradas de memória
+
+### Criando Coisas
+
+A maioria dos painéis tem um botão "+" ou "Novo" no canto superior direito para criar novos itens.
+
+### Padrões de Navegação
+
+**Aprofundamento:**
+
+```
+Overview → Clicar em métrica → Ver detalhes
+Agents → Clicar em agente → Página de detalhes do agente
+Companies → Clicar em empresa → Detalhes da empresa
+```
+
+**Ações Contextuais:**
+
+- Clique direito em itens para menus de contexto
+- Passe o mouse para ações rápidas
+- Visões de detalhes têm abas para diferentes aspectos
+
+## Layouts Específicos por Painel
+
+### Visualizações de Lista (Agents, Companies, Tasks)
+
+- **Barra de filtro** — Topo com busca e filtros
+- **Lista** — Itens roláveis
+- **Ações em massa** — Selecionar múltiplos itens
+
+### Visualizações de Detalhes (Agente, Empresa, Detalhes de tarefa)
+
+- **Cabeçalho** — Nome, status, informações principais
+- **Abas** — Diferentes aspectos (Overview, Activity, Settings)
+- **Ações** — Editar, excluir, etc.
+
+### Visualizações de Quadro (Tasks Kanban)
+
+- **Colunas** — Colunas de status
+- **Cards** — Cards de tarefa arrastáveis
+- **Toolbar** — Filtros e opções de visualização
+
+### Visualizações de Formulário (Criar/Editar)
+
+- **Seções** — Campos agrupados
+- **Validação** — Verificação de erro em tempo real
+- **Ações** — Salvar, cancelar, excluir
+
+## Experiência Mobile
+
+Em dispositivos móveis:
+
+- **Barra de navegação** vira barra de abas inferior
+- **Feed ao vivo** move para painel deslizante
+- **Tabelas** viram cards
+- **Formulários** empilham verticalmente
+- **Modais** viram tela cheia
+
+## Personalização
+
+### Tema
+
+- **Modo Claro** — Limpo, profissional
+- **Modo Escuro** — Fácil para os olhos
+- **Auto** — Segue preferência do sistema
+
+Alterne no cabeçalho ou painel de Configurações.
+
+### Densidade
+
+- **Confortável** — Mais espaçamento (padrão)
+- **Compacto** — Mais informação na tela
+
+### Notificações
+
+Configure em Configurações:
+
+- Quais eventos notificam você
+- Canais de notificação (in-app, Telegram, etc.)
+- Horários de silêncio
+
+## Obtendo Ajuda
+
+### Ajuda In-App
+
+- **Tooltips** — Passe o mouse sobre ícones e botões
+- **Estados Vazios** — Prompts úteis quando seções estão vazias
+- **Dicas Contextuais** — Sugestões baseadas no que você está fazendo
+
+### Esta Documentação
+
+- Guias completos vinculados da barra de navegação (se habilitado)
+- Busque esta documentação
+- Verifique guias de features específicas
+
+## Fluxos de Trabalho Comuns
+
+### Começando Seu Dia
+
+1. Verifique Overview para status do sistema
+2. Revise notificações
+3. Escaneie o Feed ao Vivo para atividade noturna
+4. Verifique Tarefas para itens urgentes
+5. Responda a quaisquer itens de Revisão Humana
+
+### Criando uma Nova Empresa
+
+1. Clique em Companies na barra de navegação
+2. Clique no botão "Nova Empresa"
+3. Preencha formulário de briefing
+4. Envie e espere o plano do CEO
+5. Revise e aprove o plano
+
+### Verificando Trabalho de Agentes
+
+1. Clique em Tasks na barra de navegação
+2. Filtre por responsável ou status
+3. Revise tarefas na coluna Review
+4. Aprove ou solicite mudanças
+5. Verifique aba Activity para detalhes
+
+### Monitorando Saúde do Sistema
+
+1. Verifique métricas do painel Overview
+2. Verifique se status do Gateway está verde
+3. Revise contagem de erros
+4. Verifique Logs se houver problemas
+5. Ajuste configurações se necessário
+
+## Dicas de Eficiência
+
+1. **Use Busca** — Cmd/Ctrl + K é mais rápido que navegar
+2. **Assista o Feed ao Vivo** — Veja atividade conforme acontece
+3. **Atalhos de Teclado** — Aprenda os comuns
+4. **Fixe Importantes** — Mantenha agentes/empresas chave favoritados
+5. **Notificações** — Configure para saber o que importa
+6. **Check-ins Regulares** — Revise o dashboard diariamente
+
+## Solução de Problemas
+
+**Página Não Carrega:**
+
+- Verifique se o core do CapiBot está rodando (porta 3000)
+- Verifique porta do Mission Control (3002)
+- Limpe cache do navegador
+
+**Gateway Desconectado:**
+
+- Verifique porta WebSocket 3001
+- Verifique configurações de firewall
+- Verifique configuração de CORS
+
+**Performance Lenta:**
+
+- Verifique conexão com banco de dados
+- Revise contagem de sessões ativas
+- Limpe logs e atividades antigas
+
+## Próximos Passos
+
+- Aprenda a [Gerenciar Agentes](managing-agents)
+- Explore [Operações de Empresa](company-operations)
+- Entenda [Gerenciamento de Tarefas](task-management)

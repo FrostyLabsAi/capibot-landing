@@ -1,0 +1,315 @@
+# Hiérarchie des Agents
+
+CapiBot organise les agents en une hiérarchie à trois niveaux. Comprendre ces niveaux vous aide à choisir le bon agent pour le travail et à construire des équipes efficaces.
+
+## Les Trois Niveaux
+
+### Lead (CEO/Executive)
+
+**Dirigeants stratégiques avec autorité étendue**
+
+Les agents Lead sont vos dirigeants. Ils peuvent :
+
+- Créer des plans d'affaires et stratégies
+- Embaucher d'autres agents pour construire des équipes
+- Déléguer le travail à travers l'organisation
+- Accéder à tous les outils et canaux de communication
+- Prendre des décisions de haut niveau
+
+**Exemples :**
+
+- **Atlas** — CEO qui rédige des plans d'affaires et orchestre les opérations
+- **Helios** — CTO qui dirige les initiatives techniques
+- **Aura** — CMO qui supervise la stratégie marketing
+
+**Quand utiliser :** Diriger des Entreprises IA, planification stratégique, coordination inter-fonctionnelle
+
+### Specialist
+
+**Experts de domaine avec des compétences approfondies**
+
+Les agents Specialist sont les membres professionnels de votre équipe. Ils :
+
+- Ont une expertise approfondie dans des domaines spécifiques
+- Exécutent des tâches complexes de manière indépendante
+- Peuvent générer des subagents pour le travail parallèle
+- Reportent aux agents Lead
+- Utilisent des outils avancés dans leur domaine
+
+**Exemples :**
+
+- **Nova** — Full-Stack Engineer (construit des fonctionnalités de bout en bout)
+- **Pixel** — UI/UX Designer (crée des interfaces et prototypes)
+- **Echo** — Content Strategist (rédige des textes et contenu marketing)
+- **Scout** — Research Analyst (recherche de marché et analyse concurrentielle)
+
+**Quand utiliser :** Travail technique, projets créatifs, tâches de recherche, tout travail spécialisé
+
+### Intern
+
+**Agents juniors pour des tâches plus simples**
+
+Les agents Intern gèrent des travaux de routine et délimités :
+
+- Exécutent des tâches bien définies
+- Travaillent sous supervision de Specialist
+- Accès limité aux outils pour la sécurité
+- Parfaits pour le travail répétitif
+- Coût inférieur aux Specialists
+
+**Exemples :**
+
+- Agents de saisie de données
+- Assistants de formatage de contenu
+- Assistants de test
+- Collecteurs de recherche
+
+**Quand utiliser :** Tâches simples et répétitives, exercices d'apprentissage, opérations sensibles aux coûts
+
+## Roster des Agents
+
+CapiBot comprend **plus de 145 agents pré-construits** organisés en catégories :
+
+| Catégorie | Description | Exemples d'Agents |
+| ------------- | --------------------- | ---------------------- |
+| CEOs | Direction exécutive | Atlas, Helios, Aura |
+| Engineering | Développement logiciel | Nova, Cipher, Syntax |
+| Design | Design visuel et UX | Pixel, Canvas, Vista |
+| Marketing | Campagnes et contenu | Echo, Pulse, Reach |
+| Sales | Prospection et deals | Hunter, Closer, Scout |
+| Support | Service client | Guide, Helper, Assist |
+| Product | Gestion de produit | Vision, Roadmap, Scope |
+| Game Dev | Développement de jeux | Quest, Sprite, Level |
+| QA & Testing | Assurance qualité | Test, Check, Verify |
+| Research | Analyse et recherche | Scout, Intel, Data |
+| Orchestration | Gestion système | Flow, Sync, Route |
+| Specialized | Experts de niche | Legal, Finance, HR |
+
+![150 Agents Placeholder]
+_Capture d'écran : Navigateur du roster d'agents montrant les catégories et agents disponibles_
+
+## Choisir le Bon Agent
+
+### Pour les Tâches Individuelles
+
+| Type de Tâche | Niveau Recommandé | Exemple |
+| --------------------- | ---------------- | -------------------------- |
+| Rédiger un article de blog | Specialist | Echo (Content Strategist) |
+| Designer une landing page | Specialist | Pixel (UI/UX Designer) |
+| Rechercher des concurrents | Specialist | Scout (Research Analyst) |
+| Construire une fonctionnalité | Specialist | Nova (Full-Stack Engineer) |
+| Formater des documents | Intern | DocFormatter |
+| Exécuter une campagne | Lead | Atlas (CEO) + équipe |
+
+### Pour les Entreprises IA
+
+**Équipe Minimum Viable :**
+
+```
+CEO (Lead)
+└── 2-3 Specialists
+    └── Optionnel : 1-2 Interns
+```
+
+**Exemple d'Entreprise Marketing :**
+
+```
+Atlas (CEO) — Stratégie et coordination
+├── Echo (Content Strategist) — Message de campagne
+│   └── ContentIntern — Rédiger des articles de blog
+├── Pixel (Designer) — Visuels
+└── Scout (Research) — Analyse de marché
+```
+
+## Génération d'Agents (Spawning)
+
+### Qu'est-ce que Spawning ?
+
+Spawning crée des subagents temporaires pour des tâches spécifiques :
+
+- L'agent parent délègue le travail
+- Le subagent travaille indépendamment
+- Les résultats reviennent automatiquement
+- Le subagent disparaît quand c'est terminé
+
+### Quand Spawn vs Embaucher
+
+| Spawn | Embaucher |
+| ------------------------ | --------------------------- |
+| Tâches parallèles ponctuelles | Membre d'équipe continu |
+| Capacité de surge temporaire | Rôle permanent |
+| Traitement de données parallèle | Collaboration inter-projets |
+| Travail exploratoire | Fonction d'équipe centrale |
+
+**Exemple :** Un Research Analyst génère 5 subagents pour analyser 5 concurrents différents simultanément, puis compile les résultats.
+
+## Agents Personnalisés
+
+Au-delà du roster pré-construit, vous pouvez créer des agents personnalisés :
+
+### Quand Créer des Agents Personnalisés
+
+1. **Expertise Unique** — Besoin de connaissances spécialisées non dans le roster
+2. **Voix de Marque** — Agent qui connaît le ton de votre entreprise
+3. **Processus Propriétaire** — Suit votre méthodologie spécifique
+4. **Optimisation des Coûts** — Agent plus léger pour des tâches simples
+
+### Composants des Agents Personnalisés
+
+Chaque agent a un fichier **SOUL.md** contenant :
+
+- **Identity** — Nom, rôle, personnalité
+- **Expertise** — Compétences et domaines de connaissance
+- **Operating Instructions** — Comment ils abordent le travail
+- **Communication Style** — Ton et préférences de formatage
+
+**Exemple :** Créer un agent "Brand Guardian" qui s'assure que tout le contenu correspond à votre guide de style.
+
+## Capacités des Agents
+
+### Ce Que Tous les Agents Peuvent Faire
+
+- Lire et écrire des fichiers
+- Rechercher sur le web
+- Envoyer des messages
+- Créer et mettre à jour des tâches
+- Accéder à la mémoire et aux connaissances
+- Communiquer avec d'autres agents
+
+### Ce Que les Agents Lead Peuvent Faire (Extra)
+
+- Soumettre des plans d'affaires
+- Embaucher des agents dans des entreprises
+- Approuver des budgets (en mode autonomous)
+- Orchestrer des workflows multi-agents
+
+### Ce Que les Specialists Peuvent Faire (Extra)
+
+- Utiliser des outils spécifiques au domaine
+- Générer des subagents
+- Réviser et approuver le travail
+- Former des agents Intern
+
+### Mémoire et Contexte
+
+Chaque agent a une mémoire persistante :
+
+- **Personal Memory** — Notes et apprentissages à travers les conversations
+- **Company Context** — Connaissances de leur Entreprise IA
+- **Shared Memory** — Informations accessibles à tous les agents
+- **Session Memory** — Contexte de la conversation actuelle
+
+Les agents se souviennent des interactions passées et construisent sur le travail précédent.
+
+## Travailler avec les Agents
+
+### Via Mission Control
+
+**Panneau Agent Squad :**
+
+- Voir tous les agents actifs
+- Vérifier le statut (idle, busy, offline)
+- Générer de nouveaux agents
+- Accéder aux détails de l'agent
+
+**Vue Détail Agent :**
+
+- Overview — Statut, entreprise, activité récente
+- SOUL — Personnalité et instructions
+- Memory — Notes personnelles et contexte
+- Tasks — Travail assigné
+- Activity — Historique des actions
+- Config — Paramètres et overrides
+
+### Via les Applications de Messagerie
+
+Discutez directement avec n'importe quel agent :
+
+**Telegram :**
+
+```
+Vous : @Nova Construis-moi un formulaire de connexion
+Nova : Je vais créer un formulaire de connexion pour vous.
+       Doit-il inclure des options de connexion sociale ?
+```
+
+**Slack :**
+
+```
+Vous : @Echo Rédige une annonce produit
+Echo : Je travaille dessus ! Quelle est la fonctionnalité
+       clé que nous devrions mettre en avant ?
+```
+
+**WhatsApp :**
+
+```
+Vous : @Scout Recherche nos concurrents
+Scout : Je vais analyser les 5 principaux concurrents
+        dans votre espace. Consultez Mission Control
+        pour le rapport complet dans ~10 minutes.
+```
+
+## Statut des Agents
+
+Les agents montrent leur état actuel :
+
+- **Idle** — Disponible et en attente de travail
+- **Active** — Actuellement en train de travailler sur une tâche
+- **Busy** — Occupé avec un travail en cours
+- **Offline** — Pas actuellement en cours d'exécution
+- **Error** — A rencontré un problème
+- **Archived** — Pas en cours d'utilisation (peut être réactivé)
+
+## Bonnes Pratiques
+
+1. **Associez l'Agent à la Tâche** — Utilisez les Specialists pour le travail complexe, les Interns pour les tâches simples
+2. **Commencez Simple** — Commencez avec des agents individuels avant de créer des entreprises
+3. **Construisez des Équipes avec Réflexion** — Assurez des compétences complémentaires dans les équipes d'entreprise
+4. **Surveillez au Début** — Observez les nouveaux agents attentivement jusqu'à ce que vous fassiez confiance à leur travail
+5. **Utilisez Spawning à Bon Escient** — Spawn pour le travail parallèle, embauchez pour les rôles continus
+6. **Archivez Quand Terminé** — Gardez votre squad propre et gérable
+
+## Patterns Courants
+
+### Pattern 1 : Workflow Agent Unique
+
+```
+Vous → Agent → Résultat
+```
+
+Tâches rapides, contrôle direct
+
+### Pattern 2 : Passation Séquentielle
+
+```
+Chercheur → Rédacteur → Éditeur
+```
+
+Pipeline de workflow, portes de qualité
+
+### Pattern 3 : Équipe Parallèle
+
+```
+       ┌── Agent A ──┐
+Vous ──┼── Agent B ──┼── Résultats
+       └── Agent C ──┘
+```
+
+Perspectives multiples, exécution rapide
+
+### Pattern 4 : Entreprise IA
+
+```
+Vous → CEO → Équipe → Livrables
+       ↑______↓
+       (Rapporte en retour)
+```
+
+Opération autonome avec supervision
+
+## Prochaines Étapes
+
+- Découvrez les [Workflows de Tâches](task-workflow)
+- Voyez [Gérer les Agents](managing-agents) pour les opérations quotidiennes
+- Comprenez les [Entreprises IA](ai-companies) pour le travail en équipe

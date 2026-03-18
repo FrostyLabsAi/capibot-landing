@@ -1,0 +1,542 @@
+# Gerenciamento de Tarefas
+
+O painel de Tarefas dá controle completo sobre o trabalho fluindo pela sua força de trabalho de IA.
+
+## Acessando o Quadro de Tarefas
+
+**Barra de Navegação:** Clique em **Tasks**
+
+Você verá o quadro Kanban com colunas para cada status.
+
+![Placeholder de Quadro de Tarefas]
+_Screenshot: Quadro Kanban completo mostrando tarefas entre todas as colunas_
+
+## Layout do Quadro Kanban
+
+```
+┌────────────────────────────────────────────────────────────────┐
+│ Tarefas                                     [+ Nova Tarefa] [Filtro] │
+├────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  Inbox (4)  | Em Progresso (2) | Review (1) | Done (12)         │
+│  ────────────────────────────────────────────────────────────  │
+│                                                                 │
+│  ┌──────────┐ ┌──────────┐ ┌──────────┐                         │
+│  │ T-42     │ │ T-38     │ │ T-35     │                         │
+│  │ Pesquisar│ │ Construir│ │ Editar   │                         │
+│  │ Top 5    │ │ endpoint │ │ blog     │                         │
+│  │ Concorrentes│ │ API     │ │ post     │                         │
+│  │          │ │          │ │          │                         │
+│  │ 🟡 Média │ │ 🔴 Alta  │ │ 🟢 Baixa │                         │
+│  │ Scout    │ │ Nova     │ │ Echo     │                         │
+│  │ Vence: Sex│ │ Vence: Qua│ │ Vence: Seg│                         │
+│  └──────────┘ └──────────┘ └──────────┘                         │
+│                                                                 │
+│  ┌──────────┐                                                   │
+│  │ T-43     │                                                   │
+│  │ Design   │                                                   │
+│  │ landing  │                                                   │
+│  │ page     │                                                   │
+│  │          │                                                   │
+│  │ 🟠 Alta  │                                                   │
+│  │ Pixel    │                                                   │
+│  └──────────┘                                                   │
+│                                                                 │
+└────────────────────────────────────────────────────────────────┘
+```
+
+## Cards de Tarefas
+
+Cada card mostra:
+
+- **ID** — Identificador único (T-42)
+- **Título** — Descrição breve
+- **Prioridade** — Importância codificada por cor
+- **Responsável** — Quem está trabalhando nela
+- **Data de Vencimento** — Quando vence
+- **Tags** — Categorias (se houver)
+
+## Colunas Explicadas
+
+### Inbox
+
+Novas tarefas esperando para começar.
+
+**O que acontece aqui:**
+
+- Tarefas criadas mas não atribuídas
+- Tarefas atribuídas que agente ainda não iniciou
+- Backlog de trabalho futuro
+
+**Suas ações:**
+
+- Arraste para Em Progresso quando pronto
+- Reatribua se necessário
+- Defina prioridades
+
+### Em Progresso
+
+Trabalho ativo acontecendo agora.
+
+**O que acontece aqui:**
+
+- Agente fez checkout da tarefa
+- Trabalho sendo feito ativamente
+- Atualizações de progresso registradas
+
+**Suas ações:**
+
+- Monitore progresso
+- Responda perguntas de agentes
+- Mova para Bloqueado se surgirem problemas
+
+### Review
+
+Trabalho completo, precisa de verificação de qualidade.
+
+**O que acontece aqui:**
+
+- Agente marcou tarefa como done
+- Aegis/Sentinel avalia qualidade
+- Revisor aprova ou envia de volta
+
+**Suas ações:**
+
+- Revise trabalho aprovado
+- Verifique comentários do Revisor
+
+### Human Review
+
+_(Apenas Empresas de IA Gerenciadas)_
+
+Trabalho completo, esperando sua aprovação.
+
+**O que acontece aqui:**
+
+- Tarefa passou revisão de qualidade
+- Precisa de aprovação humana
+- Não moverá para Done até você aprovar
+
+**Suas ações:**
+
+- Revise entregáveis
+- Clique em Aprovar ou Solicitar Mudanças
+
+### Blocked
+
+Não pode prosseguir devido a dependência ou problema.
+
+**O que acontece aqui:**
+
+- Esperando outra tarefa
+- Agente tem uma pergunta
+- Informação faltando
+- Bloqueio externo
+
+**Suas ações:**
+
+- Verifique comentários por detalhes do bloqueio
+- Desbloqueie resolvendo dependência
+- Responda perguntas
+- Reatribua se necessário
+
+### Done
+
+Trabalho completado e aprovado.
+
+**O que acontece aqui:**
+
+- Tarefa totalmente completa
+- Entregáveis salvos
+- Tempo registrado
+- Disponível para referência
+
+## Criando Tarefas
+
+### Método 1: Criação Rápida
+
+1. Clique no botão **"+ Nova Tarefa"**
+2. Preencha informações básicas:
+   ```
+   Título: Escrever blog post sobre tendências de IA
+   Descrição: Artigo de 800 palavras cobrindo
+              principais tendências de IA para 2024
+   Responsável: [Echo ▼]
+   Prioridade: [Alta ▼]
+   Data de Vencimento: [Seletor de data]
+   ```
+3. Clique em **Criar**
+
+### Método 2: Da Coluna
+
+1. Clique em **"+"** em qualquer coluna
+2. Tarefa começa naquela coluna
+3. Preencha detalhes
+4. Salve
+
+### Método 3: Via Mensagem
+
+```
+Você: @Atlas Criar tarefa: Pesquisar concorrentes
+Atlas: Tarefa criada T-45 "Pesquisar concorrentes"
+      Atribuída a: Scout
+      Status: Inbox
+```
+
+## Detalhes da Tarefa
+
+Clique em qualquer tarefa para abrir detalhes completos:
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ T-42: Pesquisar Top 5 Concorrentes           [Editar] [×]   │
+├─────────────────────────────────────────────────────────┤
+│ Status: Em Progresso                                     │
+│ Responsável: Scout (Analista de Pesquisa)                     │
+│ Prioridade: 🟡 Média                                     │
+│ Vence: Sexta, 15 de Dez                                     │
+│ Empresa: Marketing Q1                                   │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ Descrição:                                           │
+│ Pesquise e analise os 5 principais concorrentes no nosso     │
+│ espaço. Foque em preços, features e posicionamento.    │
+│                                                         │
+│ Critérios de Aceitação:                                   │
+│ ☐ Identificar top 5 concorrentes                          │
+│ ☐ Documentar preços para cada                           │
+│ ☐ Comparar features principais                                 │
+│ ☐ Fornecer análise de posicionamento                          │
+│ ☐ Entregar relatório de 2 páginas                                │
+│                                                         │
+├─────────────────────────────────────────────────────────┤
+│ Tags: pesquisa, concorrentes, campanha-q1               │
+│ Marco: Fase de Pesquisa de Mercado                       │
+│ Estimado: 4 horas                                     │
+│ Real: 2,5 horas (até agora)                              │
+├─────────────────────────────────────────────────────────┤
+│ Dependências:                                          │
+│ Bloqueia: T-43 (Escrita de Análise Competitiva)            │
+├─────────────────────────────────────────────────────────┤
+│ Comentários                                               │
+│ Scout (2 horas atrás): Pesquisa iniciada. Encontrados 3        │
+│                     concorrentes até agora. Preciso de mais     │
+│                     tempo para os outros 2.             │
+│                                                         │
+│ Você (1 hora atrás): Sem pressa, qualidade sobre velocidade. │
+│                                                         │
+│ [Adicionar um comentário...]                                    │
+└─────────────────────────────────────────────────────────┘
+```
+
+## Movendo Tarefas
+
+### Arrastar e Soltar
+
+Clique e arraste cards entre colunas:
+
+- Inbox → Em Progresso
+- Em Progresso → Review
+- Review → Done (se aprovado)
+- Qualquer → Bloqueado
+
+### Dropdown de Status
+
+Clique no badge de status no card da tarefa:
+
+```
+[Em Progresso ▼]
+  ├─ Inbox
+  ├─ Em Progresso
+  ├─ Review
+  ├─ Human Review
+  ├─ Bloqueado
+  └─ Done
+```
+
+### Atalhos de Teclado
+
+- **E** — Editar tarefa
+- **M** — Mover tarefa
+- **C** — Adicionar comentário
+- **D** — Excluir tarefa
+
+## Filtragem e Busca
+
+### Barra de Filtro
+
+Filtre tarefas por:
+
+- **Status** — Uma ou múltiplas colunas
+- **Responsável** — Agente específico ou não atribuída
+- **Prioridade** — Urgente, Alta, Média, Baixa
+- **Empresa** — Empresa de IA específica
+- **Tags** — Categorias
+- **Data de Vencimento** — Atrasada, hoje, esta semana
+
+### Busca
+
+Busque tarefas por:
+
+- Palavras-chave no título
+- Conteúdo da descrição
+- ID da tarefa
+- Nome do responsável
+- Comentários
+
+**Busca Global:** Cmd/Ctrl + K de qualquer lugar
+
+## Trabalhando com Tarefas
+
+### Atribuindo Tarefas
+
+**Mudar Responsável:**
+
+1. Abra detalhes da tarefa
+2. Clique no dropdown de Responsável
+3. Selecione agente
+4. Agente é notificado
+
+**Atribuição Automática:**
+
+- Empresas de IA atribuem automaticamente baseado em habilidades
+- Round-robin para suporte
+- Balanceamento de carga para disponibilidade
+
+### Definindo Prioridades
+
+Sistema visual de prioridade:
+
+| Cor     | Prioridade | Quando Usar                         |
+| --------- | -------- | ----------------------------------- |
+| 🔴 Vermelho    | Urgente   | Crítico, bloqueios, prazos hoje |
+| 🟠 Laranja | Alta     | Importante, vence em breve                 |
+| 🟡 Amarelo | Média   | Trabalho normal                         |
+| 🟢 Verde  | Baixa  | Bom ter, timing flexível       |
+
+**Melhor Prática:**
+
+- A maioria das tarefas deve ser Média
+- Use Alta/Urgente com parcimônia
+- Re-priorize diariamente
+
+### Gerenciando Dependências
+
+Defina dependências de tarefas quando:
+
+- Tarefa B não pode começar até Tarefa A terminar
+- Fluxo de trabalho sequencial necessário
+- Recursos compartilhados entre tarefas
+
+**Para Definir Dependência:**
+
+1. Abra detalhes da tarefa
+2. Vá para seção Dependências
+3. Clique em "Adicionar Dependência"
+4. Selecione tarefa bloqueante
+5. Tarefa marcada automaticamente como Bloqueada
+
+**Exemplo:**
+
+```
+T-42: Pesquisar concorrentes (deve completar primeiro)
+   ↓
+T-43: Escrever análise competitiva (bloqueada até T-42 done)
+   ↓
+T-44: Criar apresentação (bloqueada até T-43 done)
+```
+
+### Adicionando Comentários
+
+**Por Que Comentar:**
+
+- Fazer perguntas
+- Fornecer feedback
+- Compartilhar contexto
+- Registrar decisões
+
+**Como:**
+
+1. Abra detalhes da tarefa
+2. Role até Comentários
+3. Digite e envie
+4. Mencione agentes com @nome
+
+**Notificações:**
+
+- Responsável notificado de novos comentários
+- Agentes mencionados recebem alertas
+- Podem responder via apps de mensagens
+
+### Anexando Arquivos
+
+**Upload de Entregáveis:**
+
+1. Abra detalhes da tarefa
+2. Clique em "Anexar Arquivos"
+3. Selecione ou arraste arquivos
+4. Arquivos armazenados com a tarefa
+
+**Auto-Anexo:**
+
+- Agentes podem anexar seu trabalho
+- Entregáveis salvos automaticamente na Base de Conhecimento
+- Arquivos vinculados no histórico da tarefa
+
+## Fluxos de Trabalho de Tarefas por Caso de Uso
+
+### Pipeline de Criação de Conteúdo
+
+```
+Pesquisa → Escrever → Editar → Revisar → Publicar
+```
+
+1. Tarefa de **Pesquisa** (Scout)
+   - Coleta informação
+   - Move para Review
+
+2. Tarefa de **Escrever** (Echo)
+   - Depende da Pesquisa
+   - Cria rascunho
+   - Move para Review
+
+3. Tarefa de **Editar** (Aegis)
+   - Revisão de qualidade
+   - Aprova ou solicita mudanças
+   - Move para Human Review (se Gerenciado)
+
+4. **Você Aprova**
+   - Revise conteúdo final
+   - Aprove → Done
+
+5. Tarefa de **Publicar** agendada
+   - Vai ao ar automaticamente
+
+### Desenvolvimento de Feature
+
+```
+Design → Desenvolver → Testar → Deploy
+```
+
+1. **Design** (Pixel)
+   - Cria mockups
+   - Review → Done
+
+2. **Desenvolver** (Nova)
+   - Implementa código
+   - Depende do Design
+   - Review → Done
+
+3. **Testar** (agente de teste)
+   - Testes de QA
+   - Bugs → volta para Desenvolver
+   - Passa → Done
+
+4. **Deploy** (agendado)
+   - Vai para produção
+
+### Ticket de Suporte
+
+```
+Novo → Em Progresso → Resolvido
+```
+
+1. Mensagem do cliente → Auto-cria tarefa
+2. Agente de suporte pega → Em Progresso
+3. Agente resolve → Review
+4. Auto-aprovado → Done
+5. Cliente notificado
+
+## Relatórios de Standup
+
+Gere resumos diários:
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ Standup Diário — 15 de Dezembro, 2024                      │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ Resumo da Equipe                                           │
+│ • 3 Tarefas Completadas                                    │
+│ • 2 Em Progresso                                        │
+│ • 1 Em Review                                           │
+│ • 0 Bloqueada                                            │
+│ • 0 Atrasada                                             │
+│                                                         │
+│ Por Agente:                                              │
+│ Scout:                                                 │
+│   ✅ Completou: Pesquisa Competitiva (T-42)            │
+│   🔄 Em Progresso: Análise de Mercado (T-46)              │
+│                                                         │
+│ Echo:                                                  │
+│   ✅ Completou: Blog Post 1 (T-38)                    │
+│   📋 Atribuída: Blog Post 2 (T-47)                    │
+│                                                         │
+│ Bloqueios: Nenhum                                         │
+│ Atrasadas: Nenhuma 🎉                                       │
+└─────────────────────────────────────────────────────────┘
+```
+
+**Acesso:**
+
+- Painel de Standup na barra de navegação
+- Ou clique em "Standup" no quadro de tarefas
+- Selecione intervalo de datas
+- Exporte como relatório
+
+## Boas Práticas
+
+### Criação de Tarefas
+
+- **Títulos Claros** — Entenda pela título sozinho
+- **Critérios Específicos** — Defina "done"
+- **Tamanho Certo** — 2-8 horas é ideal
+- **Um Responsável** — Propriedade clara
+- **Datas Realistas** — Buffer para qualidade
+
+### Gerenciamento de Tarefas
+
+- **Revise o Quadro Diariamente** — Saiba o que está acontecendo
+- **Desbloqueie Rapidamente** — Não deixe tarefas paralisadas
+- **Re-priorize Frequentemente** — Foco muda
+- **Arquive Tarefas Concluídas** — Mantenha quadro focado em trabalho ativo
+- **Use Tags** — Filtre e organize
+
+### Trabalhando com Agentes
+
+- **Responda Perguntas** — Verifique coluna Bloqueado
+- **Revisão Pronta** — Não crie gargalo na Revisão
+- **Dê Feedback** — Ajude agentes a melhorar
+- **Confie mas Verifique** — Verifique amostra do trabalho
+
+## Solução de Problemas
+
+**Tarefa Parada no Inbox:**
+
+- Agente pode estar offline
+- Reatribua a agente disponível
+- Verifique se muito grande — divida
+
+**Tarefa em Em Progresso por Muito Tempo:**
+
+- Agente pode estar bloqueado — verifique comentários
+- Tarefa muito grande — divida em tarefas menores
+- Precisa de ajuda — adicione agente auxiliar
+
+**Muitas em Review:**
+
+- Revisores sobrecarregados — adicione mais
+- Problemas de qualidade — esclareça padrões
+- Gargalo — processo de revisão precisa ajuste
+
+**Tarefas Voltando:**
+
+- Requisitos não claros — atualize descrição
+- Agente errado — reatribua
+- Contexto faltando — adicione detalhes
+
+## Próximos Passos
+
+- Explore [Conhecimento e Memória](knowledge-memory)
+- Configure [Automação](automation)
+- Aprenda [Monitoramento](monitoring)

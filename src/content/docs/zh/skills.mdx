@@ -1,0 +1,614 @@
+# 技能
+
+技能是您教 CapiBot Agent 新能力的方式，无需编写代码。将技能视为专门的培训手册，Agent 可以阅读以学习如何执行特定任务。
+
+## 什么是技能？
+
+技能是一个 **带有说明的 Markdown 文件**，教 Agent 如何执行特定任务或使用特定工具。当 Agent 需要做某事时，它会阅读相关技能并遵循说明。
+
+```
+┌─────────────────────────────────────────────────────────┐
+│  用户请求："Schedule a daily report"                    │
+│                                                         │
+│  Agent："I need the cron skill for this"                │
+│                                                         │
+│  ┌──────────────┐                                       │
+│  │  Read Skill  │                                       │
+│  │  "cron"      │                                       │
+│  └──────────────┘                                       │
+│         ↓                                               │
+│  ┌──────────────┐                                       │
+│  │  Follow      │                                       │
+│  │  Instructions│                                       │
+│  └──────────────┘                                       │
+│         ↓                                               │
+│  ✓ Task Complete                                        │
+└─────────────────────────────────────────────────────────┘
+```
+
+## 内置技能
+
+CapiBot 附带 8 个即用型内置技能：
+
+### 1. Composio — 第三方应用集成
+
+**作用：** 连接到 1000+ 应用（Notion、Linear、Jira、Slack、GitHub 等）
+
+**何时使用：**
+
+- 在 Notion 中创建页面
+- 在 Linear/Jira 中创建问题
+- 发送 Slack 消息
+- 任何应用集成
+
+**示例：**
+
+```
+You: Create a Notion page with my meeting notes
+
+Agent: [Uses composio skill]
+       1. Check what apps are connected
+       2. Find the "create page" action
+       3. Execute with your meeting notes
+
+       ✅ Created page "Meeting Notes" in Notion
+```
+
+**关键说明：**
+
+- 始终先检查连接的应用
+- 执行前列出可用操作
+- 使用确切的操作 slug（例如，`NOTION_CREATE_NOTION_PAGE`）
+- 写操作前确认
+
+### 2. Cron — 任务调度
+
+**作用：** 安排提醒和重复任务
+
+**何时使用：**
+
+- 每日站会报告
+- 每周摘要
+- 截止日期提醒
+- 重复健康检查
+
+**示例：**
+
+```
+You: Remind me to review the blog post every day at 9am
+
+Agent: [Uses cron skill]
+       Scheduled daily reminder at 9:00 AM
+       Message: "Review blog post"
+
+       ✅ Daily reminder set
+```
+
+**时间表达式：**
+
+- "every 20 minutes" → `every_seconds: 1200`
+- "every hour" → `every_seconds: 3600`
+- "every day at 8am" → `cron_expr: "0 8 * * *"`
+- "weekdays at 5pm" → `cron_expr: "0 17 * * 1-5"`
+
+### 3. GitHub — 仓库操作
+
+**作用：** 使用 `gh` CLI 处理 GitHub 仓库
+
+**何时使用：**
+
+- 创建问题
+- 审查拉取请求
+- 检查仓库状态
+- 管理发布
+
+**示例：**
+
+```
+You: Check if there are any open PRs in the capibot repo
+
+Agent: [Uses github skill]
+       3 open pull requests:
+       1. #45 - Fix authentication bug
+       2. #46 - Add dark mode support
+       3. #47 - Update documentation
+```
+
+### 4. Weather — 天气信息
+
+**作用：** 获取当前天气和预报
+
+**何时使用：**
+
+- 规划户外活动
+- 旅行准备
+- 快速天气检查
+
+**示例：**
+
+```
+You: What's the weather like in Bogota today?
+
+Agent: [Uses weather skill]
+       Bogota, Colombia
+       ☁️  Partly cloudy
+       🌡️  18°C / 64°F
+       💧  65% humidity
+       🌬️  Light breeze
+```
+
+### 5. Summarize — 文本压缩
+
+**作用：** 总结长内容
+
+**何时使用：**
+
+- 总结网络文章
+- 压缩长文档
+- YouTube 视频摘要
+- 会议纪要
+
+**示例：**
+
+```
+You: Summarize this article: [long URL]
+
+Agent: [Uses summarize skill]
+       Here's the summary (3 min read):
+
+       • Key point 1...
+       • Key point 2...
+       • Key point 3...
+```
+
+### 6. TMux — 终端会话管理
+
+**作用：** 远程控制 tmux 会话
+
+**何时使用：**
+
+- 管理长时间运行的进程
+- 远程服务器管理
+- 会话持久化
+
+**示例：**
+
+```
+You: Start a tmux session for the server logs
+
+Agent: [Uses tmux skill]
+       Created tmux session "server-logs"
+       Running: tail -f /var/log/server.log
+
+       You can reattach with: tmux attach -t server-logs
+```
+
+### 7. Skill Creator — 创建新技能
+
+**作用：** 为专门任务创建自定义技能
+
+**何时使用：**
+
+- 独特工作流
+- 公司特定流程
+- 领域专业知识
+- 重复的复杂任务
+
+**示例：**
+
+```
+You: Create a skill for processing our expense reports
+
+Agent: [Uses skill-creator skill]
+       I'll create an "expense-processor" skill.
+
+       What should this skill do?
+       1. Extract data from receipts
+       2. Categorize expenses
+       3. Generate reports
+       4. Export to accounting system
+```
+
+### 8. Playbook — 战略协调
+
+**作用：** AI 公司的多阶段项目协调
+
+**何时使用：**
+
+- 初创公司 MVP 开发
+- 营销活动
+- 企业功能开发
+- 事件响应
+
+**包括：**
+
+- 6 阶段生命周期（Discovery、Strategy、Foundation、Build、Hardening、Launch、Operate）
+- 场景运行手册
+- Agent 协调模板
+- 质量关卡
+
+## 技能如何工作
+
+### 渐进式披露
+
+技能使用三级系统以提高效率：
+
+**第 1 级：元数据（始终在上下文中）**
+
+```yaml
+---
+name: composio
+description: "Use 1000+ third-party apps via Composio..."
+---
+```
+
+- ~100 字
+- 帮助 Agent 决定何时使用该技能
+
+**第 2 级：SKILL.md 正文（触发时）**
+
+```markdown
+# Composio — Third-party App Integration
+
+## Workflow
+
+1. Check what apps are connected
+2. List available actions
+3. Get action schema
+4. Execute action
+```
+
+- 仅在需要技能时加载
+- 包含实际说明
+
+**第 3 级：捆绑资源（按需）**
+
+```
+skill-folder/
+├── SKILL.md (main instructions)
+├── scripts/ (helper scripts)
+├── references/ (detailed docs)
+└── assets/ (templates, etc.)
+```
+
+- 仅在引用时加载
+- 保持主技能文件精简
+
+### 技能触发
+
+当您提出请求时，Agent：
+
+1. **读取技能元数据** — 所有已安装技能
+2. **选择相关技能** — 基于描述匹配
+3. **加载技能说明** — SKILL.md 内容
+4. **遵循说明** — 执行工作流
+5. **使用捆绑资源** — 如果需要
+
+```
+User: "Create a Notion page"
+
+Agent thinks:
+├─ Check skills metadata
+│  ├─ "cron" — scheduling, not relevant
+│  ├─ "composio" — third-party apps ✓ MATCH
+│  ├─ "github" — repos, not relevant
+│  └─ "weather" — weather, not relevant
+│
+├─ Load composio skill
+│  └─ Read SKILL.md instructions
+│
+├─ Execute workflow
+│  ├─ Check connected apps
+│  ├─ Find "create page" action
+│  ├─ Get parameter schema
+│  └─ Execute action
+│
+└─ Done! Notion page created
+```
+
+## 管理技能
+
+### 查看已安装技能
+
+**访问：** 导航栏 → **Skills**
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ Skills                                                  │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ Built-in Skills                                         │
+│                                                         │
+│ 🔌 Composio        App integration                      │
+│ 🕐 Cron            Scheduling                           │
+│ 🐙 GitHub          Repository ops                       │
+│ 🌤️  Weather          Weather info                       │
+│ 📝 Summarize       Text condensation                    │
+│ 💻 TMux            Terminal sessions                    │
+│ ✨ Skill Creator   Create skills                        │
+│ 📖 Playbook        Strategic coordination               │
+│                                                         │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ Community Skills                                        │
+│ [Browse Registry]                                       │
+│                                                         │
+└─────────────────────────────────────────────────────────┘
+```
+
+### 技能详情
+
+点击任何技能查看：
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ 🔌 Composio                                [Configure]  │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ Use 1000+ third-party apps (Notion, Linear, Jira,       │
+│ Slack, GitHub, etc.) via Composio. Discover connected   │
+│ apps, list actions, and execute them.                   │
+│                                                         │
+│ Version: 1.1.0                                         │
+│ Author: CapiBot Team                                   │
+│                                                         │
+│ Instructions Preview:                                  │
+│ ━━━━━━━━━━━━━━━━━━━━                                   │
+│ ## Workflow                                             │
+│                                                         │
+│ ### 1. Check what apps are connected                    │
+│ composio(mode: "list_apps")                             │
+│                                                         │
+│ ### 2. Discover available actions...                    │
+│ ━━━━━━━━━━━━━━━━━━━━                                   │
+│                                                         │
+│ [View Full Instructions]  [Test Skill]                  │
+│                                                         │
+└─────────────────────────────────────────────────────────┘
+```
+
+### 安装新技能
+
+**从社区注册表：**
+
+1. 点击 **"Browse Registry"**
+2. 搜索或浏览类别
+3. 点击技能查看详情
+4. 点击 **"Install"**
+5. 技能立即可用
+
+**从文件：**
+
+1. 点击 **"+ Install from File"**
+2. 上传 `.skill` 文件
+3. 验证安装
+4. 技能立即可用
+
+### 测试技能
+
+依赖新技能前，测试它：
+
+```
+Skill: composio
+Test: Create a test page in Notion
+
+✅ Test passed
+   Created page "Test" in Notion
+
+   The skill is working correctly.
+```
+
+### 移除技能
+
+**移除技能：**
+
+1. 在 Skills 面板中找到技能
+2. 点击 **"..."** 菜单
+3. 选择 **"Uninstall"**
+4. 确认移除
+
+**注意：** 无法移除内置技能。
+
+## 创建自定义技能
+
+### 何时创建技能
+
+在以下情况创建自定义技能：
+
+✅ **独特工作流**
+
+- 公司特定流程
+- 专有方法论
+- 自定义工具集成
+
+✅ **重复复杂任务**
+
+- 经常做
+- 多步骤流程
+- 需要领域知识
+
+✅ **专业知识**
+
+- 行业专业知识
+- 公司标准
+- 最佳实践
+
+✅ **集成需求**
+
+- 自定义 API
+- 内部工具
+- 专有系统
+
+### 示例：创建费用处理器技能
+
+**场景：** 您的团队每周使用特定步骤处理费用报告。
+
+**第 1 步：定义技能**
+
+```
+Name: expense-processor
+Description: "Process expense reports following company policy.
+Extract data from receipts, categorize expenses, validate against
+policy limits, and generate reimbursement reports."
+```
+
+**第 2 步：编写 SKILL.md**
+
+```markdown
+---
+name: expense-processor
+description: "Process expense reports..."
+---
+
+# Expense Report Processor
+
+## Workflow
+
+1. **Extract Data**
+   - Read receipt images
+   - Extract: date, merchant, amount, category
+   - Validate totals
+
+2. **Categorize**
+   - Meals: $75 limit
+   - Travel: No limit
+   - Supplies: $100 limit
+   - Entertainment: $50 limit
+
+3. **Validate Policy**
+   - Check per-category limits
+   - Flag exceptions
+   - Note approvals needed
+
+4. **Generate Report**
+   - Create summary
+   - Export to CSV
+   - Submit to accounting
+
+## Categories and Limits
+
+| Category      | Limit    | Requires Approval |
+| ------------- | -------- | ----------------- |
+| Meals         | $75/meal | >$75              |
+| Travel        | No limit | -                 |
+| Supplies      | $100     | >$100             |
+| Entertainment | $50      | >$50              |
+```
+
+**第 3 步：测试技能**
+
+```
+You: Process this expense report [receipts]
+
+Agent: [Uses expense-processor skill]
+
+       Processing 5 receipts...
+
+       ✅ All within policy limits
+
+       Summary:
+       • Meals: $67, $45 (2 meals)
+       • Travel: $340 (flight)
+       • Supplies: $23
+
+       Total: $475
+       Report generated: expense-report-week1.csv
+```
+
+## 技能最佳实践
+
+### 对于技能用户
+
+1. **Know Your Skills** — 查看已安装的内容
+2. **Test New Skills** — 依赖前测试
+3. **Give Feedback** — 帮助改进技能
+4. **Keep Updated** — 安装最新版本
+
+### 对于技能创建者
+
+1. **Clear Descriptions** — 帮助 Agent 正确触发
+2. **Concise Instructions** — 保持在 500 行以内
+3. **Progressive Disclosure** — 使用参考了解详情
+4. **Test Thoroughly** — 真实场景
+5. **Version Control** — 跟踪更改
+
+### 优秀技能剖析
+
+**好的 SKILL.md 结构：**
+
+```markdown
+---
+name: my-skill
+description: "Clear, comprehensive description of what this 
+skill does and when to use it."
+---
+
+# My Skill
+
+## Quick Start
+
+Brief overview and simple example
+
+## Workflow
+
+Step-by-step instructions
+
+## Examples
+
+Common use cases
+
+## Advanced
+
+Links to references for details
+```
+
+**差的 SKILL.md 结构：**
+
+```markdown
+---
+name: my-skill
+description: "Does stuff"  ← Too vague!
+---
+
+# My Skill
+
+Lots of text explaining the theory... ← Too verbose!
+
+More background information... ← Not actionable!
+```
+
+## 故障排除
+
+**Skill Not Triggering：**
+
+- 检查描述是否清晰具体
+- 验证技能是否已安装
+- 尝试更具体的请求
+- 可能需要按名称提及技能
+
+**Skill Triggering Wrong：**
+
+- 描述可能太宽泛
+- 添加更具体的触发器
+- 考虑拆分为多个技能
+
+**Skill Instructions Unclear：**
+
+- 自己阅读 SKILL.md
+- 用更清晰的步骤更新
+- 添加更多示例
+- 用不同输入测试
+
+**Skill Outdated：**
+
+- 检查更新
+- 审查最新文档
+- 更新捆绑资源
+- 考虑创建新版本
+
+## 下一步
+
+- 了解 [工具类别](tool-categories)
+- 探索 [公司工具](company-tools)
+- 创建您的第一个自定义技能
+- 浏览 [社区注册表](docs/integrations)

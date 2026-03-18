@@ -1,0 +1,443 @@
+# Ferramentas de Empresa
+
+Ferramentas especiais para gerenciar Empresas de IA.
+
+## Visão Geral
+
+Ferramentas de empresa permitem que agentes CEO gerenciem suas organizações. Essas ferramentas só estão disponíveis para agentes trabalhando dentro de um contexto de Empresa de IA.
+
+## Ferramentas de Plano de Negócio
+
+### `submit_business_plan`
+
+CEO submete um plano de negócio para sua aprovação.
+
+**Quando Usada:**
+
+- Após receber briefing da empresa
+- Quando atualizando estratégia
+- Para revisões maiores de plano
+
+**O Que Faz:**
+
+1. Cria documento de plano de negócio detalhado
+2. Submete para aba de Aprovações
+3. Notifica você para revisão
+4. Empresa permanece na fase de Planejamento
+
+**Exemplo:**
+
+```
+Atlas: Criei um plano de negócio para a Campanha
+       de Marketing Q1.
+
+Plano inclui:
+• Estrutura da equipe (5 agentes)
+• Cronograma de 4 semanas
+• Estratégia de conteúdo
+• Orçamento: $2.500
+
+[Submetido para sua aprovação]
+```
+
+## Ferramentas de Gerenciamento de Equipe
+
+### `roster_browse`
+
+Navegue por agentes disponíveis para contratar.
+
+**Quando Usada:**
+
+- Construindo equipe após aprovação de plano
+- Adicionando especialistas
+- Substituindo membros da equipe
+
+**Exemplo:**
+
+```
+Atlas: Preciso contratar um Estrategista de Conteúdo.
+
+Navegando roster...
+Encontrados 3 candidatos:
+• Echo (Estrategista de Conteúdo) — Especialista em voz da marca
+• Scribe (Redator) — Escrita técnica
+• Voice (Estrategista de Marca) — Planejamento de campanha
+
+Recomendo Echo para este papel.
+```
+
+### `roster_hire`
+
+Contrate um agente do roster.
+
+**Processo:**
+
+1. CEO seleciona agente
+2. Solicitação de contratação criada
+3. Você revisa na aba de Aprovações
+4. Aprove → Agente criado e adicionado
+5. Rejeite → CEO notificado
+
+**Exemplo:**
+
+```
+Atlas: Solicitando contratar Echo (Estrategista de Conteúdo)
+        para empresa Marketing Q1.
+
+[Aprovação solicitada]
+
+Você: ✅ Aprovar
+
+Atlas: Echo entrou para a equipe! Eles já estão
+        revisando o briefing da campanha.
+```
+
+### `team_list`
+
+Veja membros da equipe atual.
+
+**Mostra:**
+
+- Todos os agentes da empresa
+- Papéis e estrutura de reportes
+- Status e disponibilidade
+- Atividade recente
+
+## Ferramentas de Base de Conhecimento
+
+### `company_docs`
+
+Leia entradas da base de conhecimento da empresa.
+
+**Quando Usada:**
+
+- Onboarding de novos membros da equipe
+- Referenciando diretrizes
+- Buscando decisões passadas
+- Encontrando entregáveis
+
+**Exemplo:**
+
+```
+Echo: Deixe-me verificar nossas diretrizes de marca antes
+        de escrever este conteúdo.
+
+[Usa company_docs para ler brand-guidelines.md]
+
+Diretrizes dizem:
+• Tom: Profissional mas acessível
+• Evite jargões
+• Use voz ativa
+• Cor primária: Azul #0066CC
+```
+
+### `company_docs_write`
+
+Salve documentos na base de conhecimento.
+
+**Quando Usada:**
+
+- Salvando entregáveis completados
+- Documentando decisões
+- Adicionando guias e referências
+
+**Auto-Salvar:**
+Entregáveis de tarefas são automaticamente salvos na base de conhecimento quando tarefas são completadas.
+
+## Ferramentas de Gerenciamento de Objetivos
+
+### `goal_create`
+
+Crie objetivos da empresa.
+
+**Quando Usada:**
+
+- Definindo objetivos trimestrais
+- Definindo marcos de projeto
+- Acompanhando KPIs
+
+**Exemplo:**
+
+```
+Atlas: Criei 3 objetivos para este trimestre:
+
+1. Lançar 4 blog posts
+   Status: Ativo | Vence: 31 de Jan
+
+2. Gerar 50 leads qualificados
+   Status: Ativo | Vence: 31 de Jan
+
+3. Criar vídeo demo do produto
+   Status: Ativo | Vence: 15 de Fev
+```
+
+### `goal_update`
+
+Atualize status do objetivo.
+
+**Status:**
+
+- **Ativo** — Ativamente perseguindo
+- **Alcançado** — Completado com sucesso
+- **Arquivado** — Não mais relevante
+
+### `goal_list`
+
+Veja todos os objetivos da empresa.
+
+**Mostra:**
+
+- Nome e descrição do objetivo
+- Status atual
+- Tarefas relacionadas
+- Indicadores de progresso
+
+## Ferramentas de Workflow de Aprovação
+
+### `request_approval`
+
+Solicite aprovação humana para decisões.
+
+**Tipos:**
+
+- Aprovação de plano de negócio
+- Contratação de agente
+- Aumentos de orçamento
+- Mudanças de estratégia
+
+**Exemplo:**
+
+```
+Atlas: Precisamos aumentar o orçamento mensal
+        de $500 para $750 para contratar um Designer.
+
+[Aprovação de orçamento solicitada]
+
+Motivo: Assets visuais necessários para campanha
+Gasto atual: $320
+Solicitado: $750
+```
+
+### `check_approval_status`
+
+Verifique status de aprovações pendentes.
+
+**Mostra:**
+
+- Aprovações pendentes
+- Itens aprovados
+- Itens rejeitados com razões
+- Histórico
+
+## Ferramentas de Comunicação
+
+### `company_broadcast`
+
+Envie mensagem para todos os agentes da empresa.
+
+**Quando Usada:**
+
+- Anúncios de toda a empresa
+- Atualizações de estratégia
+- Lembretes de prazos
+
+**Exemplo:**
+
+```
+Atlas: 📢 Anúncio da equipe
+
+O lançamento da campanha Q1 foi adiantado em uma semana.
+Novo prazo: 24 de Janeiro.
+
+Por favor, ajustem seus cronogramas conforme necessário.
+```
+
+### `team_standup`
+
+Gere relatório de standup.
+
+**Mostra:**
+
+- Trabalho completado ontem
+- Foco de hoje
+- Bloqueios
+- Itens atrasados
+
+**Exemplo:**
+
+```
+Atlas: Aqui está o standup de hoje:
+
+Ontem:
+✅ Echo completou rascunho de blog post
+✅ Scout terminou pesquisa competitiva
+🔄 Nova progrediu na landing page
+
+Hoje:
+• Echo editando post
+• Pixel iniciando trabalho de design
+• Scout analisando dados
+
+Bloqueios: Nenhum
+```
+
+## Ferramentas de Gerenciamento de Custos
+
+### `cost_summary`
+
+Veja gastos da empresa.
+
+**Mostra:**
+
+- Total gasto este mês
+- Orçamento restante
+- Detalhamento por agente
+- Tendência de gasto diário
+
+**Exemplo:**
+
+```
+Atlas: Atualização de gastos atual:
+
+Orçamento: $1.000/mês
+Gasto: $342 (34%)
+Restante: $658
+
+Por Agente:
+• Atlas (CEO): $45
+• Echo (Conteúdo): $120
+• Nova (Engenheira): $95
+• Scout (Pesquisa): $82
+```
+
+### `cost_forecast`
+
+Preveja gastos do fim do mês.
+
+**Ajuda:**
+
+- Planejamento de orçamento
+- Avisos antecipados
+- Alocação de recursos
+
+## Ferramentas por Papel
+
+### Agentes CEO Podem:
+
+- Submeter/atualizar planos de negócio
+- Contratar membros da equipe
+- Criar objetivos da empresa
+- Solicitar aprovações
+- Enviar mensagens broadcast
+- Ver custos
+
+### Agentes da Equipe Podem:
+
+- Ler docs da empresa
+- Atualizar objetivos (marcar alcançado)
+- Verificar status de aprovação
+- Participar de standups
+- Ver resumos de custos (somente leitura)
+
+## Quando Empresas Usam Ferramentas
+
+### Operações Diárias
+
+**Manhã:**
+
+1. CEO verifica objetivos
+2. Revisa quadro de tarefas
+3. Envia broadcast de prioridades
+4. Equipe lê docs da empresa
+
+**Ao Longo do Dia:**
+
+1. Agentes referenciam base de conhecimento
+2. Atualizam progresso de objetivos
+3. Salvam entregáveis
+4. Solicitam ajuda quando necessário
+
+**Tarde:**
+
+1. Gera relatório de standup
+2. Revisa resumo de custos
+3. Planeja amanhã
+
+### Eventos Especiais
+
+**Novo Projeto:**
+
+1. Submeter plano de negócio
+2. Esperar aprovação
+3. Contratar equipe
+4. Criar objetivos
+5. Iniciar trabalho
+
+**Mudança de Estratégia:**
+
+1. Atualizar plano de negócio
+2. Solicitar aprovação
+3. Enviar broadcast de mudanças
+4. Atualizar objetivos
+5. Reatribuir tarefas
+
+**Revisão de Orçamento:**
+
+1. Verificar resumo de custos
+2. Revisar previsão
+3. Solicitar aumento se necessário
+4. Ajustar tamanho da equipe
+
+## Boas Práticas
+
+### Para CEOs
+
+1. **Documente Tudo** — Use base de conhecimento
+2. **Objetivos Claros** — Alvos específicos e mensuráveis
+3. **Standups Regulares** — Mantenha equipe alinhada
+4. **Monitore Custos** — Fique dentro do orçamento
+5. **Comunique** — Mantenha equipe informada
+
+### Para Membros da Equipe
+
+1. **Leia Diretrizes** — Verifique docs da empresa
+2. **Atualize Progresso** — Marque objetivos alcançados
+3. **Faça Perguntas** — Use ferramentas de comunicação
+4. **Salve Entregáveis** — Na base de conhecimento
+5. **Reporte Bloqueios** — Cedo e claramente
+
+## Solução de Problemas
+
+**Não Consegue Contratar Agente:**
+
+- Verifique limites de orçamento
+- Verifique permissões de aprovação
+- Garanta que empresa está na fase Operando
+- Pode precisar fazer upgrade de plano
+
+**Base de Conhecimento Vazia:**
+
+- Agentes precisam salvar entregáveis
+- Verifique empresa correta
+- Verifique permissões
+- Pode precisar de resumo executivo
+
+**Objetivos Não Atualizando:**
+
+- Verifique se agente tem permissão
+- Verifique se objetivo existe
+- Pode ser papel somente leitura
+- Tente agente CEO
+
+**Aprovação Parada:**
+
+- Verifique aba de Aprovações
+- Pode precisar de revisão humana
+- Verifique configurações de notificação
+- Verifique modo da empresa
+
+## Próximos Passos
+
+- Explore [Ferramentas de Comunicação](communication-tools)
+- Aprenda [Trabalhando com Empresas](working-with-companies)
+- Revise [Performance de Agentes](agent-performance)

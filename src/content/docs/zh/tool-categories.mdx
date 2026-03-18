@@ -1,0 +1,445 @@
+# 工具类别
+
+CapiBot Agent 可以访问 25+ 个按类别组织的工具。了解可用工具有助于您有效委派工作。
+
+## Agent 如何使用工具
+
+Agent 根据需要什么自动选择工具：
+
+```
+You: Research top 5 competitors
+
+Scout (Research Analyst):
+  1. Analyzes request
+  2. Decides to use web_search tool
+  3. Searches for "top SaaS analytics competitors"
+  4. Reads results
+  5. Writes findings to file
+  6. Reports back to you
+```
+
+**您不需要告诉 Agent 使用哪些工具** — 他们了解自己的能力并为工作选择正确的工具。
+
+## 文件操作
+
+读取、写入和管理文件。
+
+### 可用工具
+
+**`read_file`**
+
+- 读取任何文件的内容
+- 为大文件指定行偏移和限制
+- 支持所有文本格式
+
+**`write_file`**
+
+- 创建新文件
+- 覆盖现有文件
+- 自动创建父目录
+
+**`edit_file`**
+
+- 外科手术式行级编辑
+- 在文件中查找和替换
+- 插入或删除特定行
+
+**`list_dir`**
+
+- 列出目录内容
+- 查看文件和子目录
+- 按模式筛选
+
+### Agent 何时使用这些
+
+| 任务 | 使用的工具 |
+|------|-----------|
+| 阅读您的说明 | read_file |
+| 保存完成的工作 | write_file |
+| 修复代码中的错误 | edit_file |
+| 探索项目结构 | list_dir |
+| 更新文档 | edit_file |
+
+### 示例
+
+```
+You: Write a Python script to analyze CSV data
+
+Nova: I'll create that script for you.
+
+[Uses write_file to create analyze_csv.py]
+
+Done! I've created analyze_csv.py with functions
+for loading data, calculating statistics, and
+generating charts.
+```
+
+## Web 与搜索
+
+搜索互联网并获取 Web 内容。
+
+### 可用工具
+
+**`web_search`**
+
+- Google 驱动的搜索
+- 返回标题、URL、摘要
+- 默认前 10 个结果
+
+**`web_fetch`**
+
+- 下载和解析任何网页
+- 提取主要内容
+- 处理各种格式
+
+### Agent 何时使用这些
+
+| 任务 | 使用的工具 |
+|------|-----------|
+| 研究竞争对手 | web_search |
+| 阅读文档 | web_fetch |
+| 查看当前新闻 | web_search |
+| 收集参考资料 | web_fetch |
+| 查找示例 | web_search |
+
+### 示例
+
+```
+You: What are the latest AI trends in 2024?
+
+Scout: Let me search for current AI trends.
+
+[Uses web_search: "AI trends 2024"]
+
+Here are the top 5 AI trends for 2024:
+1. Multimodal AI models
+2. AI agents and automation
+3. Edge AI deployment
+4. AI regulation and compliance
+5. Sustainable AI
+
+Would you like me to dive deeper into any of these?
+```
+
+## 浏览器自动化
+
+以编程方式控制 Web 浏览器。
+
+### 可用工具
+
+**`browser_navigate`** — 转到 URL
+**`browser_click`** — 点击元素
+**`browser_type`** — 在输入框中输入文本
+**`browser_scroll`** — 滚动页面
+**`browser_screenshot`** — 捕获截图
+**`browser_extract`** — 提取页面内容
+**`browser_wait`** — 等待元素
+
+### Agent 何时使用这些
+
+| 任务 | 使用的工具 |
+|------|-----------|
+| 测试 Web 应用 | navigate, click, type, screenshot |
+| 填写表单 | navigate, type, click |
+| 从网站抓取数据 | navigate, extract, scroll |
+| 截取网站截图 | navigate, screenshot |
+| 检查视觉外观 | navigate, screenshot |
+
+### 示例
+
+```
+You: Take a screenshot of our landing page
+
+Nova: I'll capture a screenshot of your site.
+
+[Uses browser_navigate + browser_screenshot]
+
+Screenshot saved: /workspace/screenshots/landing-page-20241215.png
+
+I can also test the contact form if you'd like.
+```
+
+## Shell 与系统
+
+执行命令和管理进程。
+
+### 可用工具
+
+**`exec`**
+
+- 运行 shell 命令
+- 危险模式自动阻止
+- 可配置超时（默认 30s）
+- 每次调用输出限制约 10KB
+
+**`spawn`**
+
+- 启动后台进程
+- 长时间运行任务
+- 进程管理
+
+### 安全功能
+
+**阻止的命令：**
+
+```bash
+# These are automatically blocked:
+rm -rf /
+mkfs.*
+dd if=/dev/zero
+fork bombs
+network scans
+privilege escalation
+```
+
+**默认安全：**
+
+- 工作区限制
+- 超时限制
+- 输出限制
+- 命令日志
+
+### Agent 何时使用这些
+
+| 任务 | 使用的工具 |
+|------|-----------|
+| 运行 Python 脚本 | exec: python script.py |
+| 安装依赖 | exec: npm install |
+| Git 操作 | exec: git commit -m "..." |
+| 构建项目 | exec: npm run build |
+| 数据库迁移 | exec: migrate up |
+
+### 示例
+
+```
+You: Run the test suite
+
+Nova: Running tests now.
+
+[Uses exec: npm test]
+
+✅ 45 tests passed
+⚠️  2 tests skipped
+❌ 0 tests failed
+
+All tests passing! The build is ready for deployment.
+```
+
+## 调度
+
+创建和管理重复任务。
+
+### 可用工具
+
+**`cron`**
+
+- 安排未来任务
+- 一次性或重复
+- Cron 表达式语法
+- 从对话中
+
+### Agent 何时使用这些
+
+| 任务 | 使用的工具 |
+|------|-----------|
+| 安排每日报告 | cron: every day at 9am |
+| 设置截止日期提醒 | cron: at 2024-12-20 5pm |
+| 重复健康检查 | cron: every 5 minutes |
+| 每周摘要 | cron: every monday at 10am |
+
+### 示例
+
+```
+You: Remind me to review the blog post tomorrow
+
+Echo: I'll schedule a reminder for you.
+
+[Uses cron: at 9:00 AM tomorrow]
+
+✅ Reminder scheduled for tomorrow at 9:00 AM.
+You'll get a notification to review the blog post.
+```
+
+## Agent 与任务管理
+
+管理其他 Agent 和任务。
+
+### 可用工具
+
+**`sessions_send`** — 向其他 Agent 发送消息
+**`sessions_list`** — 查看可用 Agent
+**`task_create`** — 创建新任务
+**`task_update`** — 更新任务状态
+**`task_list`** — 查看任务
+
+### Agent 何时使用这些
+
+| 任务 | 使用的工具 |
+|------|-----------|
+| 向队友寻求帮助 | sessions_send |
+| 委派工作 | task_create + assign |
+| 更新进度 | task_update |
+| 检查团队工作量 | task_list |
+| 与 Agent 协调 | sessions_send |
+
+### 示例
+
+```
+You: Ask the designer to review the landing page
+
+Nova: I'll message Pixel about the review.
+
+[Uses sessions_send to message Pixel]
+
+Pixel confirmed! They're reviewing it now
+and will update the task when done.
+```
+
+## 通信
+
+发送消息和通知。
+
+### 可用工具
+
+**`message`** — 发送到任何渠道
+**`message_owner`** — 直接发送给您
+**`agent_notify`** — 通知特定 Agent
+
+### 渠道
+
+- Telegram
+- WhatsApp
+- Slack
+- Web Chat (Mission Control)
+- Email（如果已配置）
+
+### Agent 何时使用这些
+
+| 任务 | 使用的工具 |
+|------|-----------|
+| 报告完成 | message_owner |
+| 询问澄清问题 | message_owner |
+| 向您发送文件 | message + attachment |
+| 紧急告警 | agent_notify |
+
+### 示例
+
+```
+Scout: Your competitor research is complete!
+
+[Uses message_owner via Telegram]
+
+I've analyzed 5 competitors and saved the
+report to /workspace/competitor-analysis.pdf
+
+Key findings:
+• Competitor A focuses on enterprise
+• Competitor B has better pricing
+• Gap in mid-market segment
+```
+
+## 记忆与知识
+
+存储和检索信息。
+
+### 可用工具
+
+**`write_file`** — 保存到 Agent 记忆
+**`read_file`** — 从记忆读取
+**`company_docs`** — 读取公司知识库
+
+### Agent 何时使用这些
+
+| 任务 | 使用的工具 |
+|------|-----------|
+| 记住偏好 | write_file to memory |
+| 从反馈中学习 | write_file to memory |
+| 阅读公司指南 | company_docs |
+| 检查先前决策 | company_docs |
+
+### 示例
+
+```
+You: Remember I prefer blue for primary buttons
+
+Pixel: Got it! I'll save that preference.
+
+[Uses write_file to save to memory]
+
+✅ Preference saved: "Primary buttons should
+   use blue (#0066CC) per user preference"
+
+I'll apply this to all future designs.
+```
+
+## 工具安全
+
+### Agent 不能做什么
+
+**自动阻止：**
+
+- 破坏性系统命令
+- 工作区外访问
+- 超过超时的命令
+- 已知的危险 shell 模式
+
+### 您可以控制什么
+
+**每个 Agent 设置：**
+
+- 启用/禁用特定工具
+- 限制文件系统访问
+- 设置命令超时
+- 限制输出大小
+
+**全局设置：**
+
+- 工作区限制
+- 危险模式阻止
+- 命令日志
+- 审计追踪
+
+## 最佳实践
+
+### 对于您
+
+1. **Trust Agents** — 他们知道使用哪些工具
+2. **Review Deliverables** — 检查他们创建的文件
+3. **Ask for Explanations** — "How did you do that?"
+4. **Set Boundaries** — 需要时限制
+
+### 对于 Agent
+
+1. **Use Right Tool** — 工具与任务匹配
+2. **Handle Errors** — 优雅失败
+3. **Report Actions** — 告诉您他们做了什么
+4. **Respect Limits** — 在约束内工作
+
+## 故障排除
+
+**Agent Says "I Can't Do That"：**
+
+- 工具可能被禁用
+- 超出其能力
+- 安全限制
+- 检查 Agent 的允许工具
+
+**Command Failed：**
+
+- 检查错误消息
+- 可能需要不同方法
+- 可能是权限问题
+- 尝试拆分为更小的步骤
+
+**File Not Found：**
+
+- 检查路径是否正确
+- 可能需要创建父目录
+- 验证文件存在
+- 检查权限
+
+## 下一步
+
+- 了解 [公司工具](company-tools)
+- 探索 [通信工具](communication-tools)
+- 参见 [安全最佳实践](security)

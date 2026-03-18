@@ -1,0 +1,509 @@
+# Operaciones de Empresa
+
+Gestionar Empresas AI es donde brilla el verdadero poder de CapiBot. Esta guía cubre las operaciones diarias de empresas a través de Mission Control.
+
+## Panel de Empresas
+
+Acceso desde la barra de navegación: **Companies**
+
+### Vista de Lista de Empresas
+
+Ve todas tus Empresas AI:
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ Companies                                 [+ New Co]    │
+├─────────────────────────────────────────────────────────┤
+│ Filter: [All Phases ▼] [Mode: All ▼] [Search...]       │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ ┌─────────────────────────────────────────────────────┐ │
+│ │ Q1 Marketing Campaign                               │ │
+│ │ ● Operating | Managed Mode | Budget: $45/mo        │ │
+│ │                                                     │ │
+│ │ Team: Atlas + 4 agents   Tasks: 12 active          │ │
+│ │ [Overview] [Plan] [Team] [Tasks] [Knowledge]       │ │
+│ └─────────────────────────────────────────────────────┘ │
+│                                                         │
+│ ┌─────────────────────────────────────────────────────┐ │
+│ │ Support Team (Archived)                             │ │
+│ │ ○ Archived | Autonomous Mode                       │ │
+│ │                                                     │ │
+│ │ [Reactivate]                                        │ │
+│ └─────────────────────────────────────────────────────┘ │
+│                                                         │
+└─────────────────────────────────────────────────────────┘
+```
+
+**Información de la Tarjeta:**
+
+- **Name** — Identificador de la empresa
+- **Phase** — Briefing, Planning, Approved, Operating, Archived
+- **Mode** — Managed o Autonomous
+- **Budget** — Gasto actual
+- **Team Size** — Número de agentes
+- **Task Count** — Items de trabajo activos
+
+![Company Overview Placeholder]
+_Captura: Lista de empresas mostrando múltiples empresas en diferentes fases_
+
+### Insignias de Fase
+
+Indicadores visuales del estado de la empresa:
+
+- 🟡 **Briefing** — Configurando, esperando plan
+- 🔵 **Planning** — CEO creando plan de negocio
+- 🟢 **Approved** — Plan aprobado, listo para operar
+- 🟣 **Operating** — Ejecutándose activamente
+- ⚪ **Archived** — Completada o pausada
+
+## Creando una Empresa
+
+### Paso a Paso
+
+1. **Haz clic en "+ New Company"**
+
+2. **Completa Detalles de la Empresa:**
+
+   ```
+   Name: Q1 Marketing Campaign
+   Mission: Launch product awareness campaign
+            targeting enterprise customers
+
+   CEO: [Atlas ▼]
+   Mode: [Managed ▼]
+   Budget: $100/month
+   ```
+
+3. **Establece Objetivos:**
+
+   ```
+   Goal 1: Publish 4 blog posts
+   Goal 2: Generate 50 qualified leads
+   Goal 3: Create product demo video
+   ```
+
+4. **Envía Briefing**
+
+5. **CEO Crea Plan** (usualmente en minutos)
+
+6. **Revisa Plan** — Ve la siguiente sección
+
+## Vista de Detalle de Empresa
+
+Haz clic en cualquier empresa para ver su panel completo con 9 pestañas:
+
+### 1. Pestaña Overview
+
+Estado de la empresa a primera vista:
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ Q1 Marketing Campaign                     [Edit] [Archive]
+│ ● Operating | Managed Mode | 14 days old               │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ Phase Progress:                                         │
+│ Briefing → Planning → Approved → [Operating] → Archive │
+│                                                         │
+│ Stats:                                                  │
+│ • 5 Team Members     • 12 Active Tasks                │
+│ • 8 Tasks Completed  • $42 spent this month           │
+│                                                         │
+│ CEO Status: Atlas is Active                            │
+│ Last Activity: 2 minutes ago                           │
+│                                                         │
+│ Milestones:                                            │
+│ ✅ Phase 1 complete                                    │
+│ 🔄 Phase 2 in progress                                 │
+│ ⏳ Phase 3 pending                                      │
+└─────────────────────────────────────────────────────────┘
+```
+
+**Acciones Rápidas:**
+
+- Ver Plan
+- Chatear con Equipo
+- Agregar Tarea
+- Ajustar Presupuesto
+
+### 2. Pestaña Plan
+
+Ver y gestionar el plan de negocio:
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ Business Plan                                          │
+├─────────────────────────────────────────────────────────┤
+│ Status: Approved ✓                                     │
+│ Submitted by: Atlas (3 days ago)                       │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ Executive Summary:                                     │
+│ Execute Q1 marketing campaign targeting enterprise    │
+│ customers through content marketing and social media. │
+│                                                         │
+│ Strategy:                                              │
+│ 1. Content creation (blog posts, case studies)        │
+│ 2. Social media campaign (LinkedIn, Twitter)          │
+│ 3. Lead generation through gated content              │
+│                                                         │
+│ Team Structure:                                        │
+│ • Marketing Strategist (Echo) — Campaign planning     │
+│ • Content Writer (Nova) — Blog posts                  │
+│ • Designer (Pixel) — Visuals                          │
+│ • Research Analyst (Scout) — Market analysis          │
+│                                                         │
+│ Timeline: 4 weeks                                      │
+│ Budget: $100/month                                     │
+└─────────────────────────────────────────────────────────┘
+```
+
+**Acciones:**
+
+- **Edit Plan** — Modificar antes de aprobación
+- **Approve** — Aceptar y mover a Operating
+- **Request Changes** — Enviar de vuelta al CEO con retroalimentación
+- **View History** — Ver iteraciones del plan
+
+### 3. Pestaña Team
+
+Organigrama y contratación:
+
+```
+Organization Chart
+
+          Atlas (CEO)
+             │
+    ┌────────┼────────┬────────┐
+    │        │        │        │
+  Echo     Nova     Pixel    Scout
+Content  Engineer Designer Research
+
+[➕ Hire Agent] [View Roster]
+```
+
+**Características:**
+
+- Vista de árbol visual de estructura de reportes
+- Clic en agentes para ver detalles
+- Contratar nuevos agentes del roster
+- Remover miembros del equipo
+- Reasignar roles
+
+**Flujo de Trabajo de Contratación:**
+
+1. CEO envía solicitud de contratación
+2. Tú revisas en la pestaña Approvals
+3. Aprueba → Agente generado y agregado
+4. Rechaza → CEO notificado con razón
+
+### 4. Pestaña Tasks
+
+Tablero Kanban específico de la empresa:
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ Tasks                                      [+ New Task] │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ Inbox      | En Progreso | Revisión   | Hecho         │
+│ ─────────────────────────────────────────────────────  │
+│ • T-12     | • T-10      | • T-8     | • T-1 ✓        │
+│ Research   | Write blog  | Edit      | Complete       │
+│   brief    |   post 1    │           │                │
+│   (Scout)  |   (Nova)    │  (Echo)   │                │
+│                                                         │
+│ • T-13     | • T-11      |           | • T-2 ✓        │
+│ Design     | Social      |           │ Complete       │
+│   landing  |   media     │           │                │
+│   page     │   plan      │           │                │
+│   (Pixel)  │   (Echo)    │           │                │
+└─────────────────────────────────────────────────────────┘
+```
+
+**Específico de Empresa:**
+
+- Solo muestra tareas de esta empresa
+- Agentes auto-asignados por el CEO
+- Tareas creadas automáticamente desde el plan
+- Tú puedes agregar tareas manuales también
+
+### 5. Pestaña Knowledge
+
+Base de conocimiento de la empresa:
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ Knowledge                                              │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ Executive Summary:                                     │
+│ [Edit]                                                 │
+│ Q1 Marketing Campaign targeting enterprise...          │
+│                                                         │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ Knowledge Entries:                           [+ Add]   │
+│                                                         │
+│ 📄 Brand Guidelines (Pixel)                           │
+│ 📄 Target Persona Research (Scout)                    │
+│ 📄 Campaign Messaging (Echo)                          │
+│ 📊 Competitor Analysis Report (Scout)                 │
+│                                                         │
+│ Deliverables:                                          │
+│ 📄 Blog Post - "AI Trends 2024" (Nova)               │
+│ 🖼️ Landing Page Design (Pixel)                        │
+└─────────────────────────────────────────────────────────┘
+```
+
+**Tipos:**
+
+- **Executive Summary** — Inyectado en el contexto de todos los agentes
+- **Knowledge Entries** — Guías, referencias, investigación
+- **Deliverables** — Trabajo completado auto-guardado aquí
+
+### 6. Pestaña Chat
+
+Conversación directa con agentes de la empresa:
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ Chat with Q1 Marketing Team                            │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ Atlas: Welcome! I'm Atlas, CEO of Q1 Marketing.       │
+│        How can we help you today?                     │
+│                                                         │
+│ You: What's the status of the blog posts?             │
+│                                                         │
+│ Echo: We've completed 2 of 4 blog posts.              │
+│      Post 3 is in review. Post 4 research is done.    │
+│                                                         │
+│ You: Great! Can I see the draft for post 3?           │
+│                                                         │
+│ Nova: Sharing now... [Blog_Post_3_Draft.md]           │
+│                                                         │
+│ [Type your message...]                                │
+└─────────────────────────────────────────────────────────┘
+```
+
+**Características:**
+
+- Habla con cualquier agente de la empresa
+- Los agentes pueden ver el historial de conversación
+- Comparte archivos y documentos
+- Obtén actualizaciones de estado
+- Da dirección o retroalimentación
+
+### 7. Pestaña Activity
+
+Todo lo que la empresa ha hecho:
+
+```
+Today
+14:35 — Echo completed task T-8 (Blog post edit)
+14:30 — Nova submitted T-10 for review
+11:15 — Atlas spawned Pixel (Designer)
+09:00 — Daily standup report generated
+
+Yesterday
+16:45 — Scout delivered competitor analysis
+15:20 — Echo created campaign messaging doc
+14:00 — Team standup completed
+```
+
+**Filtrar por:**
+
+- Agente
+- Tipo de evento
+- Rango de fechas
+- Solo relacionados con tareas
+
+### 8. Pestaña Approvals
+
+Decisiones pendientes en modo Gestionado:
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ Pending Approvals                                      │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ 🔵 Business Plan Approval                              │
+│    From: Atlas | Submitted: 2 hours ago               │
+│    [View Plan] [Approve] [Request Changes]            │
+│                                                         │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ 📋 History                                              │
+│ ✅ Business Plan — Approved (2 days ago)              │
+│ ✅ Hire Nova — Approved (2 days ago)                  │
+│ ✅ Hire Echo — Approved (2 days ago)                  │
+│ ❌ Hire Intern — Rejected (budget) (1 day ago)        │
+│                                                         │
+└─────────────────────────────────────────────────────────┘
+```
+
+**Tipos de Aprobación:**
+
+- Planes de negocio
+- Contratación de agentes
+- Aumentos de presupuesto
+- Modificaciones de plan
+
+### 9. Pestaña Costs
+
+Análisis de gastos:
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ Costs                                                  │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ This Month: $42.50 / $100.00 budget                    │
+│                                                         │
+│ By Agent:                                              │
+│ • Atlas (CEO)        $12.30  ████████░░               │
+│ • Nova (Content)     $15.40  ██████████░              │
+│ • Echo (Strategy)    $8.20   █████░░░░░               │
+│ • Pixel (Design)     $4.10   ██░░░░░░░░               │
+│ • Scout (Research)   $2.50   █░░░░░░░░░               │
+│                                                         │
+│ By Model:                                              │
+│ • Claude 3.5 Sonnet  $38.20  ████████████████████░    │
+│ • GPT-4              $4.30   ██░░░░░░░░░░░░░░░░░░░    │
+│                                                         │
+│ Trends:                                               │
+│ [Cost graph over time]                                │
+└─────────────────────────────────────────────────────────┘
+```
+
+## Cambiando Modos de Gestión
+
+### Gestionado → Autónomo
+
+**Cuando estés listo:**
+
+1. Ve a la pestaña Overview de la empresa
+2. Haz clic en "Mode: Managed" dropdown
+3. Selecciona "Autonomous"
+4. Confirma: "Are you sure? CEO will make decisions without approval."
+
+**El CEO puede entonces:**
+
+- Contratar agentes sin preguntar
+- Crear tareas automáticamente
+- Ejecutar planes independientemente
+- Reportar progreso periódicamente
+
+### Autónomo → Gestionado
+
+**Cuando quieras supervisión:**
+
+1. Ve a la pestaña Overview de la empresa
+2. Haz clic en "Mode: Autonomous" dropdown
+3. Selecciona "Managed"
+4. Todas las decisiones futuras requieren aprobación
+
+## Archivando Empresas
+
+Cuando una empresa completa su misión:
+
+1. **Haz clic en botón "Archive"**
+2. **Elige opción:**
+   - **Archive Only** — Preserva todo, detiene operaciones
+   - **Archive & Transfer** — Mueve tareas sin terminar a otra parte
+   - **Delete** — Remueve completamente (¡usa con cuidado!)
+
+3. **La empresa se mueve a estado Archived**
+   - Agentes liberados (pueden ser reutilizados)
+   - Tareas congeladas
+   - Base de conocimiento preservada
+   - Puede ser reactivada más tarde
+
+## Mejores Prácticas
+
+### Configurando Empresas
+
+1. **Misión Clara** — Objetivos específicos y alcanzables
+2. **CEO Correcto** — Elige basado en experiencia de dominio
+3. **Presupuesto Realista** — Comienza pequeño, escala
+4. **Cronograma Definido** — 2-8 semanas típico
+5. **Objetivos Medibles** — Metas específicas
+
+### Operando Empresas
+
+1. **Revisa Planes Cuidadosamente** — Establece la base para todo
+2. **Monitorea al Principio** — Observa las primeras tareas de cerca
+3. **Construye Base de Conocimiento** — Guarda documentos importantes
+4. **Revisa Costos Semanalmente** — Evita sorpresas
+5. **Comunícate Regularmente** — Usa la pestaña Chat para actualizaciones
+
+### Aprobando Trabajo
+
+1. **Revisiones Oportunas** — No dejes tareas sentadas en Revisión Humana
+2. **Retroalimentación Clara** — Solicitudes específicas para cambios
+3. **Documenta Decisiones** — Agrega notas a aprobaciones
+4. **Confía pero Verifica** — Revisa al azar trabajo autónomo
+
+## Flujos de Trabajo Comunes
+
+### Lanzando una Campaña
+
+1. Crea empresa "Campaña Marzo"
+2. Asigna Atlas como CEO
+3. Establece objetivos: "Generar 100 leads"
+4. Atlas envía plan con estructura de equipo
+5. Aprueba plan
+6. Atlas contrata Echo (Strategy), Nova (Content), Pixel (Design)
+7. Las tareas aparecen en el tablero
+8. Revisa entregables en la pestaña Knowledge
+9. Aprueba contenido final
+10. Archiva empresa cuando termine
+
+### Ejecutando Soporte Continuo
+
+1. Crea empresa "Customer Support"
+2. Establece estado permanente (sin fecha de fin)
+3. Atlas contrata agentes de Soporte
+4. Conecta a canales de soporte
+5. Los agentes manejan tickets como tareas
+6. Construye base de conocimiento desde soluciones
+7. Revisa análisis mensuales
+8. Mantén ejecutándose indefinidamente
+
+## Solución de Problemas
+
+**Empresa Atascada en Planning:**
+
+- El CEO puede necesitar más información
+- Revisa la pestaña Chat para preguntas
+- Proporciona aclaración
+- O edita el briefing y reenvía
+
+**Tareas No Se Mueven:**
+
+- Revisa si los agentes están Online
+- Verifica que las tareas no estén Bloqueadas
+- Mira la pestaña Activity para errores
+- Puede necesitar generar más agentes
+
+**Costos Demasiado Altos:**
+
+- Revisa la pestaña Costs para desglose
+- Considera modelos de LLM más baratos
+- Reduce cantidad de agentes
+- Establece límites de presupuesto más estrictos
+
+**Aprobaciones Acumulándose:**
+
+- Revisa la pestaña Approvals regularmente
+- Separa tiempo para revisiones
+- Considera cambiar a Autónomo
+- O contrata menos agentes
+
+## Siguientes Pasos
+
+- Domina [Gestión de Tareas](task-management)
+- Aprende sobre [Conocimiento y Memoria](knowledge-memory)
+- Configura [Automatización](automation)

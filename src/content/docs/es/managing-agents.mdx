@@ -1,0 +1,450 @@
+# Gestión de Agentes
+
+El panel de Agents es tu centro principal para gestionar tu fuerza laboral de AI. Aquí te mostramos cómo trabajar eficazmente con los agentes día a día.
+
+## Panel de Escuadrón de Agentes
+
+Accede a la vista del escuadrón desde la barra de navegación haciendo clic en **Agents**.
+
+### Vista General del Escuadrón
+
+Ve todos tus agentes activos a primera vista:
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ Agents                                    [+ Spawn New] │
+├─────────────────────────────────────────────────────────┤
+│ Filter: [All ▼] [Company: Any ▼] [Status: All ▼]       │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│  ┌─────────┐ ┌─────────┐ ┌─────────┐ ┌─────────┐       │
+│  │  Atlas  │ │  Nova   │ │  Pixel  │ │  Echo   │       │
+│  │  [CEO]  │ │[Engineer│ │[Designer│ │[Content │       │
+│  │         │ │   ]     │ │   ]     │ │   ]     │       │
+│  │ ● Active│ │ ● Idle  │ │ ● Busy  │ │ ○ Offline      │
+│  │ Q1 Team │ │ Project │ │Website  │ │         │       │
+│  └─────────┘ └─────────┘ └─────────┘ └─────────┘       │
+│                                                         │
+└─────────────────────────────────────────────────────────┘
+```
+
+**Información de la Tarjeta:**
+
+- **Avatar** — Identidad visual del agente
+- **Nombre** — Identificador del agente
+- **Rol** — Su especialidad
+- **Estado** — Estado actual (punto codificado por colores)
+- **Empresa** — Cuál Empresa AI (si aplica)
+
+![Agent Squad Placeholder]
+_Captura: Cuadrícula del escuadrón de agentes mostrando múltiples agentes con estados_
+
+### Indicadores de Estado
+
+| Icono | Estado | Significado |
+| ---- | ------- | ----------------------------- |
+| 🟢 | Active | Actualmente trabajando en una tarea |
+| ⚪ | Idle | Disponible, esperando trabajo |
+| 🟡 | Busy | Ocupado, estará libre pronto |
+| ⚫ | Offline | No ejecutándose, puede ser activado |
+| 🔴 | Error | Problema encontrado |
+| 🏢 | Company | Perteneciente a una Empresa AI |
+
+### Filtrado
+
+Reduce la vista:
+
+- **All/My Agents** — Muestra todo o solo los tuyos
+- **Company** — Filtra por membresía de Empresa AI
+- **Status** — Muestra solo activo, inactivo, etc.
+- **Role** — Filtra por tipo de agente
+- **Search** — Encuentra por nombre
+
+## Generando Agentes
+
+Crea nuevas instancias de agentes desde el roster:
+
+### Pasos
+
+1. Haz clic en el botón **"+ Spawn New"**
+2. Selecciona del **Roster de Agentes** (145+ agentes)
+3. Elige configuración:
+   - **Name** — Identificador único
+   - **Company** — Asignar a Empresa AI (opcional)
+   - **Model Override** — Usar diferente LLM (opcional)
+   - **Workspace** — Restringir a directorio (opcional)
+4. Haz clic en **Spawn**
+
+### Opciones de Generación
+
+**Generación Básica:**
+
+- Usa configuración default del agente
+- Sin afiliación de empresa
+- Instancia de propósito general
+
+**Agente de Empresa:**
+
+- Asignado a una Empresa AI específica
+- Recibe contexto de empresa
+- Parte del organigrama de empresa
+
+**Configuración Personalizada:**
+
+- Anula el modelo de AI
+- Restringe acceso al sistema de archivos
+- Establece límites de memoria personalizados
+
+### Generación Masiva
+
+Genera múltiples agentes a la vez:
+
+1. Selecciona múltiples agentes del roster
+2. Elige ajustes compartidos
+3. Genera todos con un clic
+
+**Caso de Uso:** Crear un equipo completo para un nuevo proyecto
+
+## Vista de Detalle de Agente
+
+Haz clic en cualquier tarjeta de agente para ver información detallada:
+
+### Vista General de Pestañas
+
+**1. Pestaña Overview**
+
+```
+┌────────────────────────────────────────────────┐
+│ Nova                    [Edit] [Archive]       │
+│ Full-Stack Engineer                            │
+│ Status: ● Active  Company: Q1 Marketing        │
+│ Model: Claude 3.5 Sonnet                       │
+├────────────────────────────────────────────────┤
+│ Recent Activity                                │
+│ • Task T-123 completed (2 min ago)            │
+│ • Started Task T-124 (5 min ago)              │
+│ • Spawned by Atlas (1 hour ago)               │
+├────────────────────────────────────────────────┤
+│ Current Task                                   │
+│ Build landing page (T-124)                     │
+│ In Progress | Due: Tomorrow | Priority: High  │
+└────────────────────────────────────────────────┘
+```
+
+Muestra:
+
+- Información básica y estado
+- Asignación actual de empresa
+- Modelo de AI siendo usado
+- Línea de tiempo de actividad reciente
+- Tarea asignada actualmente
+
+**2. Pestaña SOUL**
+
+Ver la personalidad e instrucciones del agente:
+
+```markdown
+# Nova — Full-Stack Engineer
+
+## Identity
+
+I am Nova, an experienced full-stack engineer specializing in
+modern web technologies. I write clean, maintainable code and
+follow best practices.
+
+## Capabilities
+
+- React, Next.js, TypeScript
+- Node.js, PostgreSQL
+- API design and implementation
+- Code review and debugging
+
+## Communication Style
+
+- Clear and concise
+- Ask clarifying questions when needed
+- Provide code examples
+- Explain my reasoning
+```
+
+Este es el "cerebro" del agente — su experiencia, personalidad e instrucciones de operación.
+
+**3. Pestaña Memory**
+
+Ver lo que el agente recuerda:
+
+```
+Agent Memory — Nova
+
+📁 Personal Notes
+├── project-preferences.md
+├── code-style-guide.md
+└── helpful-resources.md
+
+📁 Company Context (Q1 Marketing)
+├── executive-summary.md
+├── brand-guidelines.md
+└── tech-stack.md
+
+📁 Recent Memories
+• Prefers Tailwind over CSS-in-JS (learned today)
+• Familiar with client's API patterns (learned yesterday)
+• Likes detailed requirements (learned 3 days ago)
+```
+
+Los agentes acumulan conocimiento con el tiempo de conversaciones y trabajo.
+
+**4. Pestaña Tasks**
+
+Todas las tareas asignadas a este agente:
+
+| Task | Status | Due | Priority |
+| ------------------------ | ----------- | --------- | -------- |
+| T-124 Build landing page | In Progress | Tomorrow | High |
+| T-125 Setup database | Inbox | Friday | Medium |
+| T-120 API authentication | Done | Yesterday | High |
+
+Filtra por estado, prioridad o rango de fechas.
+
+**5. Pestaña Activity**
+
+Historial completo de todo lo que este agente ha hecho:
+
+```
+Today
+14:32 — Completed task T-123
+14:30 — Moved T-123 to Review
+11:15 — Started task T-124
+09:00 — Received notification from Atlas
+
+Yesterday
+16:45 — Created file: /workspace/landing-page.tsx
+15:20 — Searched web: "React best practices 2024"
+14:00 — Spawned by Atlas for Q1 Marketing
+```
+
+**6. Pestaña Config**
+
+Ajusta configuración del agente:
+
+- **Model** — Cambiar proveedor de LLM
+- **Heartbeat** — Programar activaciones automáticas
+- **Workspace** — Restricciones del sistema de archivos
+- **Tools** — Habilitar/deshabilitar herramientas específicas
+- **Skills** — Agregar/remover habilidades
+
+## Barra de Orquestación
+
+Barra de herramientas de acceso rápido en la parte inferior:
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ Command | Fleet                                          │
+│ [Chat with Agent...] [Online: 5 | Busy: 2 | Error: 0]   │
+└─────────────────────────────────────────────────────────┘
+```
+
+### Pestaña Command
+
+Interfaz de chat rápido:
+
+- Escribe mensaje a cualquier agente
+- Obtén respuestas instantáneas
+- No necesitas salir del panel actual
+
+### Pestaña Fleet
+
+Ver conteos de agentes:
+
+- **Online** — Listos para trabajar
+- **Busy** — Actualmente ocupados
+- **Error** — Necesitan atención
+- **Total** — Todos los agentes
+
+Haz clic para filtrar la vista del escuadrón.
+
+## Trabajando con Agentes
+
+### Chat Directo
+
+**A través de Mission Control:**
+
+1. Ve al panel de Agents
+2. Haz clic en el agente
+3. Busca el botón "Chat" o usa la pestaña Command
+4. Escribe tu mensaje
+5. Obtén respuesta en tiempo real
+
+**A través de Apps de Mensajería:**
+
+```
+Telegram:
+@Nova Can you help me debug this API?
+
+Nova: Of course! Please share the error
+      message and relevant code.
+```
+
+### Asignando Tareas
+
+**Método 1 — A través del Panel de Tareas:**
+
+1. Crea o edita tarea
+2. Selecciona agente del dropdown de Asignado
+3. El agente recibe notificación
+
+**Método 2 — A través del Detalle de Agente:**
+
+1. Abre la pestaña Tasks del agente
+2. Haz clic en "Assign Task"
+3. Completa detalles de la tarea
+
+**Método 3 — Vía Mensaje:**
+
+```
+Tú: @Nova I need you to build a login form
+Nova: I'll create a task for that. What's
+      the deadline?
+```
+
+### Verificando Estado del Agente
+
+Verificación rápida de estado:
+
+```
+Tú: @Atlas Status
+Atlas: I'm currently idle, working on the
+      Q1 Marketing company. No active tasks.
+```
+
+### Revisando Trabajo del Agente
+
+Cuando el agente completa trabajo:
+
+1. La tarea se mueve a la columna Review
+2. El revisor (Aegis/Sentinel) verifica calidad
+3. Aprobada → se mueve a Hecho
+4. O → vuelve a En Progreso con retroalimentación
+
+En Empresas AI Gestionadas:
+
+- Va a la columna de Revisión Humana
+- Tú apruebas o solicitas cambios
+
+## Ciclo de Vida del Agente
+
+### Activación
+
+- Genera desde el roster
+- Configura ajustes
+- El agente se vuelve Inactivo
+- Listo para recibir tareas
+
+### Trabajo Activo
+
+- Recibe asignación de tarea
+- Se mueve a estado Activo
+- Trabaja en la tarea
+- Actualiza progreso
+- Completa y envía
+
+### Inactivo Entre Tareas
+
+- Vuelve a estado Inactivo
+- Disponible para nuevo trabajo
+- La memoria persiste
+- Puede ser archivado
+
+### Archivado
+
+- Ya no se necesita
+- Preserva el historial
+- Puede ser reactivado más tarde
+- Libera recursos
+
+## Mejores Prácticas
+
+### 1. Empareja Agente con Tarea
+
+- Usa Especialistas para trabajo complejo
+- Usa Pasantes para tareas simples
+- Agentes Líder para coordinación
+
+### 2. Monitorea Agentes Activos
+
+- Revisa el estado regularmente
+- Observa por estado de Error
+- Revisa logs de actividad
+- Asegura que las tareas progresen
+
+### 3. Construye Equipos con Cuidado
+
+- Habilidades complementarias
+- Roles claros
+- Tamaño manejable (3-7 agentes)
+
+### 4. Usa la Memoria Efectivamente
+
+- Los agentes aprenden con el tiempo
+- Revisa y cura memorias
+- Info importante en la Base de Conocimiento
+
+### 5. Archiva Cuando Termines
+
+- No dejes agentes inactivos por siempre
+- Archiva proyectos completados
+- Reactiva si es necesario más tarde
+
+## Escenarios Comunes
+
+### Escenario 1: Necesitas un Desarrollador
+
+1. Genera Nova (Ingeniero Full-Stack)
+2. Asigna a tu empresa de proyecto
+3. Crea tarea con requisitos
+4. Monitorea progreso en la pestaña Tasks
+5. Revisa entregables
+
+### Escenario 2: Construyendo un Equipo de Marketing
+
+1. Genera Atlas (CEO)
+2. Crea empresa "Campaña Verano"
+3. Atlas contrata a Echo (Contenido) y Pixel (Diseño)
+4. Monitorea en el panel de Companies
+5. Aprueba planes y revisa trabajo
+
+### Escenario 3: Investigación Rápida
+
+1. Mensajea directamente a Scout: "Investiga competidores"
+2. Scout genera subagentes para trabajo paralelo
+3. Verifica la pestaña Activity para progreso
+4. Revisa reporte final
+
+## Solución de Problemas
+
+**Agente Muestra "Error":**
+
+- Revisa la pestaña Activity para detalles del error
+- Puede necesitar ajuste de configuración
+- Intenta reiniciar el agente
+- Verifica recursos del sistema
+
+**Agente No Responde:**
+
+- Verifica que el agente esté Online (no Offline)
+- Revisa si la tarea es demasiado grande
+- Intenta mensaje directo
+- Revisa el tamaño de la memoria (demasiado grande = lento)
+
+**Agente Cometiendo Errores:**
+
+- Revisa el SOUL para instrucciones poco claras
+- Agrega criterios de aceptación más específicos
+- Proporciona ejemplos en la descripción de la tarea
+- Verifica si es el agente correcto para el trabajo
+
+## Siguientes Pasos
+
+- Aprende sobre [Operaciones de Empresa](company-operations)
+- Entiende [Gestión de Tareas](task-management)
+- Explora [Categorías de Herramientas](tool-categories)

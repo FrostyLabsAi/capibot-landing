@@ -1,0 +1,926 @@
+{
+  "nav": {
+    "features": "Recursos",
+    "agents": "Agentes",
+    "integrations": "Integrações",
+    "pricing": "Preços",
+    "joinWaitlist": "Entrar na Lista de Espera",
+    "docs": "Docs"
+  },
+  "hero": {
+    "tag": "Plataforma de Orquestração de Agentes de IA",
+    "heading": "Build It. Ship It. ",
+    "headingAccent": "Chill.",
+    "description": "De um único assistente de IA a uma empresa autônoma completa — o CapiBot oferece 36 ferramentas integradas, 8 pacotes de skills e controle total sobre o nível de autonomia dos seus agentes. Privado. Seguro. Seu.",
+    "ctaPrimary": "Entrar na Lista de Espera",
+    "ctaSecondary": "Ver O Que Ele Pode Fazer",
+    "badges": {
+      "skills": "Skills",
+      "tools": "Ferramentas",
+      "providers": "Provedores",
+      "channels": "Canais"
+    },
+    "trustPills": {
+      "quickSetup": "Configuração Sem Complicações",
+      "privateData": "Privado e Seguro",
+      "noVendorLock": "Cancele Quando Quiser"
+    },
+    "floatingBadges": {
+      "agents": "No Ar em 5 Min",
+      "telegram": "150 Agentes Integrados",
+      "missionControl": "Mission Control",
+      "aiCompanies": "AI Companies"
+    }
+  },
+  "trustBar": {
+    "builtWith": "Construído Com",
+    "tech": {
+      "anthropic": "Anthropic",
+      "google": "Google",
+      "postgresql": "PostgreSQL",
+      "puppeteer": "Puppeteer",
+      "langchain": "LangChain",
+      "ollama": "Ollama",
+      "composio": "Composio"
+    }
+  },
+  "aiCompany": {
+    "tag": "O Que Você Pode Construir",
+    "heading": "Do assistente à empresa autônoma",
+    "subheading": "Comece simples com um chat de IA pessoal, escale para uma equipe multi-agente ou lançe uma empresa de IA totalmente autônoma — tudo em uma plataforma.",
+    "useCases": [
+      {
+        "title": "Assistente de IA Pessoal",
+        "description": "Conecte Telegram ou WhatsApp e converse com um único agente. Agende tarefas, pesquise na web, gerencie seu calendário.",
+        "level": "Simples"
+      },
+      {
+        "title": "Esquadrão Multi-Agente",
+        "description": "Monte uma equipe de especialistas — desenvolvedores, pesquisadores, escritores — e deixe-os colaborar em projetos.",
+        "level": "Intermediário"
+      },
+      {
+        "title": "Empresa de IA Autônoma",
+        "description": "Um agente CEO elabora um plano de negócios, contrata uma equipe, cria tarefas e executa — com supervisão humana quando você desejar.",
+        "level": "Avançado"
+      }
+    ],
+    "flagship": "Carro-Chefe",
+    "lifecycleTitle": "Ciclo de Vida da Empresa de IA",
+    "phases": {
+      "briefing": "Briefing",
+      "planning": "Planejamento",
+      "approved": "Aprovado",
+      "operating": "Operando"
+    },
+    "features": [
+      {
+        "title": "Agente CEO",
+        "description": "Elabora planos, contrata agentes, delega tarefas"
+      },
+      {
+        "title": "Supervisão Humana",
+        "description": "Modo gerenciado ou totalmente autônomo"
+      },
+      {
+        "title": "Roster de 150 Agentes",
+        "description": "12+ categorias para contratar"
+      },
+      {
+        "title": "Rastreamento de Tarefas",
+        "description": "Quadros Kanban, revisões de qualidade, standups"
+      },
+      {
+        "title": "Fluxo de Aprovação",
+        "description": "Planos, contratações e aprovações de orçamento"
+      },
+      {
+        "title": "Base de Conhecimento",
+        "description": "Documentos injetados no contexto do agente"
+      }
+    ],
+    "cta": "Entrar na Lista de Espera",
+    "companyImgAlt": "CapiBot AI Company — visão geral com progresso de fases, desempenho da equipe e pipeline de tarefas"
+  },
+  "statsBar": {
+    "items": [
+      {
+        "label": "Ferramentas Integradas"
+      },
+      {
+        "label": "Pacotes de Skills"
+      },
+      {
+        "label": "Provedores de IA"
+      },
+      {
+        "label": "Canais"
+      }
+    ]
+  },
+  "messaging": {
+    "tag": "4 Canais de Mensagem",
+    "heading": "Fale com sua IA em qualquer lugar",
+    "subheading": "Conecte-se via Telegram, WhatsApp, Slack ou chat web integrado. Seus agentes lidam com voz, mídia e mensagens enriquecidas em todas as plataformas.",
+    "channels": [
+      {
+        "name": "Telegram",
+        "features": [
+          "Transcrição de mensagens de voz via Groq",
+          "Fotos, documentos e manuseio de mídia",
+          "Integração com framework de bot Grammy",
+          "Lista de permissões de usuários com indicadores de digitação"
+        ]
+      },
+      {
+        "name": "WhatsApp",
+        "features": [
+          "Integração com WhatsApp Cloud API",
+          "Documentos, imagens, áudio e vídeo",
+          "Suporte a mensagens em lote",
+          "Verificação de webhook com HMAC"
+        ]
+      },
+      {
+        "name": "Slack",
+        "features": [
+          "Mensagens com reconhecimento de thread",
+          "Formatação rica de mensagens",
+          "Integração com WebClient API",
+          "Suporte a canais e DMs"
+        ]
+      },
+      {
+        "name": "Web Chat",
+        "features": [
+          "Chat integrado no Mission Control",
+          "Histórico completo de conversas",
+          "Conexão WebSocket em tempo real",
+          "Conversa direta com qualquer agente"
+        ]
+      }
+    ],
+    "chatHeader": "CapiBot",
+    "online": "Online"
+  },
+  "missionControl": {
+    "tag": "Painel Profissional",
+    "heading": "Comando total com ",
+    "headingAccent": "Mission Control",
+    "subheading": "Um painel de administração completo com 28 painéis de interface. Monitore, gerencie e configure toda a sua operação de IA em um só lugar.",
+    "tabs": {
+      "overview": "Visão Geral",
+      "agents": "Agentes",
+      "tasks": "Tarefas",
+      "memory": "Memória",
+      "skills": "Skills",
+      "cron": "Cron"
+    },
+    "tabFeatures": {
+      "overview": [
+        "Feed de atividades em tempo real com atualizações ao vivo",
+        "Saúde do sistema e status de provedores",
+        "Ações rápidas e centro de notificações"
+      ],
+      "agents": [
+        "Navegue 150 agentes em 12 categorias",
+        "Páginas de detalhes do agente com histórico de sessão",
+        "Ative, configure e monitore agentes"
+      ],
+      "tasks": [
+        "Quadro Kanban com drag-and-drop",
+        "Fluxo de trabalho de revisão de qualidade",
+        "Histórico de tarefas e entregáveis"
+      ],
+      "memory": [
+        "Navegue e pesquise memórias armazenadas",
+        "Busca semântica com pgvector",
+        "Estatísticas e gerenciamento de memória"
+      ],
+      "skills": [
+        "Visão geral de skills instaladas",
+        "Configuração e teste de skills",
+        "Navegador de skills da comunidade"
+      ],
+      "cron": [
+        "Gerenciamento de tarefas agendadas",
+        "Construtor de expressões Cron",
+        "Histórico de execução e logs"
+      ]
+    },
+    "panelSuffix": "Painel",
+    "features": [
+      {
+        "title": "Feed ao Vivo em Tempo Real",
+        "description": "Assista às atividades dos agentes conforme acontecem — chamadas de ferramentas, mensagens, atualizações de tarefas e eventos do sistema em tempo real."
+      },
+      {
+        "title": "Quadro Kanban de Tarefas",
+        "description": "Gerenciamento de tarefas com drag-and-drop, rastreamento de status, revisões de qualidade e anexos de entregáveis."
+      },
+      {
+        "title": "Navegador de Memória",
+        "description": "Pesquise e gerencie a memória persistente da sua IA. Busca semântica com pgvector e embeddings Ollama."
+      },
+      {
+        "title": "Segurança e Auditoria",
+        "description": "Trilha de auditoria completa de cada ação. Gerenciamento de chaves API, rastreamento de sessões e controle de acesso."
+      },
+      {
+        "title": "Notificações Inteligentes",
+        "description": "Alertas contextuais para conclusões de tarefas, solicitações de aprovação, erros e atividades de agentes."
+      },
+      {
+        "title": "Agendador Cron",
+        "description": "Agende tarefas recorrentes de agentes com expressões cron. Construtor visual e histórico de execução."
+      },
+      {
+        "title": "Gerenciador de Webhooks",
+        "description": "Configure webhooks de entrada e saída. Conecte serviços externos para acionar fluxos de trabalho de agentes."
+      },
+      {
+        "title": "Configuração Avançada",
+        "description": "Ajuste prioridades de provedores, seleção de modelos, permissões de ferramentas e configurações de todo o sistema."
+      }
+    ]
+  },
+  "multiAgent": {
+    "tag": "Arquitetura Multi-Agente",
+    "heading": "Orquestração multi-agente, uma plataforma",
+    "subheading": "Um sistema de agentes hierárquico com CEOs, especialistas e estagiários — organizados em 12+ categorias profissionais.",
+    "hierarchy": "Hierarquia:",
+    "tiers": {
+      "lead": "Líder / CEO",
+      "specialist": "Especialista",
+      "intern": "Estagiário"
+    },
+    "tierSpawned": "(gerado sob demanda)",
+    "rosterTitle": "Roster de Agentes — agentes pré-construídos em 12 categorias",
+    "categories": [
+      "CEOs",
+      "Engenharia",
+      "Design",
+      "Marketing",
+      "Vendas",
+      "Suporte",
+      "Produto",
+      "Game Dev",
+      "Spatial XR",
+      "QA e Testes",
+      "Orquestração",
+      "Especializados"
+    ],
+    "agents": [
+      {
+        "name": "Atlas",
+        "role": "CEO",
+        "tier": "Líder",
+        "description": "Líder estratégico que elabora planos de negócios, contrata equipes e orquestra operações da empresa.",
+        "capabilities": [
+          "Planejamento de negócios",
+          "Contratação de equipe",
+          "Delegação de tarefas",
+          "Supervisão estratégica"
+        ],
+        "example": "Elabore um plano de negócios para um produto SaaS de análise"
+      },
+      {
+        "name": "Nova",
+        "role": "Engenheira Full-Stack",
+        "tier": "Especialista",
+        "description": "Constrói recursos de ponta a ponta — de esquemas de banco de dados a endpoints de API a componentes frontend.",
+        "capabilities": [
+          "Geração de código",
+          "Design de arquitetura",
+          "Revisão de código",
+          "Depuração"
+        ],
+        "example": "Construa uma API REST para autenticação de usuários com JWT"
+      },
+      {
+        "name": "Pixel",
+        "role": "Designer UI/UX",
+        "tier": "Especialista",
+        "description": "Cria interfaces de usuário, sistemas de design e protótipos com foco em usabilidade.",
+        "capabilities": [
+          "Design de UI",
+          "Wireframing",
+          "Sistemas de design",
+          "Acessibilidade"
+        ],
+        "example": "Projete um layout de dashboard para um produto de análise"
+      },
+      {
+        "name": "Echo",
+        "role": "Estrategista de Conteúdo",
+        "tier": "Especialista",
+        "description": "Escreve textos, posts de blog, documentação e conteúdo de marketing alinhado com a voz da marca.",
+        "capabilities": [
+          "Copywriting",
+          "Estratégia de conteúdo",
+          "SEO writing",
+          "Voz da marca"
+        ],
+        "example": "Escreva um post de blog de lançamento para nosso novo recurso"
+      },
+      {
+        "name": "Scout",
+        "role": "Analista de Pesquisa",
+        "tier": "Especialista",
+        "description": "Conduz pesquisa de mercado, análise competitiva e sintetiza descobertas em insights acionáveis.",
+        "capabilities": [
+          "Pesquisa de mercado",
+          "Análise competitiva",
+          "Síntese de dados",
+          "Análise de tendências"
+        ],
+        "example": "Analise os 5 principais concorrentes no espaço de agentes de IA"
+      }
+    ],
+    "capabilitiesLabel": "Capacidades",
+    "liveOutput": "Saída de Tarefa ao Vivo",
+    "systemFeatures": [
+      {
+        "title": "Personalidades SOUL.md",
+        "description": "Cada agente tem uma identidade única, expertise e instruções de operação"
+      },
+      {
+        "title": "Geração de Subagentes",
+        "description": "CEOs contratam agentes dinamicamente e geram especialistas para tarefas complexas"
+      },
+      {
+        "title": "Comunicação entre Agentes",
+        "description": "Agentes se enviam mensagens diretamente e coordenam via notificações"
+      }
+    ]
+  },
+  "tools": {
+    "tag": "Ferramentas e Capacidades",
+    "heading": "28+ ferramentas à disposição dos seus agentes",
+    "subheading": "De edição de arquivos a automação de navegador, seus agentes têm tudo que precisam para fazer trabalho real.",
+    "categories": [
+      {
+        "title": "Operações de Arquivo",
+        "count": "4",
+        "tools": [
+          "read_file",
+          "write_file",
+          "edit_file",
+          "list_directory"
+        ]
+      },
+      {
+        "title": "Web e Busca",
+        "count": "4",
+        "tools": [
+          "web_search",
+          "web_fetch",
+          "web_browse",
+          "screenshot"
+        ]
+      },
+      {
+        "title": "Shell e Sistema",
+        "count": "4",
+        "tools": [
+          "shell_exec",
+          "spawn_process",
+          "cron_schedule",
+          "system_info"
+        ]
+      },
+      {
+        "title": "Comunicação",
+        "count": "4",
+        "tools": [
+          "send_message",
+          "notify_agent",
+          "broadcast",
+          "webhook_call"
+        ]
+      },
+      {
+        "title": "Memória e Conhecimento",
+        "count": "4",
+        "tools": [
+          "memory_store",
+          "memory_search",
+          "company_docs",
+          "vault_read"
+        ]
+      },
+      {
+        "title": "Integrações",
+        "count": "4",
+        "tools": [
+          "composio",
+          "google_workspace",
+          "github",
+          "browser_action"
+        ]
+      }
+    ],
+    "toolSingular": "ferramenta",
+    "toolPlural": "ferramentas",
+    "securityBanner": "80+ padrões de shell perigosos bloqueados por padrão. Design com segurança em primeiro lugar."
+  },
+  "skills": {
+    "tag": "Integrações e Skills",
+    "heading": "Milhares de apps. Uma biblioteca de skills em crescimento.",
+    "subheading": "Conecte seus agentes às ferramentas que você já usa via Composio, e ensine novas capacidades com skills da comunidade.",
+    "composioTitle": "Composio",
+    "composioDesc": "Milhares de apps via API unificada. Liste, descubra e execute ações de qualquer conversa.",
+    "composioMore": "+ milhares mais",
+    "composioCtaText": "Obtenha acesso antecipado",
+    "skillsTitle": "Ecossistema de Skills",
+    "skillsGrowing": "Crescendo",
+    "skillsDesc": "Agentes aprendem novas capacidades de arquivos de skill Markdown — sem necessidade de mudanças de código. Acesse dezenas de milhares de skills contribuídas pela comunidade, ou crie as suas.",
+    "skillsList": [
+      {
+        "name": "Google Workspace",
+        "desc": "Gmail, Docs, Sheets, Calendar, Drive"
+      },
+      {
+        "name": "GitHub",
+        "desc": "Issues, PRs, repos, actions"
+      },
+      {
+        "name": "Cron Jobs",
+        "desc": "Tarefas recorrentes agendadas"
+      },
+      {
+        "name": "Weather",
+        "desc": "Condições atuais e previsões"
+      },
+      {
+        "name": "Web Scraping",
+        "desc": "Extraia dados de qualquer página web"
+      },
+      {
+        "name": "Notion",
+        "desc": "Páginas, bancos de dados e blocos"
+      },
+      {
+        "name": "Slack",
+        "desc": "Mensagens, canais e threads"
+      }
+    ],
+    "skillsMore": "+ registro da comunidade com milhares mais"
+  },
+  "memory": {
+    "tag": "Memória e Inteligência",
+    "heading": "Sua IA lembra de tudo",
+    "subheading": "Conhecimento persistente que fica mais inteligente a cada conversa. Com PostgreSQL e pgvector.",
+    "features": [
+      {
+        "title": "Histórico de Conversas",
+        "description": "Cada mensagem, chamada de ferramenta e resposta é armazenada e pesquisável. Contexto completo para cada interação."
+      },
+      {
+        "title": "Busca Semântica",
+        "description": "Encontre memórias relevantes por significado, não apenas por palavras-chave. Com embeddings pgvector via Ollama."
+      },
+      {
+        "title": "SOUL.md e USER.md",
+        "description": "Arquivos persistentes de personalidade e preferências de usuário que moldam como seu agente pensa e responde."
+      },
+      {
+        "title": "Memória Compartilhada",
+        "description": "Agentes compartilham um espaço de memória virtualizado com PostgreSQL. Conhecimento flui entre sessões."
+      }
+    ],
+    "codeTitle": "Busca Semântica de Memória",
+    "searchModes": {
+      "hybrid": "Híbrida",
+      "vector": "Vetorial",
+      "text": "Texto"
+    },
+    "searchModeLabel": "Modo de Busca"
+  },
+  "providers": {
+    "tag": "Suporte Multi-Provedor",
+    "heading": "Escolha seu LLM. Ou escolha todos.",
+    "subheading": "Integrações nativas com failover automático. Misture provedores em nuvem e locais para otimização de custos e privacidade.",
+    "providers": [
+      {
+        "name": "Anthropic",
+        "status": "Suportado"
+      },
+      {
+        "name": "Google Gemini",
+        "status": "Suportado"
+      },
+      {
+        "name": "Ollama",
+        "status": "Suportado"
+      },
+      {
+        "name": "Kimi (Moonshot)",
+        "status": "Suportado"
+      },
+      {
+        "name": "GLM",
+        "status": "Suportado"
+      },
+      {
+        "name": "MiniMax",
+        "status": "Suportado"
+      }
+    ],
+    "failoverTitle": "Failover Automático",
+    "failoverZeroDowntime": "Zero downtime",
+    "configTitle": "Prioridade Configurável",
+    "configDesc": "Defina sua ordem de provedores preferida. Se um falhar, o CapiBot troca instantaneamente para o próximo. Suporte a substituição de modelo por agente."
+  },
+  "pricing": {
+    "tag": "Preços",
+    "heading": "Escolha seu nível de comando",
+    "subheading": "Preços simples, sem surpresas. Comece em minutos e escale conforme cresce.",
+    "preLaunch": "Preço de pré-lançamento.",
+    "preLaunchDesc": "Entre na lista de espera para garantir taxas de membro fundador quando lançarmos.",
+    "monthly": "Mensal",
+    "annual": "Anual",
+    "save": "Economize 20%",
+    "tiers": [
+      {
+        "name": "Starter",
+        "description": "Tudo que você precisa para começar rapidamente. Sem dores de cabeça de operações.",
+        "price": "$19",
+        "priceAnnual": "$15",
+        "priceDetail": "/mês",
+        "features": [
+          "Todas as 36 ferramentas integradas",
+          "Canais Telegram e Web Chat",
+          "Painel Mission Control",
+          "Memória e busca semântica",
+          "Integrações Composio",
+          "Suporte por email"
+        ]
+      },
+      {
+        "name": "Pro",
+        "description": "Para equipes e usuários avançados que precisam de todos os canais e automação completa.",
+        "price": "$49",
+        "priceAnnual": "$39",
+        "priceDetail": "/mês",
+        "features": [
+          "Tudo no Starter",
+          "Todos os 4 canais de mensagem",
+          "Recurso AI Companies",
+          "Automação de webhook e cron",
+          "Failover automático de provedor",
+          "Suporte por email prioritário"
+        ]
+      },
+      {
+        "name": "Scale",
+        "description": "Infraestrutura dedicada, SLAs personalizados e suporte hands-on para equipes maiores.",
+        "price": "$149",
+        "priceAnnual": "$119",
+        "priceDetail": "/mês",
+        "features": [
+          "Tudo no Pro",
+          "Infraestrutura dedicada",
+          "SLA personalizado",
+          "Integração SSO e SAML",
+          "Engenheiro de suporte dedicado",
+          "Garantia de uptime 99,9%"
+        ]
+      }
+    ],
+    "comparisonTitle": "Comparação de Recursos",
+    "comparisonFeatures": [
+      "Orquestração de Agentes",
+      "Todas as Ferramentas Integradas",
+      "Painel Mission Control",
+      "Canais de Mensagem",
+      "Memória e pgvector",
+      "Integração Composio",
+      "Ecossistema de Skills",
+      "AI Companies",
+      "Agendamento Cron",
+      "Suporte a Webhooks",
+      "LLM Multi-Provedor",
+      "Failover Automático",
+      "Suporte Prioritário",
+      "Infraestrutura Dedicada",
+      "SLA Personalizado"
+    ],
+    "openSourceNote": "Todos os planos incluem 14 dias de teste gratuito.",
+    "starOnGithub": "Sem cartão de crédito",
+    "enterpriseNote": "Precisa de um plano personalizado?",
+    "enterpriseCta": "Fale conosco",
+    "annualNote": "cobrado anualmente"
+  },
+  "faq": {
+    "tag": "FAQ",
+    "heading": "Perguntas frequentes",
+    "subheading": "Tudo que você precisa saber sobre o CapiBot.",
+    "items": [
+      {
+        "q": "O que é o CapiBot?",
+        "a": "O CapiBot é uma plataforma de orquestração de agentes de IA de código aberto. Permite executar 150+ agentes de IA especializados que podem colaborar, executar tarefas e até formar empresas autônomas — tudo auto-hospedado em sua própria infraestrutura."
+      },
+      {
+        "q": "O CapiBot é realmente gratuito?",
+        "a": "A plataforma principal é de código aberto e gratuita para sempre. Você pode auto-hospedar em seu próprio hardware. Oferecemos planos pagos de hospedagem gerenciada (Pro) e enterprise para equipes que querem uma experiência sem complicações."
+      },
+      {
+        "q": "Quais provedores de LLM o CapiBot suporta?",
+        "a": "O CapiBot suporta Anthropic, Google Gemini, Ollama (local), Kimi (Moonshot), GLM e MiniMax. Você pode configurar ordem de prioridade e failover automático entre provedores."
+      },
+      {
+        "q": "Posso executá-lo totalmente localmente?",
+        "a": "Sim. Combine o CapiBot com Ollama e um modelo local, e tudo roda em sua máquina — nenhum dado sai da sua rede. PostgreSQL é o único requisito de infraestrutura."
+      },
+      {
+        "q": "O que são AI Companies?",
+        "a": "AI Companies são o recurso carro-chefe do CapiBot. Um agente CEO elabora um plano de negócios, contrata agentes especialistas, cria tarefas e executa — com supervisão humana configurável em cada etapa."
+      },
+      {
+        "q": "Como funciona a supervisão humana?",
+        "a": "No modo gerenciado, todas as tarefas criadas pelo CEO requerem aprovação humana antes da execução. Você pode aprovar planos, decisões de contratação e orçamentos. Ou mude para modo totalmente autônomo quando estiver confiante."
+      },
+      {
+        "q": "Quais canais de mensagem são suportados?",
+        "a": "Telegram, WhatsApp, Slack e um chat web integrado no Mission Control. Cada canal suporta mensagens enriquecidas, mídia e transcrição de voz quando aplicável."
+      },
+      {
+        "q": "Meus dados são privados?",
+        "a": "Completamente. O CapiBot é auto-hospedado — seus dados permanecem em sua infraestrutura. Não há telemetria, não há coleta de dados e não há bloqueio de fornecedor. Você é dono de tudo."
+      },
+      {
+        "q": "Como conecto aplicativos externos?",
+        "a": "Através do Composio, que fornece acesso a milhares de apps via API unificada. Você também pode escrever skills personalizadas como arquivos Markdown — sem mudanças de código necessárias."
+      },
+      {
+        "q": "Quando o CapiBot lança?",
+        "a": "Estamos em pré-lançamento. Entre na lista de espera para obter acesso antecipado, atualizações de produto e preço de membro fundador garantido para sempre."
+      }
+    ]
+  },
+  "installCta": {
+    "tag": "Pré-Lançamento",
+    "heading": "Seja o Primeiro na Fila.",
+    "description": "O CapiBot está lançando em breve. Entre na lista de espera para obter acesso antecipado, atualizações de produto e preço de membro fundador.",
+    "benefits": [
+      "Acesso antecipado antes do lançamento público",
+      "Preço de membro fundador — garantido para sempre",
+      "Atualizações de produto e bastidores"
+    ],
+    "emailLabel": "Endereço de email",
+    "emailPlaceholder": "voce@empresa.com",
+    "joinButton": "Entrar",
+    "successTitle": "Você está na lista!",
+    "successDesc": "Entraremos em contato quando for a hora. Obrigado por acreditar no CapiBot.",
+    "noSpam": "Sem spam, nunca. Cancele a inscrição a qualquer momento.",
+    "connectError": "Não foi possível conectar. Por favor, tente novamente mais tarde.",
+    "genericError": "Algo deu errado. Por favor, tente novamente."
+  },
+  "footer": {
+    "brand": "CapiBot",
+    "brandDesc": "Plataforma de Orquestração de Agentes de IA. Construa empresas autônomas powered by agentes de IA com supervisão humana.",
+    "productTitle": "Produto",
+    "productLinks": {
+      "aiCompanies": "AI Companies",
+      "features": "Recursos",
+      "pricing": "Preços",
+      "faq": "FAQ"
+    },
+    "resourcesTitle": "Recursos",
+    "resourceLinks": {
+      "github": "GitHub",
+      "joinWaitlist": "Entrar na Lista de Espera",
+      "compare": "Comparar: CapiBot vs OpenClaw"
+    },
+    "companyTitle": "Empresa",
+    "companyLinks": {
+      "contact": "Contato",
+      "privacy": "Política de Privacidade",
+      "terms": "Termos de Serviço"
+    },
+    "waitlistTitle": "Entre na lista de espera",
+    "waitlistDesc": "Obtenha acesso antecipado e preço de membro fundador.",
+    "waitlistSuccess": "Você está na lista!",
+    "joinButton": "Entrar",
+    "copyright": "© 2026 CapiBot —",
+    "madeIn": "Feito com cuidado em Bogotá, Colômbia"
+  },
+  "openClaw": {
+    "tag": "Comparação",
+    "heading": "CapiBot vs OpenClaw",
+    "description": "Ambos são plataformas de agentes de IA de código aberto. Mas o CapiBot foi construído para resolver os problemas que usuários do OpenClaw continuam enfrentando: vulnerabilidades de segurança, custos descontrolados, sem gerenciamento de equipe e sem supervisão humana real.",
+    "ctaPrimary": "Entrar na Lista de Espera",
+    "ctaSecondary": "Ver a Comparação",
+    "shortVersionTitle": "A versão curta",
+    "shortVersion": [
+      {
+        "title": "Segurança em Primeiro Lugar",
+        "desc": "O CapiBot bloqueia 80+ padrões de shell perigosos por padrão. O OpenClaw executa código arbitrário sem barreiras de segurança."
+      },
+      {
+        "title": "Gerenciamento de Equipe",
+        "desc": "O CapiBot tem 150 agentes organizados em hierarquia com funções, níveis e categorias. O OpenClaw tem um modelo de agente plano."
+      },
+      {
+        "title": "Supervisão Humana",
+        "desc": "O modo gerenciado do CapiBot requer aprovação para planos, contratações e orçamentos. O OpenClaw não tem fluxo de trabalho de aprovação integrado."
+      }
+    ],
+    "whyTitle": "Por que as equipes escolhem o CapiBot",
+    "whySubtitle": "Seis áreas onde o CapiBot vai além do que o OpenClaw oferece.",
+    "advantages": [
+      {
+        "title": "Segurança e Sandboxing",
+        "description": "80+ padrões de shell bloqueados, proteção de chaves API, trilhas de auditoria e verificação de webhook HMAC fora da caixa."
+      },
+      {
+        "title": "Hierarquia de Agentes",
+        "description": "CEOs, especialistas e estagiários em 12+ categorias — não uma lista plana de bots intercambiáveis."
+      },
+      {
+        "title": "AI Companies",
+        "description": "Ciclo de vida completo da empresa: briefing, planejamento, aprovação e operação — com supervisão humana em cada porta."
+      },
+      {
+        "title": "Mission Control",
+        "description": "Um painel profissional de 28 painéis vs. uma interface de chat básica. Observabilidade e gerenciamento reais."
+      },
+      {
+        "title": "Failover Multi-Provedor",
+        "description": "Failover automático entre 6 provedores de LLM com prioridade configurável e substituições de modelo por agente."
+      },
+      {
+        "title": "Memória e Conhecimento",
+        "description": "Memória semântica persistente com pgvector, personalidades SOUL.md e bases de conhecimento compartilhadas."
+      }
+    ],
+    "comparisonTitle": "Comparação recurso por recurso",
+    "comparisonSubtitle": "Um olhar detalhado no que cada plataforma oferece.",
+    "comparisonRows": [
+      {
+        "feature": "Código Aberto",
+        "capibot": "Sim",
+        "openclaw": "Sim"
+      },
+      {
+        "feature": "Auto-Hospedado",
+        "capibot": "Sim",
+        "openclaw": "Sim"
+      },
+      {
+        "feature": "Contagem de Agentes",
+        "capibot": "150+",
+        "openclaw": "Limitado"
+      },
+      {
+        "feature": "Hierarquia de Agentes",
+        "capibot": "CEO / Especialista / Estagiário",
+        "openclaw": "Plana"
+      },
+      {
+        "feature": "Categorias de Agentes",
+        "capibot": "12+",
+        "openclaw": "Nenhuma"
+      },
+      {
+        "feature": "AI Companies",
+        "capibot": "Ciclo de vida completo",
+        "openclaw": "Não"
+      },
+      {
+        "feature": "Supervisão Humana",
+        "capibot": "Modos gerenciado e autônomo",
+        "openclaw": "Não"
+      },
+      {
+        "feature": "Fluxo de Aprovação",
+        "capibot": "Planos, contratações, orçamentos",
+        "openclaw": "Não"
+      },
+      {
+        "feature": "Dashboard Mission Control",
+        "capibot": "28 painéis",
+        "openclaw": "UI básica"
+      },
+      {
+        "feature": "Quadro Kanban de Tarefas",
+        "capibot": "Sim",
+        "openclaw": "Não"
+      },
+      {
+        "feature": "Sistema de Memória",
+        "capibot": "PostgreSQL + pgvector",
+        "openclaw": "Básico"
+      },
+      {
+        "feature": "Busca Semântica",
+        "capibot": "Vetorial híbrida + texto",
+        "openclaw": "Não"
+      },
+      {
+        "feature": "Personalidades SOUL.md",
+        "capibot": "Sim",
+        "openclaw": "Não"
+      },
+      {
+        "feature": "Provedores de LLM",
+        "capibot": "6 com failover",
+        "openclaw": "Limitado"
+      },
+      {
+        "feature": "Failover Automático",
+        "capibot": "Sim",
+        "openclaw": "Não"
+      },
+      {
+        "feature": "Canais de Mensagem",
+        "capibot": "4 (Telegram, WhatsApp, Slack, Web)",
+        "openclaw": "Limitado"
+      },
+      {
+        "feature": "Transcrição de Voz",
+        "capibot": "Powered by Groq",
+        "openclaw": "Não"
+      },
+      {
+        "feature": "Ferramentas",
+        "capibot": "28+",
+        "openclaw": "Limitado"
+      },
+      {
+        "feature": "Segurança do Shell",
+        "capibot": "80+ padrões bloqueados",
+        "openclaw": "Sem restrições"
+      },
+      {
+        "feature": "Integração Composio",
+        "capibot": "1000+ apps",
+        "openclaw": "Não"
+      },
+      {
+        "feature": "Ecossistema de Skills",
+        "capibot": "Baseado em Markdown + comunidade",
+        "openclaw": "Não"
+      },
+      {
+        "feature": "Agendamento Cron",
+        "capibot": "Integrado",
+        "openclaw": "Não"
+      },
+      {
+        "feature": "Suporte a Webhooks",
+        "capibot": "Entrada e saída",
+        "openclaw": "Limitado"
+      },
+      {
+        "feature": "Trilha de Auditoria",
+        "capibot": "Logging completo",
+        "openclaw": "Não"
+      },
+      {
+        "feature": "Gerenciamento de Chaves API",
+        "capibot": "Cofre integrado",
+        "openclaw": "Manual"
+      },
+      {
+        "feature": "Atualizações em Tempo Real",
+        "capibot": "WebSocket + SSE",
+        "openclaw": "Polling"
+      },
+      {
+        "feature": "Base de Conhecimento",
+        "capibot": "Documentos por empresa",
+        "openclaw": "Não"
+      },
+      {
+        "feature": "Geração de Subagentes",
+        "capibot": "Dinâmica",
+        "openclaw": "Não"
+      },
+      {
+        "feature": "Comunicação entre Agentes",
+        "capibot": "Integrada",
+        "openclaw": "Não"
+      },
+      {
+        "feature": "Revisões de Qualidade",
+        "capibot": "Automatizado + manual",
+        "openclaw": "Não"
+      }
+    ],
+    "forYouTitle": "O CapiBot é para você se...",
+    "forYouItems": [
+      "Você quer agentes de IA que realmente trabalham em equipe, não chatbots isolados",
+      "Segurança importa — você precisa de sandboxing, trilhas de auditoria e controle de acesso",
+      "Você quer supervisão humana sem precisar acompanhar cada ação",
+      "Você precisa de um dashboard real, não apenas uma janela de chat",
+      "Você quer auto-hospedar e ser dono dos seus dados completamente",
+      "Você precisa de suporte a LLM multi-provedor com failover automático",
+      "Você quer um núcleo de código aberto sem bloqueio de fornecedor"
+    ],
+    "ctaTitle": "Pronto para fazer upgrade do OpenClaw?",
+    "ctaDesc": "Entre na lista de espera para acesso antecipado e preço de membro fundador. O CapiBot está lançando em breve.",
+    "backToHome": "Voltar para Home"
+  }
+}

@@ -1,0 +1,518 @@
+# Monitoramento e Observabilidade
+
+Mantenha-se informado sobre o que sua força de trabalho de IA está fazendo com ferramentas abrangentes de monitoramento.
+
+## Feed de Atividade
+
+Stream em tempo real de todos os eventos do sistema.
+
+**Acesso:** Barra de navegação → **Activity**
+
+### Visão do Feed ao Vivo
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ Atividade                                    [Filtro]    │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ Agora mesmo                                                │
+│ 📝 Echo completou tarefa T-42 (Edição de blog post)          │
+│                                                         │
+│ 2 minutos atrás                                           │
+│ 🤖 Nova iniciou tarefa T-38 (Construir endpoint de API)        │
+│                                                         │
+│ 5 minutos atrás                                           │
+│ 💬 Mensagem recebida de Atlas                         │
+│   "Rascunho de blog post pronto para revisão"               │
+│                                                         │
+│ 10 minutos atrás                                          │
+│ 📁 Pixel criou arquivo: landing-page-design-v2.png     │
+│                                                         │
+│ 15 minutos atrás                                          │
+│ 🏢 Atlas contratou Pixel para empresa Marketing Q1     │
+│                                                         │
+│ [Carregar mais...]                                         │
+└─────────────────────────────────────────────────────────┘
+```
+
+### Tipos de Eventos
+
+| Ícone | Tipo    | Descrição                           |
+| ---- | ------- | ------------------------------------- |
+| 📝   | Tarefa    | Criada, atualizada, completada, atribuída |
+| 🤖   | Agente   | Criado, ativado, status alterado    |
+| 💬   | Mensagem | Enviada, recebida                        |
+| 📁   | Arquivo    | Criado, modificado, excluído            |
+| 🔔   | Alerta   | Disparado, resolvido                   |
+| 🏢   | Empresa | Criada, fase alterada, arquivada      |
+| 🕐   | Cron    | Job executado                          |
+| ⚡   | Webhook | Recebido, entregue                   |
+
+### Filtragem
+
+Filtre por:
+
+- **Agente** — Atividade de agente específico
+- **Empresa** — Eventos específicos de empresa
+- **Tipo** — Tarefa, agente, mensagem, etc.
+- **Intervalo de Tempo** — Última hora, dia, semana
+- **Busca** — Palavra-chave em eventos
+
+## Barra Lateral de Feed ao Vivo
+
+Stream de atividade sempre visível no lado direito do Mission Control.
+
+**Alternar:** Clique botão « no cabeçalho
+
+**Recursos:**
+
+- Auto-scroll com novos eventos
+- Pause para ler
+- Clique em eventos para detalhes
+- Filtre por tipo
+
+## Visualizador de Logs
+
+Logs do sistema para debugging e monitoramento.
+
+**Acesso:** Barra de navegação → **Logs**
+
+### Níveis de Log
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ Logs                                        [Ao Vivo ▶]    │
+├─────────────────────────────────────────────────────────┤
+│ Filtro: [Todos Níveis ▼] [Fonte: Todas ▼] [Buscar...]     │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ 🔴 ERRO  14:32:01  Agente Nova falhou ao conectar ao DB │
+│ 🟡 AVISO   14:30:45  Tarefa T-42 se aproximando do prazo     │
+│ 🔵 INFO   14:28:12  Agente Echo criado com sucesso    │
+│ ⚪ DEBUG  14:25:33  Busca de memória completada em 45ms    │
+│                                                         │
+│ [Auto-scroll: Ligado]  [Download Logs]                     │
+└─────────────────────────────────────────────────────────┘
+```
+
+**Níveis de Log:**
+
+- **ERRO** — Problemas precisando de atenção
+- **AVISO** — Problemas potenciais
+- **INFO** — Operações normais
+- **DEBUG** — Diagnósticos detalhados
+
+**Fontes:**
+
+- Operações de agentes
+- Gerenciamento de tarefas
+- Chamadas de API
+- Queries de banco de dados
+- Eventos WebSocket
+
+### Streaming ao Vivo
+
+**Alternar:** Clique botão "Ao Vivo"
+
+Quando ao vivo:
+
+- Novos logs aparecem automaticamente
+- Auto-scroll para o final
+- Pause para examinar
+- Retome para acompanhar
+
+### Buscando Logs
+
+Busque por:
+
+- Conteúdo da mensagem de log
+- Componente fonte
+- Nome do agente
+- ID da tarefa
+- Intervalo de tempo
+
+## Traces
+
+Registros detalhados de cada execução de agente.
+
+**Acesso:** Barra de navegação → **Logs** → **Aba Traces**
+
+### Detalhes do Trace
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ Trace: T-42-Atlas-20241215-143201                       │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ Agente: Atlas                                           │
+│ Tarefa: Criar plano de negócio                              │
+│ Modelo: Claude 3.5 Sonnet                                │
+│ Provedor: Anthropic                                     │
+│                                                         │
+│ Tempo:                                                 │
+│ • Iniciado: 14:32:01                                     │
+│ • Duração: 12,4 segundos                                │
+│ • Tokens In: 2.450                                      │
+│ • Tokens Out: 1.892                                     │
+│                                                         │
+│ Ferramentas Usadas:                                             │
+│ 1. company_get (0,3s)                                   │
+│ 2. task_list (0,5s)                                   │
+│ 3. web_search (3,2s)                                   │
+│ 4. write_file (0,1s)                                   │
+│                                                         │
+│ Status: ✅ Sucesso                                      │
+│ Saída: Plano de negócio salvo em /planos/marketing-q1.md   │
+│                                                         │
+└─────────────────────────────────────────────────────────┘
+```
+
+**O Que Traces Capturam:**
+
+- Informação de agente e tarefa
+- Modelo de IA usado
+- Uso de tokens e custo
+- Ferramentas executadas
+- Detalhamento de tempo
+- Status sucesso/falha
+
+### Analytics de Sessão
+
+Estatísticas agregadas para sessões de agentes:
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ Analytics de Sessão — Últimos 7 Dias                        │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ Total de Execuções: 1.247                                      │
+│ Taxa de Sucesso: 98,2%                                    │
+│                                                         │
+│ Latência:                                               │
+│ • P50: 2,3s  • P95: 8,7s  • P99: 15,2s                │
+│                                                         │
+│ Por Provedor:                                           │
+│ • Anthropic: 45% ████████████████████                  │
+│ • OpenAI: 30% ██████████████                           │
+│ • Ollama: 25% ███████████                              │
+│                                                         │
+│ Por Modelo:                                           │
+│ • Claude 3.5 Sonnet: 40%                               │
+│ • GPT-4: 30%                                           │
+│ • Llama 3: 25%                                         │
+│                                                         │
+│ Custo: $42,50 esta semana                                 │
+└─────────────────────────────────────────────────────────┘
+```
+
+## Painel de Analytics
+
+Métricas de performance e tendências.
+
+**Acesso:** Barra de navegação → **Analytics**
+
+### Métricas do Dashboard
+
+**Performance de Agentes:**
+
+- Tarefas completadas por agente
+- Tempo médio de conclusão
+- Taxas de sucesso/erro
+- Custo por agente
+
+**Métricas de Tarefas:**
+
+- Tarefas por status
+- Velocidade de conclusão
+- Tempo médio em cada coluna
+- Identificação de gargalos
+
+**Métricas de Sistema:**
+
+- Volume de chamadas de API
+- Performance do banco de dados
+- Conexões WebSocket
+- Uso de memória
+
+### Intervalos de Tempo
+
+Veja dados para:
+
+- Últimas 24 horas
+- Últimos 7 dias
+- Últimos 30 dias
+- Intervalo personalizado
+
+### Exportação
+
+Baixe relatórios como:
+
+- CSV (planilhas)
+- JSON (dados brutos)
+- PDF (relatórios formatados)
+
+## Notificações
+
+Mantenha-se informado sem assistir constantemente.
+
+### Centro de Notificações
+
+**Acesso:** Ícone de sino no cabeçalho
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ Notificações                              [Marcar Lida]  │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ 🔴 Urgente                                               │
+│ • Tarefa T-42 falhou 3 vezes — precisa de atenção           │
+│                                                         │
+│ 📋 Revisão Humana                                         │
+│ • 3 tarefas aguardando sua aprovação                       │
+│                                                         │
+│ ℹ️ Info                                                 │
+│ • Agente Echo completou tarefa T-38                       │
+│ • Atlas submeteu plano de negócio para revisão             │
+│                                                         │
+│ [Ver Todas]  [Configurações]                                 │
+└─────────────────────────────────────────────────────────┘
+```
+
+### Canais de Notificação
+
+Receba notificações via:
+
+- **In-app** — Centro de notificações
+- **Telegram** — Mensagens diretas
+- **Slack** — Canal ou DM
+- **Webhook** — Seu próprio endpoint
+
+### O Que Dispara Notificações
+
+| Evento                     | Padrão | Configurável |
+| ------------------------- | ------- | ------------ |
+| Tarefa atribuída a você      | ✅      | ✅           |
+| Tarefa precisa de revisão humana   | ✅      | ✅           |
+| Tarefa se aproximando do prazo | ✅      | ✅           |
+| Erro de agente               | ✅      | ✅           |
+| Plano de negócio submetido   | ✅      | ✅           |
+| Tarefa completada            | ❌      | ✅           |
+| Mudança de status de agente  | ❌      | ✅           |
+| Arquivo criado               | ❌      | ✅           |
+
+### Configurações de Notificação
+
+Configure no painel **Settings**:
+
+```
+Notificações
+
+Canais:
+☑️ In-app
+☑️ Telegram
+☐ Slack
+☐ Webhook
+
+Eventos:
+☑️ Atribuições de tarefa
+☑️ Revisão humana necessária
+☑️ Avisos de prazo
+☑️ Erros de agente
+☐ Completamentos de tarefa
+☐ Mudanças de status de agente
+
+Horários de Silêncio:
+🌙 22:00 — 08:00
+☑️ Não perturbar
+```
+
+## Trilha de Auditoria
+
+Logging de segurança e conformidade.
+
+**Acesso:** Barra de navegação → **Audit Trail**
+
+### O Que é Logado
+
+Cada ação com:
+
+- **Quem** — Usuário ou agente
+- **O Que** — Ação realizada
+- **Quando** — Timestamp
+- **Onde** — Endereço IP
+- **Como** — User agent (navegador/app)
+
+**Categorias de Ação:**
+
+- Autenticação (login, logout)
+- Operações de tarefa (criar, atualizar, excluir)
+- Operações de agente (criar, arquivar)
+- Mudanças de configuração
+- Ações de integração
+- Eventos de webhook
+
+### Visão de Log de Auditoria
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ Trilha de Auditoria                                [Exportar]     │
+├─────────────────────────────────────────────────────────┤
+│ Filtro: [Categoria: Todas ▼] [Intervalo de Datas ▼] [Usuário ▼]      │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ Hoje                                                   │
+│ 14:32:01  admin@capibot.io  Criou tarefa T-42         │
+│           IP: 192.168.1.100  Navegador: Chrome           │
+│                                                         │
+│ 14:30:45  Atlas (Agente)     Submeteu plano de negócio   │
+│           Via: Mission Control                         │
+│                                                         │
+│ 14:28:12  admin@capibot.io  Aprovou plano de negócio    │
+│           IP: 192.168.1.100                            │
+│                                                         │
+│ [Carregar mais...]                                         │
+└─────────────────────────────────────────────────────────┘
+```
+
+### Retenção
+
+Logs de auditoria mantidos por **90 dias** por padrão.
+
+**Exportar para conformidade:**
+
+- Download como CSV
+- Filtre por intervalo de datas
+- Inclua todos os detalhes
+
+## Relatórios de Standup
+
+Resumos diários de atividade da equipe.
+
+**Acesso:** Barra de navegação → **Standup**
+
+### Standup Diário
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ Standup Diário — 15 de Dezembro, 2024                      │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ Resumo da Equipe                                           │
+│ • 8 Tarefas Completadas                                    │
+│ • 5 Em Progresso                                        │
+│ • 2 Em Review                                           │
+│ • 1 Bloqueada                                            │
+│ • 0 Atrasada                                             │
+│                                                         │
+│ Por Agente:                                              │
+│                                                         │
+│ Atlas (CEO)                                            │
+│   ✅ Completou: Plano de Marketing Q1 submetido            │
+│   🔄 Em Progresso: Contratando membros da equipe                  │
+│                                                         │
+│ Nova (Engenheira)                                        │
+│   ✅ Completou: Autenticação API (T-38)              │
+│   ✅ Completou: Esquema de database (T-39)                 │
+│   📋 Atribuída: Endpoints de usuário (T-40)                   │
+│                                                         │
+│ Echo (Conteúdo)                                         │
+│   🔄 Em Progresso: Rascunho de blog post (T-42)               │
+│                                                         │
+│ Bloqueada:                                               │
+│ • T-45 (Design) — Esperando diretrizes de marca         │
+│                                                         │
+│ Atrasadas: Nenhuma 🎉                                       │
+│                                                         │
+│ [Download PDF]  [Ver Dias Anteriores]                   │
+└─────────────────────────────────────────────────────────┘
+```
+
+### Recursos de Standup
+
+- **Seleção de data** — Qualquer dia
+- **Equipe ou individual** — Filtre por agente
+- **Exportação** — PDF ou email
+- **Comparação** — vs períodos anteriores
+
+## Saúde do Sistema
+
+Monitore a infraestrutura do CapiBot.
+
+**Acesso:** Painel Overview
+
+### Indicadores de Saúde
+
+```
+Saúde do Sistema
+
+✅ Gateway        Conectado (12 clientes)
+✅ Database       Conectado (45ms latência)
+✅ Memória         2,3GB / 8GB (29%)
+✅ Disco           45GB / 100GB (45%)
+⏱️  Uptime        14 dias, 3 horas
+```
+
+### Alertas
+
+Alertas automáticos quando:
+
+- Gateway desconecta
+- Erros de database
+- Espaço em disco baixo
+- Memória alta
+- Altas taxas de erro
+
+## Boas Práticas
+
+### Monitoramento
+
+1. **Verifique Diariamente** — Revise atividade e métricas
+2. **Observe Padrões** — Identifique tendências cedo
+3. **Configure Alertas** — Seja notificado de problemas
+4. **Revise Semanalmente** — Tendências de analytics
+
+### Debugging
+
+1. **Comece com Logs** — Encontre mensagens de erro
+2. **Verifique Traces** — Veja o que agentes fizeram
+3. **Revise Atividade** — Linha do tempo de eventos
+4. **Trilha de Auditoria** — Quem fez o quê quando
+
+### Performance
+
+1. **Monitore Latência** — Tempos de resposta de agentes
+2. **Observe Custos** — Uso de tokens por agente
+3. **Acompanhe Taxas de Sucesso** — Métricas de qualidade
+4. **Otimize Gargalos** — Operações lentas
+
+## Solução de Problemas
+
+**Nenhuma Atividade Mostrando:**
+
+- Verifique se sistema está rodando
+- Verifique se filtros não são muito restritivos
+- Atualize a página
+
+**Logs Não Atualizando:**
+
+- Habilite modo "Ao Vivo"
+- Verifique filtros de nível de log
+- Pode precisar rolar
+
+**Notificações Faltando:**
+
+- Verifique configurações de notificação
+- Verifique conexões de canal (Telegram, etc.)
+- Verifique configurações de "Não Perturbar"
+
+**Custos Altos:**
+
+- Verifique Analytics para detalhamento
+- Revise traces para operações caras
+- Considere seleção de modelo
+
+## Próximos Passos
+
+- Configure [Automação](automation)
+- Configure [Integrações](integrations)
+- Revise [Administração](administration)

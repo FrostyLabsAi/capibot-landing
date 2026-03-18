@@ -1,0 +1,445 @@
+# Tool Categories
+
+CapiBot agents have access to 25+ tools organized into categories. Understanding what tools are available helps you delegate work effectively.
+
+## How Agents Use Tools
+
+Agents choose tools automatically based on what they need to do:
+
+```
+You: Research top 5 competitors
+
+Scout (Research Analyst):
+  1. Analyzes request
+  2. Decides to use web_search tool
+  3. Searches for "top SaaS analytics competitors"
+  4. Reads results
+  5. Writes findings to file
+  6. Reports back to you
+```
+
+**You don't need to tell agents which tools to use** — they know their capabilities and select the right tools for the job.
+
+## File Operations
+
+Read, write, and manage files.
+
+### Available Tools
+
+**`read_file`**
+
+- Read contents of any file
+- Specify line offset and limit for large files
+- Supports all text formats
+
+**`write_file`**
+
+- Create new files
+- Overwrite existing files
+- Create parent directories automatically
+
+**`edit_file`**
+
+- Surgical line-level edits
+- Find and replace within files
+- Insert or delete specific lines
+
+**`list_dir`**
+
+- List directory contents
+- See files and subdirectories
+- Filter by pattern
+
+### When Agents Use These
+
+| Task                      | Tool Used  |
+| ------------------------- | ---------- |
+| Read your instructions    | read_file  |
+| Save completed work       | write_file |
+| Fix a bug in code         | edit_file  |
+| Explore project structure | list_dir   |
+| Update documentation      | edit_file  |
+
+### Example
+
+```
+You: Write a Python script to analyze CSV data
+
+Nova: I'll create that script for you.
+
+[Uses write_file to create analyze_csv.py]
+
+Done! I've created analyze_csv.py with functions
+for loading data, calculating statistics, and
+generating charts.
+```
+
+## Web & Search
+
+Search the internet and fetch web content.
+
+### Available Tools
+
+**`web_search`**
+
+- Google-powered search
+- Returns titles, URLs, snippets
+- Top 10 results by default
+
+**`web_fetch`**
+
+- Download and parse any webpage
+- Extract main content
+- Handle various formats
+
+### When Agents Use These
+
+| Task                      | Tool Used  |
+| ------------------------- | ---------- |
+| Research competitors      | web_search |
+| Read documentation        | web_fetch  |
+| Check current news        | web_search |
+| Gather reference material | web_fetch  |
+| Find examples             | web_search |
+
+### Example
+
+```
+You: What are the latest AI trends in 2024?
+
+Scout: Let me search for current AI trends.
+
+[Uses web_search: "AI trends 2024"]
+
+Here are the top 5 AI trends for 2024:
+1. Multimodal AI models
+2. AI agents and automation
+3. Edge AI deployment
+4. AI regulation and compliance
+5. Sustainable AI
+
+Would you like me to dive deeper into any of these?
+```
+
+## Browser Automation
+
+Control a web browser programmatically.
+
+### Available Tools
+
+**`browser_navigate`** — Go to URL
+**`browser_click`** — Click elements
+**`browser_type`** — Type text into inputs
+**`browser_scroll`** — Scroll page
+**`browser_screenshot`** — Capture screenshot
+**`browser_extract`** — Extract page content
+**`browser_wait`** — Wait for elements
+
+### When Agents Use These
+
+| Task                      | Tools Used                        |
+| ------------------------- | --------------------------------- |
+| Test a web application    | navigate, click, type, screenshot |
+| Fill out forms            | navigate, type, click             |
+| Scrape data from websites | navigate, extract, scroll         |
+| Take website screenshots  | navigate, screenshot              |
+| Check visual appearance   | navigate, screenshot              |
+
+### Example
+
+```
+You: Take a screenshot of our landing page
+
+Nova: I'll capture a screenshot of your site.
+
+[Uses browser_navigate + browser_screenshot]
+
+Screenshot saved: /workspace/screenshots/landing-page-20241215.png
+
+I can also test the contact form if you'd like.
+```
+
+## Shell & System
+
+Execute commands and manage processes.
+
+### Available Tools
+
+**`exec`**
+
+- Run shell commands
+- Dangerous patterns automatically blocked
+- Configurable timeout (default 30s)
+- Output capped at ~10KB per call
+
+**`spawn`**
+
+- Start background processes
+- Long-running tasks
+- Process management
+
+### Security Features
+
+**Blocked Commands:**
+
+```bash
+# These are automatically blocked:
+rm -rf /
+mkfs.*
+dd if=/dev/zero
+fork bombs
+network scans
+privilege escalation
+```
+
+**Safe by Default:**
+
+- Workspace restriction
+- Timeout limits
+- Output limits
+- Command logging
+
+### When Agents Use These
+
+| Task                 | Tool Used                 |
+| -------------------- | ------------------------- |
+| Run a Python script  | exec: python script.py    |
+| Install dependencies | exec: npm install         |
+| Git operations       | exec: git commit -m "..." |
+| Build project        | exec: npm run build       |
+| Database migrations  | exec: migrate up          |
+
+### Example
+
+```
+You: Run the test suite
+
+Nova: Running tests now.
+
+[Uses exec: npm test]
+
+✅ 45 tests passed
+⚠️  2 tests skipped
+❌ 0 tests failed
+
+All tests passing! The build is ready for deployment.
+```
+
+## Scheduling
+
+Create and manage recurring tasks.
+
+### Available Tools
+
+**`cron`**
+
+- Schedule future tasks
+- One-time or recurring
+- Cron expression syntax
+- From within conversation
+
+### When Agents Use These
+
+| Task                   | Tool Used                  |
+| ---------------------- | -------------------------- |
+| Schedule daily report  | cron: every day at 9am     |
+| Set deadline reminder  | cron: at 2024-12-20 5pm    |
+| Recurring health check | cron: every 5 minutes      |
+| Weekly summary         | cron: every monday at 10am |
+
+### Example
+
+```
+You: Remind me to review the blog post tomorrow
+
+Echo: I'll schedule a reminder for you.
+
+[Uses cron: at 9:00 AM tomorrow]
+
+✅ Reminder scheduled for tomorrow at 9:00 AM.
+You'll get a notification to review the blog post.
+```
+
+## Agent & Task Management
+
+Manage other agents and tasks.
+
+### Available Tools
+
+**`sessions_send`** — Message other agents
+**`sessions_list`** — See available agents
+**`task_create`** — Create new tasks
+**`task_update`** — Update task status
+**`task_list`** — View tasks
+
+### When Agents Use These
+
+| Task                   | Tool Used            |
+| ---------------------- | -------------------- |
+| Ask teammate for help  | sessions_send        |
+| Delegate work          | task_create + assign |
+| Update progress        | task_update          |
+| Check team workload    | task_list            |
+| Coordinate with agents | sessions_send        |
+
+### Example
+
+```
+You: Ask the designer to review the landing page
+
+Nova: I'll message Pixel about the review.
+
+[Uses sessions_send to message Pixel]
+
+Pixel confirmed! They're reviewing it now
+and will update the task when done.
+```
+
+## Communication
+
+Send messages and notifications.
+
+### Available Tools
+
+**`message`** — Send to any channel
+**`message_owner`** — Send to you directly
+**`agent_notify`** — Notify a specific agent
+
+### Channels
+
+- Telegram
+- WhatsApp
+- Slack
+- Web Chat (Mission Control)
+- Email (if configured)
+
+### When Agents Use These
+
+| Task                    | Tool Used            |
+| ----------------------- | -------------------- |
+| Report completion       | message_owner        |
+| Ask clarifying question | message_owner        |
+| Send file to you        | message + attachment |
+| Urgent alert            | agent_notify         |
+
+### Example
+
+```
+Scout: Your competitor research is complete!
+
+[Uses message_owner via Telegram]
+
+I've analyzed 5 competitors and saved the
+report to /workspace/competitor-analysis.pdf
+
+Key findings:
+• Competitor A focuses on enterprise
+• Competitor B has better pricing
+• Gap in mid-market segment
+```
+
+## Memory & Knowledge
+
+Store and retrieve information.
+
+### Available Tools
+
+**`write_file`** — Save to agent memory
+**`read_file`** — Read from memory
+**`company_docs`** — Read company knowledge base
+
+### When Agents Use These
+
+| Task                     | Tool Used            |
+| ------------------------ | -------------------- |
+| Remember preferences     | write_file to memory |
+| Learn from feedback      | write_file to memory |
+| Read company guidelines  | company_docs         |
+| Check previous decisions | company_docs         |
+
+### Example
+
+```
+You: Remember I prefer blue for primary buttons
+
+Pixel: Got it! I'll save that preference.
+
+[Uses write_file to save to memory]
+
+✅ Preference saved: "Primary buttons should
+   use blue (#0066CC) per user preference"
+
+I'll apply this to all future designs.
+```
+
+## Tool Security
+
+### What Agents Can't Do
+
+**Automatically Blocked:**
+
+- Destructive system commands
+- Access outside workspace
+- Commands that exceed timeout
+- Known dangerous shell patterns
+
+### What You Can Control
+
+**Per-Agent Settings:**
+
+- Enable/disable specific tools
+- Restrict file system access
+- Set command timeouts
+- Limit output size
+
+**Global Settings:**
+
+- Workspace restrictions
+- Dangerous pattern blocking
+- Command logging
+- Audit trails
+
+## Best Practices
+
+### For You
+
+1. **Trust Agents** — They know which tools to use
+2. **Review Deliverables** — Check files they create
+3. **Ask for Explanations** — "How did you do that?"
+4. **Set Boundaries** — Restrict when needed
+
+### For Agents
+
+1. **Use Right Tool** — Match tool to task
+2. **Handle Errors** — Graceful failure
+3. **Report Actions** — Tell you what they did
+4. **Respect Limits** — Work within constraints
+
+## Troubleshooting
+
+**Agent Says "I Can't Do That":**
+
+- Tool might be disabled
+- Outside their capabilities
+- Security restriction
+- Check agent's allowed tools
+
+**Command Failed:**
+
+- Check error message
+- May need different approach
+- Could be permission issue
+- Try breaking into smaller steps
+
+**File Not Found:**
+
+- Check path is correct
+- May need to create parent directories
+- Verify file exists
+- Check permissions
+
+## Next Steps
+
+- Learn about [Company Tools](company-tools)
+- Explore [Communication Tools](communication-tools)
+- See [Security Best Practices](security)

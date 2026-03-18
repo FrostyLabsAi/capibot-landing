@@ -1,0 +1,926 @@
+{
+  "nav": {
+    "features": "功能",
+    "agents": "智能体",
+    "integrations": "集成",
+    "pricing": "定价",
+    "joinWaitlist": "加入候补名单",
+    "docs": "文档"
+  },
+  "hero": {
+    "tag": "AI 智能体编排平台",
+    "heading": "构建它。发布它。",
+    "headingAccent": "轻松一下。",
+    "description": "从单一 AI 助手到完全自主的公司 — CapiBot 为您提供 36 个内置工具、8 个技能包，并完全掌控智能体的自主程度。私密。安全。属于您。",
+    "ctaPrimary": "加入候补名单",
+    "ctaSecondary": "查看功能演示",
+    "badges": {
+      "tools": "工具",
+      "providers": "提供商",
+      "channels": "渠道",
+      "skills": "智能体"
+    },
+    "trustPills": {
+      "quickSetup": "轻松设置",
+      "privateData": "私密安全",
+      "noVendorLock": "随时取消"
+    },
+    "floatingBadges": {
+      "agents": "5分钟上线",
+      "telegram": "150个内置智能体",
+      "missionControl": "Mission Control",
+      "aiCompanies": "AI Companies"
+    }
+  },
+  "trustBar": {
+    "builtWith": "构建技术",
+    "tech": {
+      "anthropic": "Anthropic",
+      "google": "Google",
+      "postgresql": "PostgreSQL",
+      "puppeteer": "Puppeteer",
+      "langchain": "LangChain",
+      "ollama": "Ollama",
+      "composio": "Composio"
+    }
+  },
+  "aiCompany": {
+    "tag": "您可构建的内容",
+    "heading": "从助手到自主公司",
+    "subheading": "从简单的个人 AI 聊天开始，扩展到多智能体团队，或启动完全自主的 AI 公司 — 全部在一个平台上实现。",
+    "useCases": [
+      {
+        "title": "个人 AI 助手",
+        "description": "连接 Telegram 或 WhatsApp，与单个智能体聊天。安排任务、搜索网络、管理日历。",
+        "level": "简单"
+      },
+      {
+        "title": "多智能体团队",
+        "description": "组建专业团队 — 开发者、研究员、撰稿人 — 让他们协作完成项目。",
+        "level": "中级"
+      },
+      {
+        "title": "自主 AI 公司",
+        "description": "CEO 智能体起草商业计划、招聘团队、创建任务并执行 — 在您需要时进行人工监督。",
+        "level": "高级"
+      }
+    ],
+    "flagship": "旗舰功能",
+    "lifecycleTitle": "AI 公司生命周期",
+    "phases": {
+      "briefing": "需求简报",
+      "planning": "规划",
+      "approved": "已批准",
+      "operating": "运营中"
+    },
+    "features": [
+      {
+        "title": "CEO 智能体",
+        "description": "起草计划、招聘智能体、委派任务"
+      },
+      {
+        "title": "人工监督",
+        "description": "托管模式或完全自主模式"
+      },
+      {
+        "title": "150 个智能体名册",
+        "description": "12 个以上类别可供选择"
+      },
+      {
+        "title": "任务追踪",
+        "description": "看板、质量审核、站会"
+      },
+      {
+        "title": "审批工作流",
+        "description": "计划、招聘和预算审批"
+      },
+      {
+        "title": "知识库",
+        "description": "注入智能体上下文的文档"
+      }
+    ],
+    "cta": "加入候补名单",
+    "companyImgAlt": "CapiBot AI 公司 — 概览包含阶段进度、团队表现和任务流程"
+  },
+  "statsBar": {
+    "items": [
+      {
+        "label": "内置工具"
+      },
+      {
+        "label": "技能包"
+      },
+      {
+        "label": "AI 提供商"
+      },
+      {
+        "label": "频道"
+      }
+    ]
+  },
+  "messaging": {
+    "tag": "4 个消息渠道",
+    "heading": "随时随地与 AI 对话",
+    "subheading": "通过 Telegram、WhatsApp、Slack 或内置网页聊天连接。您的智能体在每个平台处理语音、媒体和富媒体消息。",
+    "channels": [
+      {
+        "name": "Telegram",
+        "features": [
+          "通过 Groq 进行语音消息转录",
+          "照片、文档和媒体处理",
+          "Grammy 机器人框架集成",
+          "用户白名单与输入指示器"
+        ]
+      },
+      {
+        "name": "WhatsApp",
+        "features": [
+          "WhatsApp Cloud API 集成",
+          "文档、图片、音频和视频",
+          "批量消息支持",
+          "HMAC 的 Webhook 验证"
+        ]
+      },
+      {
+        "name": "Slack",
+        "features": [
+          "线程感知消息",
+          "富媒体消息格式",
+          "WebClient API 集成",
+          "频道和私信支持"
+        ]
+      },
+      {
+        "name": "网页聊天",
+        "features": [
+          "Mission Control 内置聊天",
+          "完整对话历史",
+          "实时 WebSocket 连接",
+          "与任何智能体直接对话"
+        ]
+      }
+    ],
+    "chatHeader": "CapiBot",
+    "online": "在线"
+  },
+  "missionControl": {
+    "tag": "专业仪表板",
+    "heading": "全面掌控尽在 ",
+    "headingAccent": "Mission Control",
+    "subheading": "一个包含 28 个 UI 面板的全功能管理仪表板。从一个地方监控、管理和配置您的整个 AI 运营。",
+    "tabs": {
+      "overview": "概览",
+      "agents": "智能体",
+      "tasks": "任务",
+      "memory": "记忆",
+      "skills": "技能",
+      "cron": "定时任务"
+    },
+    "tabFeatures": {
+      "overview": [
+        "实时活动动态与实时更新",
+        "系统健康与提供商状态",
+        "快捷操作和通知中心"
+      ],
+      "agents": [
+        "浏览 12 个类别的 150 个智能体",
+        "带会话历史的智能体详情页",
+        "激活、配置和监控智能体"
+      ],
+      "tasks": [
+        "支持拖拽的看板",
+        "质量审核工作流",
+        "任务历史和交付物"
+      ],
+      "memory": [
+        "浏览和搜索存储的记忆",
+        "基于 pgvector 的语义搜索",
+        "记忆统计和管理"
+      ],
+      "skills": [
+        "已安装技能概览",
+        "技能配置和测试",
+        "社区技能浏览器"
+      ],
+      "cron": [
+        "定时作业管理",
+        "Cron 表达式构建器",
+        "执行历史和日志"
+      ]
+    },
+    "panelSuffix": "面板",
+    "features": [
+      {
+        "title": "实时动态",
+        "description": "实时观看智能体活动 — 工具调用、消息、任务更新和系统事件实时流入。"
+      },
+      {
+        "title": "看板任务板",
+        "description": "支持拖拽的任务管理，带状态追踪、质量审核和交付物附件。"
+      },
+      {
+        "title": "记忆浏览器",
+        "description": "搜索和管理您的 AI 持久记忆。由 pgvector 和 Ollama 嵌入提供支持的语义搜索。"
+      },
+      {
+        "title": "安全与审计",
+        "description": "每个操作的完整审计跟踪。API 密钥管理、会话跟踪和访问控制。"
+      },
+      {
+        "title": "智能通知",
+        "description": "针对任务完成、审批请求、错误和智能体活动的上下文感知提醒。"
+      },
+      {
+        "title": "Cron 调度器",
+        "description": "使用 cron 表达式安排重复的智能体任务。可视化构建器和执行历史。"
+      },
+      {
+        "title": "Webhook 管理器",
+        "description": "配置传入和传出 webhook。连接外部服务以触发智能体工作流。"
+      },
+      {
+        "title": "高级配置",
+        "description": "微调提供商优先级、模型选择、工具权限和系统范围设置。"
+      }
+    ]
+  },
+  "multiAgent": {
+    "tag": "多智能体架构",
+    "heading": "多智能体编排，一个平台",
+    "subheading": "分层智能体系统，包含 CEO、专家和实习生 — 横跨 12 个以上专业类别组织。",
+    "hierarchy": "层级：",
+    "tiers": {
+      "lead": "主管 / CEO",
+      "specialist": "专家",
+      "intern": "实习生"
+    },
+    "tierSpawned": "（按需生成）",
+    "rosterTitle": "智能体名册 — 12 个类别的 150 个预建智能体",
+    "categories": [
+      "CEO",
+      "工程",
+      "设计",
+      "市场",
+      "销售",
+      "支持",
+      "产品",
+      "游戏开发",
+      "空间 XR",
+      "QA 与测试",
+      "编排",
+      "专业"
+    ],
+    "agents": [
+      {
+        "name": "Atlas",
+        "role": "CEO",
+        "tier": "主管",
+        "description": "战略领导者，起草商业计划、招聘团队并协调公司运营。",
+        "capabilities": [
+          "商业规划",
+          "团队招聘",
+          "任务委派",
+          "战略监督"
+        ],
+        "example": "为 SaaS 分析产品起草商业计划"
+      },
+      {
+        "name": "Nova",
+        "role": "全栈工程师",
+        "tier": "专家",
+        "description": "端到端构建功能 — 从数据库架构到 API 端点再到前端组件。",
+        "capabilities": [
+          "代码生成",
+          "架构设计",
+          "代码审核",
+          "调试"
+        ],
+        "example": "构建带有 JWT 的用户认证 REST API"
+      },
+      {
+        "name": "Pixel",
+        "role": "UI/UX 设计师",
+        "tier": "专家",
+        "description": "创建用户界面、设计系统和原型，注重可用性。",
+        "capabilities": [
+          "UI 设计",
+          "线框图",
+          "设计系统",
+          "无障碍设计"
+        ],
+        "example": "为分析产品设计仪表板布局"
+      },
+      {
+        "name": "Echo",
+        "role": "内容策略师",
+        "tier": "专家",
+        "description": "撰写与品牌调性一致的文案、博客文章、文档和营销内容。",
+        "capabilities": [
+          "文案写作",
+          "内容策略",
+          "SEO 写作",
+          "品牌调性"
+        ],
+        "example": "为我们新功能撰写发布博客文章"
+      },
+      {
+        "name": "Scout",
+        "role": "研究分析师",
+        "tier": "专家",
+        "description": "进行市场研究、竞争分析，并将发现综合为可执行的洞察。",
+        "capabilities": [
+          "市场研究",
+          "竞争分析",
+          "数据综合",
+          "趋势分析"
+        ],
+        "example": "分析 AI 智能体领域的前 5 名竞争对手"
+      }
+    ],
+    "capabilitiesLabel": "能力",
+    "liveOutput": "实时任务输出",
+    "systemFeatures": [
+      {
+        "title": "SOUL.md 个性",
+        "description": "每个智能体都有独特的身份、专业知识和操作说明"
+      },
+      {
+        "title": "子智能体生成",
+        "description": "CEO 动态招聘智能体并生成专家处理复杂任务"
+      },
+      {
+        "title": "智能体间通信",
+        "description": "智能体直接相互发送消息并通过通知协调"
+      }
+    ]
+  },
+  "tools": {
+    "tag": "工具与能力",
+    "heading": "28 个以上工具触手可及",
+    "subheading": "从文件编辑到浏览器自动化，您的智能体拥有完成实际工作所需的一切。",
+    "categories": [
+      {
+        "title": "文件操作",
+        "count": "4",
+        "tools": [
+          "read_file",
+          "write_file",
+          "edit_file",
+          "list_directory"
+        ]
+      },
+      {
+        "title": "网页与搜索",
+        "count": "4",
+        "tools": [
+          "web_search",
+          "web_fetch",
+          "web_browse",
+          "screenshot"
+        ]
+      },
+      {
+        "title": "Shell 与系统",
+        "count": "4",
+        "tools": [
+          "shell_exec",
+          "spawn_process",
+          "cron_schedule",
+          "system_info"
+        ]
+      },
+      {
+        "title": "通信",
+        "count": "4",
+        "tools": [
+          "send_message",
+          "notify_agent",
+          "broadcast",
+          "webhook_call"
+        ]
+      },
+      {
+        "title": "记忆与知识",
+        "count": "4",
+        "tools": [
+          "memory_store",
+          "memory_search",
+          "company_docs",
+          "vault_read"
+        ]
+      },
+      {
+        "title": "集成",
+        "count": "4",
+        "tools": [
+          "composio",
+          "google_workspace",
+          "github",
+          "browser_action"
+        ]
+      }
+    ],
+    "toolSingular": "工具",
+    "toolPlural": "工具",
+    "securityBanner": "默认阻止 80 多个危险 shell 模式。安全优先设计。"
+  },
+  "skills": {
+    "tag": "集成与技能",
+    "heading": "数千应用。不断增长的技能库。",
+    "subheading": "通过 Composio 将您的智能体连接到您已在使用的工具，并通过社区技能教授它们新能力。",
+    "composioTitle": "Composio",
+    "composioDesc": "通过统一 API 连接数千应用。在任何对话中列出、发现和执行操作。",
+    "composioMore": "+ 更多 1000+",
+    "composioCtaText": "抢先体验",
+    "skillsTitle": "技能生态",
+    "skillsGrowing": "不断增长",
+    "skillsDesc": "智能体从 Markdown 技能文件学习新能力 — 无需更改代码。访问数万个社区贡献的技能，或创建您自己的技能。",
+    "skillsList": [
+      {
+        "name": "Google Workspace",
+        "desc": "Gmail、Docs、Sheets、Calendar、Drive"
+      },
+      {
+        "name": "GitHub",
+        "desc": "Issues、PR、仓库、Actions"
+      },
+      {
+        "name": "定时任务",
+        "desc": "定时重复任务"
+      },
+      {
+        "name": "天气",
+        "desc": "当前状况和天气预报"
+      },
+      {
+        "name": "网页抓取",
+        "desc": "从任何网页提取数据"
+      },
+      {
+        "name": "Notion",
+        "desc": "页面、数据库和块"
+      },
+      {
+        "name": "Slack",
+        "desc": "消息、频道和线程"
+      }
+    ],
+    "skillsMore": "+ 社区注册表，还有更多"
+  },
+  "memory": {
+    "tag": "记忆与智能",
+    "heading": "您的 AI 记住一切",
+    "subheading": "随着每次对话变得更智能的持久知识。由 PostgreSQL 和 pgvector 提供支持。",
+    "features": [
+      {
+        "title": "对话历史",
+        "description": "每条消息、工具调用和响应都被存储并可搜索。每次交互的完整上下文。"
+      },
+      {
+        "title": "语义搜索",
+        "description": "通过含义而非仅关键词查找相关记忆。由 Ollama 提供支持的 pgvector 嵌入。"
+      },
+      {
+        "title": "SOUL.md & USER.md",
+        "description": "塑造智能体思维和响应方式的持久个性和用户偏好文件。"
+      },
+      {
+        "title": "共享记忆",
+        "description": "智能体共享由 PostgreSQL 支持的虚拟化记忆空间。知识跨会话流动。"
+      }
+    ],
+    "codeTitle": "语义记忆搜索",
+    "searchModes": {
+      "hybrid": "混合",
+      "vector": "向量",
+      "text": "文本"
+    },
+    "searchModeLabel": "搜索模式"
+  },
+  "providers": {
+    "tag": "多提供商支持",
+    "heading": "选择您的 LLM。或者全部选择。",
+    "subheading": "原生集成，自动故障转移。混合云和本地提供商以优化成本和隐私。",
+    "providers": [
+      {
+        "name": "Anthropic",
+        "status": "已支持"
+      },
+      {
+        "name": "Google Gemini",
+        "status": "已支持"
+      },
+      {
+        "name": "Ollama",
+        "status": "已支持"
+      },
+      {
+        "name": "Kimi (Moonshot)",
+        "status": "已支持"
+      },
+      {
+        "name": "GLM",
+        "status": "已支持"
+      },
+      {
+        "name": "MiniMax",
+        "status": "已支持"
+      }
+    ],
+    "failoverTitle": "自动故障转移",
+    "failoverZeroDowntime": "零停机",
+    "configTitle": "可配置优先级",
+    "configDesc": "设置您的首选提供商顺序。如果某个失败，CapiBot 会立即切换到下一个。支持每个智能体模型覆盖。"
+  },
+  "pricing": {
+    "tag": "定价",
+    "heading": "选择您的掌控级别",
+    "subheading": "简单定价，无意外。",
+    "preLaunch": "发布前定价。",
+    "preLaunchDesc": "加入候补名单，在我们上线时锁定创始会员价格。",
+    "monthly": "月度",
+    "annual": "年度",
+    "save": "节省 20%",
+    "tiers": [
+      {
+        "name": "Starter",
+        "description": "快速启动所需的一切，零烦恼。",
+        "price": "$19",
+        "priceAnnual": "$15",
+        "priceDetail": "/月",
+        "features": [
+          "36个内置工具",
+          "Telegram和Web Chat频道",
+          "Mission Control仪表板",
+          "记忆与语义搜索",
+          "Composio集成",
+          "邮件支持"
+        ]
+      },
+      {
+        "name": "Pro",
+        "description": "适合需要所有频道和完整自动化的团队。",
+        "price": "$49",
+        "priceAnnual": "$39",
+        "priceDetail": "/月",
+        "features": [
+          "Starter的所有功能",
+          "全部4个消息频道",
+          "AI Companies功能",
+          "Webhook和Cron自动化",
+          "自动提供商故障转移",
+          "优先邮件支持"
+        ]
+      },
+      {
+        "name": "Scale",
+        "description": "专用基础设施和自定义SLA，适合大型团队。",
+        "price": "$149",
+        "priceAnnual": "$119",
+        "priceDetail": "/月",
+        "features": [
+          "Pro的所有功能",
+          "专用基础设施",
+          "自定义SLA",
+          "SSO和SAML集成",
+          "专属支持工程师",
+          "99.9%正常运行时间保障"
+        ]
+      }
+    ],
+    "comparisonTitle": "功能对比",
+    "comparisonFeatures": [
+      "智能体编排",
+      "所有内置工具",
+      "Mission Control 仪表板",
+      "消息渠道",
+      "记忆与 pgvector",
+      "Composio 集成",
+      "技能生态",
+      "AI 公司",
+      "Cron 调度",
+      "Webhook 支持",
+      "多提供商 LLM",
+      "自动故障转移",
+      "优先支持",
+      "专用基础设施",
+      "自定义 SLA"
+    ],
+    "openSourceNote": "所有方案包含14天免费试用。",
+    "starOnGithub": "无需信用卡",
+    "enterpriseNote": "需要企业版？",
+    "enterpriseCta": "联系我们获取定制方案",
+    "annualNote": "按年计费"
+  },
+  "faq": {
+    "tag": "常见问题",
+    "heading": "常见问题",
+    "subheading": "关于 CapiBot 您需要了解的一切。",
+    "items": [
+      {
+        "q": "什么是 CapiBot？",
+        "a": "CapiBot 是一个开源 AI 智能体编排平台。它让您可以运行 150 多个专业 AI 智能体，它们可以协作、执行任务，甚至形成自主公司 — 全部自主托管在您自己的基础设施上。"
+      },
+      {
+        "q": "CapiBot 真的免费吗？",
+        "a": "核心平台是开源且永久免费的。您可以在自己的硬件上自主托管。我们为想要免运维体验的团队提供付费托管托管（专业版）和企业版方案。"
+      },
+      {
+        "q": "CapiBot 支持哪些 LLM 提供商？",
+        "a": "CapiBot 支持 Anthropic、Google Gemini、Ollama（本地）、Kimi（Moonshot）、GLM 和 MiniMax。您可以配置优先级顺序和提供商之间的自动故障转移。"
+      },
+      {
+        "q": "可以完全本地运行吗？",
+        "a": "可以。将 CapiBot 与 Ollama 和本地模型配对，一切都可以在您的机器上运行 — 数据永远不会离开您的网络。PostgreSQL 是唯一的设施要求。"
+      },
+      {
+        "q": "什么是 AI 公司？",
+        "a": "AI 公司是 CapiBot 的旗舰功能。CEO 智能体起草商业计划、招聘专业智能体、创建任务并执行 — 在每个步骤都有可配置的人工监督。"
+      },
+      {
+        "q": "人工监督如何工作？",
+        "a": "在托管模式下，所有 CEO 创建的任务在执行前都需要人工批准。您可以批准计划、招聘决策和预算。或者当您有信心时切换到完全自主模式。"
+      },
+      {
+        "q": "支持哪些消息渠道？",
+        "a": "Telegram、WhatsApp、Slack 和 Mission Control 中的内置网页聊天。每个渠道都支持富媒体消息、媒体和语音转录（如适用）。"
+      },
+      {
+        "q": "我的数据私密吗？",
+        "a": "完全私密。CapiBot 是自主托管的 — 您的数据保留在您的设施上。没有遥测、没有数据收集、没有供应商锁定。您拥有一切。"
+      },
+      {
+        "q": "如何连接外部应用？",
+        "a": "通过 Composio，它通过统一 API 提供对数千应用的访问。您还可以将自定义技能编写为 Markdown 文件 — 无需更改代码。"
+      },
+      {
+        "q": "CapiBot 何时发布？",
+        "a": "我们处于发布前阶段。加入候补名单以获得抢先体验、产品更新和永久锁定的创始会员价格。"
+      }
+    ]
+  },
+  "installCta": {
+    "tag": "发布前",
+    "heading": "成为首批用户。",
+    "description": "CapiBot 即将发布。加入候补名单以获得抢先体验、产品更新和创始会员价格。",
+    "benefits": [
+      "公开发布前的抢先体验",
+      "创始会员价格 — 永久锁定",
+      "产品更新和幕后资讯"
+    ],
+    "emailLabel": "邮箱地址",
+    "emailPlaceholder": "you@company.com",
+    "joinButton": "加入",
+    "successTitle": "您已在名单上！",
+    "successDesc": "我们会在时机成熟时联系您。感谢您对 CapiBot 的信任。",
+    "noSpam": "绝不发送垃圾邮件。随时取消订阅。",
+    "connectError": "无法连接。请稍后重试。",
+    "genericError": "出错了。请重试。"
+  },
+  "footer": {
+    "brand": "CapiBot",
+    "brandDesc": "AI 智能体编排平台。构建由 AI 智能体驱动的人工监督自主公司。",
+    "productTitle": "产品",
+    "productLinks": {
+      "aiCompanies": "AI 公司",
+      "features": "功能",
+      "pricing": "定价",
+      "faq": "常见问题"
+    },
+    "resourcesTitle": "资源",
+    "resourceLinks": {
+      "github": "GitHub",
+      "joinWaitlist": "加入候补名单",
+      "compare": "对比：CapiBot vs OpenClaw"
+    },
+    "companyTitle": "公司",
+    "companyLinks": {
+      "contact": "联系我们",
+      "privacy": "隐私政策",
+      "terms": "服务条款"
+    },
+    "waitlistTitle": "加入候补名单",
+    "waitlistDesc": "获得抢先体验和创始会员价格。",
+    "waitlistSuccess": "您已在名单上！",
+    "joinButton": "加入",
+    "copyright": "© 2026 CapiBot —",
+    "madeIn": "精心制作于哥伦比亚波哥大"
+  },
+  "openClaw": {
+    "tag": "对比",
+    "heading": "CapiBot vs OpenClaw",
+    "description": "两者都是开源 AI 智能体平台。但 CapiBot 旨在解决 OpenClaw 用户一直遇到的问题：安全漏洞、成本失控、无团队管理、无真正的人工监督。",
+    "ctaPrimary": "加入候补名单",
+    "ctaSecondary": "查看对比",
+    "shortVersionTitle": "简要版本",
+    "shortVersion": [
+      {
+        "title": "安全优先",
+        "desc": "CapiBot 默认阻止 80 多个危险 shell 模式。OpenClaw 运行任意代码，无任何防护措施。"
+      },
+      {
+        "title": "团队管理",
+        "desc": "CapiBot 拥有 150 个按层级组织的智能体，含角色、级别和类别。OpenClaw 采用扁平智能体模型。"
+      },
+      {
+        "title": "人工监督",
+        "desc": "CapiBot 的托管模式需要批准计划、招聘和预算。OpenClaw 没有内置审批工作流。"
+      }
+    ],
+    "whyTitle": "团队选择 CapiBot 的原因",
+    "whySubtitle": "CapiBot 超越 OpenClaw 的六个领域。",
+    "advantages": [
+      {
+        "title": "安全与沙盒",
+        "description": "80 多个被阻止的 shell 模式、API 密钥防护、审计跟踪和开箱即用的 HMAC webhook 验证。"
+      },
+      {
+        "title": "智能体层级",
+        "description": "CEO、专家和实习生横跨 12 个以上类别 — 不是可互换机器人的扁平列表。"
+      },
+      {
+        "title": "AI 公司",
+        "description": "完整的公司生命周期：简报、规划、批准和运营 — 每个关卡都有人工监督。"
+      },
+      {
+        "title": "Mission Control",
+        "description": "28 面板专业仪表板 vs. 基础聊天界面。真正的可观测性和管理。"
+      },
+      {
+        "title": "多提供商故障转移",
+        "description": "6 个 LLM 提供商之间的自动故障转移，含可配置优先级和每个智能体模型覆盖。"
+      },
+      {
+        "title": "记忆与知识",
+        "description": "带有 pgvector 的持久语义记忆、SOUL.md 个性和共享知识库。"
+      }
+    ],
+    "comparisonTitle": "逐项功能对比",
+    "comparisonSubtitle": "详细了解每个平台提供的功能。",
+    "comparisonRows": [
+      {
+        "feature": "开源",
+        "capibot": "是",
+        "openclaw": "是"
+      },
+      {
+        "feature": "自主托管",
+        "capibot": "是",
+        "openclaw": "是"
+      },
+      {
+        "feature": "智能体数量",
+        "capibot": "150+",
+        "openclaw": "有限"
+      },
+      {
+        "feature": "智能体层级",
+        "capibot": "CEO / 专家 / 实习生",
+        "openclaw": "扁平"
+      },
+      {
+        "feature": "智能体类别",
+        "capibot": "12+",
+        "openclaw": "无"
+      },
+      {
+        "feature": "AI 公司",
+        "capibot": "完整生命周期",
+        "openclaw": "无"
+      },
+      {
+        "feature": "人工监督",
+        "capibot": "托管与自主模式",
+        "openclaw": "无"
+      },
+      {
+        "feature": "审批工作流",
+        "capibot": "计划、招聘、预算",
+        "openclaw": "无"
+      },
+      {
+        "feature": "Mission Control 仪表板",
+        "capibot": "28 面板",
+        "openclaw": "基础 UI"
+      },
+      {
+        "feature": "看板任务板",
+        "capibot": "有",
+        "openclaw": "无"
+      },
+      {
+        "feature": "记忆系统",
+        "capibot": "PostgreSQL + pgvector",
+        "openclaw": "基础"
+      },
+      {
+        "feature": "语义搜索",
+        "capibot": "混合向量 + 文本",
+        "openclaw": "无"
+      },
+      {
+        "feature": "SOUL.md 个性",
+        "capibot": "有",
+        "openclaw": "无"
+      },
+      {
+        "feature": "LLM 提供商",
+        "capibot": "6 个含故障转移",
+        "openclaw": "有限"
+      },
+      {
+        "feature": "自动故障转移",
+        "capibot": "有",
+        "openclaw": "无"
+      },
+      {
+        "feature": "消息渠道",
+        "capibot": "4 个（Telegram、WhatsApp、Slack、网页）",
+        "openclaw": "有限"
+      },
+      {
+        "feature": "语音转录",
+        "capibot": "Groq 驱动",
+        "openclaw": "无"
+      },
+      {
+        "feature": "工具",
+        "capibot": "28+",
+        "openclaw": "有限"
+      },
+      {
+        "feature": "Shell 安全",
+        "capibot": "80+ 模式被阻止",
+        "openclaw": "无限制"
+      },
+      {
+        "feature": "Composio 集成",
+        "capibot": "1000+ 应用",
+        "openclaw": "无"
+      },
+      {
+        "feature": "技能生态",
+        "capibot": "基于 Markdown + 社区",
+        "openclaw": "无"
+      },
+      {
+        "feature": "Cron 调度",
+        "capibot": "内置",
+        "openclaw": "无"
+      },
+      {
+        "feature": "Webhook 支持",
+        "capibot": "传入与传出",
+        "openclaw": "有限"
+      },
+      {
+        "feature": "审计跟踪",
+        "capibot": "完整日志",
+        "openclaw": "无"
+      },
+      {
+        "feature": "API 密钥管理",
+        "capibot": "内置 Vault",
+        "openclaw": "手动"
+      },
+      {
+        "feature": "实时更新",
+        "capibot": "WebSocket + SSE",
+        "openclaw": "轮询"
+      },
+      {
+        "feature": "知识库",
+        "capibot": "按公司文档",
+        "openclaw": "无"
+      },
+      {
+        "feature": "子智能体生成",
+        "capibot": "动态",
+        "openclaw": "无"
+      },
+      {
+        "feature": "智能体间通信",
+        "capibot": "内置",
+        "openclaw": "无"
+      },
+      {
+        "feature": "质量审核",
+        "capibot": "自动 + 手动",
+        "openclaw": "无"
+      }
+    ],
+    "forYouTitle": "CapiBot 适合您，如果...",
+    "forYouItems": [
+      "您希望 AI 智能体真正作为一个团队工作，而不是孤立的聊天机器人",
+      "安全很重要 — 您需要沙盒、审计跟踪和访问控制",
+      "您想要人工监督而无需微观管理每个操作",
+      "您需要一个真正的仪表板，而不仅仅是聊天窗口",
+      "您想要完全自主托管并拥有您的数据",
+      "您需要多提供商 LLM 支持和自动故障转移",
+      "您想要没有供应商锁定的开源核心"
+    ],
+    "ctaTitle": "准备好从 OpenClaw 升级了吗？",
+    "ctaDesc": "加入候补名单以获得抢先体验和创始会员价格。CapiBot 即将发布。",
+    "backToHome": "返回首页"
+  }
+}

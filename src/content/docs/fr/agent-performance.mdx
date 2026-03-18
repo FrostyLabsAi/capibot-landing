@@ -1,0 +1,491 @@
+# Performance des Agents
+
+Surveillez, mesurez et optimisez votre main-d'œuvre IA.
+
+## Métriques de Performance
+
+### Métriques par Agent Individuel
+
+**Métriques de Tâche :**
+
+- **Tâches Terminées** — Total des tâches finies
+- **Taux d'Achèvement** — Pourcentage de succès
+- **Temps Moyen d'Achèvement** — Rapidité de travail
+- **Score de Qualité** — Évaluations du reviewer
+
+**Métriques d'Activité :**
+
+- **Messages Envoyés** — Volume de communication
+- **Outils Utilisés** — Utilisation des fonctionnalités
+- **Fichiers Créés** — Volume de sortie
+- **Sessions Actives** — Temps online
+
+**Métriques de Coût :**
+
+- **Tokens Utilisés** — Consommation de modèle IA
+- **Coût par Tâche** — Efficacité
+- **Dépense Quotidienne/Hebdomadaire** — Impact budgétaire
+- **Répartition par Modèle** — Quels modèles IA utilisés
+
+### Voir la Performance de l'Agent
+
+**Accès :** Agent Detail → Onglet Performance
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ Nova — Performance (30 Derniers Jours)                 │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ Résumé                                                  │
+│ • 24 Tâches Terminées | 96% Taux de Succès            │
+│ • Moy. Achèvement: 2.3 heures                         │
+│ • $124.50 Coût Total | $5.19 Moy. par Tâche           │
+│                                                         │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ Répartition des Tâches                                  │
+│ Code Reviews:     8 tâches | 100% succès | Moy 1.5h   │
+│ Feature Dev:     12 tâches | 92% succès  | Moy 3.2h   │
+│ Bug Fixes:        4 tâches | 100% succès | Moy 0.8h   │
+│                                                         │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ Analyse des Coûts                                       │
+│ Claude 3.5 Sonnet: $98.20 (79%) █████████████████     │
+│ GPT-4:             $26.30 (21%) ████                  │
+│                                                         │
+│ Moyenne Quotidienne: $4.15/jour                       │
+│                                                         │
+└─────────────────────────────────────────────────────────┘
+```
+
+## Analytics de Performance
+
+### Panneau Analytics
+
+**Accès :** Nav rail → **Analytics**
+
+**Vues du Tableau de Bord :**
+
+**Aperçu Agent :**
+
+```
+Performance Agent (7 Jours)
+
+┌─────────┬──────────┬───────────┬──────────┬─────────┐
+│ Agent   │ Tâches   │ Succès %  │ Moy Temps│ Coût   │
+├─────────┼──────────┼───────────┼──────────┼─────────┤
+│ Nova    │ 12       │ 92%       │ 2.3h     │ $52.30 │
+│ Echo    │ 8        │ 100%      │ 1.8h     │ $34.10 │
+│ Pixel   │ 6        │ 83%       │ 3.1h     │ $28.50 │
+│ Scout   │ 15       │ 100%      │ 1.2h     │ $31.20 │
+└─────────┴──────────┴───────────┴──────────┴─────────┘
+```
+
+**Vélocité des Tâches :**
+
+```
+Tâches Terminées Par Jour
+
+Lun: ████████ 8
+Mar: ██████████ 10
+Mer: ██████ 6
+Jeu: ████████████ 12
+Ven: ████████ 8
+
+Tendance: +15% vs semaine dernière
+```
+
+**Tendances de Coût :**
+
+```
+Dépenses Quotidiennes (30 Derniers Jours)
+
+[Graphique linéaire montrant les dépenses au fil du temps]
+
+Pic: $18.50 le 10 Déc
+Moyenne: $8.20/jour
+Projeté Mensuel: $246
+```
+
+### Performance d'Entreprise
+
+**Métriques au Niveau Entreprise :**
+
+- Total des tâches terminées
+- Objectifs atteints
+- Utilisation du budget
+- Efficacité de l'équipe
+- Temps jusqu'à achèvement
+
+**Exemple :**
+
+```
+Performance Campagne Marketing Q1
+
+Tâches: 45 terminées | 3 en cours | 2 bloquées
+Objectifs: 2 sur 3 atteints | 1 en cours
+Budget: $342 sur $1,000 (34%)
+Efficacité Équipe: 94%
+Moy. Temps Tâche: 2.1 jours
+```
+
+## Optimiser la Performance
+
+### Optimisation de Vitesse
+
+**Si les Agents Sont Lents :**
+
+1. **Vérifiez le Choix de Modèle**
+   - Modèles plus rapides pour les tâches simples
+   - Utilisez GPT-3.5 au lieu de GPT-4
+   - Ollama local pour la vitesse
+
+2. **Simplifiez les Tâches**
+   - Divisez les grosses tâches en plus petites
+   - Fournissez des exigences claires
+   - Réduisez le scope creep
+
+3. **Réduisez le Contexte**
+   - Effacez les vieilles mémoires
+   - Archivez les projets terminés
+   - Concentrez-vous sur l'info pertinente
+
+4. **Traitement Parallèle**
+   - Générez des subagents
+   - Embauchez plus de spécialistes
+   - Distribuez la charge de travail
+
+### Optimisation des Coûts
+
+**Si les Coûts Sont Élevés :**
+
+1. **Changez de Modèles**
+   - Utilisez des modèles moins chers pour le travail de routine
+   - Réservez les modèles chers pour les tâches complexes
+   - Mélangez les fournisseurs
+
+2. **Optimisez les Prompts**
+   - Instructions plus courtes et claires
+   - Utilisez des exemples
+   - Soyez spécifique
+
+3. **Traitement par Lot**
+   - Groupez les tâches similaires
+   - Traitez par lots
+   - Réduisez les appels API
+
+4. **Archivez Quand Terminé**
+   - Ne gardez pas les agents inactifs en cours d'exécution
+   - Archivez les entreprises terminées
+   - Libérez les ressources inutilisées
+
+**Comparaison des Coûts :**
+
+| Modèle | Qualité | Vitesse | Coût |
+| ----------------- | ------- | ------ | --------------- |
+| Claude 3.5 Sonnet | Élevée | Rapide | $$$ |
+| GPT-4 | Élevée | Moyenne | $$$ |
+| GPT-3.5 | Moyenne | Rapide | $ |
+| Ollama Local | Variable | Rapide | Gratuit (matériel) |
+
+### Optimisation de la Qualité
+
+**Si la Qualité est Faible :**
+
+1. **Critères d'Acceptation Clairs**
+   - Définissez "terminé" spécifiquement
+   - Fournissez des exemples
+   - Définissez des standards
+
+2. **Meilleurs Briefings**
+   - Plus de contexte
+   - Informations de fond
+   - Guides de style
+
+3. **Processus de Révision**
+   - Ajoutez des agents reviewers
+   - Étape de révision humaine
+   - Itérez sur le feedback
+
+4. **Bon Agent pour le Travail**
+   - Associez les compétences à la tâche
+   - Utilisez des spécialistes
+   - N'utilisez pas les Interns pour le travail complexe
+
+## Révisions de Performance
+
+### Check-ins Réguliers
+
+**Révision Hebdomadaire :**
+
+```
+Semaine du 9-15 Déc 2024
+
+Top Performeurs:
+1. Echo — 8 tâches, 100% succès, sous budget
+2. Scout — 15 tâches, exécution rapide
+3. Nova — Fonctionnalités complexes livrées
+
+Nécessite Attention:
+1. Pixel — 3 tâches bloquées, besoin d'assets design
+
+Vérification Coût:
+• Budget: $200/semaine
+• Réel: $187/semaine ✅
+
+Semaine Prochaine:
+• Focus: Terminer la campagne Q1
+• Surveiller: Backlog design de Pixel
+```
+
+**Rapport Mensuel :**
+
+```
+Performance Décembre 2024
+
+Global:
+• 156 tâches terminées (+23% vs Nov)
+• 97% taux de succès (+2% vs Nov)
+• $892 coût total (+15% vs Nov)
+
+Par Agent:
+[Tableau de répartition complet]
+
+Par Entreprise:
+[Résumé de performance entreprise]
+
+Recommandations:
+1. Embaucher un designer supplémentaire (backlog croissant)
+2. Passer Pixel à GPT-3.5 pour le travail de routine
+3. Archiver les vieux projets pour libérer la mémoire
+```
+
+### Identifier les Problèmes
+
+**Drapeaux Rouges :**
+
+| Signe | Problème Possible | Solution |
+| --------------- | -------------------- | --------------------------- |
+| Taux d'erreur élevé | Mauvaise adéquation tâche | Réassigner à un autre agent |
+| Achèvement lent | Tâche trop grande | Diviser en plus petites tâches |
+| Coût élevé | Mauvais modèle | Passer à un modèle moins cher |
+| Qualité faible | Exigences peu claires | Ajouter des critères d'acceptation |
+| Souvent bloqué | Dépendances | Corriger le workflow |
+
+## Benchmarks
+
+### Bonne Performance
+
+**Agent Individuel :**
+
+- 90%+ taux de succès
+- 2-4 heures par tâche (moyenne)
+- Sous budget
+- Feedback positif
+
+**Entreprise :**
+
+- 85%+ objectifs atteints
+- Livraison à temps
+- Dans le budget
+- Livrables de qualité
+
+### Mauvaise Performance
+
+**Agent Individuel :**
+
+- Moins de 70% taux de succès
+- Systématiquement en retard
+- Taux d'erreur élevé
+- Problèmes de qualité répétés
+
+**Entreprise :**
+
+- Objectifs manqués
+- Dépassements budgétaires
+- Tâches bloquées
+- Livrables de mauvaise qualité
+
+## Améliorer la Performance
+
+### Améliorations au Niveau Agent
+
+**Formation :**
+
+- Mettez à jour SOUL.md avec les leçons apprises
+- Fournissez du feedback sur le travail terminé
+- Partagez les meilleures pratiques
+- Documentez les préférences
+
+**Outils :**
+
+- Activez/désactivez des outils spécifiques
+- Ajustez les permissions
+- Mettez à jour les capacités
+- Ajoutez/supprimez des compétences
+
+**Configuration :**
+
+- Changez le modèle IA
+- Ajustez les timeouts
+- Définissez les restrictions de workspace
+- Configurez les notifications
+
+### Améliorations au Niveau Entreprise
+
+**Processus :**
+
+- Affinez les workflows
+- Ajoutez/supprimez des étapes de révision
+- Ajustez les seuils d'approbation
+- Améliorez les transferts
+
+**Équipe :**
+
+- Embauchez des compétences complémentaires
+- Retirez les sous-performeurs
+- Rééquilibrez la charge de travail
+- Ajoutez de la capacité
+
+**Planification :**
+
+- Meilleure définition d'objectifs
+- Calendriers réalistes
+- Exigences plus claires
+- Livrables plus spécifiques
+
+## Outils de Suivi de Performance
+
+### Rapports Intégrés
+
+**Rapports Standup :**
+
+- Résumé d'activité quotidienne
+- Taux d'achèvement
+- Bloqueurs identifiés
+- Vélocité de l'équipe
+
+**Rapports de Coût :**
+
+- Répartition des dépenses
+- Budget vs réel
+- Coût par livrable
+- Prévisions
+
+**Rapports d'Activité :**
+
+- Utilisation des outils
+- Temps online
+- Volume de communication
+- Métriques de sortie
+
+### Suivi Personnalisé
+
+**Créer un Tableau de Bord :**
+
+- Sélectionnez les métriques à suivre
+- Choisissez la période
+- Définissez les benchmarks
+- Exportez les rapports
+
+**Définir des Alertes :**
+
+```
+Alerte: Taux de succès agent inférieur à 80%
+Action: Notifier l'admin
+
+Alerte: Coût quotidien supérieur à $20
+Action: Avertir du budget
+
+Alerte: Tâche bloquée plus de 3 jours
+Action: Escalader au manager
+```
+
+## Études de Cas
+
+### Cas 1 : Optimiser un Agent Lent
+
+**Problème :** Nova (Engineer) prend 6+ heures par tâche
+
+**Investigation :**
+
+- Utilise GPT-4 pour toutes les tâches
+- Grande mémoire ralentissant les réponses
+- Tâches trop larges
+
+**Solution :**
+
+1. Passé à Claude 3.5 Sonnet (plus rapide)
+2. Archivé les vieux souvenirs de projet
+3. Divisé les tâches en plus petites pièces
+
+**Résultat :** 6 heures → 2.5 heures moyenne, même qualité
+
+### Cas 2 : Réduire les Coûts
+
+**Problème :** Les coûts mensuels sont à 50% au-dessus du budget
+
+**Investigation :**
+
+- Tous les agents utilisent des modèles chers
+- Agents inactifs en cours d'exécution
+- Workflows inefficaces
+
+**Solution :**
+
+1. Travail de routine → GPT-3.5
+2. Entreprises terminées archivées
+3. Ajout de directives conscientes des coûts
+
+**Résultat :** $450/mois → $180/mois
+
+### Cas 3 : Améliorer la Qualité
+
+**Problème :** 30% des livrables ont besoin d'être refaits
+
+**Investigation :**
+
+- Exigences peu claires
+- Pas de critères d'acceptation
+- Guides de style manquants
+
+**Solution :**
+
+1. Ajout de critères d'acceptation spécifiques
+2. Création d'un guide de style dans la base de connaissances
+3. Ajout d'une étape de révision
+
+**Résultat :** 30% refaire → 5% refaire
+
+## Bonnes Pratiques
+
+### Surveillance
+
+1. **Révisions Hebdomadaires** — Check-ins réguliers
+2. **Suivez les Tendances** — Pas seulement des instantanés
+3. **Comparez les Périodes** — Mois sur mois
+4. **Définissez des Baselines** — Sachez ce qui est normal
+5. **Investiguez les Anomalies** — Creusez dans les problèmes
+
+### Optimisation
+
+1. **Commencez Conservateur** — Puis optimisez
+2. **Mesurez les Changements** — Testez A/B les ajustements
+3. **Concentrez-vous sur les Goulots d'Étranglement** — Plus gros impact d'abord
+4. **Équilibrez Qualité/Vitesse/Coût** — Ne peut pas tout optimiser
+5. **Itérez** — Amélioration continue
+
+### Communication
+
+1. **Partagez les Résultats** — Avec l'équipe/les parties prenantes
+2. **Célébrez les Victoires** — Reconnaissez la bonne performance
+3. **Traitez les Problèmes** — Rapidement et directement
+4. **Définissez les Attentes** — Objectifs clairs
+5. **Soyez Guidé par les Données** — Décisions basées sur les métriques
+
+## Prochaines Étapes
+
+- Révisez les [Bonnes Pratiques de Sécurité](security)
+- Apprenez la [Gestion des Tâches](task-management)
+- Explorez l'[Automatisation](automation)

@@ -1,0 +1,559 @@
+# Automation
+
+Automate repetitive work with scheduled jobs, webhooks, and intelligent alerts.
+
+## Cron Jobs
+
+Schedule tasks to run automatically.
+
+**Access:** Nav rail → **Cron**
+
+### Cron Management Panel
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ Cron Jobs                                   [+ New Job] │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ Daily Standup Report                                    │
+│ Every day at 9:00 AM                       [Edit] [▶️] │
+│ Last run: Today 9:00 AM | Next: Tomorrow 9:00 AM      │
+│ Status: ✅ Enabled                                      │
+│                                                         │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ Website Health Check                                    │
+│ Every 5 minutes                            [Edit] [▶️] │
+│ Last run: 2 min ago | Next: in 3 min                  │
+│ Status: ✅ Enabled                                      │
+│                                                         │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ Weekly Newsletter                                       │
+│ Every Monday at 10:00 AM                   [Edit] [▶️] │
+│ Last run: Never | Next: Monday 10:00 AM               │
+│ Status: ⏸️ Disabled                                     │
+│                                                         │
+└─────────────────────────────────────────────────────────┘
+```
+
+### Creating a Cron Job
+
+**Step 1: Basic Info**
+
+```
+Name: Daily Standup Report
+Description: Generate and email daily standup
+```
+
+**Step 2: Schedule**
+
+Choose schedule type:
+
+| Type      | Example             | Use Case             |
+| --------- | ------------------- | -------------------- |
+| **At**    | At 9:00 AM tomorrow | One-time future task |
+| **Every** | Every 30 minutes    | Regular intervals    |
+| **Cron**  | 0 9 \* \* 1-5       | Complex patterns     |
+
+**Common Cron Patterns:**
+
+```
+Every minute:      * * * * *
+Every 5 minutes:   */5 * * * *
+Every hour:        0 * * * *
+Daily at 9 AM:     0 9 * * *
+Weekdays at 9 AM:  0 9 * * 1-5
+Weekly on Monday:  0 9 * * 1
+Monthly 1st:       0 9 1 * *
+```
+
+**Step 3: Action**
+
+What to do when triggered:
+
+**Option A: Message an Agent**
+
+```
+Action: Send message
+To: @Atlas
+Message: Generate daily standup report
+```
+
+**Option B: Create a Task**
+
+```
+Action: Create task
+Title: Check website health
+Assignee: Scout
+Priority: High
+```
+
+**Option C: Execute Webhook**
+
+```
+Action: Call webhook
+URL: https://api.example.com/health-check
+Method: GET
+```
+
+**Step 4: Options**
+
+- **Enable immediately** — Start running on schedule
+- **Delete after run** — For one-time jobs
+- **Delivery channel** — Where to send results
+
+### Managing Jobs
+
+**Enable/Disable:**
+Toggle job on/off without deleting
+
+**Manual Trigger:**
+Click ▶️ to run immediately (for testing)
+
+**Edit:**
+Change schedule, action, or settings
+
+**Delete:**
+Remove job permanently
+
+### Job History
+
+See execution history:
+
+```
+Execution Log: Daily Standup Report
+
+✅ Today 9:00 AM     Success (2.3s)
+✅ Yesterday 9:00 AM Success (2.1s)
+✅ Dec 13 9:00 AM    Success (2.5s)
+❌ Dec 12 9:00 AM    Failed — Agent offline
+```
+
+### System Heartbeat
+
+Special built-in cron that checks system health:
+
+**Default:** Every 30 minutes
+
+**What it checks:**
+
+- Pending approvals
+- Blocked tasks
+- Stuck agents (5+ minutes active)
+- Inbox tasks not started
+
+**Actions:**
+
+- Auto-activates stale inbox tasks
+- Sends alerts for stuck agents
+- Generates summary report
+
+**Customize:**
+Create `HEARTBEAT.md` in workspace with custom instructions.
+
+## Webhooks
+
+Receive data from external systems and send data to them.
+
+**Access:** Nav rail → **Webhooks**
+
+### Incoming Webhooks
+
+External systems send data to CapiBot.
+
+**Example: GitHub Webhook**
+
+```
+When: New issue created in GitHub
+Action: CapiBot creates corresponding task
+```
+
+**Setup:**
+
+1. Go to Webhooks panel
+2. Click **"+ Incoming"**
+3. Configure:
+   ```
+   Name: GitHub Issues
+   URL: /webhooks/github
+   Events: issues.opened, issues.edited
+   Secret: [HMAC signature key]
+   ```
+4. Copy webhook URL
+5. Paste into GitHub webhook settings
+6. Select action: "Create task from GitHub issue"
+
+**Supported Sources:**
+
+- GitHub (issues, PRs)
+- GitLab
+- Linear
+- Jira
+- Custom (any HTTP POST)
+
+### Outgoing Webhooks
+
+CapiBot sends data to external systems.
+
+**Example: Slack Notification**
+
+```
+When: Task completed
+Action: Send message to Slack channel
+```
+
+**Setup:**
+
+1. Go to Webhooks panel
+2. Click **"+ Outgoing"**
+3. Configure:
+   ```
+   Name: Slack Notifications
+   URL: https://hooks.slack.com/services/...
+   Method: POST
+   Events: task.completed, agent.error
+   Payload: JSON
+   ```
+4. Test webhook
+5. Enable
+
+**Event Types:**
+
+- Task events (created, completed, assigned)
+- Agent events (spawned, error)
+- Company events (created, archived)
+- Alert events (triggered)
+- System events (heartbeat)
+
+### Webhook Testing
+
+Test webhooks before enabling:
+
+```
+Test Webhook: GitHub Issues
+
+Send test payload:
+{
+  "action": "opened",
+  "issue": {
+    "title": "Test Issue",
+    "body": "This is a test"
+  }
+}
+
+[Send Test]
+
+Response:
+✅ 200 OK
+{
+  "taskId": "T-123",
+  "status": "created"
+}
+```
+
+### Delivery History
+
+Track webhook deliveries:
+
+```
+Recent Deliveries
+
+✅ Dec 15 14:32:01  GitHub → Task created
+✅ Dec 15 14:30:45  Task complete → Slack
+❌ Dec 15 14:28:12  Alert → Webhook failed (timeout)
+✅ Dec 15 14:25:33  GitHub → Task created
+```
+
+**Retry Logic:**
+
+- Failed deliveries retried 3 times
+- Exponential backoff
+- Manual retry available
+
+### Security
+
+**HMAC Signatures:**
+Verify webhook authenticity:
+
+```
+Secret: your-webhook-secret
+Algorithm: SHA-256
+Header: X-Webhook-Signature
+```
+
+**Rate Limiting:**
+
+- 100 requests/minute per source
+- Prevents abuse
+- Automatic IP blocking on abuse
+
+## Alert Rules
+
+Get notified when specific conditions occur.
+
+**Access:** Nav rail → **Alerts**
+
+### Creating Alert Rules
+
+**Step 1: Condition**
+
+Define when to trigger:
+
+```
+When: Task
+Field: Status
+Operator: equals
+Value: Blocked
+
+AND
+
+Field: Days in status
+Operator: greater than
+Value: 1
+```
+
+**Available Conditions:**
+
+| Entity      | Fields                                               | Operators                    |
+| ----------- | ---------------------------------------------------- | ---------------------------- |
+| **Task**    | Status, Priority, Assignee, Due date, Days in status | `=`, `≠`, `>`, `<`, contains |
+| **Agent**   | Status, Company, Role                                | =, ≠, contains               |
+| **Company** | Phase, Mode, Budget                                  | `=`, `≠`, `>`, `<`           |
+
+**Examples:**
+
+```
+Alert: Task stuck in review
+When: Task status = Review
+AND Days in status greater than 2 days
+
+Alert: Agent error
+When: Agent status = Error
+
+Alert: Budget warning
+When: Company budget spent more than 80%
+
+Alert: High priority overdue
+When: Task priority = Urgent
+AND Due date before today
+```
+
+**Step 2: Action**
+
+What to do when triggered:
+
+**Option A: Send Notification**
+
+```
+Channel: Telegram
+To: @yourusername
+Message: ⚠️ Task {taskId} has been blocked for 2+ days
+```
+
+**Option B: Create Task**
+
+```
+Title: Follow up on blocked task
+Assignee: Manager
+Priority: High
+```
+
+**Option C: Call Webhook**
+
+```
+URL: https://api.example.com/alerts
+Method: POST
+Payload: { alert: details }
+```
+
+**Step 3: Settings**
+
+- **Cooldown** — Don't trigger again for X minutes
+- **Enable** — Active or disabled
+- **Test** — Simulate trigger
+
+### Alert Management
+
+**View Active Alerts:**
+
+```
+Active Alerts
+
+🔴 Task T-42 blocked 3 days
+   Rule: Stuck Tasks
+   Triggered: 2 hours ago
+   [View Task] [Dismiss]
+
+🔴 Agent Nova in Error state
+   Rule: Agent Errors
+   Triggered: 10 min ago
+   [View Agent] [Dismiss]
+```
+
+**Alert History:**
+
+```
+Recent Alerts (Last 7 days)
+
+🔴 Dec 15 14:32  Task blocked more than 2 days
+🔴 Dec 15 12:10  Agent error
+🟡 Dec 14 09:00  Budget at 75%
+🟡 Dec 13 16:45  Task approaching deadline
+```
+
+### Smart Alerting
+
+**Cooldown Periods:**
+Prevent alert fatigue:
+
+```
+Rule: Task blocked
+Cooldown: 4 hours
+
+Result: Alert fires once, then waits 4 hours
+         before alerting again on same task
+```
+
+**Escalation:**
+
+```
+Level 1: Task blocked 1 day → Notify assignee
+Level 2: Task blocked 3 days → Notify manager
+Level 3: Task blocked 5 days → Notify admin
+```
+
+## Common Automation Patterns
+
+### Pattern 1: Daily Standup
+
+**Setup:**
+
+```
+Cron: Every day at 9:00 AM
+Action: Message Atlas
+Message: "Generate daily standup report"
+
+Result: Atlas creates standup summary
+```
+
+### Pattern 2: Website Monitoring
+
+**Setup:**
+
+```
+Cron: Every 5 minutes
+Action: Call webhook
+URL: https://my-site.com/health
+
+Alert: If webhook returns error
+Action: Notify admin via Telegram
+```
+
+### Pattern 3: GitHub Integration
+
+**Setup:**
+
+```
+Incoming Webhook: GitHub
+Event: issues.opened
+Action: Create task
+Assignee: Auto-assign based on labels
+
+Result: GitHub issues become CapiBot tasks
+```
+
+### Pattern 4: Deadline Warnings
+
+**Setup:**
+
+```
+Alert: Task due tomorrow
+Condition: Due date = tomorrow
+AND Status ≠ Done
+Action: Send reminder to assignee
+```
+
+### Pattern 5: Budget Monitoring
+
+**Setup:**
+
+```
+Alert: Budget 80% spent
+Condition: Company cost more than 80% of budget
+Action: Notify admin
+Action: Create review task for CEO
+```
+
+### Pattern 6: Error Recovery
+
+**Setup:**
+
+```
+Alert: Agent error
+Condition: Agent status = Error
+Action: Notify admin
+Action: Restart agent automatically
+```
+
+## Best Practices
+
+### Cron Jobs
+
+1. **Reasonable Intervals** — Don't run every minute unless needed
+2. **Idempotent** — Job should be safe to run multiple times
+3. **Monitor Failures** — Check execution logs
+4. **Test First** — Manual trigger before enabling
+5. **Document** — Clear names and descriptions
+
+### Webhooks
+
+1. **Verify Signatures** — Always validate HMAC
+2. **Handle Retries** — Design for duplicate deliveries
+3. **Timeout Handling** — Set reasonable timeouts
+4. **Error Logging** — Log failures for debugging
+5. **Test Endpoints** — Verify receiving systems work
+
+### Alerts
+
+1. **Actionable** — Every alert should have a response
+2. **Not Too Chatty** — Use cooldowns to prevent spam
+3. **Escalate** — Notify appropriate people
+4. **Review Rules** — Update as needs change
+5. **Test Conditions** — Simulate before going live
+
+## Troubleshooting
+
+**Cron Job Not Running:**
+
+- Check if enabled
+- Verify schedule format
+- Check system time/timezone
+- Review execution logs
+
+**Webhook Not Receiving:**
+
+- Verify URL is correct
+- Check firewall rules
+- Test with curl/postman
+- Review webhook logs
+
+**Alert Not Firing:**
+
+- Verify condition logic
+- Check if entity matches criteria
+- Test rule manually
+- Review cooldown settings
+
+**Too Many Notifications:**
+
+- Increase cooldown periods
+- Refine alert conditions
+- Use batching
+- Review notification settings
+
+## Next Steps
+
+- Explore [Integrations](integrations)
+- Learn [Administration](administration)
+- Review [Security](security)

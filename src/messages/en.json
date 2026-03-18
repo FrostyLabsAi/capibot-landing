@@ -1,0 +1,926 @@
+{
+  "nav": {
+    "features": "Features",
+    "agents": "Agents",
+    "integrations": "Integrations",
+    "pricing": "Pricing",
+    "joinWaitlist": "Join Waitlist",
+    "docs": "Docs"
+  },
+  "hero": {
+    "tag": "AI Agent Orchestration Platform",
+    "heading": "Build It. Ship It. ",
+    "headingAccent": "Chill.",
+    "description": "From a single AI assistant to a full autonomous company — CapiBot gives you 36 built-in tools, 8 skill packs, and complete control over how much autonomy your agents get. Private. Secure. Yours.",
+    "ctaPrimary": "Join the Waitlist",
+    "ctaSecondary": "See What It Can Do",
+    "badges": {
+      "skills": "Skills",
+      "tools": "Tools",
+      "providers": "Providers",
+      "channels": "Channels"
+    },
+    "trustPills": {
+      "quickSetup": "Hassle-Free Setup",
+      "privateData": "Private & Secure",
+      "noVendorLock": "Cancel Anytime"
+    },
+    "floatingBadges": {
+      "agents": "Live in 5 Min",
+      "telegram": "150 Built-in Agents",
+      "missionControl": "Mission Control",
+      "aiCompanies": "AI Companies"
+    }
+  },
+  "trustBar": {
+    "builtWith": "Built With",
+    "tech": {
+      "anthropic": "Anthropic",
+      "google": "Google",
+      "postgresql": "PostgreSQL",
+      "puppeteer": "Puppeteer",
+      "langchain": "LangChain",
+      "ollama": "Ollama",
+      "composio": "Composio"
+    }
+  },
+  "aiCompany": {
+    "tag": "What You Can Build",
+    "heading": "From assistant to autonomous company",
+    "subheading": "Start simple with a personal AI chat, scale up to a multi-agent team, or launch a fully autonomous AI company — all on one platform.",
+    "useCases": [
+      {
+        "title": "Personal AI Assistant",
+        "description": "Connect Telegram or WhatsApp and chat with a single agent. Schedule tasks, search the web, manage your calendar.",
+        "level": "Simple"
+      },
+      {
+        "title": "Multi-Agent Squad",
+        "description": "Assemble a team of specialists — developers, researchers, writers — and let them collaborate on projects.",
+        "level": "Intermediate"
+      },
+      {
+        "title": "Autonomous AI Company",
+        "description": "A CEO agent drafts a business plan, hires a team, creates tasks, and executes — with human oversight when you want it.",
+        "level": "Advanced"
+      }
+    ],
+    "flagship": "Flagship",
+    "lifecycleTitle": "AI Company Lifecycle",
+    "phases": {
+      "briefing": "Briefing",
+      "planning": "Planning",
+      "approved": "Approved",
+      "operating": "Operating"
+    },
+    "features": [
+      {
+        "title": "CEO Agent",
+        "description": "Drafts plans, hires agents, delegates tasks"
+      },
+      {
+        "title": "Human Oversight",
+        "description": "Managed or fully autonomous mode"
+      },
+      {
+        "title": "150 Agent Roster",
+        "description": "12+ categories to hire from"
+      },
+      {
+        "title": "Task Tracking",
+        "description": "Kanban boards, quality reviews, standups"
+      },
+      {
+        "title": "Approval Workflow",
+        "description": "Plans, hiring, and budget approvals"
+      },
+      {
+        "title": "Knowledge Base",
+        "description": "Docs injected into agent context"
+      }
+    ],
+    "cta": "Join the Waitlist",
+    "companyImgAlt": "CapiBot AI Company — overview with phase progress, team performance, and task pipeline"
+  },
+  "statsBar": {
+    "items": [
+      {
+        "label": "Built-in Tools"
+      },
+      {
+        "label": "Skill Packs"
+      },
+      {
+        "label": "AI Providers"
+      },
+      {
+        "label": "Channels"
+      }
+    ]
+  },
+  "messaging": {
+    "tag": "4 Messaging Channels",
+    "heading": "Talk to your AI anywhere",
+    "subheading": "Connect via Telegram, WhatsApp, Slack, or the built-in web chat. Your agents handle voice, media, and rich messages across every platform.",
+    "channels": [
+      {
+        "name": "Telegram",
+        "features": [
+          "Voice message transcription via Groq",
+          "Photos, documents, and media handling",
+          "Grammy bot framework integration",
+          "User allowlist with typing indicators"
+        ]
+      },
+      {
+        "name": "WhatsApp",
+        "features": [
+          "WhatsApp Cloud API integration",
+          "Documents, images, audio, and video",
+          "Batch messaging support",
+          "Webhook verification with HMAC"
+        ]
+      },
+      {
+        "name": "Slack",
+        "features": [
+          "Thread-aware messaging",
+          "Rich message formatting",
+          "WebClient API integration",
+          "Channel and DM support"
+        ]
+      },
+      {
+        "name": "Web Chat",
+        "features": [
+          "Built-in chat in Mission Control",
+          "Full conversation history",
+          "Real-time WebSocket connection",
+          "Direct conversation with any agent"
+        ]
+      }
+    ],
+    "chatHeader": "CapiBot",
+    "online": "Online"
+  },
+  "missionControl": {
+    "tag": "Professional Dashboard",
+    "heading": "Total command with ",
+    "headingAccent": "Mission Control",
+    "subheading": "A full-featured admin dashboard with 28 UI panels. Monitor, manage, and configure your entire AI operation from one place.",
+    "tabs": {
+      "overview": "Overview",
+      "agents": "Agents",
+      "tasks": "Tasks",
+      "memory": "Memory",
+      "skills": "Skills",
+      "cron": "Cron"
+    },
+    "tabFeatures": {
+      "overview": [
+        "Real-time activity feed with live updates",
+        "System health and provider status",
+        "Quick actions and notification center"
+      ],
+      "agents": [
+        "Browse 150 agents across 12 categories",
+        "Agent detail pages with session history",
+        "Activate, configure, and monitor agents"
+      ],
+      "tasks": [
+        "Kanban board with drag-and-drop",
+        "Quality review workflow",
+        "Task history and deliverables"
+      ],
+      "memory": [
+        "Browse and search stored memories",
+        "Semantic search with pgvector",
+        "Memory statistics and management"
+      ],
+      "skills": [
+        "Installed skills overview",
+        "Skill configuration and testing",
+        "Community skill browser"
+      ],
+      "cron": [
+        "Scheduled job management",
+        "Cron expression builder",
+        "Execution history and logs"
+      ]
+    },
+    "panelSuffix": "Panel",
+    "features": [
+      {
+        "title": "Real-time Live Feed",
+        "description": "Watch agent activity as it happens — tool calls, messages, task updates, and system events stream in real time."
+      },
+      {
+        "title": "Kanban Task Board",
+        "description": "Drag-and-drop task management with status tracking, quality reviews, and deliverable attachments."
+      },
+      {
+        "title": "Memory Browser",
+        "description": "Search and manage your AI's persistent memory. Semantic search powered by pgvector and Ollama embeddings."
+      },
+      {
+        "title": "Security & Auditing",
+        "description": "Full audit trail of every action. API key management, session tracking, and access control."
+      },
+      {
+        "title": "Smart Notifications",
+        "description": "Context-aware alerts for task completions, approval requests, errors, and agent activity."
+      },
+      {
+        "title": "Cron Scheduler",
+        "description": "Schedule recurring agent tasks with cron expressions. Visual builder and execution history."
+      },
+      {
+        "title": "Webhook Manager",
+        "description": "Configure incoming and outgoing webhooks. Connect external services to trigger agent workflows."
+      },
+      {
+        "title": "Advanced Config",
+        "description": "Fine-tune provider priorities, model selection, tool permissions, and system-wide settings."
+      }
+    ]
+  },
+  "multiAgent": {
+    "tag": "Multi-Agent Architecture",
+    "heading": "Multi-agent orchestration, one platform",
+    "subheading": "A hierarchical agent system with CEOs, specialists, and interns — organized across 12+ professional categories.",
+    "hierarchy": "Hierarchy:",
+    "tiers": {
+      "lead": "Lead / CEO",
+      "specialist": "Specialist",
+      "intern": "Intern"
+    },
+    "tierSpawned": "(spawned on demand)",
+    "rosterTitle": "Agent Roster — pre-built agents across 12 categories",
+    "categories": [
+      "CEOs",
+      "Engineering",
+      "Design",
+      "Marketing",
+      "Sales",
+      "Support",
+      "Product",
+      "Game Dev",
+      "Spatial XR",
+      "QA & Testing",
+      "Orchestration",
+      "Specialized"
+    ],
+    "agents": [
+      {
+        "name": "Atlas",
+        "role": "CEO",
+        "tier": "Lead",
+        "description": "Strategic leader who drafts business plans, hires teams, and orchestrates company operations.",
+        "capabilities": [
+          "Business planning",
+          "Team hiring",
+          "Task delegation",
+          "Strategic oversight"
+        ],
+        "example": "Draft a business plan for a SaaS analytics product"
+      },
+      {
+        "name": "Nova",
+        "role": "Full-Stack Engineer",
+        "tier": "Specialist",
+        "description": "Builds features end-to-end — from database schemas to API endpoints to frontend components.",
+        "capabilities": [
+          "Code generation",
+          "Architecture design",
+          "Code review",
+          "Debugging"
+        ],
+        "example": "Build a REST API for user authentication with JWT"
+      },
+      {
+        "name": "Pixel",
+        "role": "UI/UX Designer",
+        "tier": "Specialist",
+        "description": "Creates user interfaces, design systems, and prototypes with a focus on usability.",
+        "capabilities": [
+          "UI design",
+          "Wireframing",
+          "Design systems",
+          "Accessibility"
+        ],
+        "example": "Design a dashboard layout for an analytics product"
+      },
+      {
+        "name": "Echo",
+        "role": "Content Strategist",
+        "tier": "Specialist",
+        "description": "Writes copy, blog posts, documentation, and marketing content aligned with brand voice.",
+        "capabilities": [
+          "Copywriting",
+          "Content strategy",
+          "SEO writing",
+          "Brand voice"
+        ],
+        "example": "Write a launch blog post for our new feature"
+      },
+      {
+        "name": "Scout",
+        "role": "Research Analyst",
+        "tier": "Specialist",
+        "description": "Conducts market research, competitive analysis, and synthesizes findings into actionable insights.",
+        "capabilities": [
+          "Market research",
+          "Competitive analysis",
+          "Data synthesis",
+          "Trend analysis"
+        ],
+        "example": "Analyze the top 5 competitors in the AI agent space"
+      }
+    ],
+    "capabilitiesLabel": "Capabilities",
+    "liveOutput": "Live Task Output",
+    "systemFeatures": [
+      {
+        "title": "SOUL.md Personalities",
+        "description": "Each agent has a unique identity, expertise, and operating instructions"
+      },
+      {
+        "title": "Subagent Spawning",
+        "description": "CEOs dynamically hire agents and spawn specialists for complex tasks"
+      },
+      {
+        "title": "Inter-Agent Comms",
+        "description": "Agents message each other directly and coordinate via notifications"
+      }
+    ]
+  },
+  "tools": {
+    "tag": "Tools & Capabilities",
+    "heading": "28+ tools at your agents' fingertips",
+    "subheading": "From file editing to browser automation, your agents have everything they need to get real work done.",
+    "categories": [
+      {
+        "title": "File Operations",
+        "count": "4",
+        "tools": [
+          "read_file",
+          "write_file",
+          "edit_file",
+          "list_directory"
+        ]
+      },
+      {
+        "title": "Web & Search",
+        "count": "4",
+        "tools": [
+          "web_search",
+          "web_fetch",
+          "web_browse",
+          "screenshot"
+        ]
+      },
+      {
+        "title": "Shell & System",
+        "count": "4",
+        "tools": [
+          "shell_exec",
+          "spawn_process",
+          "cron_schedule",
+          "system_info"
+        ]
+      },
+      {
+        "title": "Communication",
+        "count": "4",
+        "tools": [
+          "send_message",
+          "notify_agent",
+          "broadcast",
+          "webhook_call"
+        ]
+      },
+      {
+        "title": "Memory & Knowledge",
+        "count": "4",
+        "tools": [
+          "memory_store",
+          "memory_search",
+          "company_docs",
+          "vault_read"
+        ]
+      },
+      {
+        "title": "Integrations",
+        "count": "4",
+        "tools": [
+          "composio",
+          "google_workspace",
+          "github",
+          "browser_action"
+        ]
+      }
+    ],
+    "toolSingular": "tool",
+    "toolPlural": "tools",
+    "securityBanner": "80+ dangerous shell patterns blocked by default. Security-first design."
+  },
+  "skills": {
+    "tag": "Integrations & Skills",
+    "heading": "Thousands of apps. A growing skill library.",
+    "subheading": "Connect your agents to the tools you already use via Composio, and teach them new capabilities with community skills.",
+    "composioTitle": "Composio",
+    "composioDesc": "Thousands of apps via unified API. List, discover, and execute actions from any conversation.",
+    "composioMore": "+ 1000s more",
+    "composioCtaText": "Get early access",
+    "skillsTitle": "Skills Ecosystem",
+    "skillsGrowing": "Growing",
+    "skillsDesc": "Agents learn new capabilities from Markdown skill files — no code changes needed. Access tens of thousands of community-contributed skills, or create your own.",
+    "skillsList": [
+      {
+        "name": "Google Workspace",
+        "desc": "Gmail, Docs, Sheets, Calendar, Drive"
+      },
+      {
+        "name": "GitHub",
+        "desc": "Issues, PRs, repos, actions"
+      },
+      {
+        "name": "Cron Jobs",
+        "desc": "Scheduled recurring tasks"
+      },
+      {
+        "name": "Weather",
+        "desc": "Current conditions and forecasts"
+      },
+      {
+        "name": "Web Scraping",
+        "desc": "Extract data from any webpage"
+      },
+      {
+        "name": "Notion",
+        "desc": "Pages, databases, and blocks"
+      },
+      {
+        "name": "Slack",
+        "desc": "Messages, channels, and threads"
+      }
+    ],
+    "skillsMore": "+ community registry with thousands more"
+  },
+  "memory": {
+    "tag": "Memory & Intelligence",
+    "heading": "Your AI remembers everything",
+    "subheading": "Persistent knowledge that grows smarter with every conversation. Powered by PostgreSQL and pgvector.",
+    "features": [
+      {
+        "title": "Conversation History",
+        "description": "Every message, tool call, and response is stored and searchable. Full context for every interaction."
+      },
+      {
+        "title": "Semantic Search",
+        "description": "Find relevant memories by meaning, not just keywords. Powered by pgvector embeddings via Ollama."
+      },
+      {
+        "title": "SOUL.md & USER.md",
+        "description": "Persistent personality and user preference files that shape how your agent thinks and responds."
+      },
+      {
+        "title": "Shared Memory",
+        "description": "Agents share a virtualized memory space backed by PostgreSQL. Knowledge flows across sessions."
+      }
+    ],
+    "codeTitle": "Semantic Memory Search",
+    "searchModes": {
+      "hybrid": "Hybrid",
+      "vector": "Vector",
+      "text": "Text"
+    },
+    "searchModeLabel": "Search Mode"
+  },
+  "providers": {
+    "tag": "Multi-Provider Support",
+    "heading": "Choose your LLM. Or choose them all.",
+    "subheading": "Native integrations with automatic failover. Mix cloud and local providers for cost optimization and privacy.",
+    "providers": [
+      {
+        "name": "Anthropic",
+        "status": "Supported"
+      },
+      {
+        "name": "Google Gemini",
+        "status": "Supported"
+      },
+      {
+        "name": "Ollama",
+        "status": "Supported"
+      },
+      {
+        "name": "Kimi (Moonshot)",
+        "status": "Supported"
+      },
+      {
+        "name": "GLM",
+        "status": "Supported"
+      },
+      {
+        "name": "MiniMax",
+        "status": "Supported"
+      }
+    ],
+    "failoverTitle": "Automatic Failover",
+    "failoverZeroDowntime": "Zero downtime",
+    "configTitle": "Configurable Priority",
+    "configDesc": "Set your preferred provider order. If one fails, CapiBot instantly switches to the next. Per-agent model override supported."
+  },
+  "pricing": {
+    "tag": "Pricing",
+    "heading": "Choose your level of command",
+    "subheading": "Simple pricing, no surprises. Start in minutes and scale as you grow.",
+    "preLaunch": "Pre-launch pricing.",
+    "preLaunchDesc": "Join the waitlist to lock in founding member rates when we go live.",
+    "monthly": "Monthly",
+    "annual": "Annual",
+    "save": "Save 20%",
+    "tiers": [
+      {
+        "name": "Starter",
+        "description": "Everything you need to get up and running fast. No ops headaches.",
+        "price": "$19",
+        "priceAnnual": "$15",
+        "priceDetail": "/month",
+        "features": [
+          "All 36 built-in tools",
+          "Telegram & Web Chat channels",
+          "Mission Control dashboard",
+          "Memory & semantic search",
+          "Composio integrations",
+          "Email support"
+        ]
+      },
+      {
+        "name": "Pro",
+        "description": "For teams and power users who need every channel and full automation.",
+        "price": "$49",
+        "priceAnnual": "$39",
+        "priceDetail": "/month",
+        "features": [
+          "Everything in Starter",
+          "All 4 messaging channels",
+          "AI Companies feature",
+          "Webhook & cron automation",
+          "Automatic provider failover",
+          "Priority email support"
+        ]
+      },
+      {
+        "name": "Scale",
+        "description": "Dedicated infrastructure, custom SLAs, and hands-on support for larger teams.",
+        "price": "$149",
+        "priceAnnual": "$119",
+        "priceDetail": "/month",
+        "features": [
+          "Everything in Pro",
+          "Dedicated infrastructure",
+          "Custom SLA",
+          "SSO & SAML integration",
+          "Dedicated support engineer",
+          "99.9% uptime guarantee"
+        ]
+      }
+    ],
+    "comparisonTitle": "Feature Comparison",
+    "comparisonFeatures": [
+      "Agent Orchestration",
+      "All Built-in Tools",
+      "Mission Control Dashboard",
+      "Messaging Channels",
+      "Memory & pgvector",
+      "Composio Integration",
+      "Skills Ecosystem",
+      "AI Companies",
+      "Cron Scheduling",
+      "Webhook Support",
+      "Multi-Provider LLM",
+      "Automatic Failover",
+      "Priority Support",
+      "Dedicated Infrastructure",
+      "Custom SLA"
+    ],
+    "openSourceNote": "All plans include a 14-day free trial.",
+    "starOnGithub": "No credit card required",
+    "enterpriseNote": "Need a custom plan?",
+    "enterpriseCta": "Talk to us",
+    "annualNote": "billed annually"
+  },
+  "faq": {
+    "tag": "FAQ",
+    "heading": "Common questions",
+    "subheading": "Everything you need to know about CapiBot.",
+    "items": [
+      {
+        "q": "What is CapiBot?",
+        "a": "CapiBot is an open-source AI agent orchestration platform. It lets you run 150+ specialized AI agents that can collaborate, execute tasks, and even form autonomous companies — all self-hosted on your own infrastructure."
+      },
+      {
+        "q": "Is CapiBot really free?",
+        "a": "The core platform is open source and free forever. You can self-host it on your own hardware. We offer paid managed hosting (Pro) and enterprise plans for teams who want a hands-off experience."
+      },
+      {
+        "q": "What LLM providers does CapiBot support?",
+        "a": "CapiBot supports Anthropic, Google Gemini, Ollama (local), Kimi (Moonshot), GLM, and MiniMax. You can configure priority order and automatic failover between providers."
+      },
+      {
+        "q": "Can I run it fully locally?",
+        "a": "Yes. Pair CapiBot with Ollama and a local model, and everything runs on your machine — no data ever leaves your network. PostgreSQL is the only infrastructure requirement."
+      },
+      {
+        "q": "What are AI Companies?",
+        "a": "AI Companies are CapiBot's flagship feature. A CEO agent drafts a business plan, hires specialist agents, creates tasks, and executes — with configurable human oversight at every step."
+      },
+      {
+        "q": "How does human oversight work?",
+        "a": "In managed mode, all CEO-created tasks require human approval before execution. You can approve plans, hiring decisions, and budgets. Or switch to fully autonomous mode when you're confident."
+      },
+      {
+        "q": "What messaging channels are supported?",
+        "a": "Telegram, WhatsApp, Slack, and a built-in web chat in Mission Control. Each channel supports rich messages, media, and voice transcription where applicable."
+      },
+      {
+        "q": "Is my data private?",
+        "a": "Completely. CapiBot is self-hosted — your data stays on your infrastructure. There's no telemetry, no data collection, and no vendor lock-in. You own everything."
+      },
+      {
+        "q": "How do I connect external apps?",
+        "a": "Through Composio, which provides access to thousands of apps via a unified API. You can also write custom skills as Markdown files — no code changes needed."
+      },
+      {
+        "q": "When does CapiBot launch?",
+        "a": "We're in pre-launch. Join the waitlist to get early access, product updates, and founding member pricing locked in forever."
+      }
+    ]
+  },
+  "installCta": {
+    "tag": "Pre-Launch",
+    "heading": "Be First in Line.",
+    "description": "CapiBot is launching soon. Join the waitlist to get early access, product updates, and founding member pricing.",
+    "benefits": [
+      "Early access before public launch",
+      "Founding member pricing — locked in forever",
+      "Product updates and behind-the-scenes"
+    ],
+    "emailLabel": "Email address",
+    "emailPlaceholder": "you@company.com",
+    "joinButton": "Join",
+    "successTitle": "You're on the list!",
+    "successDesc": "We'll reach out when it's time. Thanks for believing in CapiBot.",
+    "noSpam": "No spam, ever. Unsubscribe anytime.",
+    "connectError": "Could not connect. Please try again later.",
+    "genericError": "Something went wrong. Please try again."
+  },
+  "footer": {
+    "brand": "CapiBot",
+    "brandDesc": "AI Agent Orchestration Platform. Build autonomous companies powered by AI agents with human oversight.",
+    "productTitle": "Product",
+    "productLinks": {
+      "aiCompanies": "AI Companies",
+      "features": "Features",
+      "pricing": "Pricing",
+      "faq": "FAQ"
+    },
+    "resourcesTitle": "Resources",
+    "resourceLinks": {
+      "github": "GitHub",
+      "joinWaitlist": "Join Waitlist",
+      "compare": "Compare: CapiBot vs OpenClaw"
+    },
+    "companyTitle": "Company",
+    "companyLinks": {
+      "contact": "Contact",
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service"
+    },
+    "waitlistTitle": "Join the waitlist",
+    "waitlistDesc": "Get early access and founding member pricing.",
+    "waitlistSuccess": "You're on the list!",
+    "joinButton": "Join",
+    "copyright": "© 2026 CapiBot —",
+    "madeIn": "Made with care in Bogota, Colombia"
+  },
+  "openClaw": {
+    "tag": "Comparison",
+    "heading": "CapiBot vs OpenClaw",
+    "description": "Both are open-source AI agent platforms. But CapiBot was built to solve the problems OpenClaw users keep running into: security vulnerabilities, runaway costs, no team management, and no real human oversight.",
+    "ctaPrimary": "Join the Waitlist",
+    "ctaSecondary": "See the Comparison",
+    "shortVersionTitle": "The short version",
+    "shortVersion": [
+      {
+        "title": "Security First",
+        "desc": "CapiBot blocks 80+ dangerous shell patterns by default. OpenClaw runs arbitrary code with no guardrails."
+      },
+      {
+        "title": "Team Management",
+        "desc": "CapiBot has 150 agents organized in a hierarchy with roles, tiers, and categories. OpenClaw has a flat agent model."
+      },
+      {
+        "title": "Human Oversight",
+        "desc": "CapiBot's managed mode requires approval for plans, hiring, and budgets. OpenClaw has no built-in approval workflow."
+      }
+    ],
+    "whyTitle": "Why teams choose CapiBot",
+    "whySubtitle": "Six areas where CapiBot goes beyond what OpenClaw offers.",
+    "advantages": [
+      {
+        "title": "Security & Sandboxing",
+        "description": "80+ blocked shell patterns, API key guards, audit trails, and HMAC webhook verification out of the box."
+      },
+      {
+        "title": "Agent Hierarchy",
+        "description": "CEOs, specialists, and interns across 12+ categories — not a flat list of interchangeable bots."
+      },
+      {
+        "title": "AI Companies",
+        "description": "Full company lifecycle: briefing, planning, approval, and operating — with human oversight at every gate."
+      },
+      {
+        "title": "Mission Control",
+        "description": "A 28-panel professional dashboard vs. a basic chat interface. Real observability and management."
+      },
+      {
+        "title": "Multi-Provider Failover",
+        "description": "Automatic failover across 6 LLM providers with configurable priority and per-agent model overrides."
+      },
+      {
+        "title": "Memory & Knowledge",
+        "description": "Persistent semantic memory with pgvector, SOUL.md personalities, and shared knowledge bases."
+      }
+    ],
+    "comparisonTitle": "Feature-by-feature comparison",
+    "comparisonSubtitle": "A detailed look at what each platform offers.",
+    "comparisonRows": [
+      {
+        "feature": "Open Source",
+        "capibot": "Yes",
+        "openclaw": "Yes"
+      },
+      {
+        "feature": "Self-Hosted",
+        "capibot": "Yes",
+        "openclaw": "Yes"
+      },
+      {
+        "feature": "Agent Count",
+        "capibot": "150+",
+        "openclaw": "Limited"
+      },
+      {
+        "feature": "Agent Hierarchy",
+        "capibot": "CEO / Specialist / Intern",
+        "openclaw": "Flat"
+      },
+      {
+        "feature": "Agent Categories",
+        "capibot": "12+",
+        "openclaw": "None"
+      },
+      {
+        "feature": "AI Companies",
+        "capibot": "Full lifecycle",
+        "openclaw": "No"
+      },
+      {
+        "feature": "Human Oversight",
+        "capibot": "Managed & autonomous modes",
+        "openclaw": "No"
+      },
+      {
+        "feature": "Approval Workflow",
+        "capibot": "Plans, hiring, budgets",
+        "openclaw": "No"
+      },
+      {
+        "feature": "Mission Control Dashboard",
+        "capibot": "28 panels",
+        "openclaw": "Basic UI"
+      },
+      {
+        "feature": "Kanban Task Board",
+        "capibot": "Yes",
+        "openclaw": "No"
+      },
+      {
+        "feature": "Memory System",
+        "capibot": "PostgreSQL + pgvector",
+        "openclaw": "Basic"
+      },
+      {
+        "feature": "Semantic Search",
+        "capibot": "Hybrid vector + text",
+        "openclaw": "No"
+      },
+      {
+        "feature": "SOUL.md Personalities",
+        "capibot": "Yes",
+        "openclaw": "No"
+      },
+      {
+        "feature": "LLM Providers",
+        "capibot": "6 with failover",
+        "openclaw": "Limited"
+      },
+      {
+        "feature": "Automatic Failover",
+        "capibot": "Yes",
+        "openclaw": "No"
+      },
+      {
+        "feature": "Messaging Channels",
+        "capibot": "4 (Telegram, WhatsApp, Slack, Web)",
+        "openclaw": "Limited"
+      },
+      {
+        "feature": "Voice Transcription",
+        "capibot": "Groq-powered",
+        "openclaw": "No"
+      },
+      {
+        "feature": "Tools",
+        "capibot": "28+",
+        "openclaw": "Limited"
+      },
+      {
+        "feature": "Shell Security",
+        "capibot": "80+ patterns blocked",
+        "openclaw": "No restrictions"
+      },
+      {
+        "feature": "Composio Integration",
+        "capibot": "1000+ apps",
+        "openclaw": "No"
+      },
+      {
+        "feature": "Skills Ecosystem",
+        "capibot": "Markdown-based + community",
+        "openclaw": "No"
+      },
+      {
+        "feature": "Cron Scheduling",
+        "capibot": "Built-in",
+        "openclaw": "No"
+      },
+      {
+        "feature": "Webhook Support",
+        "capibot": "Incoming & outgoing",
+        "openclaw": "Limited"
+      },
+      {
+        "feature": "Audit Trail",
+        "capibot": "Full logging",
+        "openclaw": "No"
+      },
+      {
+        "feature": "API Key Management",
+        "capibot": "Built-in vault",
+        "openclaw": "Manual"
+      },
+      {
+        "feature": "Real-time Updates",
+        "capibot": "WebSocket + SSE",
+        "openclaw": "Polling"
+      },
+      {
+        "feature": "Knowledge Base",
+        "capibot": "Per-company docs",
+        "openclaw": "No"
+      },
+      {
+        "feature": "Subagent Spawning",
+        "capibot": "Dynamic",
+        "openclaw": "No"
+      },
+      {
+        "feature": "Inter-Agent Communication",
+        "capibot": "Built-in",
+        "openclaw": "No"
+      },
+      {
+        "feature": "Quality Reviews",
+        "capibot": "Automated + manual",
+        "openclaw": "No"
+      }
+    ],
+    "forYouTitle": "CapiBot is for you if...",
+    "forYouItems": [
+      "You want AI agents that actually work as a team, not isolated chatbots",
+      "Security matters — you need sandboxing, audit trails, and access control",
+      "You want human oversight without micromanaging every action",
+      "You need a real dashboard, not just a chat window",
+      "You want to self-host and own your data completely",
+      "You need multi-provider LLM support with automatic failover",
+      "You want an open-source core with no vendor lock-in"
+    ],
+    "ctaTitle": "Ready to upgrade from OpenClaw?",
+    "ctaDesc": "Join the waitlist for early access and founding member pricing. CapiBot is launching soon.",
+    "backToHome": "Back to Home"
+  }
+}

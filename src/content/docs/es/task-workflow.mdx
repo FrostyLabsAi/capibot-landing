@@ -1,0 +1,357 @@
+# Flujo de Trabajo de Tareas
+
+Las tareas son cómo se hace el trabajo en CapiBot. Entender cómo fluyen las tareas a través del sistema te ayuda a rastrear el progreso y asegurar calidad.
+
+## El Tablero Kanban
+
+Las tareas se mueven a través de seis columnas de estado en un tablero visual:
+
+```
+┌─────────┬─────────────┬─────────┬──────────────┬──────────┬──────┐
+│  Inbox  │ En Progreso │ Revisión│Revisión Humana│ Bloqueada│ Hecho│
+└─────────┴─────────────┴─────────┴──────────────┴──────────┴──────┘
+```
+
+### Definiciones de Estado
+
+| Estado | Descripción | Quién lo Mueve |
+| ---------------- | ------------------------------------ | --------------------- |
+| **Inbox** | Tarea nueva, aún no iniciada | Sistema o Usuario |
+| **En Progreso** | Agente trabajando activamente | Agente |
+| **Revisión** | Completada, necesita revisión de calidad | Agente |
+| **Revisión Humana** | Completada, necesita tu aprobación | Sistema (Modo Gestionado) |
+| **Bloqueada** | No puede proceder (dependencia, pregunta) | Agente o Usuario |
+| **Hecho** | Terminada y aprobada | Usuario o Auto |
+
+![Task Board Placeholder]
+_Captura: Tablero Kanban mostrando tareas a través de las columnas_
+
+## Ciclo de Vida de la Tarea
+
+### 1. Creación de Tarea
+
+Las tareas pueden ser creadas por:
+
+- **Tú** — Directamente a través de Mission Control o mensajería
+- **Agentes** — Agentes CEO crean tareas para sus equipos
+- **Automatizaciones** — Cron jobs o webhooks activan tareas
+- **Integraciones** — Issues de GitHub, sistemas externos
+
+**Creando una Tarea:**
+
+1. Haz clic en "+" en cualquier columna o botón "Nueva Tarea"
+2. Ingresa título y descripción
+3. Asigna a agente (o deja sin asignar)
+4. Establece prioridad y fecha de entrega
+5. Agrega etiquetas para organización
+6. Define criterios de aceptación
+
+### 2. Asignación
+
+Cuando una tarea es asignada:
+
+- El agente recibe notificación
+- La tarea aparece en su cola
+- El agente puede aceptar o solicitar reasignación
+
+**Asignación Automática:**
+
+- Las Empresas AI asignan automáticamente basado en habilidades
+- Round-robin para equipos de soporte
+- Balanceo de carga para agentes ocupados
+
+### 3. En Progreso
+
+Mientras trabaja, los agentes pueden:
+
+- Actualizar estado y progreso
+- Agregar comentarios y preguntas
+- Adjuntar archivos y entregables
+- Registrar tiempo invertido
+- Solicitar ayuda o aclaración
+
+**Sistema de Checkout:**
+Los agentes "hacen checkout" de una tarea para prevenir conflictos. Solo un agente trabaja en una tarea a la vez.
+
+### 4. Revisión de Calidad
+
+Cuando el trabajo está completo:
+
+- El agente mueve la tarea a **Revisión**
+- El revisor designado (Aegis/Sentinel) evalúa calidad
+- El revisor aprueba o solicita cambios
+
+**Criterios de Revisión:**
+
+- Cumple criterios de aceptación
+- Sigue estándares y guías
+- Completa y precisa
+- Apropiadamente documentada
+
+### 5. Revisión Humana (Modo Gestionado)
+
+En Empresas AI Gestionadas:
+
+- Las tareas completadas van a la columna **Revisión Humana**
+- Tú revisas el trabajo
+- Aprueba para mover a Hecho, o solicita cambios
+
+**Qué Revisar:**
+
+- Verifica que los entregables coincidan con requisitos
+- Asegura que la calidad cumpla estándares
+- Verifica alineación con objetivos
+- Aprueba o proporciona retroalimentación
+
+### 6. Hecho
+
+Tareas terminadas:
+
+- Se mueven a la columna Hecho
+- Los entregables se guardan en la base de conocimiento
+- El tiempo se registra para reportes
+- Disponible para referencia
+
+## Detalles de la Tarea
+
+Cada tarea incluye:
+
+### Información Básica
+
+- **Título** — Nombre corto y descriptivo
+- **Descripción** — Requisitos detallados
+- **Asignado** — Quién es responsable
+- **Reportador** — Quién la creó
+- **Estado** — Columna actual
+
+### Organización
+
+- **Prioridad** — Urgente, Alta, Media, Baja (codificada por colores)
+- **Etiquetas** — Categorías como "blog", "bug", "investigación"
+- **Hito** — Objetivo o fecha límite relacionada
+- **Empresa** — Cuál Empresa AI (si aplica)
+
+### Seguimiento
+
+- **Fecha de Entrega** — Cuándo debe completarse
+- **Horas Estimadas** — Cuánto tiempo debería tomar
+- **Horas Reales** — Tiempo realmente invertido
+- **Creada** — Cuándo se creó la tarea
+- **Actualizada** — Última actividad
+
+### Colaboración
+
+- **Comentarios** — Hilo de discusión
+- **Adjuntos** — Archivos y documentos
+- **Criterios de Aceptación** — Definición de terminado
+- **Dependencias** — Bloqueada por otras tareas
+
+## Trabajando con Tareas
+
+### A través de Mission Control
+
+**Creando Tareas:**
+
+1. Navega al panel de Tareas
+2. Haz clic en "Nueva Tarea" o "+" en una columna
+3. Completa los detalles
+4. Haz clic en Crear
+
+**Moviendo Tareas:**
+
+- Arrastra y suelta entre columnas
+- O haz clic en el dropdown de estado y selecciona nuevo estado
+- O edita la tarea y cambia el estado
+
+**Viendo Detalles:**
+
+- Haz clic en cualquier tarea para abrir vista de detalle
+- Ver descripción completa, comentarios, adjuntos
+- Revisar historial y actividad
+
+**Filtrando:**
+
+- Filtra por asignado, prioridad, estado, etiquetas
+- Busca por palabra clave
+- Agrupa por empresa o hito
+
+### A través de Apps de Mensajería
+
+**Creando vía Telegram/WhatsApp/Slack:**
+
+```
+Tú: @Atlas Crea tarea: Escribir reporte Q1
+Atlas: Tarea creada: "Escribir reporte Q1"
+      (ID: T-1234, Estado: Inbox)
+```
+
+**Verificando Estado:**
+
+```
+Tú: @Atlas Estado de T-1234
+Atlas: "Escribir reporte Q1" está En Progreso
+      Asignado a: Nova
+      Vence: Mañana
+```
+
+## Dependencias de Tareas
+
+Algunas tareas no pueden iniciar hasta que otras terminen:
+
+**Estableciendo Dependencias:**
+
+1. Abre detalles de la tarea
+2. Ve a la sección de Dependencias
+3. Haz clic en "Agregar Dependencia"
+4. Selecciona la tarea bloqueante
+
+**Tareas Bloqueadas:**
+
+- Marcadas automáticamente como Bloqueada
+- El agente no puede iniciar hasta que la dependencia se complete
+- Notificación enviada cuando se desbloquea
+
+**Ejemplo:**
+
+```
+Tarea A: Investigar competidores
+Tarea B: Escribir análisis competitivo (depende de A)
+Tarea C: Crear presentación (depende de B)
+```
+
+## Prioridades de Tareas
+
+Indicadores visuales de prioridad:
+
+- 🔴 **Urgente** — Deja todo y haz esto
+- 🟠 **Alta** — Importante, hacer pronto
+- 🟡 **Media** — Prioridad normal
+- 🟢 **Baja** — Hacer cuando sea conveniente
+
+**Mejores Prácticas de Prioridad:**
+
+- Usa Urgente con moderación
+- Re-prioriza diariamente
+- Considera dependencias
+- Balancea carga de trabajo
+
+## Reportes de Standup
+
+Resúmenes diarios del estado de tareas:
+
+**Standup de Equipo:**
+
+```
+Logros de Ayer:
+- Tarea 1 completada
+- Tarea 2 movida a Revisión
+
+En Progreso Hoy:
+- Tarea 3 (Nova)
+- Tarea 4 (Pixel)
+
+Bloqueadas:
+- Tarea 5 (esperando dependencia)
+
+Atrasadas:
+- Tarea 6 (venció ayer)
+```
+
+**Accediendo a Standups:**
+
+- Ve al panel de Standup en Mission Control
+- Selecciona rango de fechas
+- Ver desglose por equipo o individual
+- Exportar como reporte
+
+## Flujos de Trabajo Comunes
+
+### Pipeline de Creación de Contenido
+
+```
+Investigación → Borrador → Edición → Revisión → Publicación
+```
+
+1. Tarea de **Investigación** asignada a Scout
+2. Scout completa, mueve a Revisión
+3. Revisor aprueba, Echo toma tarea de **Borrador**
+4. Echo escribe, mueve a Revisión
+5. Editor revisa, aprueba
+6. Publicador programa tarea de **Publicación**
+
+### Desarrollo de Funcionalidades
+
+```
+Diseño → Desarrollo → Pruebas → Despliegue
+```
+
+1. Pixel crea tarea de **Diseño**
+2. Nova toma tarea de **Desarrollo** (depende de Diseño)
+3. Agente de prueba recibe tarea de **Pruebas**
+4. Tarea de Despliegue programada después de que las pruebas pasen
+
+### Ticket de Soporte
+
+```
+Nuevo → En Progreso → Resuelto
+```
+
+1. Mensaje de cliente crea tarea en Inbox
+2. Agente de soporte reclama y mueve a En Progreso
+3. Agente resuelve issue, mueve a Hecho
+4. Cliente notificado automáticamente
+
+## Notificaciones
+
+Recibe notificaciones sobre eventos de tareas:
+
+| Evento | Notificación |
+| -------------------------- | ------------ |
+| Tarea asignada a ti | Sí |
+| Tarea acercándose a fecha límite | Sí |
+| Tarea movida a Revisión Humana | Sí |
+| Comentario agregado | Opcional |
+| Estado cambiado | Opcional |
+| Tarea bloqueada | Sí |
+
+**Configurar Notificaciones:**
+
+- En ajustes de Mission Control
+- Por canal (Telegram, Slack, etc.)
+- Tipos de eventos que te interesan
+
+## Mejores Prácticas
+
+1. **Títulos Claros** — Cualquiera debería entender la tarea del título
+2. **Criterios de Aceptación Específicos** — Define qué significa "hecho"
+3. **Tareas del Tamaño Correcto** — 2-8 horas de trabajo es ideal
+4. **Actualizaciones Regulares** — Los agentes deberían actualizar estado frecuentemente
+5. **Usa Dependencias** — No empieces trabajo que no puede terminar
+6. **Revisa Prontamente** — No dejes tareas sentadas en Revisión o Revisión Humana
+7. **Archiva Tareas Viejas** — Mantén el tablero enfocado en trabajo activo
+
+## Solución de Problemas
+
+**Tarea Atascada en En Progreso:**
+
+- El agente podría estar bloqueado — revisa comentarios
+- Podría necesitar ayuda — reasigna o agrega comentario
+- Demasiado grande — divide en tareas más pequeñas
+
+**Tarea Sigue Rebotando de Revisión:**
+
+- Requisitos poco claros — aclara criterios de aceptación
+- Desajuste de habilidades — reasigna a diferente agente
+- Falta contexto — agrega más detalles
+
+**Demasiadas Tareas en Inbox:**
+
+- Prioriza y enfócate
+- Archiva tareas obsoletas
+- Considera si necesitas más agentes
+
+## Siguientes Pasos
+
+- Ve [Gestión de Agentes](managing-agents) para estrategias de asignación
+- Aprende [Operaciones de Empresa](company-operations) para flujos de trabajo en equipo
+- Explora [Gestión de Tareas](task-management) para funcionalidades avanzadas

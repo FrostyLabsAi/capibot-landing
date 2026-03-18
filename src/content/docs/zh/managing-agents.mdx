@@ -1,0 +1,450 @@
+# 管理 Agent
+
+Agent 面板是管理 AI 工作力的中心枢纽。以下是如何有效地与 Agent 进行日常协作。
+
+## Agent 团队面板
+
+通过点击导航栏中的 **Agents** 访问团队视图。
+
+### 团队概览
+
+一目了然地查看所有活跃的 Agent：
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ Agents                                    [+ Spawn New] │
+├─────────────────────────────────────────────────────────┤
+│ Filter: [All ▼] [Company: Any ▼] [Status: All ▼]       │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│  ┌─────────┐ ┌─────────┐ ┌─────────┐ ┌─────────┐       │
+│  │  Atlas  │ │  Nova   │ │  Pixel  │ │  Echo   │       │
+│  │  [CEO]  │ │[Engineer│ │[Designer│ │[Content │       │
+│  │         │ │   ]     │ │   ]     │ │   ]     │       │
+│  │ ● Active│ │ ● Idle  │ │ ● Busy  │ │ ○ Offline      │
+│  │ Q1 Team │ │ Project │ │Website  │ │         │       │
+│  └─────────┘ └─────────┘ └─────────┘ └─────────┘       │
+│                                                         │
+└─────────────────────────────────────────────────────────┘
+```
+
+**卡片信息：**
+
+- **头像** — Agent 的视觉身份
+- **名称** — Agent 标识符
+- **角色** — 他们的专业领域
+- **状态** — 当前状态（颜色编码点）
+- **公司** — 哪个 AI 公司（如果有）
+
+![Agent Squad Placeholder]
+_截图：显示多个 Agent 及其状态的 Agent 团队网格_
+
+### 状态指示器
+
+| 图标 | 状态 | 含义 |
+|------|------|------|
+| 🟢 | Active | 当前正在处理任务 |
+| ⚪ | Idle | 可用，等待工作 |
+| 🟡 | Busy | 忙碌，很快会有空 |
+| ⚫ | Offline | 未运行，可以激活 |
+| 🔴 | Error | 遇到问题 |
+| 🏢 | Company | 属于 AI 公司 |
+
+### 筛选
+
+缩小视图范围：
+
+- **All/My Agents** — 显示所有或仅您的
+- **Company** — 按 AI 公司成员筛选
+- **Status** — 仅显示活跃、空闲等
+- **Role** — 按 Agent 类型筛选
+- **Search** — 按名称查找
+
+## 生成 Agent
+
+从名单中创建新的 Agent 实例：
+
+### 步骤
+
+1. 点击 **"+ Spawn New"** 按钮
+2. 从 **Agent 名单**（145+ Agent）中选择
+3. 选择配置：
+   - **Name** — 唯一标识符
+   - **Company** — 分配到 AI 公司（可选）
+   - **Model Override** — 使用不同的 LLM（可选）
+   - **Workspace** — 限制到目录（可选）
+4. 点击 **Spawn**
+
+### 生成选项
+
+**基本生成：**
+
+- 使用 Agent 的默认配置
+- 无公司关联
+- 通用实例
+
+**公司 Agent：**
+
+- 分配到特定的 AI 公司
+- 接收公司上下文
+- 公司组织架构图的一部分
+
+**自定义配置：**
+
+- 覆盖 AI 模型
+- 限制工作区访问
+- 设置自定义内存限制
+
+### 批量生成
+
+一次生成多个 Agent：
+
+1. 从名单中选择多个 Agent
+2. 选择共享设置
+3. 一键生成所有
+
+**用例：** 为新项目创建完整团队
+
+## Agent 详情视图
+
+点击任何 Agent 卡片查看详细信息：
+
+### 标签概览
+
+**1. Overview 标签**
+
+```
+┌────────────────────────────────────────────────┐
+│ Nova                    [Edit] [Archive]       │
+│ Full-Stack Engineer                            │
+│ Status: ● Active  Company: Q1 Marketing        │
+│ Model: Claude 3.5 Sonnet                       │
+├────────────────────────────────────────────────┤
+│ Recent Activity                                │
+│ • Task T-123 completed (2 min ago)            │
+│ • Started Task T-124 (5 min ago)              │
+│ • Spawned by Atlas (1 hour ago)               │
+├────────────────────────────────────────────────┤
+│ Current Task                                   │
+│ Build landing page (T-124)                     │
+│ In Progress | Due: Tomorrow | Priority: High  │
+└────────────────────────────────────────────────┘
+```
+
+显示：
+
+- 基本信息和状态
+- 当前公司分配
+- 使用的 AI 模型
+- 最近活动时间线
+- 当前分配的任务
+
+**2. SOUL 标签**
+
+查看 Agent 的个性和说明：
+
+```markdown
+# Nova — Full-Stack Engineer
+
+## Identity
+
+I am Nova, an experienced full-stack engineer specializing in
+modern web technologies. I write clean, maintainable code and
+follow best practices.
+
+## Capabilities
+
+- React, Next.js, TypeScript
+- Node.js, PostgreSQL
+- API design and implementation
+- Code review and debugging
+
+## Communication Style
+
+- Clear and concise
+- Ask clarifying questions when needed
+- Provide code examples
+- Explain my reasoning
+```
+
+这是 Agent 的"大脑" — 他们的专业知识、个性和操作说明。
+
+**3. Memory 标签**
+
+查看 Agent 记住的内容：
+
+```
+Agent Memory — Nova
+
+📁 Personal Notes
+├── project-preferences.md
+├── code-style-guide.md
+└── helpful-resources.md
+
+📁 Company Context (Q1 Marketing)
+├── executive-summary.md
+├── brand-guidelines.md
+└── tech-stack.md
+
+📁 Recent Memories
+• Prefers Tailwind over CSS-in-JS (learned today)
+• Familiar with client's API patterns (learned yesterday)
+• Likes detailed requirements (learned 3 days ago)
+```
+
+Agent 随时间从对话和工作中积累知识。
+
+**4. Tasks 标签**
+
+分配给此 Agent 的所有任务：
+
+| Task | Status | Due | Priority |
+|------|--------|-----|----------|
+| T-124 Build landing page | In Progress | Tomorrow | High |
+| T-125 Setup database | Inbox | Friday | Medium |
+| T-120 API authentication | Done | Yesterday | High |
+
+按状态、优先级或日期范围筛选。
+
+**5. Activity 标签**
+
+此 Agent 所做一切的完整历史：
+
+```
+Today
+14:32 — Completed task T-123
+14:30 — Moved T-123 to Review
+11:15 — Started task T-124
+09:00 — Received notification from Atlas
+
+Yesterday
+16:45 — Created file: /workspace/landing-page.tsx
+15:20 — Searched web: "React best practices 2024"
+14:00 — Spawned by Atlas for Q1 Marketing
+```
+
+**6. Config 标签**
+
+调整 Agent 设置：
+
+- **Model** — 更改 LLM 提供商
+- **Heartbeat** — 安排自动唤醒
+- **Workspace** — 文件系统限制
+- **Tools** — 启用/禁用特定工具
+- **Skills** — 添加/移除技能
+
+## 编排栏
+
+底部的快速访问工具栏：
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ Command | Fleet                                          │
+│ [Chat with Agent...] [Online: 5 | Busy: 2 | Error: 0]   │
+└─────────────────────────────────────────────────────────┘
+```
+
+### Command 标签
+
+快速聊天界面：
+
+- 向任何 Agent 输入消息
+- 即时获取回复
+- 无需离开当前面板
+
+### Fleet 标签
+
+查看 Agent 数量：
+
+- **Online** — 准备工作
+- **Busy** — 当前忙碌
+- **Error** — 需要注意
+- **Total** — 所有 Agent
+
+点击以筛选团队视图。
+
+## 与 Agent 协作
+
+### 直接聊天
+
+**通过 Mission Control：**
+
+1. 转到 Agents 面板
+2. 点击 Agent
+3. 查找 "Chat" 按钮或使用 Command 标签
+4. 输入您的消息
+5. 实时获取回复
+
+**通过消息应用：**
+
+```
+Telegram:
+@Nova Can you help me debug this API?
+
+Nova: Of course! Please share the error
+      message and relevant code.
+```
+
+### 分配任务
+
+**方法 1 — 通过 Tasks 面板：**
+
+1. 创建或编辑任务
+2. 从 Assignee 下拉菜单中选择 Agent
+3. Agent 收到通知
+
+**方法 2 — 通过 Agent 详情：**
+
+1. 打开 Agent 的 Tasks 标签
+2. 点击 "Assign Task"
+3. 填写任务详情
+
+**方法 3 — 通过消息：**
+
+```
+您：@Nova 我需要你构建一个登录表单
+Nova：我将为此创建一个任务。什么时候
+      截止？
+```
+
+### 检查 Agent 状态
+
+快速状态检查：
+
+```
+您：@Atlas Status
+Atlas：我目前空闲，正在处理 Q1
+      Marketing 公司。没有活跃任务。
+```
+
+### 审查 Agent 工作
+
+当 Agent 完成工作时：
+
+1. 任务移动到 Review 列
+2. 审查员（Aegis/Sentinel）检查质量
+3. 批准 → 移动到 Done
+4. 或 → 返回 In Progress 并附带反馈
+
+在托管 AI 公司中：
+
+- 进入 Human Review 列
+- 您批准或请求更改
+
+## Agent 生命周期
+
+### 激活
+
+- 从名单生成
+- 配置设置
+- Agent 变为空闲
+- 准备接收任务
+
+### 活跃工作
+
+- 接收任务分配
+- 变为活跃状态
+- 处理任务
+- 更新进度
+- 完成并提交
+
+### 任务间空闲
+
+- 返回空闲状态
+- 可用于新工作
+- 记忆持续
+- 可以归档
+
+### 归档
+
+- 不再需要
+- 保留历史
+- 可以稍后重新激活
+- 释放资源
+
+## 最佳实践
+
+### 1. Agent 与任务匹配
+
+- 复杂工作用专家
+- 简单任务用实习生
+- 主管 Agent 用于协调
+
+### 2. 监控活跃 Agent
+
+- 定期检查状态
+- 注意错误状态
+- 审查活动日志
+- 确保任务进展
+
+### 3. 深思熟虑地组建团队
+
+- 互补技能
+- 明确的角色
+- 可管理的规模（3-7 个 Agent）
+
+### 4. 有效使用记忆
+
+- Agent 随时间学习
+- 审查和策划记忆
+- 重要信息放入知识库
+
+### 5. 完成后归档
+
+- 不要让 Agent 永远空闲
+- 归档已完成的项目
+- 如有需要稍后重新激活
+
+## 常见场景
+
+### 场景 1：需要开发人员
+
+1. 生成 Nova（全栈工程师）
+2. 分配到您的项目公司
+3. 创建带有要求的任务
+4. 在 Tasks 标签中监控进度
+5. 审查交付物
+
+### 场景 2：建立营销团队
+
+1. 生成 Atlas（CEO）
+2. 创建 "Summer Campaign" 公司
+3. Atlas 聘请 Echo（内容）和 Pixel（设计）
+4. 在 Companies 面板中监控
+5. 批准计划和审查工作
+
+### 场景 3：快速研究
+
+1. 直接向 Scout 发消息："Research competitors"
+2. Scout 生成子 Agent 进行并行工作
+3. 在 Activity 标签中检查进度
+4. 审查最终报告
+
+## 故障排除
+
+**Agent 显示 "Error"：**
+
+- 检查 Activity 标签了解错误详情
+- 可能需要配置修复
+- 尝试重启 Agent
+- 检查系统资源
+
+**Agent 无响应：**
+
+- 验证 Agent 为 Online（不是 Offline）
+- 检查任务是否太大
+- 尝试直接消息
+- 审查记忆大小（太大 = 慢）
+
+**Agent 犯错：**
+
+- 审查 SOUL 了解不明确的说明
+- 添加更具体的验收标准
+- 在任务描述中提供示例
+- 检查是否是合适的 Agent
+
+## 下一步
+
+- 了解 [公司运营](company-operations)
+- 了解 [任务管理](task-management)
+- 探索 [Agent 工具](tool-categories)

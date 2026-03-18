@@ -1,0 +1,357 @@
+# Workflow des Tâches
+
+Les tâches sont la façon dont le travail est effectué dans CapiBot. Comprendre comment les tâches circulent dans le système vous aide à suivre les progrès et à assurer la qualité.
+
+## Le Tableau Kanban
+
+Les tâches circulent à travers six colonnes de statut sur un tableau visuel :
+
+```
+┌─────────┬─────────────┬─────────┬──────────────┬──────────┬──────┐
+│  Inbox  │ In Progress │ Review  │ Human Review │ Blocked  │ Done │
+└─────────┴─────────────┴─────────┴──────────────┴──────────┴──────┘
+```
+
+### Définitions des Statuts
+
+| Statut | Description | Qui Déplace |
+| ---------------- | ------------------------------------ | --------------------- |
+| **Inbox** | Nouvelle tâche, pas encore commencée | Système ou Utilisateur |
+| **In Progress** | Agent travaille activement | Agent |
+| **Review** | Terminé, besoin de contrôle qualité | Agent |
+| **Human Review** | Terminé, besoin de votre approbation | Système (Mode Managed) |
+| **Blocked** | Ne peut pas avancer (dépendance, question) | Agent ou Utilisateur |
+| **Done** | Terminé et approuvé | Utilisateur ou Auto |
+
+![Tableau de Tâches Placeholder]
+_Capture d'écran : Tableau Kanban montrant les tâches à travers les colonnes_
+
+## Cycle de Vie de la Tâche
+
+### 1. Création de Tâche
+
+Les tâches peuvent être créées par :
+
+- **Vous** — Directement via Mission Control ou messagerie
+- **Agents** — Les agents CEO créent des tâches pour leurs équipes
+- **Automatisations** — Jobs cron ou webhooks déclenchent des tâches
+- **Intégrations** — Issues GitHub, systèmes externes
+
+**Créer une Tâche :**
+
+1. Cliquez sur "+" sur n'importe quelle colonne ou le bouton "Nouvelle Tâche"
+2. Entrez le titre et la description
+3. Assignez à un agent (ou laissez non assigné)
+4. Définissez la priorité et la date d'échéance
+5. Ajoutez des tags pour l'organisation
+6. Définissez les critères d'acceptation
+
+### 2. Assignation
+
+Quand une tâche est assignée :
+
+- L'agent reçoit une notification
+- La tâche apparaît dans sa file d'attente
+- L'agent peut accepter ou demander une réassignation
+
+**Assignation Auto :**
+
+- Les Entreprises IA assignent automatiquement basé sur les compétences
+- Round-robin pour les équipes de support
+- Équilibrage de charge pour les agents occupés
+
+### 3. In Progress
+
+Pendant le travail, les agents peuvent :
+
+- Mettre à jour le statut et les progrès
+- Ajouter des commentaires et questions
+- Joindre des fichiers et livrables
+- Enregistrer le temps passé
+- Demander de l'aide ou des clarifications
+
+**Système de Checkout :**
+Les agents "check out" une tâche pour éviter les conflits. Un seul agent travaille sur une tâche à la fois.
+
+### 4. Revue Qualité
+
+Quand le travail est terminé :
+
+- L'agent déplace la tâche vers **Review**
+- Le reviewer désigné (Aegis/Sentinel) évalue la qualité
+- Le reviewer approuve ou demande des modifications
+
+**Critères de Revue :**
+
+- Répond aux critères d'acceptation
+- Suit les standards et lignes directrices
+- Complet et précis
+- Correctement documenté
+
+### 5. Human Review (Mode Managed)
+
+Dans les Entreprises IA Managed :
+
+- Les tâches terminées vont dans la colonne **Human Review**
+- Vous révisez le travail
+- Approuvez pour passer à Done, ou demandez des modifications
+
+**Quoi Réviser :**
+
+- Vérifiez que les livrables correspondent aux exigences
+- Assurez-vous que la qualité atteint les standards
+- Assurez l'alignement avec les objectifs
+- Approuvez ou fournissez des feedbacks
+
+### 6. Done
+
+Tâches terminées :
+
+- Déplacées vers la colonne Done
+- Livrables sauvegardés dans la base de connaissances
+- Temps enregistré pour les rapports
+- Disponibles pour référence
+
+## Détails de la Tâche
+
+Chaque tâche comprend :
+
+### Informations de Base
+
+- **Title** — Nom court et descriptif
+- **Description** — Exigences détaillées
+- **Assignee** — Qui est responsable
+- **Reporter** — Qui l'a créée
+- **Status** — Colonne actuelle
+
+### Organisation
+
+- **Priority** — Urgent, High, Medium, Low (codé par couleur)
+- **Tags** — Catégories comme "blog", "bug", "research"
+- **Milestone** — Objectif ou deadline connexe
+- **Company** — Quelle Entreprise IA (le cas échéant)
+
+### Suivi
+
+- **Due Date** — Quand elle devrait être terminée
+- **Estimated Hours** — Combien de temps cela devrait prendre
+- **Actual Hours** — Temps réellement passé
+- **Created** — Quand la tâche a été créée
+- **Updated** — Dernière activité
+
+### Collaboration
+
+- **Comments** — Fil de discussion
+- **Attachments** — Fichiers et documents
+- **Acceptance Criteria** — Définition de terminé
+- **Dependencies** — Bloqué par d'autres tâches
+
+## Travailler avec les Tâches
+
+### Via Mission Control
+
+**Créer des Tâches :**
+
+1. Naviguez vers le panneau Tasks
+2. Cliquez sur "Nouvelle Tâche" ou "+" dans une colonne
+3. Remplissez les détails
+4. Cliquez sur Créer
+
+**Déplacer des Tâches :**
+
+- Glissez-déposez entre les colonnes
+- Ou cliquez sur le menu déroulant de statut et sélectionnez le nouveau statut
+- Ou éditez la tâche et changez le statut
+
+**Voir les Détails :**
+
+- Cliquez sur n'importe quelle tâche pour ouvrir la vue détaillée
+- Voir la description complète, commentaires, pièces jointes
+- Réviser l'historique et l'activité
+
+**Filtrer :**
+
+- Filtrer par assigné, priorité, statut, tags
+- Recherche par mot-clé
+- Grouper par entreprise ou jalon
+
+### Via les Applications de Messagerie
+
+**Créer via Telegram/WhatsApp/Slack :**
+
+```
+Vous : @Atlas Créer tâche : Rédiger rapport Q1
+Atlas : Tâche créée : "Rédiger rapport Q1"
+      (ID : T-1234, Statut : Inbox)
+```
+
+**Vérifier le Statut :**
+
+```
+Vous : @Atlas Statut de T-1234
+Atlas : "Rédiger rapport Q1" est In Progress
+      Assigné à : Nova
+      Échéance : Demain
+```
+
+## Dépendances de Tâches
+
+Certaines tâches ne peuvent pas commencer avant que d'autres ne soient terminées :
+
+**Définir des Dépendances :**
+
+1. Ouvrir les détails de la tâche
+2. Aller à la section Dependencies
+3. Cliquer sur "Ajouter Dépendance"
+4. Sélectionner la tâche bloquante
+
+**Tâches Bloquées :**
+
+- Automatiquement marquées comme Blocked
+- L'agent ne peut pas commencer jusqu'à ce que la dépendance se termine
+- Notification envoyée quand débloqué
+
+**Exemple :**
+
+```
+Tâche A : Rechercher les concurrents
+Tâche B : Rédiger l'analyse concurrentielle (dépend de A)
+Tâche C : Créer la présentation (dépend de B)
+```
+
+## Priorités des Tâches
+
+Indicateurs visuels de priorité :
+
+- 🔴 **Urgent** — Déposez tout et faites ceci
+- 🟠 **High** — Important, faites bientôt
+- 🟡 **Medium** — Priorité normale
+- 🟢 **Low** — Faites quand c'est pratique
+
+**Bonnes Pratiques de Priorité :**
+
+- Utilisez Urgent avec parcimonie
+- Repriorisez quotidiennement
+- Considérez les dépendances
+- Équilibrez la charge de travail
+
+## Rapports Standup
+
+Résumés quotidiens du statut des tâches :
+
+**Standup d'Équipe :**
+
+```
+Accomplissements Hier :
+- Tâche 1 terminée
+- Tâche 2 déplacée vers Review
+
+En Cours Aujourd'hui :
+- Tâche 3 (Nova)
+- Tâche 4 (Pixel)
+
+Bloqué :
+- Tâche 5 (en attente de dépendance)
+
+En Retard :
+- Tâche 6 (échéance hier)
+```
+
+**Accéder aux Standups :**
+
+- Allez au panneau Standup dans Mission Control
+- Sélectionnez la plage de dates
+- Vue par équipe ou individuelle
+- Exportez comme rapport
+
+## Workflows Courants
+
+### Pipeline de Création de Contenu
+
+```
+Recherche → Brouillon → Édition → Revue → Publication
+```
+
+1. Tâche **Research** assignée à Scout
+2. Scout termine, déplace vers Review
+3. Reviewer approuve, Echo prend la tâche **Draft**
+4. Echo écrit, déplace vers Review
+5. Éditeur révise, approuve
+6. Publisher planifie la tâche **Publish**
+
+### Développement de Fonctionnalité
+
+```
+Design → Développement → Test → Déploiement
+```
+
+1. Pixel crée la tâche **Design**
+2. Nova prend la tâche **Develop** (dépend du Design)
+3. L'agent Test reçoit la tâche **Test**
+4. Tâche Deploy planifiée après réussite du test
+
+### Ticket de Support
+
+```
+Nouveau → In Progress → Résolu
+```
+
+1. Message client crée une tâche dans Inbox
+2. Agent support la réclame et déplace vers In Progress
+3. Agent résout le problème, déplace vers Done
+4. Client notifié automatiquement
+
+## Notifications
+
+Soyez informé des événements de tâche :
+
+| Événement | Notification |
+| -------------------------- | ------------ |
+| Tâche assignée à vous | Oui |
+| Tâche approchant l'échéance | Oui |
+| Tâche déplacée vers Human Review | Oui |
+| Commentaire ajouté | Optionnel |
+| Statut changé | Optionnel |
+| Tâche bloquée | Oui |
+
+**Configurer les Notifications :**
+
+- Dans les paramètres de Mission Control
+- Par canal (Telegram, Slack, etc.)
+- Types d'événements qui vous intéressent
+
+## Bonnes Pratiques
+
+1. **Titres Clairs** — N'importe qui devrait comprendre la tâche depuis le titre
+2. **Critères d'Acceptation Spécifiques** — Définissez ce que "terminé" signifie
+3. **Tâches de Bonne Taille** — 2-8 heures de travail est idéal
+4. **Mises à Jour Régulières** — Les agents devraient mettre à jour le statut fréquemment
+5. **Utilisez les Dépendances** — Ne commencez pas de travail qui ne peut pas finir
+6. **Révisez Rapidement** — Ne laissez pas les tâches s'attarder dans Review ou Human Review
+7. **Archivez les Anciennes Tâches** — Gardez le tableau concentré sur le travail actif
+
+## Dépannage
+
+**Tâche Bloquée en In Progress :**
+
+- L'agent peut être bloqué — vérifiez les commentaires
+- Peut avoir besoin d'aide — réassignez ou ajoutez un commentaire
+- Trop grande — divisez en tâches plus petites
+
+**Tâche qui Revient Continuellement de Review :**
+
+- Exigences peu claires — clarifiez les critères d'acceptation
+- Inadéquation de compétences — réassignez à un autre agent
+- Contexte manquant — ajoutez plus de détails
+
+**Trop de Tâches dans l'Inbox :**
+
+- Priorisez et concentrez-vous
+- Archivez les tâches obsolètes
+- Considérez si vous avez besoin de plus d'agents
+
+## Prochaines Étapes
+
+- Voyez [Gérer les Agents](managing-agents) pour les stratégies d'assignation
+- Apprenez les [Opérations d'Entreprise](company-operations) pour les workflows d'équipe
+- Explorez la [Gestion des Tâches](task-management) pour les fonctionnalités avancées

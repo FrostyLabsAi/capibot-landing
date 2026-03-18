@@ -1,0 +1,540 @@
+# Gestion des Tâches
+
+Le panneau Tasks vous donne un contrôle complet sur le travail circulant dans votre main-d'œuvre IA.
+
+## Accéder au Tableau de Tâches
+
+**Nav Rail :** Cliquez sur **Tâches**
+
+Vous verrez le tableau Kanban avec des colonnes pour chaque statut.
+
+![Tableau de Tâches Placeholder]
+_Capture d'écran : Tableau Kanban complet montrant les tâches à travers toutes les colonnes_
+
+## Layout du Tableau Kanban
+
+```
+┌────────────────────────────────────────────────────────────────┐
+│ Tâches                                     [+ New Task] [Filter] │
+├────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  Inbox (4)  | In Progress (2) | Review (1) | Done (12)         │
+│  ────────────────────────────────────────────────────────────  │
+│                                                                 │
+│  ┌──────────┐ ┌──────────┐ ┌──────────┐                         │
+│  │ T-42     │ │ T-38     │ │ T-35     │                         │
+│  │ Research │ │ Build API│ │ Edit     │                         │
+│  │ Top 5    │ │ endpoint │ │ blog     │                         │
+│  │ Competitors│ │         │ │ post     │                         │
+│  │          │ │          │ │          │                         │
+│  │ 🟡 Medium│ │ 🔴 High  │ │ 🟢 Low   │                         │
+│  │ Scout    │ │ Nova     │ │ Echo     │                         │
+│  │ Due: Fri │ │ Due: Wed │ │ Due: Mon │                         │
+│  └──────────┘ └──────────┘ └──────────┘                         │
+│                                                                 │
+│  ┌──────────┐                                                   │
+│  │ T-43     │                                                   │
+│  │ Design   │                                                   │
+│  │ landing  │                                                   │
+│  │ page     │                                                   │
+│  │          │                                                   │
+│  │ 🟠 High  │                                                   │
+│  │ Pixel    │                                                   │
+│  └──────────┘                                                   │
+│                                                                 │
+└────────────────────────────────────────────────────────────────┘
+```
+
+## Cartes de Tâche
+
+Chaque carte montre :
+
+- **ID** — Identifiant unique (T-42)
+- **Title** — Brève description
+- **Priority** — Importance codée par couleur
+- **Assignee** — Qui travaille dessus
+- **Due Date** — Quand c'est dû
+- **Tags** — Catégories (s'il y en a)
+
+## Explication des Colonnes
+
+### Inbox
+
+Nouvelles tâches en attente de démarrage.
+
+**Ce qui se passe ici :**
+
+- Tâches créées mais non assignées
+- Tâches assignées que l'agent n'a pas commencées
+- Backlog de travail futur
+
+**Vos actions :**
+
+- Glissez vers In Progress quand prêt
+- Réassignez si nécessaire
+- Définissez les priorités
+
+### In Progress
+
+Travail actif en cours maintenant.
+
+**Ce qui se passe ici :**
+
+- Agent a check out la tâche
+- Travail activement en cours
+- Mises à jour de progrès enregistrées
+
+**Vos actions :**
+
+- Surveillez les progrès
+- Répondez aux questions des agents
+- Déplacez vers Blocked si des problèmes surviennent
+
+### Review
+
+Travail terminé, besoin de contrôle qualité.
+
+**Ce qui se passe ici :**
+
+- L'agent a marqué la tâche comme faite
+- Aegis/Sentinel révise la qualité
+- Reviewer approuve ou demande des modifications
+
+**Vos actions :**
+
+- Révisez le travail approuvé
+- Vérifiez les commentaires du Reviewer
+
+### Human Review
+
+_(Entreprises IA Managed uniquement)_
+
+Travail terminé, en attente de votre approbation.
+
+**Ce qui se passe ici :**
+
+- Tâche passée le contrôle qualité
+- Besoin d'approbation humaine
+- Ne passera pas à Done tant que vous n'approuvez pas
+
+**Vos actions :**
+
+- Révisez les livrables
+- Cliquez Approuver ou Demander des Modifications
+
+### Blocked
+
+Ne peut pas avancer à cause d'une dépendance ou d'un problème.
+
+**Ce qui se passe ici :**
+
+- En attente d'une autre tâche
+- L'agent a une question
+- Information manquante
+- Bloqueur externe
+
+**Vos actions :**
+
+- Vérifiez les commentaires pour les détails du bloqueur
+- Débloquez en résolvant la dépendance
+- Répondez aux questions
+- Réassignez si nécessaire
+
+### Done
+
+Travail terminé et approuvé.
+
+**Ce qui se passe ici :**
+
+- Tâche complètement terminée
+- Livrables sauvegardés
+- Temps enregistré
+- Disponible pour référence
+
+## Créer des Tâches
+
+### Méthode 1 : Création Rapide
+
+1. Cliquez sur le bouton **"+ New Task"**
+2. Remplissez les infos de base :
+   ```
+   Titre: Rédiger article de blog sur les tendances IA
+   Description: Article de 800 mots couvrant
+                les top tendances IA pour 2024
+   Assigné à: [Echo ▼]
+   Priorité: [High ▼]
+   Date d'Échéance: [Sélecteur de date]
+   ```
+3. Cliquez sur **Créer**
+
+### Méthode 2 : Depuis une Colonne
+
+1. Cliquez sur **"+"** dans n'importe quelle colonne
+2. La tâche démarre dans cette colonne
+3. Remplissez les détails
+4. Sauvegardez
+
+### Méthode 3 : Via Message
+
+```
+Vous : @Atlas Créer tâche : Rechercher les concurrents
+Atlas : Tâche créée T-45 "Rechercher les concurrents"
+      Assigné à : Scout
+      Statut : Inbox
+```
+
+## Détails de la Tâche
+
+Cliquez sur n'importe quelle tâche pour ouvrir les détails complets :
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ T-42: Rechercher Top 5 Concurrents           [Edit] [×] │
+├─────────────────────────────────────────────────────────┤
+│ Statut: In Progress                                     │
+│ Assigné à: Scout (Research Analyst)                    │
+│ Priorité: 🟡 Medium                                     │
+│ Échéance: Vendredi 15 Déc                               │
+│ Entreprise: Q1 Marketing                                │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ Description:                                           │
+│ Rechercher et analyser les 5 principaux concurrents   │
+│ dans notre espace. Concentrez-vous sur les prix,      │
+│ fonctionnalités et positionnement.                    │
+│                                                         │
+│ Critères d'Acceptation:                               │
+│ ☐ Identifier les 5 principaux concurrents            │
+│ ☐ Documenter les prix pour chacun                    │
+│ ☐ Comparer les fonctionnalités clés                  │
+│ ☐ Fournir l'analyse de positionnement                │
+│ ☐ Livrer un rapport de 2 pages                       │
+│                                                         │
+├─────────────────────────────────────────────────────────┤
+│ Tags: research, competitors, q1-campaign               │
+│ Jalon: Phase Recherche de Marché                      │
+│ Estimé: 4 heures                                       │
+│ Réel: 2.5 heures (jusqu'à présent)                    │
+├─────────────────────────────────────────────────────────┤
+│ Dépendances:                                           │
+│ Bloque: T-43 (Rédaction Analyse Concurrentielle)      │
+├─────────────────────────────────────────────────────────┤
+│ Commentaires                                           │
+│ Scout (il y a 2 heures): Recherche démarrée. Trouvé 3 │
+│                     concurrents jusqu'à présent. Besoin│
+│                     de plus de temps pour les 2 autres│
+│                                                         │
+│ Vous (il y a 1 heure): Prenez votre temps, qualité avant vitesse│
+│                                                         │
+│ [Ajouter un commentaire...]                           │
+└─────────────────────────────────────────────────────────┘
+```
+
+## Déplacer les Tâches
+
+### Glisser-Déposer
+
+Cliquez et faites glisser les cartes entre les colonnes :
+
+- Inbox → In Progress
+- In Progress → Review
+- Review → Done (si approuvé)
+- N'importe où → Blocked
+
+### Menu Déroulant de Statut
+
+Cliquez sur le badge de statut sur la carte de tâche :
+
+```
+[In Progress ▼]
+  ├─ Inbox
+  ├─ In Progress
+  ├─ Review
+  ├─ Human Review
+  ├─ Blocked
+  └─ Done
+```
+
+### Raccourcis Clavier
+
+- **E** — Éditer la tâche
+- **M** — Déplacer la tâche
+- **C** — Ajouter un commentaire
+- **D** — Supprimer la tâche
+
+## Filtrage et Recherche
+
+### Barre de Filtre
+
+Filtrez les tâches par :
+
+- **Statut** — Une ou plusieurs colonnes
+- **Assigné** — Agent spécifique ou non assigné
+- **Priorité** — Urgent, High, Medium, Low
+- **Entreprise** — Entreprise IA spécifique
+- **Tags** — Catégories
+- **Date d'Échéance** — En retard, aujourd'hui, cette semaine
+
+### Recherche
+
+Recherchez des tâches par :
+
+- Mots-clés du titre
+- Contenu de la description
+- ID de tâche
+- Nom de l'assigné
+- Commentaires
+
+**Recherche Globale :** Cmd/Ctrl + K depuis n'importe où
+
+## Travailler avec les Tâches
+
+### Assigner des Tâches
+
+**Changer l'Assigné :**
+
+1. Ouvrez les détails de la tâche
+2. Cliquez sur le menu déroulant Assigné
+3. Sélectionnez l'agent
+4. L'agent est notifié
+
+**Assignation Auto :**
+
+- Les Entreprises IA auto-assignent basé sur les compétences
+- Round-robin pour le support
+- Équilibrage de charge pour la disponibilité
+
+### Définir les Priorités
+
+Système de priorité visuel :
+
+| Couleur | Priorité | Quand Utiliser |
+| --------- | -------- | ----------------------------------- |
+| 🔴 Red | Urgent | Critique, bloqueurs, échéances aujourd'hui |
+| 🟠 Orange | High | Important, échéance proche |
+| 🟡 Yellow | Medium | Travail normal |
+| 🟢 Green | Low | Bon à avoir, timing flexible |
+
+**Bonne Pratique :**
+
+- La plupart des tâches devraient être Medium
+- Utilisez High/Urgent avec parcimonie
+- Repriorisez quotidiennement
+
+### Gérer les Dépendances
+
+Définissez des dépendances de tâche quand :
+
+- La Tâche B ne peut pas commencer tant que la Tâche A n'est pas terminée
+- Workflow séquentiel nécessaire
+- Ressources partagées entre tâches
+
+**Pour Définir une Dépendance :**
+
+1. Ouvrez les détails de la tâche
+2. Allez à la section Dependencies
+3. Cliquez sur "Ajouter Dépendance"
+4. Sélectionnez la tâche bloquante
+5. La tâche est automatiquement marquée Blocked
+
+**Exemple :**
+
+```
+T-42: Rechercher les concurrents (doit se terminer en premier)
+   ↓
+T-43: Rédiger l'analyse concurrentielle (bloquée jusqu'à T-42 terminée)
+   ↓
+T-44: Créer la présentation (bloquée jusqu'à T-43 terminée)
+```
+
+### Ajouter des Commentaires
+
+**Pourquoi Commenter :**
+
+- Poser des questions
+- Fournir du feedback
+- Partager du contexte
+- Enregistrer des décisions
+
+**Comment :**
+
+1. Ouvrez les détails de la tâche
+2. Faites défiler jusqu'à Commentaires
+3. Tapez et envoyez
+4. Mentionnez des agents avec @nom
+
+**Notifications :**
+
+- L'assigné est notifié des nouveaux commentaires
+- Les agents mentionnés reçoivent des alertes
+- Peuvent répondre via les applications de messagerie
+
+### Joindre des Fichiers
+
+**Télécharger des Livrables :**
+
+1. Ouvrez les détails de la tâche
+2. Cliquez sur "Joindre des Fichiers"
+3. Sélectionnez ou glissez-déposez des fichiers
+4. Fichiers stockés avec la tâche
+
+**Attachement Auto :**
+
+- Les agents peuvent joindre leur travail
+- Les livrables sont auto-sauvegardés dans la Knowledge Base
+- Les fichiers sont liés dans l'historique de la tâche
+
+## Workflows de Tâches par Cas d'Usage
+
+### Pipeline de Création de Contenu
+
+```
+Recherche → Écrire → Éditer → Revue → Publier
+```
+
+1. Tâche **Research** assignée à Scout
+   - Rassemble les informations
+   - Déplace vers Review
+
+2. Reviewer approuve, Echo prend la tâche **Draft**
+   - Crée le brouillon
+   - Déplace vers Review
+
+3. Éditeur révise, approuve
+   - Déplace vers Human Review (si Managed)
+
+4. **Vous Approuvez**
+   - Révisez le contenu final
+   - Approuvez → Done
+
+5. Tâche **Publish** planifiée
+   - Devient live automatiquement
+
+### Développement de Fonctionnalité
+
+```
+Design → Développer → Tester → Déployer
+```
+
+1. **Design** (Pixel)
+   - Crée des maquettes
+   - Review → Done
+
+2. **Develop** (Nova)
+   - Implémente le code
+   - Dépend du Design
+   - Review → Done
+
+3. **Test** (agent Test)
+   - Tests QA
+   - Bugs → retour à Develop
+   - Pass → Done
+
+4. **Deploy** (planifié)
+   - Passe en production
+
+### Ticket de Support
+
+```
+Nouveau → In Progress → Résolu
+```
+
+1. Message client → Crée automatiquement une tâche dans Inbox
+2. Agent support la réclame → In Progress
+3. Agent résout le problème → Review
+4. Auto-approuvé → Done
+5. Client notifié automatiquement
+
+## Rapports Standup
+
+Générez des résumés quotidiens :
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ Standup Quotidien — 15 Décembre 2024                   │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ Résumé Équipe                                          │
+│ • 3 Tâches Terminées                                   │
+│ • 2 En Cours                                           │
+│ • 1 En Revue                                           │
+│ • 1 Bloqué                                             │
+│ • 0 En Retard                                          │
+│                                                         │
+│ Par Agent:                                             │
+│ Scout:                                                 │
+│   ✅ Terminé: Recherche Concurrents (T-42)            │
+│   🔄 En Cours: Analyse de Marché (T-46)               │
+│                                                         │
+│ Echo:                                                  │
+│   ✅ Terminé: Article Blog 1 (T-38)                   │
+│   📋 Assigné: Article Blog 2 (T-47)                   │
+│                                                         │
+│ Bloqueurs: Aucun                                       │
+│ En Retard: Aucun 🎉                                    │
+└─────────────────────────────────────────────────────────┘
+```
+
+**Accès :**
+
+- Panneau Standup dans le nav rail
+- Ou cliquez "Standup" dans le tableau de tâches
+- Sélectionnez la plage de dates
+- Exportez comme rapport
+
+## Bonnes Pratiques
+
+### Création de Tâches
+
+- **Titres Clairs** — Compris depuis le titre seul
+- **Critères Spécifiques** — Définissez "terminé"
+- **Bonne Taille** — 2-8 heures idéal
+- **Un Assigné** — Propriété claire
+- **Dates Réalistes** — Marge pour la qualité
+
+### Gestion des Tâches
+
+- **Révisez le Tableau Quotidiennement** — Sachez ce qui se passe
+- **Débloquez Rapidement** — Ne laissez pas les tâches stagner
+- **Repriorisez Souvent** — Le focus change
+- **Archivez les Tâches Terminées** — Gardez le tableau propre
+- **Utilisez les Tags** — Filtrez et organisez
+
+### Travailler avec les Agents
+
+- **Répondez aux Questions** — Vérifiez la colonne Blocked
+- **Révisez Rapidement** — Ne bloquez pas dans Review
+- **Donnez du Feedback** — Aidez les agents à s'améliorer
+- **Faites Confiance mais Vérifiez** — Contrôlez ponctuellement le travail
+
+## Dépannage
+
+**Tâche Bloquée dans l'Inbox :**
+
+- L'agent peut être offline
+- Réassignez à un agent disponible
+- Vérifiez si trop grande — divisez
+
+**Tâche en In Progress Trop Longtemps :**
+
+- L'agent peut être bloqué — vérifiez les commentaires
+- Tâche trop grande — divisez en plus petites tâches
+- Besoin d'aide — ajoutez un agent assistant
+
+**Trop dans Review :**
+
+- Reviewers débordés — ajoutez plus
+- Problèmes de qualité — clarifiez les standards
+- Goulot d'étranglement — le processus de review doit être ajusté
+
+**Tâches qui Revient :**
+
+- Exigences peu claires — mettez à jour la description
+- Mauvais agent — réassignez
+- Contexte manquant — ajoutez des détails
+
+## Prochaines Étapes
+
+- Explorez la [Connaissance & Mémoire](knowledge-memory)
+- Configurez l'[Automatisation](automation)
+- Apprenez la [Surveillance](monitoring)

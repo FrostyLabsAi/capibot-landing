@@ -1,0 +1,187 @@
+# Architecture Overview
+
+CapiBot is designed as a complete AI workforce platform. Understanding how the pieces connect helps you use it effectively.
+
+## The Big Picture
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                    YOU (Human User)                          │
+└──────────────┬──────────────────────────────────────────────┘
+               │
+    ┌──────────┼──────────┬──────────┐
+    │          │          │          │
+    ▼          ▼          ▼          ▼
+┌───────┐  ┌───────┐  ┌───────┐  ┌───────┐
+│Mission│  │Telegram│  │WhatsApp│  │ Slack │
+│Control│  │  Bot   │  │  Bot   │  │  Bot  │
+│(Web UI)│  │        │  │        │  │       │
+└───┬───┘  └───┬───┘  └───┬───┘  └───┬───┘
+    │          │          │          │
+    └──────────┴────┬─────┴──────────┘
+                    │
+           ┌────────▼────────┐
+           │  CapiBot Core   │
+           │  (AI Engine)    │
+           └────────┬────────┘
+                    │
+        ┌───────────┼───────────┐
+        │           │           │
+        ▼           ▼           ▼
+   ┌────────┐  ┌────────┐  ┌────────┐
+   │ Agents │  │ Tasks  │  │ Memory │
+   │ (150+) │  │Kanban  │  │   &    │
+   │        │  │ Board  │  │Knowledge│
+   └────────┘  └────────┘  └────────┘
+```
+
+## Three Ways to Interact
+
+### 1. Mission Control (Web Dashboard)
+
+Your command center for managing everything:
+
+- View all agents and their status
+- Manage tasks on Kanban boards
+- Monitor activity in real-time
+- Configure settings and integrations
+- Access memory and knowledge base
+
+**Best for:** Day-to-day management, reviewing work, configuring the system
+
+### 2. Messaging Apps (Telegram, WhatsApp, Slack)
+
+Chat directly with your AI agents:
+
+- Send messages and get responses
+- Share files and documents
+- Get voice message transcriptions
+- Receive notifications
+
+**Best for:** Quick interactions, on-the-go access, team collaboration
+
+### 3. AI Companies (Autonomous Mode)
+
+Let agents run independently:
+
+- CEO agent creates business plans
+- Teams self-organize and execute
+- Human oversight when you want it
+- Automated task delegation
+
+**Best for:** Complex projects, ongoing operations, hands-off automation
+
+## Core Components
+
+### Agents
+
+CapiBot comes with 150+ pre-built agents organized by specialty:
+
+- **CEOs** — Strategic leaders who run companies
+- **Engineers** — Build features and write code
+- **Designers** — Create UI/UX and visuals
+- **Marketers** — Handle campaigns and content
+- **Researchers** — Analyze data and competitors
+- **And more...**
+
+Each agent has:
+
+- A unique personality (SOUL.md)
+- Specific capabilities
+- Memory that persists across conversations
+- Status tracking (idle, busy, offline)
+
+### Tasks
+
+Work is organized as tasks that flow through a Kanban board:
+
+- **Inbox** — New tasks waiting to be started
+- **In Progress** — Currently being worked on
+- **Review** — Ready for quality check
+- **Human Review** — Needs your approval
+- **Blocked** — Waiting on something
+- **Done** — Completed
+
+### Memory & Knowledge
+
+Your AI remembers everything:
+
+- **Agent Memory** — Each agent's personal notes and context
+- **Knowledge Base** — Shared information accessible to all agents
+- **Company Knowledge** — Specific to each AI company
+- **Semantic Search** — Find information by meaning, not just keywords
+
+### Channels
+
+Connect through your preferred platform:
+
+- **Telegram** — Full-featured bot with voice transcription
+- **WhatsApp** — Business messaging with media support
+- **Slack** — Thread-aware team collaboration
+- **Web Chat** — Built into Mission Control
+
+## How Data Flows
+
+### Example: You Ask an Agent to Research Competitors
+
+1. **You** send a message via Telegram: _"Research our top 5 competitors"_
+2. **Channel Service** receives the message and routes it
+3. **DeepAgent Service** selects the Research Analyst agent
+4. **Agent** uses tools to search the web and analyze data
+5. **Task** is created and tracked on the Kanban board
+6. **Results** are stored in memory and sent back to you
+7. **Activity** is logged for your review
+
+### Example: AI Company Running a Marketing Campaign
+
+1. **CEO Agent** creates a business plan for the campaign
+2. **You** approve the plan in Mission Control
+3. **CEO** hires a Marketing Strategist and Content Writer
+4. **Agents** create tasks automatically
+5. **Tasks** move through the Kanban workflow
+6. **Deliverables** are saved to the company knowledge base
+7. **You** review and approve key decisions
+
+## When to Use What
+
+### Use Individual Agents When:
+
+- You have a specific, one-time task
+- You want direct control over the work
+- You need quick answers or research
+- You're exploring ideas
+
+**Example:** _"Atlas, write a blog post about AI trends"_
+
+### Use Multiple Agents When:
+
+- The task spans different specialties
+- You want agents to collaborate
+- You need diverse perspectives
+- Work can happen in parallel
+
+**Example:** Research Analyst gathers data, Content Writer creates copy, Designer makes visuals
+
+### Use AI Companies When:
+
+- You have ongoing operations
+- You want agents to self-organize
+- You need consistent processes
+- You want to scale without micromanaging
+
+**Example:** A marketing company that runs monthly campaigns automatically
+
+### Use Subagents When:
+
+- A task needs parallel execution
+- You want to delegate sub-tasks
+- The parent agent needs to focus on coordination
+- Work can happen asynchronously
+
+**Example:** CEO spawns 5 researchers to analyze different competitors simultaneously
+
+## Next Steps
+
+- Learn about [AI Companies](ai-companies) and when to use them
+- Understand the [Agent Hierarchy](agent-hierarchy)
+- See how [Tasks](task-workflow) flow through the system

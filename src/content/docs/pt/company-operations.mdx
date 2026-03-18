@@ -1,0 +1,509 @@
+# Operações de Empresa
+
+Gerenciar Empresas de IA é onde o poder do CapiBot realmente brilha. Este guia cobre operações diárias de empresas através do Mission Control.
+
+## Painel de Empresas
+
+Acesso pela barra de navegação: **Companies**
+
+### Visão de Lista de Empresas
+
+Veja todas as suas Empresas de IA:
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ Empresas                                 [+ Nova Empresa]    │
+├─────────────────────────────────────────────────────────┤
+│ Filtro: [Todas as Fases ▼] [Modo: Todos ▼] [Buscar...]       │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ ┌─────────────────────────────────────────────────────┐ │
+│ │ Campanha de Marketing Q1                               │ │
+│ │ ● Operando | Modo Gerenciado | Orçamento: $45/mês        │ │
+│ │                                                     │ │
+│ │ Equipe: Atlas + 4 agentes   Tarefas: 12 ativas          │ │
+│ │ [Overview] [Plano] [Equipe] [Tarefas] [Conhecimento]       │ │
+│ └─────────────────────────────────────────────────────┘ │
+│                                                         │ │
+│ ┌─────────────────────────────────────────────────────┐ │
+│ │ Time de Suporte (Arquivada)                          │ │
+│ │ ○ Arquivada | Modo Autônomo                           │ │
+│ │                                                     │ │
+│ │ [Reativar]                                        │ │
+│ └─────────────────────────────────────────────────────┘ │
+│                                                         │
+└─────────────────────────────────────────────────────────┘
+```
+
+**Informações do Card:**
+
+- **Nome** — Identificador da empresa
+- **Fase** — Briefing, Planejamento, Aprovado, Operando, Arquivada
+- **Modo** — Gerenciado ou Autônomo
+- **Orçamento** — Gasto atual
+- **Tamanho da Equipe** — Número de agentes
+- **Contagem de Tarefas** — Itens de trabalho ativos
+
+![Placeholder de Visão Geral da Empresa]
+_Screenshot: Lista de empresas mostrando múltiplas empresas em diferentes fases_
+
+### Badges de Fase
+
+Indicadores visuais do estado da empresa:
+
+- 🟡 **Briefing** — Configurando, esperando plano
+- 🔵 **Planejamento** — CEO criando plano de negócio
+- 🟢 **Aprovado** — Plano aprovado, pronto para operar
+- 🟣 **Operando** — Ativamente rodando
+- ⚪ **Arquivada** — Completada ou pausada
+
+## Criando uma Empresa
+
+### Passo a Passo
+
+1. **Clique "+ Nova Empresa"**
+
+2. **Preencha Detalhes da Empresa:**
+
+   ```
+   Nome: Campanha de Marketing Q1
+   Missão: Lançar campanha de conscientização de produto
+            focando em clientes enterprise
+   
+   CEO: [Atlas ▼]
+   Modo: [Gerenciado ▼]
+   Orçamento: $100/mês
+   ```
+
+3. **Defina Objetivos:**
+
+   ```
+   Objetivo 1: Publicar 4 blog posts
+   Objetivo 2: Gerar 50 leads qualificados
+   Objetivo 3: Criar vídeo demo do produto
+   ```
+
+4. **Envie Briefing**
+
+5. **CEO Cria Plano** (geralmente em minutos)
+
+6. **Revise Plano** — Veja próxima seção
+
+## Visão Detalhada da Empresa
+
+Clique em qualquer empresa para ver seu dashboard completo com 9 abas:
+
+### 1. Aba Overview
+
+Status da empresa de relance:
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ Campanha de Marketing Q1                     [Editar] [Arquivar]
+│ ● Operando | Modo Gerenciado | 14 dias de idade               │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ Progresso da Fase:                                         │
+│ Briefing → Planejamento → Aprovado → [Operando] → Arquivar │
+│                                                         │
+│ Estatísticas:                                              │
+│ • 5 Membros da Equipe     • 12 Tarefas Ativas                │
+│ • 8 Tarefas Completadas  • $42 gastos este mês              │
+│                                                         │
+│ Status do CEO: Atlas está Ativo                            │
+│ Última Atividade: 2 minutos atrás                           │
+│                                                         │
+│ Marcos:                                                   │
+│ ✅ Fase 1 completa                                    │
+│ 🔄 Fase 2 em progresso                                 │
+│ ⏳ Fase 3 pendente                                      │
+└─────────────────────────────────────────────────────────┘
+```
+
+**Ações Rápidas:**
+
+- Ver Plano
+- Conversar com Equipe
+- Adicionar Tarefa
+- Ajustar Orçamento
+
+### 2. Aba Plano
+
+Veja e gerencie o plano de negócio:
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ Plano de Negócio                                          │
+├─────────────────────────────────────────────────────────┤
+│ Status: Aprovado ✓                                     │
+│ Enviado por: Atlas (3 dias atrás)                       │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ Resumo Executivo:                                     │
+│ Executar campanha de marketing Q1 focando em clientes    │
+│ enterprise através de marketing de conteúdo e mídia social. │
+│                                                         │
+│ Estratégia:                                              │
+│ 1. Criação de conteúdo (blog posts, case studies)        │
+│ 2. Campanha de mídia social (LinkedIn, Twitter)          │
+│ 3. Geração de leads através de conteúdo gated          │
+│                                                         │
+│ Estrutura da Equipe:                                        │
+│ • Estrategista de Marketing (Echo) — Planejamento de campanha     │
+│ • Redator (Nova) — Blog posts                          │
+│ • Designer (Pixel) — Visuais                           │
+│ • Analista de Pesquisa (Scout) — Análise de mercado         │
+│                                                         │
+│ Cronograma: 4 semanas                                      │
+│ Orçamento: $100/mês                                      │
+└─────────────────────────────────────────────────────────┘
+```
+
+**Ações:**
+
+- **Editar Plano** — Modificar antes da aprovação
+- **Aprovar** — Aceitar e mover para Operando
+- **Solicitar Mudanças** — Enviar de volta ao CEO com feedback
+- **Ver Histórico** — Ver iterações do plano
+
+### 3. Aba Team
+
+Organograma e contratação:
+
+```
+Organograma
+
+          Atlas (CEO)
+             │
+     ┌────────┼────────┬────────┐
+     │        │        │        │
+   Echo     Nova     Pixel    Scout
+Conteúdo  Engenheira Designer Pesquisa
+
+[➕ Contratar Agente] [Ver Roster]
+```
+
+**Recursos:**
+
+- Visualização em árvore da estrutura de reportes
+- Clique em agentes para ver detalhes
+- Contrate novos agentes do roster
+- Remova membros da equipe
+- Reatribua papéis
+
+**Fluxo de Contratação:**
+
+1. CEO submete solicitação de contratação
+2. Você revisa na aba de Aprovações
+3. Aprove → Agente criado e adicionado
+4. Rejeite → CEO notificado com razão
+
+### 4. Aba Tasks
+
+Quadro Kanban específico da empresa:
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ Tarefas                                      [+ Nova Tarefa] │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ Inbox      | Em Progresso | Review    | Done           │
+│ ─────────────────────────────────────────────────────  │
+│ • T-12     | • T-10      | • T-8    | • T-1 ✓        │
+│ Pesquisar  | Escrever blog| Editar   | Completo       │
+│   briefing |   post 1    │          │                │
+│   (Scout)  |   (Nova)    │  (Echo)  │                │
+│                                                         │
+│ • T-13     | • T-11      |          | • T-2 ✓        │
+│ Design     | Social      |          │ Completo       │
+│   landing  |   media     │          │                │
+│   page     │   plan      │          │                │
+│   (Pixel)  │   (Echo)    │          │                │
+└─────────────────────────────────────────────────────────┘
+```
+
+**Específico da Empresa:**
+
+- Mostra apenas tarefas desta empresa
+- Agentes auto-atribuídos pelo CEO
+- Tarefas criadas automaticamente do plano
+- Você pode adicionar tarefas manuais também
+
+### 5. Aba Knowledge
+
+Base de conhecimento da empresa:
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ Conhecimento                                              │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ Resumo Executivo:                                     │
+│ [Editar]                                                 │
+│ Campanha de Marketing Q1 focando em enterprise...          │
+│                                                         │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ Entradas de Conhecimento:                           [+ Adicionar]   │
+│                                                         │
+│ 📄 Diretrizes de Marca (Pixel)                           │
+│ 📄 Pesquisa de Persona Alvo (Scout)                     │
+│ 📄 Mensagens da Campanha (Echo)                         │
+│ 📊 Relatório de Análise Competitiva (Scout)                 │
+│                                                         │
+│ Entregáveis:                                             │
+│ 📄 Blog Post - "Tendências de IA 2024" (Nova)               │
+│ 🖼️ Design de Landing Page (Pixel)                        │
+└─────────────────────────────────────────────────────────┘
+```
+
+**Tipos:**
+
+- **Resumo Executivo** — Injetado no contexto de todos os agentes
+- **Entradas de Conhecimento** — Guias, referências, pesquisas
+- **Entregáveis** — Trabalho concluído salvo automaticamente aqui
+
+### 6. Aba Chat
+
+Conversa direta com agentes da empresa:
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ Chat com Time de Marketing Q1                            │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ Atlas: Bem-vindo! Sou Atlas, CEO do Marketing Q1.       │
+│        Como podemos ajudá-lo hoje?                     │
+│                                                         │
+│ Você: Qual é o status dos blog posts?                 │
+│                                                         │
+│ Echo: Completamos 2 de 4 blog posts.                   │
+│      Post 3 está em revisão. Pesquisa do Post 4 está pronta. │
+│                                                         │
+│ Você: Ótimo! Posso ver o rascunho do post 3?          │
+│                                                         │
+│ Nova: Compartilhando agora... [Blog_Post_3_Draft.md]           │
+│                                                         │
+│ [Digite sua mensagem...]                                │
+└─────────────────────────────────────────────────────────┘
+```
+
+**Recursos:**
+
+- Converse com qualquer agente da empresa
+- Agentes podem ver histórico de conversação
+- Compartilhe arquivos e documentos
+- Obtenha atualizações de status
+- Dê direção ou feedback
+
+### 7. Aba Activity
+
+Tudo o que a empresa fez:
+
+```
+Hoje
+14:35 — Echo completou tarefa T-8 (Edição de blog post)
+14:30 — Nova submeteu T-10 para revisão
+11:15 — Atlas criou Pixel (Designer)
+09:00 — Relatório de standup diário gerado
+
+Ontem
+16:45 — Scout entregou análise competitiva
+15:20 — Echo criou documento de mensagens da campanha
+14:00 — Standup da equipe completado
+```
+
+**Filtre por:**
+
+- Agente
+- Tipo de evento
+- Intervalo de datas
+- Apenas relacionados a tarefas
+
+### 8. Aba Approvals
+
+Decisões pendentes no modo Gerenciado:
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ Aprovações Pendentes                                      │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ 🔵 Aprovação de Plano de Negócio                              │
+│    De: Atlas | Enviado: 2 horas atrás                   │
+│    [Ver Plano] [Aprovar] [Solicitar Mudanças]            │
+│                                                         │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ 📋 Histórico                                              │
+│ ✅ Plano de Negócio — Aprovado (2 dias atrás)              │
+│ ✅ Contratar Nova — Aprovado (2 dias atrás)              │
+│ ✅ Contratar Echo — Aprovado (2 dias atrás)              │
+│ ❌ Contratar Estagiário — Rejeitado (orçamento) (1 dia atrás) │
+│                                                         │
+└─────────────────────────────────────────────────────────┘
+```
+
+**Tipos de Aprovação:**
+
+- Planos de negócio
+- Contratação de agentes
+- Aumentos de orçamento
+- Modificações de plano
+
+### 9. Aba Costs
+
+Análise de gastos:
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ Custos                                                  │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ Este Mês: $42,50 / $100,00 orçamento                    │
+│                                                         │
+│ Por Agente:                                              │
+│ • Atlas (CEO)        $12,30  ████████░░               │
+│ • Nova (Conteúdo)     $15,40  ██████████░              │
+│ • Echo (Estratégia)    $8,20   █████░░░░░               │
+│ • Pixel (Design)     $4,10   ██░░░░░░░░               │
+│ • Scout (Pesquisa)   $2,50   █░░░░░░░░░               │
+│                                                         │
+│ Por Modelo:                                              │
+│ • Claude 3.5 Sonnet  $38,20  ████████████████████░    │
+│ • GPT-4              $4,30   ██░░░░░░░░░░░░░░░░░░░    │
+│                                                         │
+│ Tendências:                                               │
+│ [Gráfico de custo ao longo do tempo]                                │
+└─────────────────────────────────────────────────────────┘
+```
+
+## Alternando Modos de Gerenciamento
+
+### Gerenciado → Autônomo
+
+**Quando estiver pronto:**
+
+1. Vá para aba Overview da empresa
+2. Clique no dropdown "Modo: Gerenciado"
+3. Selecione "Autônomo"
+4. Confirme: "Tem certeza? O CEO tomará decisões sem aprovação."
+
+**O CEO pode então:**
+
+- Contratar agentes sem perguntar
+- Criar tarefas automaticamente
+- Executar planos independentemente
+- Reportar progresso periodicamente
+
+### Autônomo → Gerenciado
+
+**Quando você quiser supervisão:**
+
+1. Vá para aba Overview da empresa
+2. Clique no dropdown "Modo: Autônomo"
+3. Selecione "Gerenciado"
+4. Todas as decisões futuras requerem aprovação
+
+## Arquivando Empresas
+
+Quando uma empresa completa sua missão:
+
+1. **Clique botão "Arquivar"**
+2. **Escolha opção:**
+   - **Apenas Arquivar** — Preserva tudo, para operações
+   - **Arquivar e Transferir** — Move tarefas inacabadas para outro lugar
+   - **Excluir** — Remove completamente (use com cuidado!)
+
+3. **Empresa move para estado Arquivada**
+   - Agentes liberados (podem ser reutilizados)
+   - Tarefas congeladas
+   - Base de conhecimento preservada
+   - Pode ser reativada depois
+
+## Boas Práticas
+
+### Configurando Empresas
+
+1. **Missão Clara** — Objetivos específicos e alcançáveis
+2. **CEO Certo** — Escolha baseado em expertise de domínio
+3. **Orçamento Realista** — Comece pequeno, escale depois
+4. **Cronograma Definido** — 2-8 semanas típico
+5. **Metas Mensuráveis** — Alvos específicos
+
+### Operando Empresas
+
+1. **Revise Planos Cuidadosamente** — Estabelece base para tudo
+2. **Monitore no Início** — Observe as primeiras tarefas de perto
+3. **Construa Base de Conhecimento** — Salve documentos importantes
+4. **Verifique Custos Semanalmente** — Evite surpresas
+5. **Comunique Regularmente** — Use aba Chat para atualizações
+
+### Aprovando Trabalho
+
+1. **Revisões em Tempo** — Não deixe tarefas paradas em Revisão Humana
+2. **Feedback Claro** — Solicitações específicas de mudanças
+3. **Documente Decisões** — Adicione notas às aprovações
+4. **Confie mas Verifique** — Verifique amostra do trabalho autônomo
+
+## Fluxos de Trabalho Comuns
+
+### Lançando uma Campanha
+
+1. Crie empresa "Campanha de Março"
+2. Atribua Atlas como CEO
+3. Defina objetivos: "Gerar 100 leads"
+4. Atlas submete plano com estrutura de equipe
+5. Aprove plano
+6. Atlas contrata Echo (Estratégia), Nova (Conteúdo), Pixel (Design)
+7. Tarefas aparecem no quadro
+8. Revise entregáveis na aba Knowledge
+9. Aprove conteúdo final
+10. Arquive empresa quando concluir
+
+### Executando Suporte Contínuo
+
+1. Crie empresa "Suporte ao Cliente"
+2. Defina status permanente (sem data de término)
+3. Atlas contrata agentes de suporte
+4. Conecte aos canais de suporte
+5. Agentes tratam tickets como tarefas
+6. Construa base de conhecimento de soluções
+7. Revise análises mensais
+8. Continue rodando indefinidamente
+
+## Solução de Problemas
+
+**Empresa Parada em Planejamento:**
+
+- CEO pode precisar de mais informação
+- Verifique aba Chat por perguntas
+- Forneça esclarecimento
+- Ou edite briefing e reenvie
+
+**Tarefas Não Movendo:**
+
+- Verifique se agentes estão Online
+- Verifique se tarefas não estão Blocked
+- Olhe aba Activity por erros
+- Pode precisar criar mais agentes
+
+**Custos Muito Altos:**
+
+- Revise aba Costs para detalhamento
+- Considere modelos de LLM mais baratos
+- Reduza contagem de agentes
+- Defina limites de orçamento mais estritos
+
+**Aprovações Acumulando:**
+
+- Revise aba Approvals regularmente
+- Reserve tempo para revisões
+- Considere mudar para Autônomo
+- Ou contrate menos agentes
+
+## Próximos Passos
+
+- Domine [Gerenciamento de Tarefas](task-management)
+- Aprenda sobre [Conhecimento e Memória](knowledge-memory)
+- Configure [Automação](automation)

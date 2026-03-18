@@ -1,0 +1,525 @@
+# 管理
+
+系统配置和管理设置。
+
+**访问：** 导航栏 → **Settings**
+
+## Settings 面板
+
+设置面板按类别组织：
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ Settings                                                │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ Categories:                                             │
+│ • General                    ← Current                │
+│ • LLM Providers                                        │
+│ • Channels                                             │
+│ • Data Retention                                       │
+│ • Security                                             │
+│ • Advanced                                             │
+│                                                         │
+└─────────────────────────────────────────────────────────┘
+```
+
+## 常规设置
+
+### 系统配置
+
+```
+General Settings
+
+System Name
+[My AI Workforce                    ]
+
+Default Language
+[English ▼]
+
+Time Zone
+[America/New_York ▼]
+
+Date Format
+[MM/DD/YYYY ▼]
+```
+
+### 显示偏好
+
+```
+Display
+
+Theme
+○ Light  ● Dark  ○ Auto
+
+Density
+○ Comfortable  ● Compact
+
+Sidebar
+☑️ Show Live Feed by default
+☑️ Auto-collapse completed tasks
+☐ Show agent avatars in lists
+```
+
+### 通知
+
+```
+Notification Preferences
+
+In-App Notifications
+☑️ Enable desktop notifications
+☑️ Play sound on alert
+☐ Show notification count in title
+
+Email Notifications
+☐ Send daily summary
+☐ Notify on system errors
+☐ Weekly analytics report
+```
+
+## LLM 提供商设置
+
+配置使用哪些 AI 模型。
+
+### 提供商优先级
+
+```
+LLM Provider Priority
+
+When CapiBot needs AI, it tries providers in this order:
+
+1. 🥇 Anthropic Claude
+2. 🥈 Google Gemini
+3. 🥉 Kimi (Moonshot)
+4.    GLM (Zhipu AI)
+5.    MiniMax
+6.    Ollama (local)
+
+[Add Provider] [Reorder]
+```
+
+**故障转移如何工作：**
+
+1. 主提供商（Claude）尝试请求
+2. 如果失败，自动尝试下一个配置的提供商
+3. 继续直到成功或全部失败
+
+### 提供商配置
+
+**Anthropic：**
+
+```
+API Key: [sk-ant-********************************    ]
+Model: [Claude 3.5 Sonnet ▼]
+Max Tokens: 4096
+Temperature: 0.7
+[Test Connection]
+```
+
+**Ollama（本地）：**
+
+```
+Base URL: [http://localhost:11434           ]
+Model: [llama3.1:latest ▼]
+[Refresh Models]
+```
+
+**Google Gemini：**
+
+```
+API Key: [************************************    ]
+Model: [Gemini 1.5 Pro ▼]
+[Verify Key]
+```
+
+### 模型覆盖
+
+每个 Agent 的模型选择：
+
+```
+Morgan (CEO) → Claude (default)
+Nova (Engineer) → Gemini (faster coding)
+Scout (Research) → Claude (better analysis)
+```
+
+## 渠道设置
+
+配置消息渠道。
+
+### Telegram
+
+```
+Telegram Bot Configuration
+
+Bot Token: [123456789:ABCdefGHIjkl...      ]
+Status: ✅ Connected
+Bot Username: @MyCapiBot
+
+User Allowlist
+☑️ Enable allowlist
+Allowed users: @username1, @username2
+☐ Allow any user (not recommended)
+
+Features
+☑️ Voice message transcription
+☑️ File handling
+☑️ Typing indicators
+[Save] [Test Connection]
+```
+
+### WhatsApp
+
+```
+WhatsApp Business API
+
+API Key: [********************************    ]
+Phone Number: +1 (555) 123-4567
+Status: ✅ Connected
+
+Webhook URL: https://your-domain.com/webhooks/whatsapp
+Verify Token: [********************************    ]
+
+Media Handling
+☑️ Download images
+☑️ Download documents
+☐ Download audio (requires storage)
+Maximum file size: 16 MB
+[Save] [Test Message]
+```
+
+### Slack
+
+```
+Slack App Configuration
+
+Bot Token: [xoxb-1234-5678-...              ]
+Status: ✅ Connected
+Workspace: MyWorkspace
+
+Channels
+#general — ✅ Active
+#engineering — ✅ Active
+#marketing — ⏸️ Paused
+
+Features
+☑️ Thread-aware messaging
+☑️ Rich formatting
+☑️ File sharing
+[Save] [Invite to Channel]
+```
+
+## 数据保留
+
+控制数据保留多长时间。
+
+```
+Data Retention Policies
+
+Auto-cleanup automatically removes old data.
+
+Activities        Keep for [30 ▼] days
+Notifications     Keep for [7 ▼] days
+Audit Logs        Keep for [90 ▼] days
+Comms/Messages    Keep for [15 ▼] days
+Webhook History   Keep for [30 ▼] days
+Traces            Keep for [30 ▼] days
+Files             Keep for [90 ▼] days
+Completed Tasks   Keep for [365 ▼] days
+
+☑️ Enable auto-cleanup
+☐ Archive before delete
+[Save Changes]
+```
+
+**为什么自动清理？**
+
+- 减少数据库大小
+- 提高性能
+- 维护隐私
+- 控制成本
+
+**重要数据永不删除：**
+
+- 活跃任务
+- Agent 记忆
+- 知识库
+- 公司信息
+- 设置
+
+## 安全设置
+
+### 认证
+
+```
+Authentication
+
+API Key Authentication
+Master API Key: [CAPIBOT_************************    ]
+[Regenerate] [Copy]
+
+Session Settings
+Session duration: [7 ▼] days
+☑️ Require secure cookies
+☑️ Validate IP address
+☐ Allow multiple sessions per user
+
+Dev Mode
+☐ Enable dev mode (⚠️ Not for production)
+```
+
+### 访问控制
+
+```
+Access Control
+
+IP Allowlist
+☐ Enable IP restrictions
+Allowed IPs: 192.168.1.0/24, 10.0.0.5
+
+User Allowlist (Telegram)
+@username1, @username2, @username3
+☐ Allow any Telegram user
+
+Host Allowlist
+localhost, capibot.io, *.internal.com
+```
+
+### 内容安全
+
+```
+Content Security Policy
+
+☑️ Enable CSP headers
+☑️ Block inline scripts
+☑️ Restrict object sources
+☑️ Validate form actions
+
+Shell Security
+☑️ Block dangerous shell patterns
+☑️ Restrict to workspace
+☑️ Timeout commands (default: 30s)
+Maximum shell output: ~10KB per call
+```
+
+## 高级设置
+
+### 系统性能
+
+```
+Performance
+
+Connection Pooling
+Max database connections: [10 ▼]
+Connection timeout: [30 ▼] seconds
+
+Caching
+☑️ Enable response caching
+Cache duration: [60 ▼] seconds
+
+Rate Limiting
+API rate limit: [100 ▼] requests/minute
+Webhook rate limit: [100 ▼] requests/minute
+```
+
+### 日志
+
+```
+Logging
+
+Log Level
+[Info ▼] (Debug, Info, Warn, Error)
+
+Log Destinations
+☑️ Console
+☐ File: /var/log/capibot/
+☐ External (syslog)
+
+Sensitive Data
+☐ Log API keys (not recommended)
+☐ Log full prompts
+☑️ Mask sensitive data
+```
+
+### 备份与恢复
+
+```
+Backup Settings
+
+Automatic Backups
+☑️ Enable daily backups
+Backup time: [02:00 ▼]
+Retention: [7 ▼] days
+
+Backup Contents
+☑️ Database
+☑️ File storage
+☑️ Configuration
+☐ Logs
+
+Manual Backup
+[Create Backup Now]
+
+Last Backup: Dec 14, 2024 02:00 AM
+Status: ✅ Success (245 MB)
+[Download] [Restore]
+```
+
+## 用户管理
+
+如果运行多用户 CapiBot：
+
+```
+User Management
+
+Current Users: 3
+
+┌─────────────────┬──────────────┬────────────┐
+│ User            │ Role         │ Last Active│
+├─────────────────┼──────────────┼────────────┤
+│ admin@capibot.io│ Admin        │ 2 min ago  │
+│ user1@company.io│ User         │ 1 hour ago │
+│ user2@company.io│ User         │ 1 day ago  │
+└─────────────────┴──────────────┴────────────┘
+
+[Invite User] [Export Users]
+```
+
+### 用户角色
+
+**Admin：**
+
+- 完全系统访问
+- 管理设置
+- 管理用户
+- 查看审计日志
+
+**User：**
+
+- 创建/管理公司
+- 管理分配的 Agent
+- 查看自己的任务
+- 有限设置访问
+
+## 导入/导出
+
+### 导出数据
+
+```
+Export Your Data
+
+What to Export
+☑️ Companies and teams
+☑️ Agents and configurations
+☑️ Tasks and history
+☑️ Knowledge base
+☐ Logs and traces
+
+Format
+● JSON (machine readable)
+○ Markdown (human readable)
+○ CSV (spreadsheets)
+
+[Export Data]
+```
+
+### 导入数据
+
+```
+Import Data
+
+⚠️ Import will merge with existing data.
+Conflicting items will be skipped.
+
+Select file: [Browse...]
+Supported formats: .json, .zip
+
+[Preview Import] [Import Data]
+```
+
+## 系统信息
+
+查看系统状态：
+
+```
+System Information
+
+Version: CapiBot v1.2.3
+Build: 2024.12.15-abc123
+License: MIT (Open Source)
+
+Runtime
+Node.js: v20.10.0
+Uptime: 14 days, 3 hours
+Memory: 2.3GB / 8GB
+
+Database
+PostgreSQL: 16.1
+Size: 1.2 GB
+Connections: 3 / 10
+
+Check for Updates
+Current: v1.2.3
+Latest: v1.2.3 ✅ Up to date
+```
+
+## 最佳实践
+
+### 配置
+
+1. **Document Changes** — 记录更改设置的原因
+2. **Test First** — 在开发环境中尝试更改
+3. **Backup First** — 重大更改前
+4. **Start Conservative** — 逐步收紧
+5. **Review Regularly** — 每月设置审计
+
+### 安全
+
+1. **Strong API Keys** — 使用自动生成的密钥
+2. **Rotate Regularly** — 每 90 天
+3. **Least Privilege** — 最低所需访问
+4. **Monitor Logs** — 注意异常活动
+5. **Keep Updated** — 最新版本的安全补丁
+
+### 性能
+
+1. **Right-size Pool** — 数据库连接与使用匹配
+2. **Cache Wisely** — 不要缓存动态内容
+3. **Clean Regularly** — 自动清理旧数据
+4. **Monitor Resources** — 注意内存和磁盘
+5. **Optimize Queries** — 检查慢查询日志
+
+## 故障排除
+
+**Settings Not Saving：**
+
+- 检查权限
+- 验证值是否有效
+- 审查错误消息
+- 尝试刷新页面
+
+**Connection Test Fails：**
+
+- 验证 API 密钥
+- 检查网络连接
+- 审查防火墙规则
+- 检查服务状态
+
+**Performance Issues：**
+
+- 降低连接池大小
+- 减少缓存持续时间
+- 启用自动清理
+- 检查数据库大小
+
+**Security Alerts：**
+
+- 审查审计日志
+- 检查访问模式
+- 验证白名单
+- 轮换泄露的密钥
+
+## 下一步
+
+- 审查 [安全最佳实践](security)
+- 了解 [Agent 性能](agent-performance)
+- 探索 [工具类别](tool-categories)

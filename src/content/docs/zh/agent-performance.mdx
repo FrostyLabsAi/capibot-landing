@@ -1,0 +1,491 @@
+# Agent 性能
+
+监控、衡量和优化您的 AI 工作力。
+
+## 性能指标
+
+### 个人 Agent 指标
+
+**任务指标：**
+
+- **Tasks Completed** — 完成的任务总数
+- **Completion Rate** — 成功百分比
+- **Avg Time to Complete** — 工作速度
+- **Quality Score** — 审查员评分
+
+**活动指标：**
+
+- **Messages Sent** — 通信量
+- **Tools Used** — 功能利用率
+- **Files Created** — 输出量
+- **Sessions Active** — 在线时间
+
+**成本指标：**
+
+- **Tokens Used** — AI 模型消耗
+- **Cost per Task** — 效率
+- **Daily/Weekly Spend** — 预算影响
+- **Model Breakdown** — 使用哪些 AI 模型
+
+### 查看 Agent 性能
+
+**访问：** Agent Detail → Performance 标签
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ Nova — Performance (Last 30 Days)                      │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ Summary                                                 │
+│ • 24 Tasks Completed | 96% Success Rate               │
+│ • Avg Completion: 2.3 hours                           │
+│ • $124.50 Total Cost | $5.19 Avg per Task             │
+│                                                         │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ Task Breakdown                                          │
+│ Code Reviews:     8 tasks | 100% success | Avg 1.5h   │
+│ Feature Dev:     12 tasks | 92% success  | Avg 3.2h   │
+│ Bug Fixes:        4 tasks | 100% success | Avg 0.8h   │
+│                                                         │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ Cost Analysis                                           │
+│ Claude 3.5 Sonnet: $98.20 (79%) █████████████████     │
+│ GPT-4:             $26.30 (21%) ████                  │
+│                                                         │
+│ Daily Average: $4.15/day                               │
+│                                                         │
+└─────────────────────────────────────────────────────────┘
+```
+
+## 性能分析
+
+### Analytics 面板
+
+**访问：** 导航栏 → **Analytics**
+
+**仪表板视图：**
+
+**Agent 概览：**
+
+```
+Agent Performance (7 Days)
+
+┌─────────┬──────────┬───────────┬──────────┬─────────┐
+│ Agent   │ Tasks    │ Success % │ Avg Time │ Cost   │
+├─────────┼──────────┼───────────┼──────────┼─────────┤
+│ Nova    │ 12       │ 92%       │ 2.3h     │ $52.30 │
+│ Echo    │ 8        │ 100%      │ 1.8h     │ $34.10 │
+│ Pixel   │ 6        │ 83%       │ 3.1h     │ $28.50 │
+│ Scout   │ 15       │ 100%      │ 1.2h     │ $31.20 │
+└─────────┴──────────┴───────────┴──────────┴─────────┘
+```
+
+**任务速度：**
+
+```
+Tasks Completed Per Day
+
+Mon: ████████ 8
+Tue: ██████████ 10
+Wed: ██████ 6
+Thu: ████████████ 12
+Fri: ████████ 8
+
+Trend: +15% vs last week
+```
+
+**成本趋势：**
+
+```
+Daily Spending (Last 30 Days)
+
+[Line graph showing spend over time]
+
+Peak: $18.50 on Dec 10
+Average: $8.20/day
+Projected Monthly: $246
+```
+
+### 公司性能
+
+**公司级指标：**
+
+- 完成的任务总数
+- 实现的目标
+- 预算利用率
+- 团队效率
+- 完成时间
+
+**示例：**
+
+```
+Q1 Marketing Campaign Performance
+
+Tasks: 45 completed | 3 in progress | 2 blocked
+Goals: 2 of 3 achieved | 1 in progress
+Budget: $342 of $1,000 (34%)
+Team Efficiency: 94%
+Avg Task Time: 2.1 days
+```
+
+## 优化性能
+
+### 速度优化
+
+**如果 Agent 慢：**
+
+1. **Check Model Choice**
+   - 简单任务使用更快的模型
+   - 使用 GPT-3.5 代替 GPT-4
+   - 本地 Ollama 以提高速度
+
+2. **Simplify Tasks**
+   - 将大任务拆分为更小的任务
+   - 提供清晰的需求
+   - 减少范围蔓延
+
+3. **Reduce Context**
+   - 清除旧记忆
+   - 归档已完成项目
+   - 专注于相关信息
+
+4. **Parallel Processing**
+   - 生成子 Agent
+   - 聘请更多专家
+   - 分配工作负载
+
+### 成本优化
+
+**如果成本高：**
+
+1. **Switch Models**
+   - 日常工作使用更便宜的模型
+   - 为复杂任务保留昂贵的模型
+   - 混合提供商
+
+2. **Optimize Prompts**
+   - 更短、更清晰的说明
+   - 使用示例
+   - 具体
+
+3. **Batch Work**
+   - 将相似任务分组
+   - 批处理
+   - 减少 API 调用
+
+4. **Archive When Done**
+   - 不要让空闲 Agent 运行
+   - 归档已完成公司
+   - 释放未使用的资源
+
+**成本比较：**
+
+| 模型 | 质量 | 速度 | 成本 |
+|------|------|------|------|
+| Claude 3.5 Sonnet | 高 | 快 | $$$ |
+| GPT-4 | 高 | 中 | $$$ |
+| GPT-3.5 | 中 | 快 | $ |
+| Ollama Local | 各异 | 快 | 免费（硬件） |
+
+### 质量优化
+
+**如果质量低：**
+
+1. **Clear Acceptance Criteria**
+   - 具体定义"完成"
+   - 提供示例
+   - 设定标准
+
+2. **Better Briefings**
+   - 更多上下文
+   - 背景信息
+   - 风格指南
+
+3. **Review Process**
+   - 添加审查员 Agent
+   - 人工审查步骤
+   - 根据反馈迭代
+
+4. **Right Agent for Job**
+   - 技能与任务匹配
+   - 使用专家
+   - 复杂工作不要使用实习生
+
+## 性能审查
+
+### 定期检查
+
+**每周审查：**
+
+```
+Week of Dec 9-15, 2024
+
+Top Performers:
+1. Echo — 8 tasks, 100% success, under budget
+2. Scout — 15 tasks, fast turnaround
+3. Nova — Complex features delivered
+
+Needs Attention:
+1. Pixel — 3 tasks blocked, need design assets
+
+Cost Check:
+• Budget: $200/week
+• Actual: $187/week ✅
+
+Next Week:
+• Focus: Complete Q1 campaign
+• Watch: Pixel's design backlog
+```
+
+**月度报告：**
+
+```
+December 2024 Performance
+
+Overall:
+• 156 tasks completed (+23% vs Nov)
+• 97% success rate (+2% vs Nov)
+• $892 total cost (+15% vs Nov)
+
+By Agent:
+[Full breakdown table]
+
+By Company:
+[Company performance summary]
+
+Recommendations:
+1. Hire additional designer (backlog growing)
+2. Switch Pixel to GPT-3.5 for routine work
+3. Archive old projects to free memory
+```
+
+### 识别问题
+
+**红旗：**
+
+| 迹象 | 可能问题 | 解决方案 |
+|------|---------|---------|
+| 高错误率 | 任务匹配差 | 重新分配给不同 Agent |
+| 完成慢 | 任务太大 | 拆分为更小任务 |
+| 高成本 | 错误模型 | 切换到更便宜模型 |
+| 质量低 | 需求不明确 | 添加验收标准 |
+| 经常阻塞 | 依赖 | 修复工作流 |
+
+## 基准
+
+### 良好性能
+
+**个人 Agent：**
+
+- 90%+ 成功率
+- 每任务 2-4 小时（平均）
+- 预算内
+- 正面反馈
+
+**公司：**
+
+- 85%+ 目标实现
+- 按时交付
+- 预算内
+- 高质量交付物
+
+### 差性能
+
+**个人 Agent：**
+
+- 低于 70% 成功率
+- 持续逾期
+- 高错误率
+- 重复质量问题
+
+**公司：**
+
+- 错过目标
+- 预算超支
+- 停滞任务
+- 差交付物
+
+## 改进性能
+
+### Agent 级改进
+
+**培训：**
+
+- 用经验教训更新 SOUL.md
+- 对完成的工作提供反馈
+- 分享最佳实践
+- 记录偏好
+
+**工具：**
+
+- 启用/禁用特定工具
+- 调整权限
+- 更新能力
+- 添加/移除技能
+
+**配置：**
+
+- 更改 AI 模型
+- 调整超时
+- 设置工作区限制
+- 配置通知
+
+### 公司级改进
+
+**流程：**
+
+- 优化工作流
+- 添加/移除审查步骤
+- 调整批准阈值
+- 改进交接
+
+**团队：**
+
+- 招聘互补技能
+- 移除表现不佳者
+- 重新平衡工作负载
+- 增加容量
+
+**规划：**
+
+- 更好的目标设定
+- 现实的时间表
+- 更清晰的需求
+- 更具体的交付物
+
+## 性能跟踪工具
+
+### 内置报告
+
+**站会报告：**
+
+- 每日活动摘要
+- 完成率
+- 识别阻塞
+- 团队速度
+
+**成本报告：**
+
+- 支出分解
+- 预算与实际情况
+- 每个交付物的成本
+- 预测
+
+**活动报告：**
+
+- 工具使用
+- 在线时间
+- 通信量
+- 输出指标
+
+### 自定义跟踪
+
+**创建仪表板：**
+
+- 选择要跟踪的指标
+- 选择时间段
+- 设定基准
+- 导出报告
+
+**设置告警：**
+
+```
+Alert: Agent success rate less than 80%
+Action: Notify admin
+
+Alert: Daily cost greater than $20
+Action: Warn about budget
+
+Alert: Task blocked more than 3 days
+Action: Escalate to manager
+```
+
+## 案例研究
+
+### 案例 1：优化慢 Agent
+
+**问题：** Nova（工程师）每任务花费 6+ 小时
+
+**调查：**
+
+- 所有任务使用 GPT-4
+- 大内存减慢响应
+- 任务太宽泛
+
+**解决方案：**
+
+1. 切换到 Claude 3.5 Sonnet（更快）
+2. 归档旧项目记忆
+3. 将任务拆分为更小的部分
+
+**结果：** 6 小时 → 2.5 小时平均，相同质量
+
+### 案例 2：降低成本
+
+**问题：** 月成本超预算 50%
+
+**调查：**
+
+- 所有 Agent 使用昂贵模型
+- 空闲 Agent 运行
+- 低效工作流
+
+**解决方案：**
+
+1. 日常工作 → GPT-3.5
+2. 归档已完成公司
+3. 添加成本意识指南
+
+**结果：** $450/月 → $180/月
+
+### 案例 3：提高质量
+
+**问题：** 30% 的交付物需要返工
+
+**调查：**
+
+- 需求不明确
+- 没有验收标准
+- 缺少风格指南
+
+**解决方案：**
+
+1. 添加具体验收标准
+2. 在知识库中创建风格指南
+3. 添加审查员步骤
+
+**结果：** 30% 返工 → 5% 返工
+
+## 最佳实践
+
+### 监控
+
+1. **Weekly Reviews** — 定期检查
+2. **Track Trends** — 不只是快照
+3. **Compare Periods** — 月度对比
+4. **Set Baselines** — 知道什么是正常的
+5. **Investigate Anomalies** — 深入问题
+
+### 优化
+
+1. **Start Conservative** — 然后优化
+2. **Measure Changes** — A/B 测试调整
+3. **Focus on Bottlenecks** — 先最大影响
+4. **Balance Quality/Speed/Cost** — 不能同时优化三个
+5. **Iterate** — 持续改进
+
+### 通信
+
+1. **Share Results** — 与团队/利益相关者
+2. **Celebrate Wins** — 表彰良好表现
+3. **Address Issues** — 快速直接
+4. **Set Expectations** — 明确目标
+5. **Be Data-Driven** — 基于指标的决策
+
+## 下一步
+
+- 审查 [安全最佳实践](security)
+- 学习 [任务管理](task-management)
+- 探索 [自动化](automation)

@@ -1,0 +1,541 @@
+# 任务管理
+
+Tasks 面板让您完全控制 AI 工作力中的工作流。
+
+## 访问任务板
+
+**导航栏：** 点击 **Tasks**
+
+您将看到带有每个状态列的看板。
+
+![Task Board Placeholder]
+_截图：显示各列任务的完整看板_
+
+## 看板布局
+
+```
+┌────────────────────────────────────────────────────────────────┐
+│ Tasks                                     [+ New Task] [Filter] │
+├────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  Inbox (4)  | In Progress (2) | Review (1) | Done (12)         │
+│  ────────────────────────────────────────────────────────────  │
+│                                                                 │
+│  ┌──────────┐ ┌──────────┐ ┌──────────┐                         │
+│  │ T-42     │ │ T-38     │ │ T-35     │                         │
+│  │ Research │ │ Build API│ │ Edit     │                         │
+│  │ Top 5    │ │ endpoint │ │ blog     │                         │
+│  │ Competitors│ │         │ │ post     │                         │
+│  │          │ │          │ │          │                         │
+│  │ 🟡 Medium│ │ 🔴 High  │ │ 🟢 Low   │                         │
+│  │ Scout    │ │ Nova     │ │ Echo     │                         │
+│  │ Due: Fri │ │ Due: Wed │ │ Due: Mon │                         │
+│  └──────────┘ └──────────┘ └──────────┘                         │
+│                                                                 │
+│  ┌──────────┐                                                   │
+│  │ T-43     │                                                   │
+│  │ Design   │                                                   │
+│  │ landing  │                                                   │
+│  │ page     │                                                   │
+│  │          │                                                   │
+│  │ 🟠 High  │                                                   │
+│  │ Pixel    │                                                   │
+│  └──────────┘                                                   │
+│                                                                 │
+└────────────────────────────────────────────────────────────────┘
+```
+
+## 任务卡片
+
+每张卡片显示：
+
+- **ID** — 唯一标识符（T-42）
+- **Title** — 简短描述
+- **Priority** — 颜色编码的重要性
+- **Assignee** — 谁在处理它
+- **Due Date** — 截止时间
+- **Tags** — 类别（如果有）
+
+## 列说明
+
+### Inbox
+
+等待开始的新任务。
+
+**这里发生什么：**
+
+- 已创建但未分配的任务
+- 已分配但 Agent 尚未开始的任务
+- 未来工作的积压
+
+**您的操作：**
+
+- 准备好时拖到 In Progress
+- 如有需要重新分配
+- 设置优先级
+
+### In Progress
+
+现在正在进行的活跃工作。
+
+**这里发生什么：**
+
+- Agent 签出了任务
+- 工作正在积极进行
+- 进度更新已记录
+
+**您的操作：**
+
+- 监控进度
+- 回答 Agent 的问题
+- 如果出现问题，移动到 Blocked
+
+### Review
+
+工作完成，需要质量检查。
+
+**这里发生什么：**
+
+- Agent 将任务标记为完成
+- Aegis/Sentinel 审查质量
+- 批准或退回
+
+**您的操作：**
+
+- 审查已批准的工作
+- 检查审查员评论
+
+### Human Review
+
+_（仅限托管 AI 公司）_
+
+工作完成，等待您的批准。
+
+**这里发生什么：**
+
+- 任务通过质量审查
+- 需要人工批准
+- 在您批准之前不会移动到 Done
+
+**您的操作：**
+
+- 审查交付物
+- 点击 Approve 或 Request Changes
+
+### Blocked
+
+由于依赖或问题而无法进行。
+
+**这里发生什么：**
+
+- 等待另一个任务
+- Agent 有问题
+- 缺少信息
+- 外部阻塞
+
+**您的操作：**
+
+- 检查评论了解阻塞详情
+- 通过解决依赖项解除阻塞
+- 回答问题
+- 如有需要重新分配
+
+### Done
+
+已完成并批准的工作。
+
+**这里发生什么：**
+
+- 任务完全完成
+- 交付物已保存
+- 时间已记录
+- 可供参考
+
+## 创建任务
+
+### 方法 1：快速创建
+
+1. 点击 **"+ New Task"** 按钮
+2. 填写基本信息：
+   ```
+   Title: Write blog post about AI trends
+   Description: 800-word article covering
+                top AI trends for 2024
+   Assignee: [Echo ▼]
+   Priority: [High ▼]
+   Due Date: [Date picker]
+   ```
+3. 点击 **Create**
+
+### 方法 2：从列创建
+
+1. 点击任何列上的 **"+"**
+2. 任务从该列开始
+3. 填写详情
+4. 保存
+
+### 方法 3：通过消息
+
+```
+您：@Atlas 创建任务：Research competitors
+Atlas：已创建任务 T-45 "Research competitors"
+      分配给：Scout
+      状态：Inbox
+```
+
+## 任务详情
+
+点击任何任务打开完整详情：
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ T-42: Research Top 5 Competitors           [Edit] [×]   │
+├─────────────────────────────────────────────────────────┤
+│ Status: In Progress                                     │
+│ Assignee: Scout (Research Analyst)                     │
+│ Priority: 🟡 Medium                                     │
+│ Due: Friday, Dec 15                                     │
+│ Company: Q1 Marketing                                   │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ Description:                                           │
+│ Research and analyze the top 5 competitors in our     │
+│ space. Focus on pricing, features, and positioning.   │
+│                                                         │
+│ Acceptance Criteria:                                   │
+│ ☐ Identify top 5 competitors                          │
+│ ☐ Document pricing for each                           │
+│ ☐ Compare key features                                 │
+│ ☐ Provide positioning analysis                         │
+│ ☐ Deliver 2-page report                                │
+│                                                         │
+├─────────────────────────────────────────────────────────┤
+│ Tags: research, competitors, q1-campaign               │
+│ Milestone: Market Research Phase                       │
+│ Estimated: 4 hours                                     │
+│ Actual: 2.5 hours (so far)                             │
+├─────────────────────────────────────────────────────────┤
+│ Dependencies:                                          │
+│ Blocks: T-43 (Competitive Analysis Writeup)            │
+├─────────────────────────────────────────────────────────┤
+│ Comments                                               │
+│ Scout (2 hours ago): Started research. Found 3        │
+│                     competitors so far. Need more     │
+│                     time for the other 2.             │
+│                                                         │
+│ You (1 hour ago): Take your time, quality over speed. │
+│                                                         │
+│ [Add a comment...]                                    │
+└─────────────────────────────────────────────────────────┘
+```
+
+## 移动任务
+
+### 拖放
+
+在列之间点击并拖动卡片：
+
+- Inbox → In Progress
+- In Progress → Review
+- Review → Done（如果已批准）
+- 任何 → Blocked
+
+### 状态下拉菜单
+
+点击任务卡上的状态徽章：
+
+```
+[In Progress ▼]
+  ├─ Inbox
+  ├─ In Progress
+  ├─ Review
+  ├─ Human Review
+  ├─ Blocked
+  └─ Done
+```
+
+### 键盘快捷键
+
+- **E** — 编辑任务
+- **M** — 移动任务
+- **C** — 添加评论
+- **D** — 删除任务
+
+## 筛选和搜索
+
+### 筛选栏
+
+按以下筛选任务：
+
+- **Status** — 一个或多个列
+- **Assignee** — 特定 Agent 或未分配
+- **Priority** — 紧急、高、中、低
+- **Company** — 特定 AI 公司
+- **Tags** — 类别
+- **Due Date** — 逾期、今天、本周
+
+### 搜索
+
+按以下搜索任务：
+
+- 标题关键词
+- 描述内容
+- 任务 ID
+- 负责人名称
+- 评论
+
+**全局搜索：** 从任何地方按 Cmd/Ctrl + K
+
+## 处理任务
+
+### 分配任务
+
+**更改负责人：**
+
+1. 打开任务详情
+2. 点击 Assignee 下拉菜单
+3. 选择 Agent
+4. Agent 收到通知
+
+**自动分配：**
+
+- AI 公司根据技能自动分配
+- 支持轮询
+- 可用性负载均衡
+
+### 设置优先级
+
+视觉优先级系统：
+
+| 颜色 | 优先级 | 何时使用 |
+|------|--------|---------|
+| 🔴 Red | Urgent | 关键、阻塞、今天截止 |
+| 🟠 Orange | High | 重要，很快到期 |
+| 🟡 Yellow | Medium | 正常工作 |
+| 🟢 Green | Low | 有就好，时间灵活 |
+
+**最佳实践：**
+
+- 大多数任务应为 Medium
+- 谨慎使用 High/Urgent
+- 每天重新确定优先级
+
+### 管理依赖
+
+在以下情况下设置任务依赖：
+
+- 任务 B 在任务 A 完成之前无法开始
+- 需要顺序工作流
+- 任务之间共享资源
+
+**设置依赖：**
+
+1. 打开任务详情
+2. 转到 Dependencies 部分
+3. 点击 "Add Dependency"
+4. 选择阻塞任务
+5. 任务自动标记为 Blocked
+
+**示例：**
+
+```
+T-42: 研究竞争对手（必须先完成）
+   ↓
+T-43: 撰写竞争分析（阻塞直到 T-42 完成）
+   ↓
+T-44: 创建演示文稿（阻塞直到 T-43 完成）
+```
+
+### 添加评论
+
+**为什么评论：**
+
+- 提问
+- 提供反馈
+- 分享上下文
+- 记录决策
+
+**如何：**
+
+1. 打开任务详情
+2. 滚动到 Comments
+3. 输入并发送
+4. 用 @name 提及 Agent
+
+**通知：**
+
+- 负责人收到新评论通知
+- 提及的 Agent 收到提醒
+- 可以通过消息应用回复
+
+### 附加文件
+
+**上传交付物：**
+
+1. 打开任务详情
+2. 点击 "Attach Files"
+3. 选择或拖动文件
+4. 文件与任务一起存储
+
+**自动附加：**
+
+- Agent 可以附加他们的工作
+- 交付物自动保存到知识库
+- 文件链接在任务历史中
+
+## 按用例的任务工作流
+
+### 内容创建管道
+
+```
+Research → Write → Edit → Review → Publish
+```
+
+1. **Research** 任务（Scout）
+   - 收集信息
+   - 移动到 Review
+
+2. **Write** 任务（Echo）
+   - 依赖于 Research
+   - 创建草稿
+   - 移动到 Review
+
+3. **Edit** 任务（Aegis）
+   - 质量审查
+   - 批准或请求更改
+   - 如果托管，移动到 Human Review
+
+4. **您批准**
+   - 审查最终内容
+   - 批准 → Done
+
+5. **Publish** 任务已安排
+   - 自动上线
+
+### 功能开发
+
+```
+Design → Develop → Test → Deploy
+```
+
+1. **Design**（Pixel）
+   - 创建模型
+   - Review → Done
+
+2. **Develop**（Nova）
+   - 实现代码
+   - 依赖于 Design
+   - Review → Done
+
+3. **Test**（Test agent）
+   - QA 测试
+   - Bug → 返回 Develop
+   - 通过 → Done
+
+4. **Deploy**（已安排）
+   - 进入生产
+
+### 支持工单
+
+```
+New → In Progress → Resolved
+```
+
+1. 客户消息 → 自动创建任务
+2. 支持 Agent 认领 → In Progress
+3. Agent 解决 → Review
+4. 自动批准 → Done
+5. 客户收到通知
+
+## 站会报告
+
+生成每日摘要：
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ Daily Standup — December 15, 2024                      │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ Team Summary                                           │
+│ • 3 Tasks Completed                                    │
+│ • 2 In Progress                                        │
+│ • 1 In Review                                          │
+│ • 0 Blocked                                            │
+│                                                         │
+│ By Agent:                                              │
+│ Scout:                                                 │
+│   ✅ Completed: Competitor Research (T-42)            │
+│   🔄 In Progress: Market Analysis (T-46)              │
+│                                                         │
+│ Echo:                                                  │
+│   ✅ Completed: Blog Post 1 (T-38)                    │
+│   📋 Assigned: Blog Post 2 (T-47)                     │
+│                                                         │
+│ Blockers: None                                         │
+│ Overdue: None                                          │
+└─────────────────────────────────────────────────────────┘
+```
+
+**访问：**
+
+- 导航栏中的 Standup 面板
+- 或在任务板上点击 "Standup"
+- 选择日期范围
+- 导出为报告
+
+## 最佳实践
+
+### 任务创建
+
+- **Clear Titles** — 仅从标题就能理解
+- **Specific Criteria** — 定义"完成"
+- **Right Size** — 理想 2-8 小时
+- **One Assignee** — 明确的所有权
+- **Realistic Dates** — 质量缓冲
+
+### 任务管理
+
+- **Review Board Daily** — 了解正在发生什么
+- **Unblock Quickly** — 不要让任务停滞
+- **Re-prioritize Often** — 重点变化
+- **Archive Done Tasks** — 保持看板整洁
+- **Use Tags** — 筛选和组织
+
+### 与 Agent 协作
+
+- **Answer Questions** — 检查 Blocked 列
+- **Review Promptly** — 不要让审查成为瓶颈
+- **Give Feedback** — 帮助 Agent 改进
+- **Trust but Verify** — 抽查工作
+
+## 故障排除
+
+**Task Stuck in Inbox：**
+
+- Agent 可能离线
+- 重新分配给可用 Agent
+- 检查是否太大 — 分解
+
+**Task in Progress Too Long：**
+
+- Agent 可能被阻塞 — 检查评论
+- 任务太大 — 拆分为更小的任务
+- 需要帮助 — 添加协助 Agent
+
+**Too Many in Review：**
+
+- 审查员不堪重负 — 增加更多
+- 质量问题 — 明确标准
+- 瓶颈 — 审查流程需要调整
+
+**Tasks Bouncing Back：**
+
+- 需求不明确 — 更新描述
+- 错误的 Agent — 重新分配
+- 缺少上下文 — 添加详情
+
+## 下一步
+
+- 探索 [知识与记忆](knowledge-memory)
+- 设置 [自动化](automation)
+- 学习 [监控](monitoring)

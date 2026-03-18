@@ -1,0 +1,491 @@
+# Agent Performance
+
+Monitor, measure, and optimize your AI workforce.
+
+## Performance Metrics
+
+### Individual Agent Metrics
+
+**Task Metrics:**
+
+- **Tasks Completed** — Total finished tasks
+- **Completion Rate** — Success percentage
+- **Avg Time to Complete** — Speed of work
+- **Quality Score** — Reviewer ratings
+
+**Activity Metrics:**
+
+- **Messages Sent** — Communication volume
+- **Tools Used** — Feature utilization
+- **Files Created** — Output volume
+- **Sessions Active** — Time online
+
+**Cost Metrics:**
+
+- **Tokens Used** — AI model consumption
+- **Cost per Task** — Efficiency
+- **Daily/Weekly Spend** — Budget impact
+- **Model Breakdown** — Which AI models used
+
+### Viewing Agent Performance
+
+**Access:** Agent Detail → Performance Tab
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ Nova — Performance (Last 30 Days)                      │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ Summary                                                 │
+│ • 24 Tasks Completed | 96% Success Rate               │
+│ • Avg Completion: 2.3 hours                           │
+│ • $124.50 Total Cost | $5.19 Avg per Task             │
+│                                                         │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ Task Breakdown                                          │
+│ Code Reviews:     8 tasks | 100% success | Avg 1.5h   │
+│ Feature Dev:     12 tasks | 92% success  | Avg 3.2h   │
+│ Bug Fixes:        4 tasks | 100% success | Avg 0.8h   │
+│                                                         │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ Cost Analysis                                           │
+│ Claude 3.5 Sonnet: $98.20 (79%) █████████████████     │
+│ GPT-4:             $26.30 (21%) ████                  │
+│                                                         │
+│ Daily Average: $4.15/day                               │
+│                                                         │
+└─────────────────────────────────────────────────────────┘
+```
+
+## Performance Analytics
+
+### Analytics Panel
+
+**Access:** Nav rail → **Analytics**
+
+**Dashboard Views:**
+
+**Agent Overview:**
+
+```
+Agent Performance (7 Days)
+
+┌─────────┬──────────┬───────────┬──────────┬─────────┐
+│ Agent   │ Tasks    │ Success % │ Avg Time │ Cost   │
+├─────────┼──────────┼───────────┼──────────┼─────────┤
+│ Nova    │ 12       │ 92%       │ 2.3h     │ $52.30 │
+│ Echo    │ 8        │ 100%      │ 1.8h     │ $34.10 │
+│ Pixel   │ 6        │ 83%       │ 3.1h     │ $28.50 │
+│ Scout   │ 15       │ 100%      │ 1.2h     │ $31.20 │
+└─────────┴──────────┴───────────┴──────────┴─────────┘
+```
+
+**Task Velocity:**
+
+```
+Tasks Completed Per Day
+
+Mon: ████████ 8
+Tue: ██████████ 10
+Wed: ██████ 6
+Thu: ████████████ 12
+Fri: ████████ 8
+
+Trend: +15% vs last week
+```
+
+**Cost Trends:**
+
+```
+Daily Spending (Last 30 Days)
+
+[Line graph showing spend over time]
+
+Peak: $18.50 on Dec 10
+Average: $8.20/day
+Projected Monthly: $246
+```
+
+### Company Performance
+
+**Company-Level Metrics:**
+
+- Total tasks completed
+- Goals achieved
+- Budget utilization
+- Team efficiency
+- Time to completion
+
+**Example:**
+
+```
+Q1 Marketing Campaign Performance
+
+Tasks: 45 completed | 3 in progress | 2 blocked
+Goals: 2 of 3 achieved | 1 in progress
+Budget: $342 of $1,000 (34%)
+Team Efficiency: 94%
+Avg Task Time: 2.1 days
+```
+
+## Optimizing Performance
+
+### Speed Optimization
+
+**If Agents Are Slow:**
+
+1. **Check Model Choice**
+   - Faster models for simple tasks
+   - Use GPT-3.5 instead of GPT-4
+   - Local Ollama for speed
+
+2. **Simplify Tasks**
+   - Break large tasks into smaller ones
+   - Provide clear requirements
+   - Reduce scope creep
+
+3. **Reduce Context**
+   - Clear old memories
+   - Archive completed projects
+   - Focus on relevant info
+
+4. **Parallel Processing**
+   - Spawn subagents
+   - Hire more specialists
+   - Distribute workload
+
+### Cost Optimization
+
+**If Costs Are High:**
+
+1. **Switch Models**
+   - Use cheaper models for routine work
+   - Reserve expensive models for complex tasks
+   - Mix providers
+
+2. **Optimize Prompts**
+   - Shorter, clearer instructions
+   - Use examples
+   - Be specific
+
+3. **Batch Work**
+   - Group similar tasks
+   - Process in batches
+   - Reduce API calls
+
+4. **Archive When Done**
+   - Don't keep idle agents running
+   - Archive completed companies
+   - Release unused resources
+
+**Cost Comparison:**
+
+| Model             | Quality | Speed  | Cost            |
+| ----------------- | ------- | ------ | --------------- |
+| Claude 3.5 Sonnet | High    | Fast   | $$$             |
+| GPT-4             | High    | Medium | $$$             |
+| GPT-3.5           | Medium  | Fast   | $               |
+| Ollama Local      | Varies  | Fast   | Free (hardware) |
+
+### Quality Optimization
+
+**If Quality Is Low:**
+
+1. **Clear Acceptance Criteria**
+   - Define "done" specifically
+   - Provide examples
+   - Set standards
+
+2. **Better Briefings**
+   - More context
+   - Background information
+   - Style guides
+
+3. **Review Process**
+   - Add reviewer agents
+   - Human review step
+   - Iterate on feedback
+
+4. **Right Agent for Job**
+   - Match skills to task
+   - Use specialists
+   - Don't use Interns for complex work
+
+## Performance Reviews
+
+### Regular Check-ins
+
+**Weekly Review:**
+
+```
+Week of Dec 9-15, 2024
+
+Top Performers:
+1. Echo — 8 tasks, 100% success, under budget
+2. Scout — 15 tasks, fast turnaround
+3. Nova — Complex features delivered
+
+Needs Attention:
+1. Pixel — 3 tasks blocked, need design assets
+
+Cost Check:
+• Budget: $200/week
+• Actual: $187/week ✅
+
+Next Week:
+• Focus: Complete Q1 campaign
+• Watch: Pixel's design backlog
+```
+
+**Monthly Report:**
+
+```
+December 2024 Performance
+
+Overall:
+• 156 tasks completed (+23% vs Nov)
+• 97% success rate (+2% vs Nov)
+• $892 total cost (+15% vs Nov)
+
+By Agent:
+[Full breakdown table]
+
+By Company:
+[Company performance summary]
+
+Recommendations:
+1. Hire additional designer (backlog growing)
+2. Switch Pixel to GPT-3.5 for routine work
+3. Archive old projects to free memory
+```
+
+### Identifying Issues
+
+**Red Flags:**
+
+| Sign            | Possible Issue       | Solution                    |
+| --------------- | -------------------- | --------------------------- |
+| High error rate | Poor task fit        | Reassign to different agent |
+| Slow completion | Task too large       | Break into smaller tasks    |
+| High cost       | Wrong model          | Switch to cheaper model     |
+| Low quality     | Unclear requirements | Add acceptance criteria     |
+| Blocked often   | Dependencies         | Fix workflow                |
+
+## Benchmarks
+
+### Good Performance
+
+**Individual Agent:**
+
+- 90%+ success rate
+- 2-4 hours per task (average)
+- Under budget
+- Positive feedback
+
+**Company:**
+
+- 85%+ goals achieved
+- On-time delivery
+- Within budget
+- Quality deliverables
+
+### Poor Performance
+
+**Individual Agent:**
+
+- Less than 70% success rate
+- Consistently over deadline
+- High error rate
+- Repeated quality issues
+
+**Company:**
+
+- Missed goals
+- Budget overruns
+- Stalled tasks
+- Poor deliverables
+
+## Improving Performance
+
+### Agent-Level Improvements
+
+**Training:**
+
+- Update SOUL.md with lessons learned
+- Provide feedback on completed work
+- Share best practices
+- Document preferences
+
+**Tools:**
+
+- Enable/disable specific tools
+- Adjust permissions
+- Update capabilities
+- Add/remove skills
+
+**Configuration:**
+
+- Change AI model
+- Adjust timeouts
+- Set workspace restrictions
+- Configure notifications
+
+### Company-Level Improvements
+
+**Process:**
+
+- Refine workflows
+- Add/remove review steps
+- Adjust approval thresholds
+- Improve handoffs
+
+**Team:**
+
+- Hire complementary skills
+- Remove underperformers
+- Rebalance workload
+- Add capacity
+
+**Planning:**
+
+- Better goal setting
+- Realistic timelines
+- Clearer requirements
+- More specific deliverables
+
+## Performance Tracking Tools
+
+### Built-in Reports
+
+**Standup Reports:**
+
+- Daily activity summary
+- Completion rates
+- Blockers identified
+- Team velocity
+
+**Cost Reports:**
+
+- Spending breakdown
+- Budget vs actual
+- Cost per deliverable
+- Forecasting
+
+**Activity Reports:**
+
+- Tool usage
+- Time online
+- Communication volume
+- Output metrics
+
+### Custom Tracking
+
+**Create Dashboard:**
+
+- Select metrics to track
+- Choose time period
+- Set benchmarks
+- Export reports
+
+**Set Alerts:**
+
+```
+Alert: Agent success rate less than 80%
+Action: Notify admin
+
+Alert: Daily cost greater than $20
+Action: Warn about budget
+
+Alert: Task blocked more than 3 days
+Action: Escalate to manager
+```
+
+## Case Studies
+
+### Case 1: Optimizing a Slow Agent
+
+**Problem:** Nova (Engineer) taking 6+ hours per task
+
+**Investigation:**
+
+- Using GPT-4 for all tasks
+- Large memory slowing responses
+- Tasks too broad
+
+**Solution:**
+
+1. Switched to Claude 3.5 Sonnet (faster)
+2. Archived old project memories
+3. Broke tasks into smaller pieces
+
+**Result:** 6 hours → 2.5 hours avg, same quality
+
+### Case 2: Reducing Costs
+
+**Problem:** Monthly costs 50% over budget
+
+**Investigation:**
+
+- All agents using expensive models
+- Idle agents running
+- Inefficient workflows
+
+**Solution:**
+
+1. Routine work → GPT-3.5
+2. Archived completed companies
+3. Added cost-conscious guidelines
+
+**Result:** $450/month → $180/month
+
+### Case 3: Improving Quality
+
+**Problem:** 30% of deliverables need rework
+
+**Investigation:**
+
+- Unclear requirements
+- No acceptance criteria
+- Missing style guides
+
+**Solution:**
+
+1. Added specific acceptance criteria
+2. Created style guide in knowledge base
+3. Added reviewer step
+
+**Result:** 30% rework → 5% rework
+
+## Best Practices
+
+### Monitoring
+
+1. **Weekly Reviews** — Regular check-ins
+2. **Track Trends** — Not just snapshots
+3. **Compare Periods** — Month-over-month
+4. **Set Baselines** — Know what's normal
+5. **Investigate Anomalies** — Dig into issues
+
+### Optimization
+
+1. **Start Conservative** — Then optimize
+2. **Measure Changes** — A/B test adjustments
+3. **Focus on Bottlenecks** — Biggest impact first
+4. **Balance Quality/Speed/Cost** — Can't optimize all three
+5. **Iterate** — Continuous improvement
+
+### Communication
+
+1. **Share Results** — With team/stakeholders
+2. **Celebrate Wins** — Recognize good performance
+3. **Address Issues** — Quickly and directly
+4. **Set Expectations** — Clear goals
+5. **Be Data-Driven** — Decisions based on metrics
+
+## Next Steps
+
+- Review [Security Best Practices](security)
+- Learn [Task Management](task-management)
+- Explore [Automation](automation)

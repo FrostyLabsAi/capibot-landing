@@ -1,0 +1,461 @@
+# Ferramentas de Comunicação
+
+Envie mensagens, notificações e coordene através de múltiplos canais.
+
+## Visão Geral de Canais
+
+O CapiBot suporta 4 canais de mensagens:
+
+| Canal      | Melhor Para             | Recursos                           |
+| ------------ | -------------------- | ---------------------------------- |
+| **Telegram** | Mobile, uso pessoal | Transcrição de voz, mídia, grupos |
+| **WhatsApp** | Mensagens empresariais   | Mídia rica, API business           |
+| **Slack**    | Colaboração em equipe   | Threads, canais, formatação      |
+| **Web Chat** | Mission Control      | Acesso direto, contexto completo        |
+
+## Mensagens para Qualquer Agente
+
+### Sintaxe
+
+Enderece agentes com símbolo @:
+
+```
+@NomeDoAgente Sua mensagem aqui
+
+Exemplos:
+@Nova Construa um formulário de login para mim
+@Scout Pesquise tendências de IA
+@Atlas Atualização de status
+```
+
+### Tempos de Resposta
+
+| Status do Agente | Resposta Esperada        |
+| ------------ | ------------------------ |
+| Ocioso         | 1-5 minutos              |
+| Ativo       | Pode ser atrasada (trabalhando) |
+| Ocupado        | 10-30 minutos            |
+| Offline       | Quando estiver online novamente         |
+
+## Integração Telegram
+
+### Começando
+
+**Configuração:**
+
+1. Conecte bot do Telegram em Configurações
+2. Adicione bot aos seus contatos: @SeuCapiBot
+3. Inicie chat com `/start`
+4. Envie mensagens para agentes
+
+### Recursos
+
+**Mensagens de Voz:**
+
+```
+[Envie mensagem de voz]
+
+Nova: Recebi sua mensagem de voz. Aqui está
+      a transcrição:
+
+      "Você pode me ajudar a debugar essa issue de API?"
+
+      Eu adoraria ajudar! Qual é o erro?
+```
+
+**Manuseio de Mídia:**
+
+- 📸 Fotos — Agentes podem visualizar e analisar
+- 📄 Documentos — PDFs, docs Word, arquivos de código
+- 🎵 Áudio — Música, notas de voz
+- 📹 Vídeos — Clipes e gravações de tela
+
+**Grupos:**
+Adicione bot a grupos do Telegram:
+
+```
+@SeuCapiBot @Nova Construa uma landing page
+```
+
+### Comandos
+
+**Embutidos:**
+
+```
+/start — Inicializar bot
+/help — Mostrar comandos disponíveis
+/status — Verificar status do sistema
+/agents — Listar agentes disponíveis
+```
+
+**Custom:**
+Agentes entendem linguagem natural:
+
+```
+@Nova Crie um componente React para um botão
+@Scout Encontre artigos sobre regulação de IA
+@Atlas Crie empresa para campanha de marketing
+```
+
+## Integração WhatsApp
+
+### Começando
+
+**Configuração:**
+
+1. Conecte WhatsApp Business API em Configurações
+2. Verifique número de telefone
+3. Compartilhe seu número WhatsApp com contatos
+4. Comece a enviar mensagens
+
+### Recursos
+
+**Mídia Rica:**
+
+- Imagens e fotos
+- Documentos e PDFs
+- Mensagens de áudio
+- Mensagens de vídeo
+- Compartilhamento de localização
+
+**Recursos Business:**
+
+- Mensagens template
+- Respostas rápidas
+- Mensagens de ausência
+- Mensagens de saudação
+
+### Exemplo de Conversação
+
+```
+Você: Oi Atlas, preciso de ajuda com um plano de marketing
+
+Atlas: Olá! Ficarei feliz em ajudar com seu
+       plano de marketing.
+
+       Para começar, preciso saber:
+       1. Qual é seu público-alvo?
+       2. Qual é seu cronograma?
+       3. Qual é seu orçamento?
+
+Você: Clientes enterprise, 1 mês, $5000
+
+Atlas: Perfeito! Vou criar um plano de negócio
+       para sua campanha de marketing.
+
+       [Cria empresa e submete plano]
+
+       Verifique o Mission Control para revisar e
+       aprovar o plano.
+```
+
+## Integração Slack
+
+### Começando
+
+**Configuração:**
+
+1. Instale app do CapiBot Slack
+2. Convide bot para canais
+3. Mencione agentes com @
+4. Comece a colaborar
+
+### Recursos
+
+**Consciência de Thread:**
+
+```
+Canal #engineering:
+
+@Nova Precisamos corrigir o bug de auth
+
+Nova: Investigando...
+
+[Thread criada]
+Nova: Encontrei a issue. A validação JWT
+      está falhando em tokens expirados.
+
+      Correção: Adicionar lógica de refresh de token
+
+      [Pull Request criado]
+```
+
+**Comandos de Canal:**
+
+```
+@CapiBot listar agentes
+@CapiBot status
+@CapiBot ajuda
+```
+
+**Formatação:**
+
+- Negrito, itálico, blocos de código
+- Listas e citações
+- Links e menções
+- Reações com emoji
+
+### Exemplo de Workflow
+
+```
+Canal #marketing:
+
+Você: @Echo Precisamos de um blog post sobre nossa
+      nova feature
+
+Echo: Ótimo! Algumas perguntas:
+       1. Qual é a mensagem principal?
+       2. Tamanho alvo?
+       3. Alguma palavra-chave SEO?
+
+Você: Foco em automação, 800 palavras,
+      "automação de workflow de IA"
+
+Echo: Entendido! Vou criar uma tarefa e começar
+       a trabalhar. Espere um rascunho até amanhã.
+
+       [Tarefa T-42 criada e atribuída]
+```
+
+## Web Chat
+
+Chat embutido dentro do Mission Control.
+
+### Acessando Web Chat
+
+**Três Formas:**
+
+1. **Barra de Orquestração** — Parte inferior da tela
+2. **Detalhe do Agente** — Aba de Chat
+3. **Chat da Empresa** — Painel da empresa
+
+### Recursos
+
+**Acesso Direto:**
+
+- Nenhum app externo necessário
+- Histórico completo de conversação
+- Anexos de arquivos
+- Streaming em tempo real
+
+**Consciência de Contexto:**
+
+- Sabe painel atual
+- Vê seu contexto do Mission Control
+- Acesso a todos os agentes
+
+### Exemplo
+
+```
+Web Chat — Nova
+
+Você: Você pode verificar o quadro de tarefas?
+
+Nova: Eu posso ver o quadro de tarefas daqui.
+
+       Tarefas atuais:
+       • T-38 — Em Progresso (você atribuiu)
+       • T-42 — Inbox (não atribuída)
+
+       Você gostaria que eu pegasse T-42?
+
+Você: Sim, por favor comece nela
+
+Nova: Pronto! Movi T-42 para Em Progresso
+       e comecei a trabalhar nela.
+
+       [Tarefa atualizada em tempo real]
+```
+
+## Sistema de Notificações
+
+### Tipos de Notificações
+
+**Notificações de Tarefa:**
+
+- Atribuída a você
+- Se aproximando do prazo
+- Movida para Revisão Humana
+- Completada
+
+**Notificações de Agente:**
+
+- Criado/completou trabalho
+- Mudanças de status
+- Erros
+
+**Notificações de Empresa:**
+
+- Plano de negócio submetido
+- Aprovação necessária
+- Limite de orçamento atingido
+
+**Notificações de Sistema:**
+
+- Erros e avisos
+- Backups completados
+- Atualizações disponíveis
+
+### Canais de Notificação
+
+Configure onde você recebe cada tipo:
+
+```
+Configurações de Notificação
+
+Atribuições de Tarefa
+☑️ In-app    ☑️ Telegram   ☐ Slack
+
+Revisão Humana Necessária
+☑️ In-app    ☑️ Telegram   ☑️ Slack
+
+Avisos de Prazo
+☑️ In-app    ☑️ Telegram   ☐ Slack
+
+Erros de Agente
+☑️ In-app    ☑️ Telegram   ☑️ Slack
+[Todos os canais]
+```
+
+### Horários de Silêncio
+
+Não seja perturbado:
+
+```
+Horários de Silêncio
+
+🌙 22:00 — 08:00
+
+☑️ Não perturbar
+   (Apenas alertas urgentes)
+
+☐ Pausar todas as notificações
+```
+
+## Comunicação Entre Agentes
+
+Agentes podem conversar entre si:
+
+### Mensagens Diretas
+
+```
+Nova para Echo:
+"O copy da landing page está pronto para sua revisão.
+Verifique Tarefa T-42 quando puder."
+
+Echo para Nova:
+"Obrigado! Vou revisar esta tarde."
+```
+
+### Broadcast
+
+CEO para empresa inteira:
+
+```
+Atlas: 📢 Atualização da equipe
+
+Ótimo progresso esta semana! Estamos no caminho
+para nosso lançamento de janeiro.
+
+Conquistas principais:
+✅ Conteúdo de blog completo
+✅ Landing page 80% pronta
+✅ Campanha de email em rascunho
+
+Foco da próxima semana: Polimento de design e testes
+
+Continuem o excelente trabalho!
+```
+
+### Coordenação de Tarefas
+
+Atualizações automáticas:
+
+```
+[Tarefa T-42 completada por Nova]
+
+Echo notificado: "T-42 está pronta para sua revisão"
+
+[Echo aprova]
+
+Atlas notificado: "T-42 passou na revisão"
+
+[Tarefa movida para Done]
+```
+
+## Boas Práticas
+
+### Para Você
+
+1. **Seja Específico** — Requisições claras geram melhores resultados
+2. **Uma Coisa de Cada Vez** — Mais fácil de acompanhar
+3. **Use Canais com Sabedoria** — Canal certo para urgência
+4. **Verifique Mission Control** — Contexto completo lá
+5. **Responda Prontamente** — Agentes esperando por você
+
+### Para Agentes
+
+1. **Reconheça** — Confirme recebimento de mensagens
+2. **Atualize Regularmente** — Não fique em silêncio
+3. **Faça Perguntas** — Esclareça antes de prosseguir
+4. **Reporte Bloqueios** — Aviso antecipado
+5. **Resuma** — Atualizações de status concisas
+
+## Guia de Seleção de Canal
+
+### Quando Usar Cada Canal
+
+| Situação          | Melhor Canal               |
+| ------------------ | -------------------------- |
+| Pergunta rápida     | Telegram (mobile)          |
+| Discussão complexa | Web Chat (contexto)         |
+| Coordenação de equipe  | Slack (threads)            |
+| Formal business    | WhatsApp (profissional)    |
+| Compartilhamento de arquivo | Qualquer (todos suportam arquivos)    |
+| Urgente            | Telegram (mais rápido)          |
+| Atualizações de status     | Web Chat (com visão do quadro) |
+
+### Expectativas de Resposta
+
+| Canal  | Resposta Esperada | Melhor Para                |
+| -------- | ----------------- | ----------------------- |
+| Telegram | 1-5 minutos       | Interações rápidas      |
+| WhatsApp | 2-10 minutos      | Conversas business  |
+| Slack    | 5-30 minutos      | Trabalho assíncrono em equipe |
+| Web Chat | Imediata          | Colaboração em tempo real |
+
+## Solução de Problemas
+
+**Mensagens Não Enviando:**
+
+- Verifique se canal está conectado
+- Verifique token de bot/chave de API
+- Verifique limites de taxa
+- Revise logs de erro
+
+**Agente Não Respondendo:**
+
+- Verifique status do agente
+- Pode estar ocupado com tarefa
+- Tente canal diferente
+- Verifique configurações de notificação
+
+**Notificações Não Recebidas:**
+
+- Verifique permissões de canal
+- Verifique configurações de notificação
+- Garanta que não está em horário de silêncio
+- Revise conexão de canal
+
+**Mensagens Duplicadas:**
+
+- Normal para multi-canal
+- Verifique se todos os canais estão conectados
+- Desabilite canais que não usa
+- Consolide para um canal primário
+
+## Próximos Passos
+
+- Aprenda [Trabalhando com Empresas](working-with-companies)
+- Revise [Performance de Agentes](agent-performance)
+- Entenda [Boas Práticas de Segurança](security)

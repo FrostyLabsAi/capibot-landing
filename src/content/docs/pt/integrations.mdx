@@ -1,0 +1,595 @@
+# Integrações
+
+Conecte o CapiBot às ferramentas que você já usa. Este guia cobre a configuração do Composio para 1000+ integrações de apps e GitHub para gerenciamento de repositórios.
+
+## Integração Composio
+
+O Composio fornece acesso unificado a 1000+ apps incluindo Notion, Linear, Jira, Slack, Gmail, Airtable e muitos mais.
+
+### Obtendo Sua Chave de API do Composio
+
+**Passo 1: Cadastre-se no Composio**
+
+1. Vá para [composio.dev](https://composio.dev)
+2. Clique em **"Get Started"** ou **"Sign Up"**
+3. Crie uma conta com seu email ou GitHub
+4. Verifique seu endereço de email
+
+**Passo 2: Obtenha Sua Chave de API**
+
+1. Faça login no seu dashboard do Composio
+2. Navegue para **Settings** → **API Keys** (ou **Developer** → **API Keys**)
+3. Clique em **"Create New API Key"**
+4. Dê um nome: `Integração CapiBot`
+5. Copie a chave de API (começa com `composio_`)
+
+**Passo 3: Adicione a Chave de API ao CapiBot**
+
+1. Abra o **Mission Control** (`http://localhost:3002`)
+2. Vá para **Settings** → **Integrations**
+3. Encontre a seção **Composio**
+4. Cole sua chave de API no campo:
+   ```
+   Chave de API Composio: composio_xxxxxxxxxxxxxxxx
+   ```
+5. Clique em **"Save"** ou **"Connect"**
+6. Você deve ver: ✅ Connected
+
+### Conectando Apps via Composio
+
+Uma vez que sua chave de API do Composio foi adicionada, você pode conectar apps individuais.
+
+**Passo 1: Navegue Apps Disponíveis**
+
+1. No Mission Control, vá para **Integrations** → **Composio**
+2. Navegue ou busque apps (Notion, Linear, Slack, etc.)
+3. Apps são organizados por categoria (Gestão de Projetos, Comunicação, CRM, etc.)
+
+**Passo 2: Conecte um App**
+
+1. Encontre o app que deseja (ex: Notion)
+2. Clique em **"Connect"**
+3. Você será redirecionado para a página de autorização OAuth do app
+4. Faça login na sua conta do app (se ainda não estiver logado)
+5. Revise as permissões solicitadas
+6. Clique em **"Authorize"** ou **"Allow"**
+7. Você será redirecionado de volta ao Mission Control
+8. O app agora mostra: ✅ Connected
+
+**Passo 3: Configure Acesso ao App**
+Alguns apps permitem configurar o que o CapiBot pode acessar:
+
+**Para Notion:**
+
+- Selecione quais páginas/databases compartilhar
+- Escolha nível de acesso (read-only ou read-write)
+- Clique em **"Allow access"**
+
+**Para Slack:**
+
+- Escolha qual workspace conectar
+- Selecione canais que o bot pode acessar
+- Conceda permissões (enviar mensagens, ler mensagens, etc.)
+
+**Para Linear:**
+
+- Escolha quais times conectar
+- Defina permissões de acesso a issues
+- Configure configurações de webhook
+
+### Usando Apps Conectados via Composio
+
+Uma vez conectados, agentes podem usar esses apps através da skill Composio.
+
+**Exemplo: Criando uma Página no Notion**
+
+```
+Você: Crie uma página no Notion chamada "Ideias de Projeto" com nossas
+      notas da reunião
+
+Agente: [Usa skill composio]
+        1. Verifica se Notion está conectado ✅
+        2. Encontra ação "create page"
+        3. Executa com suas notas
+
+        ✅ Página "Ideias de Projeto" criada no Notion
+        Veja em: https://notion.so/...
+```
+
+**Exemplo: Enviando uma Mensagem no Slack**
+
+```
+Você: Envie uma mensagem para o canal #engineering informando que o
+      deploy está completo
+
+Agente: [Usa skill composio]
+        ✅ Mensagem enviada para #engineering:
+        "Deploy completo! 🚀"
+```
+
+### Gerenciando Conexões Composio
+
+**Ver Apps Conectados:**
+
+1. Vá para **Integrations** → **Composio**
+2. Veja todos os apps conectados com status
+3. Checkmark verde = Conectado e funcionando
+4. X vermelho = Problema de conexão
+
+**Reconectar um App:**
+Se um app mostrar erro:
+
+1. Clique no botão **"Reconnect"**
+2. Re-autorize o app
+3. Atualize permissões se necessário
+
+**Desconectar um App:**
+
+1. Encontre o app na lista
+2. Clique em **"Disconnect"**
+3. Confirme: "Isso removerá acesso ao [App]"
+4. CapiBot não poderá mais usar este app
+
+### Problemas Comuns do Composio
+
+**"Nenhum app conectado"**
+
+- Você ainda não conectou nenhum app
+- Vá para aba Composio e clique em "Connect" nos apps desejados
+
+**"Conexão de app expirada"**
+
+- Tokens OAuth expiram após algum tempo
+- Clique em "Reconnect" para atualizar a conexão
+
+**"Permissão negada"**
+
+- O app está conectado mas não tem permissões necessárias
+- Desconecte e reconecte com permissões mais amplas
+- Ou verifique configurações do app no dashboard do Composio
+
+**"Limite de taxa excedido"**
+
+- Muitas chamadas de API em pouco tempo
+- Espere alguns minutos e tente novamente
+- Considere fazer upgrade do seu plano Composio
+
+## Integração GitHub
+
+Conecte o GitHub para sincronizar issues, pull requests e atividade de repositório com tarefas do CapiBot.
+
+### Obtendo Seu Token de Acesso Pessoal do GitHub
+
+**Passo 1: Vá para Configurações do GitHub**
+
+1. Faça login na sua conta GitHub
+2. Clique na sua foto de perfil (canto superior direito)
+3. Selecione **Settings**
+4. Role para baixo e clique em **Developer settings** (barra lateral esquerda)
+
+**Passo 2: Crie um Token de Acesso Pessoal**
+
+1. Clique em **Personal access tokens** → **Tokens (classic)**
+2. Clique em **"Generate new token"** → **"Generate new token (classic)"**
+3. Você pode precisar digitar sua senha novamente
+4. Dê um nome ao seu token: `Integração CapiBot`
+5. Defina expiração (recomendado: 90 dias)
+6. Selecione scopes (permissões):
+
+**Scopes Necessários:**
+
+```
+☑️ repo            (Controle total de repositórios privados)
+   ☑️ repo:status   (Acessar status de commit)
+   ☑️ repo_deployment  (Acessar status de deployment)
+   ☑️ public_repo   (Acessar repositórios públicos)
+   ☑️ repo:invite   (Acessar convites de repositório)
+☑️ admin:repo_hook  (Controle total de hooks de repositório)
+```
+
+**Scopes Opcionais (para mais recursos):**
+
+```
+☑️ read:org        (Ler organização e associação de times)
+☑️ read:user       (Ler dados de perfil do usuário)
+☑️ read:project    (Ler project boards)
+```
+
+7. Role para baixo e clique em **"Generate token"**
+8. **Importante:** Copie o token imediatamente!
+   - Começa com `ghp_`
+   - GitHub só mostrará uma vez
+   - Armazene com segurança
+
+**Passo 3: Adicione o Token ao CapiBot**
+
+1. Abra o **Mission Control** (`http://localhost:3002`)
+2. Vá para **Settings** → **Integrations** → **GitHub**
+3. Cole seu token:
+   ```
+   Token de Acesso Pessoal GitHub: ghp_xxxxxxxxxxxxxxxx
+   ```
+4. Clique em **"Connect"**
+5. Você deve ver: ✅ Connected
+
+### Configurando Sincronização GitHub
+
+Uma vez conectado, configure o que sincronizar.
+
+**Passo 1: Selecione Repositórios**
+
+1. Vá para **Integrations** → **GitHub Sync**
+2. Você verá uma lista de repositórios aos quais tem acesso
+3. Marque as caixas ao lado dos repositórios que deseja sincronizar
+4. Clique em **"Save Selection"**
+
+**Passo 2: Configure Configurações de Sync**
+
+```
+Modo de Sync: [Importar issues como tarefas ▼]
+  • Importar issues como tarefas
+  • Sync bidirecional (tarefas ↔ issues)
+  • Read-only (apenas monitorar)
+
+Filtros:
+  ☑️ Apenas issues abertas
+  ☐ Incluir pull requests
+  ☑️ Labels específicas: [bug, feature, urgent]
+  ☐ Todos os labels
+
+Regras de Auto-Atribuição:
+  Quando: Issue com label "frontend"
+  Atribuir a: @Pixel (Designer)
+
+  Quando: Issue com label "backend"
+  Atribuir a: @Nova (Engenheira)
+
+  Quando: Issue com label "bug"
+  Prioridade: Alta
+```
+
+**Passo 3: Teste o Sync**
+
+1. Crie uma issue de teste em um dos seus repositórios conectados
+2. Adicione um label que corresponda ao seu filtro (ex: "bug")
+3. Espere 30-60 segundos
+4. Verifique painel **Tasks** no Mission Control
+5. Você deve ver a issue importada como tarefa
+
+### Como Funciona o Sync GitHub
+
+**Sync em Tempo Real:**
+
+```
+Issue do GitHub Criada
+        ↓
+GitHub envia webhook para CapiBot
+        ↓
+CapiBot recebe webhook
+        ↓
+Tarefa T-123 criada da issue
+        ↓
+Atribuída baseada em regras de labels
+        ↓
+Agente é notificado
+        ↓
+Agente trabalha na tarefa
+        ↓
+Tarefa completada no CapiBot
+        ↓
+Issue do GitHub fechada (se sync bidirecional)
+```
+
+**Histórico de Sync:**
+Veja todos os itens sincronizados:
+
+```
+Importações Recentes
+
+✅ #234 "Fix login bug" → T-123 (Nova)
+   Sincronizado: 2 min atrás | Label: bug
+
+✅ #235 "Add dark mode" → T-124 (Pixel)
+   Sincronizado: 5 min atrás | Label: feature
+
+⚠️ #236 "Update docs" → Pulado
+   Motivo: Sem filtro de label correspondente
+```
+
+### Gerenciando Sync GitHub
+
+**Pausar/Retomar:**
+
+- Pare sync temporariamente sem desconectar
+- Útil durante manutenção
+- Vá para GitHub Sync → Clique em "Pause"
+
+**Sync Seletivo:**
+Apenas sincronize issues específicas:
+
+```
+Labels para sync: [bug, feature, urgent]
+Ignorar: [wontfix, duplicate, question]
+```
+
+**Importação em Massa:**
+Importe todas as issues existentes:
+
+```
+Importar todas as issues abertas?
+Repositório: my-org/my-project
+Issues encontradas: 47
+
+☑️ Sim, importar todas as 47 issues
+☐ Atribuir ao agente padrão: @Nova
+☐ Definir prioridade baseada em labels
+```
+
+### Problemas Comuns do GitHub
+
+**"Autenticação falhou"**
+
+- Token pode ter expirado
+- Gere um novo token
+- Token pode não ter scopes necessários
+- Verifique scopes e regenere
+
+**"Repositório não encontrado"**
+
+- Você pode não ter acesso a esse repositório
+- Verifique permissões do repositório
+- Tente um repositório que você possui ou é colaborador
+
+**"Entrega de webhook falhou"**
+
+- CapiBot pode não estar acessível publicamente
+- Verifique URL de webhook nas configurações do GitHub
+- Garanta que CapiBot está rodando e acessível
+
+**"Issues não sincronizando"**
+
+- Verifique se filtros de label correspondem às suas issues
+- Verifique se sync está habilitado (não pausado)
+- Verifique histórico de sync por erros
+
+## Gerenciamento de Chaves de API
+
+Gerenciamento centralizado de todas as chaves de integração.
+
+**Acesso:** Settings → **API Keys**
+
+### Visualizando Chaves de API
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ Gerenciamento de Chaves de API                                     │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ Chaves de API de Integração                                    │
+│                                                         │
+│ Chave de API Composio                                        │
+│ Status: ✅ Ativa                                      │
+│ Último uso: 5 min atrás                                   │
+│ [Ver Chave] [Regenerar] [Excluir]                       │
+│                                                         │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ Token de Acesso Pessoal GitHub                            │
+│ Status: ✅ Ativa                                      │
+│ Scopes: repo, admin:repo_hook                          │
+│ Expira: 15 de Dez, 2024                                  │
+│ [Ver Chave] [Regenerar] [Excluir]                       │
+│                                                         │
+└─────────────────────────────────────────────────────────┘
+```
+
+### Adicionando Novas Chaves de API
+
+**Passo 1: Clique em "Add New Key"**
+
+**Passo 2: Selecione Tipo de Integração**
+
+- Composio
+- GitHub
+- Serper (Busca Web)
+- Groq (Transcrição de Voz)
+- Custom
+
+**Passo 3: Digite Detalhes da Chave**
+
+```
+Integração: Composio
+Nome: Minha Chave Composio
+Chave: composio_xxxxxxxxxxxxxxxx
+```
+
+**Passo 4: Salve e Teste**
+
+- Clique em **"Save"**
+- Clique em **"Test Connection"** para verificar
+- Deve mostrar: ✅ Conexão bem-sucedida
+
+### Rotacionando Chaves
+
+**Quando Rotacionar:**
+
+- A cada 90 dias (melhor prática)
+- Se suspeitar de comprometimento
+- Quando funcionário sai
+- Após incidentes de segurança
+
+**Como Rotacionar:**
+
+1. Gere nova chave no serviço externo
+2. Vá para Settings → API Keys
+3. Encontre a chave antiga
+4. Clique em **"Regenerate"**
+5. Cole nova chave
+6. Clique em **"Save"**
+7. Chave antiga se torna inválida imediatamente
+
+### Boas Práticas de Segurança
+
+**Para Composio:**
+
+- Use conta dedicada do Composio para CapiBot
+- Não use sua conta pessoal do Composio
+- Revise apps conectados regularmente
+- Remova conexões de apps não utilizados
+
+**Para GitHub:**
+
+- Use tokens fine-grained quando possível
+- Limite expiração do token para 90 dias
+- Apenas conceda permissões mínimas necessárias
+- Não faça commit de tokens em repositórios
+- Use variáveis de ambiente em produção
+
+**Geral:**
+
+- Nunca compartilhe chaves de API em mensagens
+- Não inclua chaves em screenshots
+- Rotacione chaves regularmente
+- Monitore uso por anomalias
+- Revogue chaves imediatamente se comprometidas
+
+## Monitoramento de Saúde de Integrações
+
+Verifique o status de todas as suas integrações em um lugar.
+
+**Acesso:** Settings → **Integration Health**
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ Saúde de Integrações                                      │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ ✅ Composio                                             │
+│    API: Conectado                                       │
+│    Apps: 5 conectados (Notion, Linear, Slack, ...)      │
+│    Última verificação: Agora mesmo                                │
+│                                                         │
+│ ✅ GitHub                                               │
+│    Token: Válido (expira em 45 dias)                   │
+│    Webhooks: 3 ativos                                  │
+│    Repositórios: 5 sincronizados                              │
+│    Último sync: 2 min atrás                                │
+│                                                         │
+│ ⚠️  Slack                                               │
+│    Conexão: Ativa                                  │
+│    Aviso: Limite de taxa (87% usado)                      │
+│    Ação: Monitore uso                               │
+│                                                         │
+│ ❌ Linear                                               │
+│    Conexão: Expirada                                 │
+│    Erro: Token revogado                                │
+│    Ação: Reconexão necessária                          │
+│    [Reconectar Agora]                                     │
+│                                                         │
+└─────────────────────────────────────────────────────────┘
+```
+
+### Solucionando Problemas de Integrações
+
+**Conexão Mostra "Desconectado"**
+
+1. Verifique se chave de API é válida
+2. Verifique se chave tem permissões necessárias
+3. Teste conexão manualmente
+4. Redigite chave se necessário
+
+**"Limite de Taxa Excedido"**
+
+1. Espere reset do limite de taxa
+2. Reduza frequência de sync
+3. Faça upgrade do plano do serviço
+4. Contate suporte se persistente
+
+**"Entrega de Webhook Falhou"**
+
+1. Verifique se CapiBot está acessível publicamente
+2. Verifique se URL de webhook está correta
+3. Verifique configurações de firewall
+4. Revise logs de webhook
+
+**"Sync Atrasado"**
+
+1. Verifique saúde da integração
+2. Verifique se sync está habilitado
+3. Procure mensagens de erro
+4. Tente disparo manual de sync
+
+## Padrões de Integração
+
+### Padrão 1: Fluxo de Trabalho de Desenvolvimento GitHub + CapiBot
+
+```
+Issue do GitHub Criada → Tarefa do CapiBot Criada
+        ↓                        ↓
+   Com label "bug"          Atribuída a @Nova
+        ↓                        ↓
+   Nova corrige bug         Tarefa completada
+        ↓                        ↓
+   PR criado             Entregável anexado
+        ↓                        ↓
+   PR merged              Tarefa fechada
+        ↓                        ↓
+   Issue do GitHub fechada ←── Tarefa done
+```
+
+### Padrão 2: Gerenciamento de Conhecimento Composio
+
+```
+Agente pesquisa tópico
+        ↓
+Resultados salvos no Notion (via Composio)
+        ↓
+Organizados na base de conhecimento da empresa
+        ↓
+Outros agentes referenciam docs do Notion
+        ↓
+Conhecimento cresce ao longo do tempo
+```
+
+### Padrão 3: Automação Multi-Ferramentas
+
+```
+Cron job dispara diariamente
+        ↓
+Agente verifica issues do GitHub (via GitHub)
+        ↓
+Cria resumo no Notion (via Composio)
+        ↓
+Envia notificação Slack (via Composio)
+        ↓
+Equipe vê atualização diária
+```
+
+## Boas Práticas
+
+### Começando
+
+1. **Comece com Uma Integração** — Não conecte tudo de uma vez
+2. **Teste Exaustivamente** — Verifique se cada integração funciona antes de confiar
+3. **Documente Sua Configuração** — Note quais chaves são usadas onde
+4. **Monitore Uso** — Verifique saúde de integrações regularmente
+
+### Segurança
+
+1. **Use Contas Dedicadas** — Não use contas pessoais para integrações
+2. **Permissões Mínimas** — Apenas conceda acesso necessário
+3. **Rotação Regular** — Rotacione chaves a cada 90 dias
+4. **Monitore Logs** — Observe atividade incomum
+
+### Manutenção
+
+1. **Verificações de Saúde** — Revise status de integração semanalmente
+2. **Atualize Apps** — Mantenha apps conectados atualizados
+3. **Limpe** — Remova integrações não utilizadas
+4. **Backup de Chaves** — Armazene com segurança offline
+
+## Próximos Passos
+
+- Revise [Administração](administration) para configurações do sistema
+- Aprenda sobre [Boas Práticas de Segurança](security)
+- Explore [Automação](automation) com suas novas integrações

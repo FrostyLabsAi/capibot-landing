@@ -1,0 +1,423 @@
+# 知识与记忆
+
+您的 AI Agent 记住一切。了解记忆如何工作有助于您获得更好的结果并构建更智能的系统。
+
+## 记忆类型
+
+CapiBot 有四种类型的记忆，每种服务于不同的目的：
+
+### 1. Agent 记忆（个人）
+
+每个 Agent 都有自己的笔记和学习：
+
+```
+Nova's Memory
+
+📄 project-preferences.md
+  - Prefers TypeScript over JavaScript
+  - Likes component-based architecture
+  - Familiar with client's API patterns
+
+📄 code-style-guide.md
+  - Uses 2-space indentation
+  - Prefers functional components
+  - Always adds PropTypes
+
+📄 helpful-resources.md
+  - Links to internal design system
+  - Client's API documentation
+  - Common utility functions
+```
+
+**存储什么：**
+
+- 从互动中学到的偏好
+- 项目特定知识
+- 风格指南和标准
+- 有用的资源和链接
+- 从过去工作中学到的经验
+
+**访问：** 只有 Agent 可以读/写自己的记忆
+
+### 2. 知识库（共享）
+
+所有 Agent 可访问的信息：
+
+```
+Knowledge Base
+
+📁 Decisions
+  ├── architecture-decisions.md
+  └── technology-choices.md
+
+📁 Lessons
+  ├── what-worked.md
+  └── what-didnt.md
+
+📁 Projects
+  ├── project-alpha-specs.md
+  └── project-beta-timeline.md
+
+📁 Commitments
+  └── deliverables-schedule.md
+```
+
+**存储什么：**
+
+- 决策和理由
+- 经验教训
+- 项目文档
+- 承诺和截止日期
+- 偏好和标准
+
+**访问：** 所有 Agent 可以读取；您控制写入权限
+
+### 3. 公司知识（范围限定）
+
+特定于 AI 公司的信息：
+
+```
+Q1 Marketing Company Knowledge
+
+📄 Executive Summary
+  Mission: Launch product awareness campaign
+  Target: Enterprise customers
+  Timeline: 4 weeks
+  Budget: $10,000
+
+📄 Brand Guidelines
+  Colors: #FF6B35, #004E89
+  Tone: Professional but friendly
+  Logo usage rules...
+
+📄 Campaign Messaging
+  Key value props...
+  Target personas...
+  Competitive positioning...
+
+📁 Deliverables
+  ├── blog-post-1-final.md
+  ├── landing-page-design.png
+  └── competitor-analysis.pdf
+```
+
+**存储什么：**
+
+- 执行摘要（注入到所有 Agent 上下文中）
+- 公司特定指南
+- 完成的交付物
+- 流程文档
+
+**访问：** 仅该公司中的 Agent
+
+### 4. 对话记忆
+
+持续对话的上下文：
+
+```
+Current Session Context
+
+You: Research our top 5 competitors
+Nova: I'll research your competitors. Which
+      industry should I focus on?
+You: SaaS analytics tools
+Nova: Got it. I'll focus on SaaS analytics.
+      Should I include pricing comparison?
+You: Yes, pricing is important
+```
+
+**存储什么：**
+
+- 最近的对话历史
+- 当前线程的上下文
+- 待处理的问题/澄清
+
+**访问：** 当前对话中的 Agent
+
+## 记忆如何工作
+
+### Agent 何时记忆
+
+Agent 在以下情况自动记忆：
+
+- ✅ 您告诉他们偏好
+- ✅ 他们成功完成工作
+- ✅ 他们从错误中学习
+- ✅ 您明确保存信息
+- ✅ 他们读取文件和文档
+
+### 记忆注入
+
+每次 Agent 运行前，注入相关记忆：
+
+```
+[Agent Memory] + [Knowledge Base] + [Company Knowledge]
+         ↓
+    Agent Context
+         ↓
+    Response/Action
+```
+
+这意味着 Agent 始终具有相关上下文，无需您重复。
+
+### 记忆持久化
+
+**短期：**
+
+- 当前对话
+- 会话上下文
+- 活跃任务详情
+
+**长期：**
+
+- Agent 个人记忆（保存到文件）
+- 知识库条目
+- 公司知识
+- 全部存储在 PostgreSQL 中
+
+## 记忆浏览器
+
+从导航栏访问：**Memory**
+
+### 文件树视图
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ Memory Browser                            [+ New]       │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ 📁 /                                                    │
+│ ├── 📁 agents/                                          │
+│ │   ├── 📁 nova/                                        │
+│ │   │   ├── 📄 preferences.md                           │
+│ │   │   └── 📄 style-guide.md                           │
+│ │   └── 📁 echo/                                        │
+│ │       └── 📄 brand-voice.md                           │
+│ ├── 📁 knowledge/                                       │
+│ │   ├── 📄 decisions.md                                 │
+│ │   └── 📁 projects/                                    │
+│ └── 📁 companies/                                       │
+│     └── 📁 q1-marketing/                                │
+│         ├── 📄 executive-summary.md                     │
+│         └── 📁 deliverables/                            │
+│                                                         │
+└─────────────────────────────────────────────────────────┘
+```
+
+**导航：**
+
+- 点击文件夹展开/折叠
+- 点击文件查看内容
+- 右键显示上下文菜单
+- 拖动组织
+
+### 文件查看器
+
+查看任何记忆文件：
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ nova/preferences.md                       [Edit] [Delete]│
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ # Nova's Preferences                                    │
+│                                                         │
+│ ## Code Style                                           │
+│ - Use TypeScript for all new code                      │
+│ - Prefer functional components over classes            │
+│ - Add JSDoc comments for public functions              │
+│                                                         │
+│ ## Architecture                                         │
+│ - Component-based design                               │
+│ - Keep components small (less than 200 lines)          │
+│ - Use custom hooks for logic reuse                     │
+│                                                         │
+│ ## Client-Specific                                      │
+│ - Their API uses snake_case                            │
+│ - Authentication is JWT-based                          │
+│ - Rate limit: 100 req/min                              │
+│                                                         │
+└─────────────────────────────────────────────────────────┘
+```
+
+### 搜索
+
+在所有记忆中查找信息：
+
+```
+Search: "API authentication"
+
+Results:
+📄 nova/preferences.md (mentioned 2 times)
+📄 api-documentation.md (mentioned 5 times)
+📄 project-alpha-specs.md (mentioned 1 time)
+```
+
+**搜索模式：**
+
+- **Hybrid** — 语义 + 文本搜索（默认）
+- **Vector** — 基于含义的搜索
+- **Text** — 关键词匹配
+
+## 语义搜索
+
+通过含义而不仅是关键词查找信息。
+
+### 工作原理
+
+由 pgvector + Ollama 嵌入驱动：
+
+1. **内容转换为向量** — 捕获含义
+2. **查询转换为向量** — 您的搜索
+3. **相似性匹配** — 查找最接近的含义
+4. **排序结果** — 最相关的优先
+
+### 示例
+
+**关键词搜索可能遗漏：**
+
+```
+Search: "login security"
+
+Semantic finds:
+- "authentication best practices"
+- "password requirements"
+- "JWT token handling"
+- "session management"
+```
+
+**概念匹配：**
+
+```
+Search: "how to speed up the website"
+
+Semantic finds:
+- "performance optimization"
+- "caching strategies"
+- "image compression"
+- "lazy loading"
+```
+
+### 使用语义搜索
+
+1. 转到 Memory 面板
+2. 输入搜索查询
+3. 选择搜索模式：**Hybrid** 或 **Vector**
+4. 浏览结果
+5. 点击查看完整内容
+
+## 创建知识
+
+### 方法 1：直接创建
+
+1. 转到 Memory 面板
+2. 点击 **"+ New"**
+3. 选择位置：
+   - Agent 记忆
+   - 知识库
+   - 公司知识
+4. 用 Markdown 编写内容
+5. 保存
+
+### 方法 2：从任务
+
+任务完成时：
+
+- 交付物自动保存到公司知识
+- Agent 笔记添加到 Agent 记忆
+- 决策记录到知识库
+
+### 方法 3：通过消息
+
+```
+You: @Atlas Remember that we always use
+     blue for primary buttons
+Atlas: Noted! I'll save that to the company
+       knowledge base.
+```
+
+### 方法 4：Company Knowledge 标签
+
+在任何 AI 公司中：
+
+1. 转到 Knowledge 标签
+2. 点击 "+ Add Entry"
+3. 编写指南、链接或参考
+4. 分类（Links、References、Guides）
+5. 保存
+
+## 最佳实践
+
+### 对于 Agent 记忆
+
+1. **Let Agents Self-Document** — 他们保存有用信息
+2. **Review Periodically** — 清理过时信息
+3. **Keep It Relevant** — 删除旧项目记忆
+4. **Curate Style Guides** — 确保一致性
+
+### 对于知识库
+
+1. **Document Decisions** — 为什么选择 X 而不是 Y
+2. **Log Lessons** — 什么有效，什么无效
+3. **Organize by Category** — 易于查找
+4. **Keep Updated** — 旧信息令人困惑
+
+### 对于公司知识
+
+1. **Write Executive Summary** — 所有 Agent 的上下文
+2. **Save Deliverables** — 参考已完成的工作
+3. **Document Processes** — 您的公司如何运作
+4. **Archive When Done** — 保持当前公司整洁
+
+## 记忆管理
+
+### 清理
+
+系统自动清理旧数据：
+
+- Activities: 30 days
+- Comms: 15 days
+- Notifications: 7 days
+- Audit logs: 90 days
+
+### 手动清理
+
+**归档旧项目：**
+
+1. 转到 Memory 浏览器
+2. 查找旧项目文件夹
+3. 右键 → Archive
+4. 保留但不可搜索
+
+**删除未使用：**
+
+1. 审查 Agent 记忆
+2. 删除过时偏好
+3. 移除旧风格指南
+
+## 故障排除
+
+**Agent Forgets Preferences：**
+
+- 检查 Agent 记忆是否存在
+- 验证文件格式是否为有效的 Markdown
+- 可能需要重新声明偏好
+
+**Search Not Finding：**
+
+- 尝试不同的关键词
+- 使用语义搜索
+- 检查文件是否已索引（最近更改）
+
+**Too Much Memory：**
+
+- Agent 响应变慢
+- 清理旧记忆
+- 归档已完成项目
+- 专注于相关信息
+
+## 下一步
+
+- 了解 [监控](monitoring)
+- 设置 [自动化](automation)
+- 探索 [集成](integrations)

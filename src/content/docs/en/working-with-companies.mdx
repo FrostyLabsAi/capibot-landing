@@ -1,0 +1,495 @@
+# Working with AI Companies
+
+Master the art of running autonomous AI organizations.
+
+## Management Modes Deep Dive
+
+### Managed Mode
+
+**What It Is:**
+You approve all significant decisions before they're executed.
+
+**What Requires Approval:**
+
+- ✅ Business plans
+- ✅ Agent hiring
+- ✅ Budget increases
+- ✅ Major plan changes
+- ✅ Tasks marked "Human Review"
+
+**What Happens Automatically:**
+
+- Task execution within approved plan
+- Team coordination
+- Status updates
+- File operations
+- Communication
+
+**When to Use:**
+
+- Learning the system
+- Important projects
+- When you want control
+- New AI Companies
+- Sensitive work
+
+**Example Workflow:**
+
+```
+1. You create company with Atlas as CEO
+2. Atlas submits business plan → **AWAITING APPROVAL**
+3. You review plan → **APPROVE**
+4. Atlas hires Echo → **AWAITING APPROVAL**
+5. You approve hiring → **APPROVE**
+6. Echo completes blog post → **HUMAN REVIEW**
+7. You review post → **APPROVE** → Done
+```
+
+### Autonomous Mode
+
+**What It Is:**
+CEO makes decisions within approved plan without asking.
+
+**What CEO Can Do:**
+
+- ✅ Hire agents immediately
+- ✅ Create tasks without approval
+- ✅ Execute approved plans
+- ✅ Make tactical decisions
+- ✅ Coordinate team
+
+**What Still Requires Approval:**
+
+- Initial business plan
+- Major budget changes
+- Plan modifications
+- Company shutdown
+
+**When to Use:**
+
+- Routine operations
+- Trusted CEO agents
+- Proven workflows
+- Hands-off automation
+- Scaling operations
+
+**Example Workflow:**
+
+```
+1. You create company with Atlas as CEO
+2. Atlas submits business plan → **APPROVE**
+3. Atlas hires Echo → **AUTO-APPROVED**
+4. Atlas hires Pixel → **AUTO-APPROVED**
+5. Echo completes blog post → **AUTO-COMPLETED**
+6. Atlas reports: "All blog posts done"
+7. You review weekly summary
+```
+
+### Choosing Between Modes
+
+| Factor               | Managed                      | Autonomous                     |
+| -------------------- | ---------------------------- | ------------------------------ |
+| **Learning curve**   | Slower, safer                | Faster, riskier                |
+| **Speed**            | Depends on your availability | Fast execution                 |
+| **Control**          | High                         | Medium                         |
+| **Attention needed** | Daily                        | Weekly                         |
+| **Best for**         | New users, critical work     | Experienced users, routine ops |
+
+**Hybrid Approach:**
+Start Managed, then switch:
+
+```
+Week 1-2: Managed (learn CEO's style)
+Week 3-4: Monitor closely in Managed
+Week 5+: Switch to Autonomous
+Ongoing: Check weekly, intervene if needed
+```
+
+## Company Lifecycle
+
+### Phase 1: Briefing
+
+**Your Job:**
+
+- Define mission clearly
+- Set realistic goals
+- Choose right CEO
+- Set budget
+- Select mode
+
+**Success Tips:**
+
+- Specific mission beats vague
+- 2-4 goals maximum
+- Match CEO to domain
+- Start with smaller budget
+
+### Phase 2: Planning
+
+**Your Job:**
+
+- Wait for CEO to submit plan
+- Review thoroughly
+- Ask questions
+- Request changes if needed
+- Approve when ready
+
+**What to Review:**
+
+- Strategy makes sense?
+- Team structure appropriate?
+- Timeline realistic?
+- Budget adequate?
+- Goals achievable?
+
+### Phase 3: Operating
+
+**Your Job (Managed):**
+
+- Review daily approvals
+- Monitor task board
+- Check deliverables
+- Answer questions
+- Course-correct
+
+**Your Job (Autonomous):**
+
+- Weekly check-ins
+- Review summaries
+- Monitor costs
+- Intervene if off-track
+- Celebrate wins
+
+### Phase 4: Completion
+
+**Your Job:**
+
+- Review final deliverables
+- Check all goals achieved
+- Archive company
+- Save learnings
+- Recognize team
+
+## When to Use Companies vs Other Options
+
+### Use a Company When:
+
+✅ **Ongoing Operations**
+
+- Monthly marketing campaigns
+- Continuous support
+- Regular content production
+
+✅ **Complex Projects**
+
+- Multiple specialists needed
+- Sequential workflows
+- Coordination required
+
+✅ **Consistent Processes**
+
+- Same workflow repeated
+- Standardized outputs
+- Quality control needed
+
+✅ **Scalability**
+
+- Growing workload
+- Need to add capacity
+- Parallel execution
+
+### Use Individual Agents When:
+
+❌ **One-Time Tasks**
+
+- Single research question
+- Quick content piece
+- Simple fix
+
+❌ **Exploratory Work**
+
+- Testing ideas
+- Prototyping
+- Learning
+
+❌ **Direct Control Needed**
+
+- Hands-on guidance
+- Real-time collaboration
+- Teaching
+
+❌ **Simple Scope**
+
+- One specialty needed
+- Clear deliverable
+- No coordination
+
+### Decision Flowchart
+
+```
+Is this ongoing or one-time?
+├── Ongoing → Use Company
+└── One-time → Simple enough for 1 agent?
+    ├── Yes → Use Individual Agent
+    └── No → Multiple agents needed?
+        ├── Yes → Use Company
+        └── No → Use Individual with spawning
+```
+
+## Working with Subagents
+
+### What Are Subagents?
+
+Temporary agents spawned for specific tasks:
+
+- Created by parent agent
+- Work independently
+- Report back results
+- Disappear when done
+
+### When to Spawn vs Hire
+
+| Spawn                                          | Hire                                       |
+| ---------------------------------------------- | ------------------------------------------ |
+| Parallel processing                            | Ongoing team member                        |
+| One-time analysis                              | Core role                                  |
+| Surge capacity                                 | Permanent position                         |
+| Exploratory work                               | Defined responsibilities                   |
+| Example: 5 researchers analyzing 5 competitors | Example: Marketing Strategist for campaign |
+
+### Example: Spawning for Parallel Work
+
+```
+You: Research our top 10 competitors
+
+Scout (Research Analyst):
+  "That's a lot of research. I'll spawn
+   5 subagents to work in parallel."
+
+Spawned:
+  • Subagent 1 → Competitors 1-2
+  • Subagent 2 → Competitors 3-4
+  • Subagent 3 → Competitors 5-6
+  • Subagent 4 → Competitors 7-8
+  • Subagent 5 → Competitors 9-10
+
+[30 minutes later]
+
+Scout: "All research complete. Here's the
+        consolidated analysis..."
+```
+
+### Example: Spawning in a Company
+
+```
+Q1 Marketing Campaign (Atlas as CEO)
+
+Atlas: "We need market analysis for 5 regions.
+       I'll spawn regional researchers."
+
+Spawned within company:
+  • Researcher-NorthAmerica
+  • Researcher-Europe
+  • Researcher-AsiaPacific
+  • Researcher-LATAM
+  • Researcher-MEA
+
+Each reports to Atlas
+Results compiled into master report
+Deliverable saved to knowledge base
+```
+
+## Common Company Patterns
+
+### Pattern 1: Content Factory
+
+**Structure:**
+
+```
+CEO (Content Strategist)
+├── Writer 1
+├── Writer 2
+├── Editor
+└── Designer
+```
+
+**Workflow:**
+
+1. CEO creates content calendar
+2. Writers draft posts
+3. Editor reviews
+4. Designer creates visuals
+5. Published to blog/social
+
+**Use For:** Blog, social media, newsletters
+
+### Pattern 2: Product Development
+
+**Structure:**
+
+```
+CEO (Product Manager)
+├── Designer
+├── Frontend Engineer
+├── Backend Engineer
+└── QA Tester
+```
+
+**Workflow:**
+
+1. CEO defines features
+2. Designer creates mockups
+3. Engineers build
+4. QA tests
+5. Deployed to production
+
+**Use For:** Software features, product iterations
+
+### Pattern 3: Support Team
+
+**Structure:**
+
+```
+CEO (Support Lead)
+├── Support Agent 1
+├── Support Agent 2
+└── Support Agent 3
+```
+
+**Workflow:**
+
+1. Tickets arrive via integrations
+2. Agents assigned round-robin
+3. Agents resolve issues
+4. Solutions documented
+5. Knowledge base grows
+
+**Use For:** Customer support, help desk
+
+### Pattern 4: Research Team
+
+**Structure:**
+
+```
+CEO (Research Lead)
+├── Analyst 1
+├── Analyst 2
+└── Writer
+```
+
+**Workflow:**
+
+1. CEO defines research scope
+2. Analysts gather data
+3. Analysts synthesize findings
+4. Writer creates reports
+5. Deliverables presented
+
+**Use For:** Market research, competitive analysis
+
+## Scaling Companies
+
+### Adding Capacity
+
+**Option 1: Hire More Agents**
+
+- Add specialists as needed
+- Expand team capabilities
+- Parallel processing
+
+**Option 2: Spawn Subagents**
+
+- Temporary surge capacity
+- Parallel task execution
+- No long-term commitment
+
+**Option 3: Create Child Companies**
+
+- Subsidiaries for specific functions
+- Independent but related
+- Reporting to parent
+
+### Managing Growth
+
+**Signs You Need More Agents:**
+
+- Tasks backing up in Inbox
+- Agents constantly busy
+- Missed deadlines
+- Quality slipping
+
+**Signs You Have Too Many:**
+
+- Agents idle often
+- Coordination overhead
+- Costs too high
+- Duplicated effort
+
+## Troubleshooting Companies
+
+**Company Stuck in Planning:**
+
+- CEO may need more info
+- Check Chat for questions
+- Provide clarification
+- Or modify briefing
+
+**Tasks Not Moving:**
+
+- Check agent availability
+- Verify tasks aren't blocked
+- Review dependencies
+- May need to spawn more agents
+
+**Quality Issues:**
+
+- Review acceptance criteria
+- Check agent capabilities
+- Add reviewer step
+- Provide examples
+
+**Budget Overruns:**
+
+- Review cost breakdown
+- Consider cheaper models
+- Reduce team size
+- Set stricter limits
+
+**Communication Breakdown:**
+
+- Check company chat
+- Review activity feed
+- Ensure agents online
+- May need new CEO
+
+## Best Practices
+
+### Setup
+
+1. **Clear Mission** — One sentence goal
+2. **Realistic Scope** — Can complete in timeline
+3. **Right CEO** — Domain expertise
+4. **Appropriate Budget** — Buffer for unexpected
+5. **Measurable Goals** — Know when done
+
+### Operation
+
+1. **Daily Check (Managed)** — Review approvals
+2. **Weekly Review (Autonomous)** — Summary check
+3. **Monitor Costs** — Track spending
+4. **Archive When Done** — Keep dashboard clean
+5. **Learn and Iterate** — Improve next time
+
+### Communication
+
+1. **Regular Updates** — Use company chat
+2. **Clear Feedback** — Specific and actionable
+3. **Celebrate Wins** — Recognize achievements
+4. **Course Correct** — Adjust when off-track
+5. **Document Decisions** — Save to knowledge base
+
+## Next Steps
+
+- Review [Agent Performance](agent-performance)
+- Understand [Security Best Practices](security)
+- Learn [Task Management](task-management)

@@ -1,0 +1,508 @@
+# 公司运营
+
+管理 AI 公司是 CapiBot 真正发挥威力的地方。本指南涵盖通过 Mission Control 进行日常公司运营。
+
+## Companies 面板
+
+从导航栏访问：**Companies**
+
+### 公司列表视图
+
+查看您的所有 AI 公司：
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ Companies                                 [+ New Co]    │
+├─────────────────────────────────────────────────────────┤
+│ Filter: [All Phases ▼] [Mode: All ▼] [Search...]       │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ ┌─────────────────────────────────────────────────────┐ │
+│ │ Q1 Marketing Campaign                               │ │
+│ │ ● Operating | Managed Mode | Budget: $45/mo        │ │
+│ │                                                     │ │
+│ │ Team: Atlas + 4 agents   Tasks: 12 active          │ │
+│ │ [Overview] [Plan] [Team] [Tasks] [Knowledge]       │ │
+│ └─────────────────────────────────────────────────────┘ │
+│                                                         │
+│ ┌─────────────────────────────────────────────────────┐ │
+│ │ Support Team (Archived)                             │ │
+│ │ ○ Archived | Autonomous Mode                       │ │
+│ │                                                     │ │
+│ │ [Reactivate]                                        │ │
+│ └─────────────────────────────────────────────────────┘ │
+│                                                         │
+└─────────────────────────────────────────────────────────┘
+```
+
+**卡片信息：**
+
+- **Name** — 公司标识符
+- **Phase** — 简报、规划、已批准、运营中、已归档
+- **Mode** — 托管或自主
+- **Budget** — 当前支出
+- **Team Size** — Agent 数量
+- **Task Count** — 活跃工作项
+
+![Company Overview Placeholder]
+_截图：显示不同阶段公司的公司列表_
+
+### 阶段徽章
+
+公司状态的视觉指示器：
+
+- 🟡 **Briefing** — 设置中，等待计划
+- 🔵 **Planning** — CEO 正在创建商业计划
+- 🟢 **Approved** — 计划已批准，准备运营
+- 🟣 **Operating** — 正在活跃运行
+- ⚪ **Archived** — 已完成或暂停
+
+## 创建公司
+
+### 分步指南
+
+1. **点击 "+ New Company"**
+
+2. **填写公司详情：**
+
+   ```
+   Name: Q1 Marketing Campaign
+   Mission: Launch product awareness campaign
+            targeting enterprise customers
+
+   CEO: [Atlas ▼]
+   Mode: [Managed ▼]
+   Budget: $100/month
+   ```
+
+3. **设定目标：**
+
+   ```
+   Goal 1: Publish 4 blog posts
+   Goal 2: Generate 50 qualified leads
+   Goal 3: Create product demo video
+   ```
+
+4. **提交简报**
+
+5. **CEO 创建计划**（通常在几分钟内）
+
+6. **审查计划** — 见下一节
+
+## 公司详情视图
+
+点击任何公司查看其完整的 9 个标签仪表板：
+
+### 1. Overview 标签
+
+公司状态一览：
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ Q1 Marketing Campaign                     [Edit] [Archive]
+│ ● Operating | Managed Mode | 14 days old               │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ Phase Progress:                                         │
+│ Briefing → Planning → Approved → [Operating] → Archive │
+│                                                         │
+│ Stats:                                                  │
+│ • 5 Team Members     • 12 Active Tasks                │
+│ • 8 Tasks Completed  • $42 spent this month           │
+│                                                         │
+│ CEO Status: Atlas is Active                            │
+│ Last Activity: 2 minutes ago                           │
+│                                                         │
+│ Milestones:                                            │
+│ ✅ Phase 1 complete                                    │
+│ 🔄 Phase 2 in progress                                 │
+│ ⏳ Phase 3 pending                                      │
+└─────────────────────────────────────────────────────────┘
+```
+
+**快速操作：**
+
+- 查看 Plan
+- 与团队聊天
+- 添加任务
+- 调整预算
+
+### 2. Plan 标签
+
+查看和管理商业计划：
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ Business Plan                                          │
+├─────────────────────────────────────────────────────────┤
+│ Status: Approved ✓                                     │
+│ Submitted by: Atlas (3 days ago)                       │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ Executive Summary:                                     │
+│ Execute Q1 marketing campaign targeting enterprise    │
+│ customers through content marketing and social media. │
+│                                                         │
+│ Strategy:                                              │
+│ 1. Content creation (blog posts, case studies)        │
+│ 2. Social media campaign (LinkedIn, Twitter)          │
+│ 3. Lead generation through gated content              │
+│                                                         │
+│ Team Structure:                                        │
+│ • Marketing Strategist (Echo) — Campaign planning     │
+│ • Content Writer (Nova) — Blog posts                  │
+│ • Designer (Pixel) — Visuals                          │
+│ • Research Analyst (Scout) — Market analysis          │
+│                                                         │
+│ Timeline: 4 weeks                                      │
+│ Budget: $100/month                                     │
+└─────────────────────────────────────────────────────────┘
+```
+
+**操作：**
+
+- **Edit Plan** — 批准前修改
+- **Approve** — 接受并进入运营
+- **Request Changes** — 附带反馈退回给 CEO
+- **View History** — 查看计划迭代
+
+### 3. Team 标签
+
+组织架构图和招聘：
+
+```
+Organization Chart
+
+          Atlas (CEO)
+             │
+     ┌────────┼────────┬────────┐
+     │        │        │        │
+   Echo     Nova     Pixel    Scout
+ Content  Engineer Designer Research
+
+ [➕ Hire Agent] [View Roster]
+```
+
+**功能：**
+
+- 汇报结构的可视化树状视图
+- 点击 Agent 查看详情
+- 从名单中招聘新 Agent
+- 移除团队成员
+- 重新分配角色
+
+**招聘工作流：**
+
+1. CEO 提交招聘请求
+2. 您在 Approvals 标签中审查
+3. 批准 → Agent 生成并添加
+4. 拒绝 → CEO 收到原因通知
+
+### 4. Tasks 标签
+
+公司特定的看板：
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ Tasks                                      [+ New Task] │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ Inbox      | In Progress | Review    | Done           │
+│ ─────────────────────────────────────────────────────  │
+│ • T-12     | • T-10      | • T-8    | • T-1 ✓        │
+│ Research   | Write blog  | Edit     | Complete       │
+│   brief    |   post 1    │          │                │
+│   (Scout)  |   (Nova)    │  (Echo)  │                │
+│                                                         │
+│ • T-13     | • T-11      |          | • T-2 ✓        │
+│ Design     | Social      |          │ Complete       │
+│   landing  |   media     │          │                │
+│   page     │   plan      │          │                │
+│   (Pixel)  │   (Echo)    │          │                │
+└─────────────────────────────────────────────────────────┘
+```
+
+**公司特定：**
+
+- 仅显示此公司的任务
+- Agent 由 CEO 自动分配
+- 任务从计划自动创建
+- 您也可以添加手动任务
+
+### 5. Knowledge 标签
+
+公司知识库：
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ Knowledge                                              │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ Executive Summary:                                     │
+│ [Edit]                                                 │
+│ Q1 Marketing Campaign targeting enterprise...          │
+│                                                         │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ Knowledge Entries:                           [+ Add]   │
+│                                                         │
+│ 📄 Brand Guidelines (Pixel)                           │
+│ 📄 Target Persona Research (Scout)                    │
+│ 📄 Campaign Messaging (Echo)                          │
+│ 📊 Competitor Analysis Report (Scout)                 │
+│                                                         │
+│ Deliverables:                                          │
+│ 📄 Blog Post - "AI Trends 2024" (Nova)               │
+│ 🖼️ Landing Page Design (Pixel)                        │
+└─────────────────────────────────────────────────────────┘
+```
+
+**类型：**
+
+- **Executive Summary** — 注入到所有 Agent 上下文中
+- **Knowledge Entries** — 指南、参考、研究
+- **Deliverables** — 完成的工作自动保存到这里
+
+### 6. Chat 标签
+
+与公司 Agent 直接对话：
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ Chat with Q1 Marketing Team                            │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ Atlas: Welcome! I'm Atlas, CEO of Q1 Marketing.       │
+│        How can we help you today?                     │
+│                                                         │
+│ You: What's the status of the blog posts?             │
+│                                                         │
+│ Echo: We've completed 2 of 4 blog posts.              │
+│      Post 3 is in review. Post 4 research is done.    │
+│                                                         │
+│ You: Great! Can I see the draft for post 3?           │
+│                                                         │
+│ Nova: Sharing now... [Blog_Post_3_Draft.md]           │
+│                                                         │
+│ [Type your message...]                                │
+└─────────────────────────────────────────────────────────┘
+```
+
+**功能：**
+
+- 与任何公司 Agent 交谈
+- Agent 可以看到对话历史
+- 分享文件和文档
+- 获取状态更新
+- 提供指导或反馈
+
+### 7. Activity 标签
+
+公司所做的一切：
+
+```
+Today
+14:35 — Echo completed task T-8 (Blog post edit)
+14:30 — Nova submitted T-10 for review
+11:15 — Atlas spawned Pixel (Designer)
+09:00 — Daily standup report generated
+
+Yesterday
+16:45 — Scout delivered competitor analysis
+15:20 — Echo created campaign messaging doc
+14:00 — Team standup completed
+```
+
+**按以下筛选：**
+
+- Agent
+- 事件类型
+- 日期范围
+- 仅与任务相关
+
+### 8. Approvals 标签
+
+托管模式下的待处理决策：
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ Pending Approvals                                      │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ 🔵 Business Plan Approval                              │
+│    From: Atlas | Submitted: 2 hours ago               │
+│    [View Plan] [Approve] [Request Changes]            │
+│                                                         │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ 📋 History                                              │
+│ ✅ Business Plan — Approved (2 days ago)              │
+│ ✅ Hire Nova — Approved (2 days ago)                  │
+│ ✅ Hire Echo — Approved (2 days ago)                  │
+│ ❌ Hire Intern — Rejected (budget) (1 day ago)        │
+│                                                         │
+└─────────────────────────────────────────────────────────┘
+```
+
+**批准类型：**
+
+- 商业计划
+- Agent 招聘
+- 预算增加
+- 计划修改
+
+### 9. Costs 标签
+
+支出分析：
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ Costs                                                  │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ This Month: $42.50 / $100.00 budget                    │
+│                                                         │
+│ By Agent:                                              │
+│ • Atlas (CEO)        $12.30  ████████░░               │
+│ • Nova (Content)     $15.40  ██████████░              │
+│ • Echo (Strategy)    $8.20   █████░░░░░               │
+│ • Pixel (Design)     $4.10   ██░░░░░░░░               │
+│ • Scout (Research)   $2.50   █░░░░░░░░░               │
+│                                                         │
+│ By Model:                                              │
+│ • Claude 3.5 Sonnet  $38.20  ████████████████████░    │
+│ • GPT-4              $4.30   ██░░░░░░░░░░░░░░░░░░░    │
+│                                                         │
+│ Trends:                                               │
+│ [Cost graph over time]                                │
+└─────────────────────────────────────────────────────────┘
+```
+
+## 切换管理模式
+
+### 托管 → 自主
+
+**准备就绪时：**
+
+1. 转到公司 Overview 标签
+2. 点击 "Mode: Managed" 下拉菜单
+3. 选择 "Autonomous"
+4. 确认："Are you sure? CEO will make decisions without approval."
+
+**然后 CEO 可以：**
+
+- 无需询问即可招聘 Agent
+- 自动创建任务
+- 独立执行计划
+- 定期报告进度
+
+### 自主 → 托管
+
+**当您想要监督时：**
+
+1. 转到公司 Overview 标签
+2. 点击 "Mode: Autonomous" 下拉菜单
+3. 选择 "Managed"
+4. 所有未来决策都需要批准
+
+## 归档公司
+
+当公司完成其使命时：
+
+1. **点击 "Archive" 按钮**
+2. **选择选项：**
+   - **Archive Only** — 保留一切，停止运营
+   - **Archive & Transfer** — 将未完成的任务转移到其他地方
+   - **Delete** — 完全删除（谨慎使用！）
+
+3. **公司进入 Archived 状态**
+   - Agent 被释放（可以重用）
+   - 任务被冻结
+   - 知识库被保留
+   - 可以稍后重新激活
+
+## 最佳实践
+
+### 设置公司
+
+1. **Clear Mission** — 具体、可实现的目标
+2. **Right CEO** — 基于领域专业知识选择
+3. **Realistic Budget** — 从小开始，逐步扩大
+4. **Defined Timeline** — 典型 2-8 周
+5. **Measurable Goals** — 具体目标
+
+### 运营公司
+
+1. **Review Plans Carefully** — 为一切奠定基础
+2. **Monitor Early** — 密切关注前几个任务
+3. **Build Knowledge Base** — 保存重要文档
+4. **Check Costs Weekly** — 避免意外
+5. **Communicate Regularly** — 使用 Chat 标签获取更新
+
+### 批准工作
+
+1. **Timely Reviews** — 不要让任务在人工审查中停留
+2. **Clear Feedback** — 具体的更改请求
+3. **Document Decisions** — 为批准添加注释
+4. **Trust but Verify** — 抽查自主工作
+
+## 常见工作流
+
+### 启动活动
+
+1. 创建 "March Campaign" 公司
+2. 分配 Atlas 作为 CEO
+3. 设定目标："Generate 100 leads"
+4. Atlas 提交包含团队结构的计划
+5. 批准计划
+6. Atlas 聘请 Echo（Strategy）、Nova（Content）、Pixel（Design）
+7. 任务出现在板上
+8. 在 Knowledge 标签中审查交付物
+9. 批准最终内容
+10. 完成后归档公司
+
+### 运行持续支持
+
+1. 创建 "Customer Support" 公司
+2. 设置永久状态（无结束日期）
+3. Atlas 聘请支持 Agent
+4. 连接到支持渠道
+5. Agent 将工单作为任务处理
+6. 从解决方案中建立知识库
+7. 审查月度分析
+
+## 故障排除
+
+**Company Stuck in Planning：**
+
+- CEO 可能需要更多信息
+- 检查 Chat 标签中的问题
+- 提供澄清
+- 或编辑简报并重新提交
+
+**Tasks Not Moving：**
+
+- 检查 Agent 是否在线
+- 验证任务未被阻塞
+- 查看 Activity 标签中的错误
+- 可能需要生成更多 Agent
+
+**Costs Too High：**
+
+- 查看 Costs 标签了解分解
+- 考虑更便宜的 LLM 模型
+- 减少 Agent 数量
+- 设置更严格的预算限制
+
+**Approvals Backing Up：**
+
+- 定期审查 Approvals 标签
+- 留出时间进行审查
+- 考虑切换到自主模式
+- 或减少招聘的 Agent
+
+## 下一步
+
+- 掌握 [任务管理](task-management)
+- 了解 [知识与记忆](knowledge-memory)
+- 设置 [自动化](automation)

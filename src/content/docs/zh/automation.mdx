@@ -1,0 +1,559 @@
+# 自动化
+
+使用定时任务、Webhook 和智能告警自动化重复性工作。
+
+## Cron 任务
+
+自动安排任务。
+
+**访问：** 导航栏 → **Cron**
+
+### Cron 管理面板
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ Cron Jobs                                   [+ New Job] │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ Daily Standup Report                                    │
+│ Every day at 9:00 AM                       [Edit] [▶️] │
+│ Last run: Today 9:00 AM | Next: Tomorrow 9:00 AM      │
+│ Status: ✅ Enabled                                      │
+│                                                         │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ Website Health Check                                    │
+│ Every 5 minutes                            [Edit] [▶️] │
+│ Last run: 2 min ago | Next: in 3 min                  │
+│ Status: ✅ Enabled                                      │
+│                                                         │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ Weekly Newsletter                                       │
+│ Every Monday at 10:00 AM                   [Edit] [▶️] │
+│ Last run: Never | Next: Monday 10:00 AM               │
+│ Status: ⏸️ Disabled                                     │
+│                                                         │
+└─────────────────────────────────────────────────────────┘
+```
+
+### 创建 Cron 任务
+
+**第 1 步：基本信息**
+
+```
+Name: Daily Standup Report
+Description: Generate and email daily standup
+```
+
+**第 2 步：时间表**
+
+选择时间表类型：
+
+| 类型 | 示例 | 用例 |
+|------|------|------|
+| **At** | At 9:00 AM tomorrow | 一次性未来任务 |
+| **Every** | Every 30 minutes | 定期间隔 |
+| **Cron** | 0 9 * * 1-5 | 复杂模式 |
+
+**常见 Cron 模式：**
+
+```
+Every minute:      * * * * *
+Every 5 minutes:   */5 * * * *
+Every hour:        0 * * * *
+Daily at 9 AM:     0 9 * * *
+Weekdays at 9 AM:  0 9 * * 1-5
+Weekly on Monday:  0 9 * * 1
+Monthly 1st:       0 9 1 * *
+```
+
+**第 3 步：操作**
+
+触发时做什么：
+
+**选项 A：向 Agent 发送消息**
+
+```
+Action: Send message
+To: @Atlas
+Message: Generate daily standup report
+```
+
+**选项 B：创建任务**
+
+```
+Action: Create task
+Title: Check website health
+Assignee: Scout
+Priority: High
+```
+
+**选项 C：执行 Webhook**
+
+```
+Action: Call webhook
+URL: https://api.example.com/health-check
+Method: GET
+```
+
+**第 4 步：选项**
+
+- **Enable immediately** — 开始按时间表运行
+- **Delete after run** — 用于一次性任务
+- **Delivery channel** — 发送结果的位置
+
+### 管理任务
+
+**启用/禁用：**
+在不删除的情况下切换任务开关
+
+**手动触发：**
+点击 ▶️ 立即运行（用于测试）
+
+**编辑：**
+更改时间表、操作或设置
+
+**删除：**
+永久删除任务
+
+### 任务历史
+
+查看执行历史：
+
+```
+Execution Log: Daily Standup Report
+
+✅ Today 9:00 AM     Success (2.3s)
+✅ Yesterday 9:00 AM Success (2.1s)
+✅ Dec 13 9:00 AM    Success (2.5s)
+❌ Dec 12 9:00 AM    Failed — Agent offline
+```
+
+### 系统心跳
+
+检查系统健康的特殊内置 Cron：
+
+**默认：** 每 30 分钟
+
+**检查什么：**
+
+- 待处理批准
+- 阻塞任务
+- 卡住 Agent（活跃 5+ 分钟）
+- 未开始的收件箱任务
+
+**操作：**
+
+- 自动激活陈旧的收件箱任务
+- 发送卡住 Agent 的告警
+- 生成摘要报告
+
+**自定义：**
+在工作区创建带自定义说明的 `HEARTBEAT.md`。
+
+## Webhook
+
+从外部系统接收数据并向其发送数据。
+
+**访问：** 导航栏 → **Webhooks**
+
+### 入站 Webhook
+
+外部系统向 CapiBot 发送数据。
+
+**示例：GitHub Webhook**
+
+```
+When: New issue created in GitHub
+Action: CapiBot creates corresponding task
+```
+
+**设置：**
+
+1. 转到 Webhooks 面板
+2. 点击 **"+ Incoming"**
+3. 配置：
+   ```
+   Name: GitHub Issues
+   URL: /webhooks/github
+   Events: issues.opened, issues.edited
+   Secret: [HMAC signature key]
+   ```
+4. 复制 webhook URL
+5. 粘贴到 GitHub webhook 设置
+6. 选择操作："Create task from GitHub issue"
+
+**支持来源：**
+
+- GitHub（问题、PR）
+- GitLab
+- Linear
+- Jira
+- 自定义（任何 HTTP POST）
+
+### 出站 Webhook
+
+CapiBot 向外部系统发送数据。
+
+**示例：Slack 通知**
+
+```
+When: Task completed
+Action: Send message to Slack channel
+```
+
+**设置：**
+
+1. 转到 Webhooks 面板
+2. 点击 **"+ Outgoing"**
+3. 配置：
+   ```
+   Name: Slack Notifications
+   URL: https://hooks.slack.com/services/...
+   Method: POST
+   Events: task.completed, agent.error
+   Payload: JSON
+   ```
+4. 测试 webhook
+5. 启用
+
+**事件类型：**
+
+- 任务事件（创建、完成、分配）
+- Agent 事件（生成、错误）
+- 公司事件（创建、归档）
+- 告警事件（触发）
+- 系统事件（心跳）
+
+### Webhook 测试
+
+启用前测试 webhook：
+
+```
+Test Webhook: GitHub Issues
+
+Send test payload:
+{
+  "action": "opened",
+  "issue": {
+    "title": "Test Issue",
+    "body": "This is a test"
+  }
+}
+
+[Send Test]
+
+Response:
+✅ 200 OK
+{
+  "taskId": "T-123",
+  "status": "created"
+}
+```
+
+### 交付历史
+
+跟踪 webhook 交付：
+
+```
+Recent Deliveries
+
+✅ Dec 15 14:32:01  GitHub → Task created
+✅ Dec 15 14:30:45  Task complete → Slack
+❌ Dec 15 14:28:12  Alert → Webhook failed (timeout)
+✅ Dec 15 14:25:33  GitHub → Task created
+```
+
+**重试逻辑：**
+
+- 失败交付重试 3 次
+- 指数退避
+- 可手动重试
+
+### 安全
+
+**HMAC 签名：**
+验证 webhook 真实性：
+
+```
+Secret: your-webhook-secret
+Algorithm: SHA-256
+Header: X-Webhook-Signature
+```
+
+**速率限制：**
+
+- 每个来源每分钟 100 个请求
+- 防止滥用
+- 滥用时自动 IP 封锁
+
+## 告警规则
+
+在特定条件发生时获取通知。
+
+**访问：** 导航栏 → **Alerts**
+
+### 创建告警规则
+
+**第 1 步：条件**
+
+定义何时触发：
+
+```
+When: Task
+Field: Status
+Operator: equals
+Value: Blocked
+
+AND
+
+Field: Days in status
+Operator: greater than
+Value: 1
+```
+
+**可用条件：**
+
+| 实体 | 字段 | 操作符 |
+|------|------|--------|
+| **Task** | Status, Priority, Assignee, Due date, Days in status | `=`, `≠`, `>`, `<`, contains |
+| **Agent** | Status, Company, Role | =, ≠, contains |
+| **Company** | Phase, Mode, Budget | `=`, `≠`, `>`, `<` |
+
+**示例：**
+
+```
+Alert: Task stuck in review
+When: Task status = Review
+AND Days in status greater than 2 days
+
+Alert: Agent error
+When: Agent status = Error
+
+Alert: Budget warning
+When: Company cost more than 80% of budget
+
+Alert: High priority overdue
+When: Task priority = Urgent
+AND Due date before today
+```
+
+**第 2 步：操作**
+
+触发时做什么：
+
+**选项 A：发送通知**
+
+```
+Channel: Telegram
+To: @yourusername
+Message: ⚠️ Task {taskId} has been blocked for 2+ days
+```
+
+**选项 B：创建任务**
+
+```
+Title: Follow up on blocked task
+Assignee: Manager
+Priority: High
+```
+
+**选项 C：调用 Webhook**
+
+```
+URL: https://api.example.com/alerts
+Method: POST
+Payload: { alert: details }
+```
+
+**第 3 步：设置**
+
+- **Cooldown** — X 分钟内不再触发
+- **Enable** — 启用或禁用
+- **Test** — 模拟触发
+
+### 告警管理
+
+**查看活跃告警：**
+
+```
+Active Alerts
+
+🔴 Task T-42 blocked 3 days
+   Rule: Stuck Tasks
+   Triggered: 2 hours ago
+   [View Task] [Dismiss]
+
+🔴 Agent Nova in Error state
+   Rule: Agent Errors
+   Triggered: 10 min ago
+   [View Agent] [Dismiss]
+```
+
+**告警历史：**
+
+```
+Recent Alerts (Last 7 days)
+
+🔴 Dec 15 14:32  Task blocked more than 2 days
+🔴 Dec 15 12:10  Agent error
+🟡 Dec 14 09:00  Budget at 75%
+🟡 Dec 13 16:45  Task approaching deadline
+```
+
+### 智能告警
+
+**冷却期：**
+防止告警疲劳：
+
+```
+Rule: Task blocked
+Cooldown: 4 hours
+
+Result: Alert fires once, then waits 4 hours
+         before alerting again on same task
+```
+
+**升级：**
+
+```
+Level 1: Task blocked 1 day → Notify assignee
+Level 2: Task blocked 3 days → Notify manager
+Level 3: Task blocked 5 days → Notify admin
+```
+
+## 常见自动化模式
+
+### 模式 1：每日站会
+
+**设置：**
+
+```
+Cron: Every day at 9:00 AM
+Action: Message Atlas
+Message: "Generate daily standup report"
+
+Result: Atlas creates standup summary
+```
+
+### 模式 2：网站监控
+
+**设置：**
+
+```
+Cron: Every 5 minutes
+Action: Call webhook
+URL: https://my-site.com/health
+
+Alert: If webhook returns error
+Action: Notify admin via Telegram
+```
+
+### 模式 3：GitHub 集成
+
+**设置：**
+
+```
+Incoming Webhook: GitHub
+Event: issues.opened
+Action: Create task
+Assignee: Auto-assign based on labels
+
+Result: GitHub issues become CapiBot tasks
+```
+
+### 模式 4：截止日期警告
+
+**设置：**
+
+```
+Alert: Task due tomorrow
+Condition: Due date = tomorrow
+AND Status ≠ Done
+Action: Send reminder to assignee
+```
+
+### 模式 5：预算监控
+
+**设置：**
+
+```
+Alert: Budget 80% spent
+Condition: Company cost more than 80% of budget
+Action: Notify admin
+Action: Create review task for CEO
+```
+
+### 模式 6：错误恢复
+
+**设置：**
+
+```
+Alert: Agent error
+Condition: Agent status = Error
+Action: Notify admin
+Action: Restart agent automatically
+```
+
+## 最佳实践
+
+### Cron 任务
+
+1. **Reasonable Intervals** — 除非需要，否则不要每分钟运行
+2. **Idempotent** — 任务应该可以安全地运行多次
+3. **Monitor Failures** — 检查执行日志
+4. **Test First** — 启用前手动触发
+5. **Document** — 清晰的名称和描述
+
+### Webhook
+
+1. **Verify Signatures** — 始终验证 HMAC
+2. **Handle Retries** — 设计用于重复交付
+3. **Timeout Handling** — 设置合理的超时
+4. **Error Logging** — 记录失败以调试
+5. **Test Endpoints** — 验证接收系统正常工作
+
+### 告警
+
+1. **Actionable** — 每个告警都应该有响应
+2. **Not Too Chatty** — 使用冷却防止垃圾邮件
+3. **Escalate** — 通知合适的人
+4. **Review Rules** — 随需求变化更新
+5. **Test Conditions** — 上线前模拟
+
+## 故障排除
+
+**Cron Job Not Running：**
+
+- 检查是否启用
+- 验证时间表格式
+- 检查系统时间/时区
+- 审查执行日志
+
+**Webhook Not Receiving：**
+
+- 验证 URL 是否正确
+- 检查防火墙规则
+- 用 curl/postman 测试
+- 审查 webhook 日志
+
+**Alert Not Firing：**
+
+- 验证条件逻辑
+- 检查实体是否符合条件
+- 手动测试规则
+- 审查冷却设置
+
+**Too Many Notifications：**
+
+- 增加冷却期
+- 优化告警条件
+- 使用批处理
+- 审查通知设置
+
+## 下一步
+
+- 探索 [集成](integrations)
+- 学习 [管理](administration)
+- 审查 [安全](security)

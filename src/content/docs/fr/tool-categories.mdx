@@ -1,0 +1,445 @@
+# Catégories d'Outils
+
+Les agents CapiBot ont accès à plus de 25 outils organisés en catégories. Comprendre quels outils sont disponibles vous aide à déléguer efficacement le travail.
+
+## Comment les Agents Utilisent les Outils
+
+Les agents choisissent automatiquement les outils basé sur ce qu'ils ont besoin de faire :
+
+```
+Vous : Recherchez les 5 principaux concurrents
+
+Scout (Research Analyst):
+  1. Analyse la requête
+  2. Décide d'utiliser l'outil web_search
+  3. Recherche "top SaaS analytics competitors"
+  4. Lit les résultats
+  5. Écrit les conclusions dans un fichier
+  6. Vous rapporte les résultats
+```
+
+**Vous n'avez pas besoin de dire aux agents quels outils utiliser** — ils connaissent leurs capacités et sélectionnent les bons outils pour le travail.
+
+## Opérations de Fichiers
+
+Lire, écrire et gérer des fichiers.
+
+### Outils Disponibles
+
+**`read_file`**
+
+- Lire le contenu de n'importe quel fichier
+- Spécifiez l'offset de ligne et la limite pour les gros fichiers
+- Supporte tous les formats texte
+
+**`write_file`**
+
+- Créer de nouveaux fichiers
+- Écraser les fichiers existants
+- Crée automatiquement les répertoires parents
+
+**`edit_file`**
+
+- Modifications chirurgicales au niveau ligne
+- Chercher et remplacer dans les fichiers
+- Insérer ou supprimer des lignes spécifiques
+
+**`list_dir`**
+
+- Lister le contenu des répertoires
+- Voir les fichiers et sous-répertoires
+- Filtrer par pattern
+
+### Quand les Agents Utilisent Ceux-ci
+
+| Tâche | Outil Utilisé |
+| ------------------------- | ---------- |
+| Lire vos instructions | read_file |
+| Sauvegarder le travail terminé | write_file |
+| Corriger un bug dans le code | edit_file |
+| Explorer la structure du projet | list_dir |
+| Mettre à jour la documentation | edit_file |
+
+### Exemple
+
+```
+Vous : Écrivez un script Python pour analyser des données CSV
+
+Nova: Je vais créer ce script pour vous.
+
+[Utilise write_file pour créer analyze_csv.py]
+
+Terminé ! J'ai créé analyze_csv.py avec des fonctions
+pour charger les données, calculer des statistiques, et
+générer des graphiques.
+```
+
+## Web & Recherche
+
+Recherchez sur internet et récupérez le contenu web.
+
+### Outils Disponibles
+
+**`web_search`**
+
+- Recherche Google
+- Retourne titres, URLs, extraits
+- Top 10 résultats par défaut
+
+**`web_fetch`**
+
+- Télécharger et parser n'importe quelle page web
+- Extrait le contenu principal
+- Gère divers formats
+
+### Quand les Agents Utilisent Ceux-ci
+
+| Tâche | Outil Utilisé |
+| ------------------------- | ---------- |
+| Rechercher des concurrents | web_search |
+| Lire la documentation | web_fetch |
+| Vérifier les actualités | web_search |
+| Rassembler du matériel de référence | web_fetch |
+| Trouver des exemples | web_search |
+
+### Exemple
+
+```
+Vous : Quelles sont les dernières tendances IA en 2024 ?
+
+Scout: Laissez-moi rechercher les tendances IA actuelles.
+
+[Utilise web_search: "tendances IA 2024"]
+
+Voici les 5 principales tendances IA pour 2024 :
+1. Modèles IA multimodaux
+2. Agents IA et automatisation
+3. Déploiement Edge AI
+4. Régulation et conformité IA
+5. IA durable
+
+Voulez-vous que j'approfondisse l'une d'elles ?
+```
+
+## Automatisation de Navigateur
+
+Contrôlez un navigateur web par programmation.
+
+### Outils Disponibles
+
+**`browser_navigate`** — Aller à une URL
+**`browser_click`** — Cliquer sur des éléments
+**`browser_type`** — Taper du texte dans les inputs
+**`browser_scroll`** — Faire défiler la page
+**`browser_screenshot`** — Capturer un screenshot
+**`browser_extract`** — Extraire le contenu de la page
+**`browser_wait`** — Attendre des éléments
+
+### Quand les Agents Utilisent Ceux-ci
+
+| Tâche | Outils Utilisés |
+| ------------------------- | --------------------------------- |
+| Tester une application web | navigate, click, type, screenshot |
+| Remplir des formulaires | navigate, type, click |
+| Scraper des données de sites web | navigate, extract, scroll |
+| Prendre des captures de sites web | navigate, screenshot |
+| Vérifier l'apparence visuelle | navigate, screenshot |
+
+### Exemple
+
+```
+Vous : Prenez une capture de notre landing page
+
+Nova: Je vais capturer une capture de votre site.
+
+[Utilise browser_navigate + browser_screenshot]
+
+Capture sauvegardée : /workspace/screenshots/landing-page-20241215.png
+
+Je peux aussi tester le formulaire de contact si vous voulez.
+```
+
+## Shell & Système
+
+Exécutez des commandes et gérez les processus.
+
+### Outils Disponibles
+
+**`exec`**
+
+- Exécuter des commandes shell
+- Patterns dangereux automatiquement bloqués
+- Timeout configurable (défaut 30s)
+- Sortie plafonnée à ~10KB par appel
+
+**`spawn`**
+
+- Démarrer des processus en arrière-plan
+- Tâches longues
+- Gestion de processus
+
+### Fonctionnalités de Sécurité
+
+**Commandes Bloquées :**
+
+```bash
+# Celles-ci sont automatiquement bloquées:
+rm -rf /
+mkfs.*
+dd if=/dev/zero
+fork bombs
+scans réseau
+escalade de privilèges
+```
+
+**Sûr par Défaut :**
+
+- Restriction de workspace
+- Limites de timeout
+- Limites de sortie
+- Logging des commandes
+
+### Quand les Agents Utilisent Ceux-ci
+
+| Tâche | Outil Utilisé |
+| -------------------- | ------------------------- |
+| Exécuter un script Python | exec: python script.py |
+| Installer des dépendances | exec: npm install |
+| Opérations Git | exec: git commit -m "..." |
+| Construire le projet | exec: npm run build |
+| Migrations de base de données | exec: migrate up |
+
+### Exemple
+
+```
+Vous : Exécutez la suite de tests
+
+Nova: Exécution des tests maintenant.
+
+[Utilise exec: npm test]
+
+✅ 45 tests passés
+⚠️  2 tests ignorés
+❌ 0 tests échoués
+
+Tous les tests passent ! Le build est prêt pour le déploiement.
+```
+
+## Planification
+
+Créez et gérez des tâches récurrentes.
+
+### Outils Disponibles
+
+**`cron`**
+
+- Planifier des tâches futures
+- Ponctuelles ou récurrentes
+- Syntaxe d'expression cron
+- Depuis la conversation
+
+### Quand les Agents Utilisent Ceux-ci
+
+| Tâche | Outil Utilisé |
+| ---------------------- | -------------------------- |
+| Planifier un rapport quotidien | cron: tous les jours à 9h |
+| Définir un rappel d'échéance | cron: le 20/12/2024 à 17h |
+| Vérification de santé récurrente | cron: toutes les 5 minutes |
+| Résumé hebdomadaire | cron: tous les lundis à 10h |
+
+### Exemple
+
+```
+Vous : Rappelez-moi de réviser l'article de blog demain
+
+Echo: Je vais planifier un rappel pour vous.
+
+[Utilise cron: à 9:00 AM demain]
+
+✅ Rappel planifié pour demain à 9:00 AM.
+Vous recevrez une notification pour réviser l'article de blog.
+```
+
+## Gestion d'Agent & de Tâches
+
+Gérez les autres agents et tâches.
+
+### Outils Disponibles
+
+**`sessions_send`** — Message à d'autres agents
+**`sessions_list`** — Voir les agents disponibles
+**`task_create`** — Créer de nouvelles tâches
+**`task_update`** — Mettre à jour le statut de tâche
+**`task_list`** — Voir les tâches
+
+### Quand les Agents Utilisent Ceux-ci
+
+| Tâche | Outil Utilisé |
+| ---------------------- | -------------------- |
+| Demander de l'aide à un collègue | sessions_send |
+| Déléguer du travail | task_create + assign |
+| Mettre à jour les progrès | task_update |
+| Vérifier la charge de travail de l'équipe | task_list |
+| Coordonner avec les agents | sessions_send |
+
+### Exemple
+
+```
+Vous : Demandez au designer de réviser la landing page
+
+Nova: Je vais message Pixel à propos de la révision.
+
+[Utilise sessions_send pour message Pixel]
+
+Pixel confirmé ! Ils sont en train de la réviser
+et mettront à jour la tâche quand ce sera fait.
+```
+
+## Communication
+
+Envoyez des messages et notifications.
+
+### Outils Disponibles
+
+**`message`** — Envoyer à n'importe quel canal
+**`message_owner`** — Envoyer directement à vous
+**`agent_notify`** — Notifier un agent spécifique
+
+### Canaux
+
+- Telegram
+- WhatsApp
+- Slack
+- Web Chat (Mission Control)
+- Email (si configuré)
+
+### Quand les Agents Utilisent Ceux-ci
+
+| Tâche | Outil Utilisé |
+| ----------------------- | -------------------- |
+| Signaler l'achèvement | message_owner |
+| Poser une question de clarification | message_owner |
+| Vous envoyer un fichier | message + pièce jointe |
+| Alerte urgente | agent_notify |
+
+### Exemple
+
+```
+Scout: Votre recherche concurrentielle est terminée !
+
+[Utilise message_owner via Telegram]
+
+J'ai analysé 5 concurrents et sauvegardé le
+rapport dans /workspace/competitor-analysis.pdf
+
+Conclusions clés:
+• Le Concurrent A se concentre sur l'entreprise
+• Le Concurrent B a de meilleurs prix
+• Un gap dans le segment mid-market
+```
+
+## Mémoire & Connaissance
+
+Stockez et récupérez des informations.
+
+### Outils Disponibles
+
+**`write_file`** — Sauvegarder dans la mémoire de l'agent
+**`read_file`** — Lire depuis la mémoire
+**`company_docs`** — Lire la base de connaissances de l'entreprise
+
+### Quand les Agents Utilisent Ceux-ci
+
+| Tâche | Outil Utilisé |
+| ------------------------ | -------------------- |
+| Se souvenir des préférences | write_file vers la mémoire |
+| Apprendre du feedback | write_file vers la mémoire |
+| Lire les guidelines de l'entreprise | company_docs |
+| Vérifier les décisions précédentes | company_docs |
+
+### Exemple
+
+```
+Vous : Souvenez-vous que je préfère le bleu pour les boutons primaires
+
+Pixel: Compris ! Je vais sauvegarder cette préférence.
+
+[Utilise write_file pour sauvegarder dans la mémoire]
+
+✅ Préférence sauvegardée : "Les boutons primaires doivent
+   utiliser le bleu (#0066CC) selon la préférence utilisateur"
+
+J'appliquerai cela à tous les designs futurs.
+```
+
+## Sécurité des Outils
+
+### Ce que les Agents ne Peuvent Pas Faire
+
+**Automatiquement Bloqué :**
+
+- Commandes système destructrices
+- Accès en dehors du workspace
+- Commandes qui dépassent le timeout
+- Patterns shell dangereux connus
+
+### Ce que Vous Pouvez Contrôler
+
+**Paramètres par Agent :**
+
+- Activer/désactiver des outils spécifiques
+- Restreindre l'accès au système de fichiers
+- Définir les timeouts de commande
+- Limiter la taille de sortie
+
+**Paramètres Globaux :**
+
+- Restrictions de workspace
+- Blocage de patterns dangereux
+- Logging des commandes
+- Pistes d'audit
+
+## Bonnes Pratiques
+
+### Pour Vous
+
+1. **Faites Confiance aux Agents** — Ils savent quels outils utiliser
+2. **Révisez les Livrables** — Vérifiez les fichiers qu'ils créent
+3. **Demandez des Explications** — "Comment avez-vous fait ça ?"
+4. **Définissez des Limites** — Restreignez quand nécessaire
+
+### Pour les Agents
+
+1. **Utilisez le Bon Outil** — Associez l'outil à la tâche
+2. **Gérez les Erreurs** — Échec gracieux
+3. **Signalez les Actions** — Dites ce qu'ils ont fait
+4. **Respectez les Limites** — Travaillez dans les contraintes
+
+## Dépannage
+
+**L'Agent Dit "Je ne Peux Pas Faire Ça" :**
+
+- L'outil pourrait être désactivé
+- En dehors de leurs capacités
+- Restriction de sécurité
+- Vérifiez les outils autorisés de l'agent
+
+**La Commande a Échoué :**
+
+- Vérifiez le message d'erreur
+- Peut avoir besoin d'une approche différente
+- Pourrait être un problème de permission
+- Essayez de diviser en plus petites étapes
+
+**Fichier Non Trouvé :**
+
+- Vérifiez que le chemin est correct
+- Peut avoir besoin de créer les répertoires parents
+- Vérifiez que le fichier existe
+- Vérifiez les permissions
+
+## Prochaines Étapes
+
+- Apprenez les [Outils d'Entreprise](company-tools)
+- Explorez les [Outils de Communication](communication-tools)
+- Voyez les [Bonnes Pratiques de Sécurité](security)

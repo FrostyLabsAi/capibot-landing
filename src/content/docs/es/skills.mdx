@@ -1,0 +1,614 @@
+# Habilidades
+
+Las habilidades son cómo le enseñas a los agentes de CapiBot nuevas capacidades sin escribir código. Piensa en las habilidades como manuales de entrenamiento especializados que los agentes pueden leer para aprender cómo hacer tareas específicas.
+
+## ¿Qué son las Habilidades?
+
+Una habilidad es un **archivo Markdown con instrucciones** que enseña a un agente cómo realizar una tarea específica o trabajar con una herramienta específica. Cuando un agente necesita hacer algo, lee la habilidad relevante y sigue las instrucciones.
+
+```
+┌─────────────────────────────────────────────────────────┐
+│  Solicitud de Usuario: "Programa un reporte diario"     │
+│                                                         │
+│  Agente: "Necesito la habilidad de cron para esto"      │
+│                                                         │
+│  ┌──────────────┐                                       │
+│  │  Leer Skill  │                                       │
+│  │  "cron"      │                                       │
+│  └──────────────┘                                       │
+│         ↓                                               │
+│  ┌──────────────┐                                       │
+│  │  Seguir      │                                       │
+│  │  Instrucciones│                                       │
+│  └──────────────┘                                       │
+│         ↓                                               │
+│  ✓ Tarea Completa                                       │
+└─────────────────────────────────────────────────────────┘
+```
+
+## Habilidades Integradas
+
+CapiBot viene con 8 habilidades integradas listas para usar:
+
+### 1. Composio — Integración de Apps de Terceros
+
+**Qué hace:** Conecta a 1000+ apps (Notion, Linear, Jira, Slack, GitHub, etc.)
+
+**Cuándo usar:**
+
+- Creando páginas en Notion
+- Creando issues en Linear/Jira
+- Enviando mensajes de Slack
+- Cualquier integración de apps
+
+**Ejemplo:**
+
+```
+Tú: Crea una página de Notion con mis notas de reunión
+
+Agente: [Usa habilidad de composio]
+       1. Verifica qué apps están conectadas
+       2. Encuentra la acción "create page"
+       3. Ejecuta con tus notas de reunión
+
+       ✅ Página "Meeting Notes" creada en Notion
+```
+
+**Instrucciones clave:**
+
+- Siempre verifica apps conectadas primero
+- Lista acciones disponibles antes de ejecutar
+- Usa slugs de acción exactos (ej. `NOTION_CREATE_NOTION_PAGE`)
+- Confirma antes de operaciones de escritura
+
+### 2. Cron — Programación de Tareas
+
+**Qué hace:** Programa recordatorios y tareas recurrentes
+
+**Cuándo usar:**
+
+- Reportes de standup diarios
+- Resúmenes semanales
+- Recordatorios de fechas límite
+- Health checks recurrentes
+
+**Ejemplo:**
+
+```
+Tú: Recuérdame revisar el artículo del blog cada día a las 9am
+
+Agente: [Usa habilidad de cron]
+       Programado recordatorio diario a las 9:00 AM
+       Mensaje: "Revisar artículo del blog"
+
+       ✅ Recordatorio diario configurado
+```
+
+**Expresiones de tiempo:**
+
+- "cada 20 minutos" → `every_seconds: 1200`
+- "cada hora" → `every_seconds: 3600`
+- "cada día a las 8am" → `cron_expr: "0 8 * * *"`
+- "días laborales a las 5pm" → `cron_expr: "0 17 * * 1-5"`
+
+### 3. GitHub — Operaciones de Repositorio
+
+**Qué hace:** Trabaja con repos de GitHub usando el CLI `gh`
+
+**Cuándo usar:**
+
+- Creando issues
+- Revisando pull requests
+- Verificando estado del repositorio
+- Gestionando releases
+
+**Ejemplo:**
+
+```
+Tú: Revisa si hay PRs abiertos en el repo de capibot
+
+Agente: [Usa habilidad de github]
+       3 pull requests abiertos:
+       1. #45 - Fix authentication bug
+       2. #46 - Add dark mode support
+       3. #47 - Update documentation
+```
+
+### 4. Weather — Información del Clima
+
+**Qué hace:** Obtiene clima actual y pronósticos
+
+**Cuándo usar:**
+
+- Planeando eventos al aire libre
+- Preparación de viajes
+- Verificaciones rápidas de clima
+
+**Ejemplo:**
+
+```
+Tú: ¿Cómo está el clima en Bogotá hoy?
+
+Agente: [Usa habilidad de weather]
+       Bogotá, Colombia
+       ☁️  Parcialmente nublado
+       🌡️  18°C / 64°F
+       💧  65% humedad
+       🌬️  Brisa ligera
+```
+
+### 5. Summarize — Condensación de Texto
+
+**Qué hace:** Resume contenido largo
+
+**Cuándo usar:**
+
+- Resumiendo artículos web
+- Condensando documentos largos
+- Resúmenes de videos de YouTube
+- Notas de reuniones
+
+**Ejemplo:**
+
+```
+Tú: Resume este artículo: [URL larga]
+
+Agente: [Usa habilidad de summarize]
+       Aquí está el resumen (lectura de 3 min):
+
+       • Punto clave 1...
+       • Punto clave 2...
+       • Punto clave 3...
+```
+
+### 6. TMux — Gestión de Sesiones de Terminal
+
+**Qué hace:** Control remoto de sesiones tmux
+
+**Cuándo usar:**
+
+- Gestionando procesos de larga duración
+- Gestión remota de servidores
+- Persistencia de sesiones
+
+**Ejemplo:**
+
+```
+Tú: Inicia una sesión tmux para los logs del servidor
+
+Agente: [Usa habilidad de tmux]
+       Creada sesión tmux "server-logs"
+       Ejecutando: tail -f /var/log/server.log
+
+       Puedes reattach con: tmux attach -t server-logs
+```
+
+### 7. Skill Creator — Crear Nuevas Habilidades
+
+**Qué hace:** Crea habilidades personalizadas para tareas especializadas
+
+**Cuándo usar:**
+
+- Flujos de trabajo únicos
+- Procesos específicos de empresa
+- Experiencia de dominio
+- Tareas complejas repetidas
+
+**Ejemplo:**
+
+```
+Tú: Crea una habilidad para procesar nuestros reportes de gastos
+
+Agente: [Usa habilidad de skill-creator]
+       Crearé una habilidad "expense-processor".
+
+       ¿Qué debería hacer esta habilidad?
+       1. Extraer datos de recibos
+       2. Categorizar gastos
+       3. Generar reportes
+       4. Exportar al sistema de contabilidad
+```
+
+### 8. Playbook — Coordinación Estratégica
+
+**Qué hace:** Coordinación de proyectos multi-fase para Empresas AI
+
+**Cuándo usar:**
+
+- Desarrollo de MVP de startup
+- Campañas de marketing
+- Desarrollo de funcionalidades enterprise
+- Respuesta a incidentes
+
+**Incluye:**
+
+- Ciclo de vida de 6 fases (Discovery, Strategy, Foundation, Build, Hardening, Launch, Operate)
+- Runbooks de escenarios
+- Plantillas de coordinación de agentes
+- Puertas de calidad
+
+## Cómo Funcionan las Habilidades
+
+### Divulgación Progresiva
+
+Las habilidades usan un sistema de tres niveles para ser eficientes:
+
+**Nivel 1: Metadata (Siempre en Contexto)**
+
+```yaml
+---
+name: composio
+description: "Use 1000+ third-party apps via Composio..."
+---
+```
+
+- ~100 palabras
+- Ayuda al agente a decidir cuándo usar la habilidad
+
+**Nivel 2: Cuerpo de SKILL.md (Cuando se Activa)**
+
+```markdown
+# Composio — Third-party App Integration
+
+## Workflow
+
+1. Check what apps are connected
+2. List available actions
+3. Get action schema
+4. Execute action
+```
+
+- Cargado solo cuando se necesita la habilidad
+- Contiene las instrucciones reales
+
+**Nivel 3: Recursos Empaquetados (Según se Necesite)**
+
+```
+skill-folder/
+├── SKILL.md (instrucciones principales)
+├── scripts/ (scripts de ayuda)
+├── references/ (documentación detallada)
+└── assets/ (plantillas, etc.)
+```
+
+- Cargado solo cuando se referencia
+- Mantiene el archivo de habilidad principal ligero
+
+### Activación de Habilidades
+
+Cuando haces una solicitud, el agente:
+
+1. **Lee metadata de habilidades** — Todas las habilidades instaladas
+2. **Selecciona habilidad relevante** — Basado en coincidencia de descripción
+3. **Carga instrucciones de habilidad** — Contenido de SKILL.md
+4. **Sigue instrucciones** — Ejecuta el flujo de trabajo
+5. **Usa recursos empaquetados** — Si es necesario
+
+```
+Usuario: "Crea una página de Notion"
+
+Agente piensa:
+├─ Revisa metadata de habilidades
+│  ├─ "cron" — programación, no relevante
+│  ├─ "composio" — apps de terceros ✓ MATCH
+│  ├─ "github" — repos, no relevante
+│  └─ "weather" — clima, no relevante
+│
+├─ Carga habilidad de composio
+│  └─ Lee instrucciones de SKILL.md
+│
+├─ Ejecuta flujo de trabajo
+│  ├─ Verifica apps conectadas
+│  ├─ Encuentra acción "create page"
+│  ├─ Obtiene esquema de parámetros
+│  └─ Ejecuta acción
+│
+└─ ¡Listo! Página de Notion creada
+```
+
+## Gestionando Habilidades
+
+### Viendo Habilidades Instaladas
+
+**Acceso:** Barra de navegación → **Skills**
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ Skills                                                  │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ Built-in Skills                                         │
+│                                                         │
+│ 🔌 Composio        Integración de apps                  │
+│ 🕐 Cron            Programación                         │
+│ 🐙 GitHub          Operaciones de repos                 │
+│ 🌤️  Weather          Info de clima                      │
+│ 📝 Summarize       Condensación de texto                │
+│ 💻 TMux            Sesiones de terminal                 │
+│ ✨ Skill Creator   Crear habilidades                    │
+│ 📖 Playbook        Coordinación estratégica             │
+│                                                         │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ Community Skills                                        │
+│ [Browse Registry]                                       │
+│                                                         │
+└─────────────────────────────────────────────────────────┘
+```
+
+### Detalles de Habilidad
+
+Haz clic en cualquier habilidad para ver:
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ 🔌 Composio                                [Configure]  │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ Usa 1000+ apps de terceros (Notion, Linear, Jira,       │
+│ Slack, GitHub, etc.) vía Composio. Descubre apps       │
+│ conectadas, lista acciones y ejecútalas.                │
+│                                                         │
+│ Version: 1.1.0                                         │
+│ Author: CapiBot Team                                   │
+│                                                         │
+│ Preview de Instrucciones:                              │
+│ ━━━━━━━━━━━━━━━━━━━━                                   │
+│ ## Workflow                                             │
+│                                                         │
+│ ### 1. Verifica qué apps están conectadas               │
+│ composio(mode: "list_apps")                             │
+│                                                         │
+│ ### 2. Descubre acciones disponibles...                 │
+│ ━━━━━━━━━━━━━━━━━━━━                                   │
+│                                                         │
+│ [View Full Instructions]  [Test Skill]                  │
+│                                                         │
+└─────────────────────────────────────────────────────────┘
+```
+
+### Instalando Nuevas Habilidades
+
+**Desde el Registro de la Comunidad:**
+
+1. Haz clic en **"Browse Registry"**
+2. Busca o explora categorías
+3. Haz clic en la habilidad para ver detalles
+4. Haz clic en **"Install"**
+5. La habilidad está disponible inmediatamente
+
+**Desde Archivo:**
+
+1. Haz clic en **"+ Install from File"**
+2. Sube archivo `.skill`
+3. Verifica instalación
+4. La habilidad está disponible inmediatamente
+
+### Probando Habilidades
+
+Antes de depender de una nueva habilidad, pruébala:
+
+```
+Habilidad: composio
+Prueba: Crea una página de prueba en Notion
+
+✅ Test passed
+   Página "Test" creada en Notion
+
+   La habilidad está funcionando correctamente.
+```
+
+### Removiendo Habilidades
+
+**Para remover una habilidad:**
+
+1. Encuentra la habilidad en el panel de Skills
+2. Haz clic en el menú **"..."**
+3. Selecciona **"Uninstall"**
+4. Confirma la remoción
+
+**Nota:** Las habilidades integradas no pueden ser removidas.
+
+## Creando Habilidades Personalizadas
+
+### Cuándo Crear una Habilidad
+
+Crea una habilidad personalizada cuando:
+
+✅ **Flujo de Trabajo Único**
+
+- Proceso específico de empresa
+- Metodología propietaria
+- Integración de herramienta personalizada
+
+✅ **Tareas Complejas Repetidas**
+
+- Hechas frecuentemente
+- Proceso multi-pasos
+- Requiere conocimiento de dominio
+
+✅ **Conocimiento Especializado**
+
+- Experiencia de industria
+- Estándares de empresa
+- Mejores prácticas
+
+✅ **Necesidades de Integración**
+
+- API personalizada
+- Herramientas internas
+- Sistemas propietarios
+
+### Ejemplo: Crear una Habilidad de Procesador de Gastos
+
+**Escenario:** Tu equipo procesa reportes de gastos semanalmente con pasos específicos.
+
+**Paso 1: Define la Habilidad**
+
+```
+Name: expense-processor
+Description: "Process expense reports following company policy.
+Extract data from receipts, categorize expenses, validate against
+policy limits, and generate reimbursement reports."
+```
+
+**Paso 2: Escribe SKILL.md**
+
+```markdown
+---
+name: expense-processor
+description: "Process expense reports..."
+---
+
+# Expense Report Processor
+
+## Workflow
+
+1. **Extract Data**
+   - Read receipt images
+   - Extract: date, merchant, amount, category
+   - Validate totals
+
+2. **Categorize**
+   - Meals: $75 limit
+   - Travel: No limit
+   - Supplies: $100 limit
+   - Entertainment: $50 limit
+
+3. **Validate Policy**
+   - Check per-category limits
+   - Flag exceptions
+   - Note approvals needed
+
+4. **Generate Report**
+   - Create summary
+   - Export to CSV
+   - Submit to accounting
+
+## Categories and Limits
+
+| Category      | Limit    | Requires Approval |
+| ------------- | -------- | ----------------- |
+| Meals         | $75/meal | >$75              |
+| Travel        | No limit | -                 |
+| Supplies      | $100     | >$100             |
+| Entertainment | $50      | >$50              |
+```
+
+**Paso 3: Prueba la Habilidad**
+
+```
+Tú: Procesa este reporte de gastos [recibos]
+
+Agente: [Usa habilidad expense-processor]
+
+       Procesando 5 recibos...
+
+       ✅ Todo dentro de límites de política
+
+       Resumen:
+       • Meals: $67, $45 (2 comidas)
+       • Travel: $340 (vuelo)
+       • Supplies: $23
+
+       Total: $475
+       Reporte generado: expense-report-week1.csv
+```
+
+## Mejores Prácticas de Habilidades
+
+### Para Usuarios de Habilidades
+
+1. **Conoce tus Habilidades** — Revisa qué está instalado
+2. **Prueba Nuevas Habilidades** — Antes de depender de ellas
+3. **Da Retroalimentación** — Ayuda a mejorar habilidades
+4. **Mantén Actualizado** — Instala últimas versiones
+
+### Para Creadores de Habilidades
+
+1. **Descripciones Claras** — Ayuda a los agentes a activar correctamente
+2. **Instrucciones Concisas** — Mantén bajo 500 líneas
+3. **Divulgación Progresiva** — Usa referencias para detalles
+4. **Prueba Exhaustivamente** — Escenarios del mundo real
+5. **Control de Versiones** — Rastrea cambios
+
+### Anatomía de una Gran Habilidad
+
+**Buena Estructura de SKILL.md:**
+
+```markdown
+---
+name: my-skill
+description: "Descripción clara y comprehensiva de qué hace esta 
+habilidad y cuándo usarla."
+---
+
+# Mi Habilidad
+
+## Quick Start
+
+Breve overview y ejemplo simple
+
+## Workflow
+
+Instrucciones paso a paso
+
+## Examples
+
+Casos de uso comunes
+
+## Advanced
+
+Enlaces a referencias para detalles
+```
+
+**Mala Estructura de SKILL.md:**
+
+```markdown
+---
+name: my-skill
+description: "Hace cosas"  ← ¡Demasiado vago!
+---
+
+# Mi Habilidad
+
+Mucho texto explicando la teoría... ← ¡Demasiado verboso!
+
+Más información de fondo... ← ¡No accionable!
+```
+
+## Solución de Problemas
+
+**Habilidad No se Activa:**
+
+- Revisa que la descripción sea clara y específica
+- Verifica que la habilidad esté instalada
+- Intenta una solicitud más específica
+- Puede necesitar mencionar la habilidad por nombre
+
+**Habilidad se Activa Incorrectamente:**
+
+- La descripción puede ser demasiado amplia
+- Agrega triggers más específicos
+- Considera dividir en múltiples habilidades
+
+**Instrucciones de Habilidad Poco Claras:**
+
+- Lee SKILL.md tú mismo
+- Actualiza con pasos más claros
+- Agrega más ejemplos
+- Prueba con diferentes inputs
+
+**Habilidad Desactualizada:**
+
+- Revisa actualizaciones
+- Revisa documentación más reciente
+- Actualiza recursos empaquetados
+- Considera crear nueva versión
+
+## Siguientes Pasos
+
+- Aprende sobre [Categorías de Herramientas](tool-categories)
+- Explora [Herramientas de Empresa](company-tools)
+- Crea tu primera habilidad personalizada
+- Explora el [Registro de la Comunidad](docs/integrations)

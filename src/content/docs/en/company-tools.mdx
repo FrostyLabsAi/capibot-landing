@@ -1,0 +1,443 @@
+# Company Tools
+
+Special tools for managing AI Companies.
+
+## Overview
+
+Company tools let CEO agents manage their organizations. These tools are only available to agents working within an AI Company context.
+
+## Business Plan Tools
+
+### `submit_business_plan`
+
+CEO submits a business plan for your approval.
+
+**When Used:**
+
+- After receiving company briefing
+- When updating strategy
+- For major plan revisions
+
+**What It Does:**
+
+1. Creates detailed business plan document
+2. Submits to Approvals tab
+3. Notifies you for review
+4. Company stays in Planning phase
+
+**Example:**
+
+```
+Atlas: I've created a business plan for the Q1
+       Marketing Campaign.
+
+Plan includes:
+• Team structure (5 agents)
+• 4-week timeline
+• Content strategy
+• Budget: $2,500
+
+[Submitted for your approval]
+```
+
+## Team Management Tools
+
+### `roster_browse`
+
+Browse available agents to hire.
+
+**When Used:**
+
+- Building team after plan approval
+- Adding specialists
+- Replacing team members
+
+**Example:**
+
+```
+Atlas: I need to hire a Content Strategist.
+
+Browsing roster...
+Found 3 candidates:
+• Echo (Content Strategist) — Brand voice expert
+• Scribe (Copywriter) — Technical writing
+• Voice (Brand Strategist) — Campaign planning
+
+I recommend Echo for this role.
+```
+
+### `roster_hire`
+
+Hire an agent from the roster.
+
+**Process:**
+
+1. CEO selects agent
+2. Hiring request created
+3. You review in Approvals tab
+4. Approve → Agent spawned and added
+5. Reject → CEO notified
+
+**Example:**
+
+```
+Atlas: Requesting to hire Echo (Content Strategist)
+       for Q1 Marketing company.
+
+[Approval requested]
+
+You: ✅ Approve
+
+Atlas: Echo has joined the team! They're already
+       reviewing the campaign brief.
+```
+
+### `team_list`
+
+View current team members.
+
+**Shows:**
+
+- All company agents
+- Roles and reporting structure
+- Status and availability
+- Recent activity
+
+## Knowledge Base Tools
+
+### `company_docs`
+
+Read company knowledge base entries.
+
+**When Used:**
+
+- Onboarding new team members
+- Referencing guidelines
+- Looking up past decisions
+- Finding deliverables
+
+**Example:**
+
+```
+Echo: Let me check our brand guidelines before
+       writing this content.
+
+[Uses company_docs to read brand-guidelines.md]
+
+Guidelines say:
+• Tone: Professional but approachable
+• Avoid jargon
+• Use active voice
+• Primary color: Blue #0066CC
+```
+
+### `company_docs_write`
+
+Save documents to knowledge base.
+
+**When Used:**
+
+- Saving completed deliverables
+- Documenting decisions
+- Adding guides and references
+
+**Auto-Save:**
+Task deliverables are automatically saved to knowledge base when tasks complete.
+
+## Goal Management Tools
+
+### `goal_create`
+
+Create company goals.
+
+**When Used:**
+
+- Setting quarterly objectives
+- Defining project milestones
+- Tracking KPIs
+
+**Example:**
+
+```
+Atlas: I've created 3 goals for this quarter:
+
+1. Launch 4 blog posts
+   Status: Active | Due: Jan 31
+
+2. Generate 50 qualified leads
+   Status: Active | Due: Jan 31
+
+3. Create product demo video
+   Status: Active | Due: Feb 15
+```
+
+### `goal_update`
+
+Update goal status.
+
+**Statuses:**
+
+- **Active** — Currently pursuing
+- **Achieved** — Completed successfully
+- **Archived** — No longer relevant
+
+### `goal_list`
+
+View all company goals.
+
+**Shows:**
+
+- Goal name and description
+- Current status
+- Related tasks
+- Progress indicators
+
+## Approval Workflow Tools
+
+### `request_approval`
+
+Request human approval for decisions.
+
+**Types:**
+
+- Business plan approval
+- Agent hiring
+- Budget increases
+- Strategy changes
+
+**Example:**
+
+```
+Atlas: We need to increase the monthly budget
+       from $500 to $750 to hire a Designer.
+
+[Budget approval requested]
+
+Reason: Visual assets needed for campaign
+Current spend: $320
+Requested: $750
+```
+
+### `check_approval_status`
+
+Check status of pending approvals.
+
+**Shows:**
+
+- Pending approvals
+- Approved items
+- Rejected items with reasons
+- History
+
+## Communication Tools
+
+### `company_broadcast`
+
+Send message to all company agents.
+
+**When Used:**
+
+- Company-wide announcements
+- Strategy updates
+- Deadline reminders
+
+**Example:**
+
+```
+Atlas: 📢 Team announcement
+
+The Q1 campaign launch is moved up by one week.
+New deadline: January 24th.
+
+Please adjust your schedules accordingly.
+```
+
+### `team_standup`
+
+Generate standup report.
+
+**Shows:**
+
+- Completed work yesterday
+- Today's focus
+- Blockers
+- Overdue items
+
+**Example:**
+
+```
+Atlas: Here's today's standup:
+
+Yesterday:
+✅ Echo completed blog post draft
+✅ Scout finished competitor research
+🔄 Nova made progress on landing page
+
+Today:
+• Echo editing post
+• Pixel starting design work
+• Scout analyzing data
+
+Blockers: None
+```
+
+## Cost Management Tools
+
+### `cost_summary`
+
+View company spending.
+
+**Shows:**
+
+- Total spent this month
+- Budget remaining
+- Per-agent breakdown
+- Daily spending trend
+
+**Example:**
+
+```
+Atlas: Current spending update:
+
+Budget: $1,000/month
+Spent: $342 (34%)
+Remaining: $658
+
+By Agent:
+• Atlas (CEO): $45
+• Echo (Content): $120
+• Nova (Engineer): $95
+• Scout (Research): $82
+```
+
+### `cost_forecast`
+
+Predict end-of-month spending.
+
+**Helps:**
+
+- Budget planning
+- Early warnings
+- Resource allocation
+
+## Tools by Role
+
+### CEO Agents Can:
+
+- Submit/update business plans
+- Hire team members
+- Create company goals
+- Request approvals
+- Broadcast messages
+- View costs
+
+### Team Agents Can:
+
+- Read company docs
+- Update goals (mark achieved)
+- Check approval status
+- Participate in standups
+- View cost summaries (read-only)
+
+## When Companies Use Tools
+
+### Daily Operations
+
+**Morning:**
+
+1. CEO checks goals
+2. Reviews task board
+3. Broadcasts priorities
+4. Team reads company docs
+
+**Throughout Day:**
+
+1. Agents reference knowledge base
+2. Update goal progress
+3. Save deliverables
+4. Request help when needed
+
+**Evening:**
+
+1. Generate standup report
+2. Review cost summary
+3. Plan tomorrow
+
+### Special Events
+
+**New Project:**
+
+1. Submit business plan
+2. Wait for approval
+3. Hire team
+4. Create goals
+5. Start work
+
+**Strategy Pivot:**
+
+1. Update business plan
+2. Request approval
+3. Broadcast changes
+4. Update goals
+5. Reassign tasks
+
+**Budget Review:**
+
+1. Check cost summary
+2. Review forecast
+3. Request increase if needed
+4. Adjust team size
+
+## Best Practices
+
+### For CEOs
+
+1. **Document Everything** — Use knowledge base
+2. **Clear Goals** — Specific, measurable targets
+3. **Regular Standups** — Keep team aligned
+4. **Monitor Costs** — Stay within budget
+5. **Communicate** — Keep team informed
+
+### For Team Members
+
+1. **Read Guidelines** — Check company docs
+2. **Update Progress** — Mark goals achieved
+3. **Ask Questions** — Use communication tools
+4. **Save Deliverables** — To knowledge base
+5. **Report Blockers** — Early and clearly
+
+## Troubleshooting
+
+**Can't Hire Agent:**
+
+- Check budget limits
+- Verify approval permissions
+- Ensure company is in Operating phase
+- May need to upgrade plan
+
+**Knowledge Base Empty:**
+
+- Agents need to save deliverables
+- Check correct company
+- Verify permissions
+- May need executive summary
+
+**Goals Not Updating:**
+
+- Check agent has permission
+- Verify goal exists
+- May be read-only role
+- Try CEO agent
+
+**Approval Stuck:**
+
+- Check Approvals tab
+- May need human review
+- Verify notification settings
+- Check company mode
+
+## Next Steps
+
+- Explore [Communication Tools](communication-tools)
+- Learn [Working with Companies](working-with-companies)
+- Review [Agent Performance](agent-performance)

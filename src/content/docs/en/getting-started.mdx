@@ -1,0 +1,55 @@
+# Getting Started with CapiBot
+
+Welcome to CapiBot — the AI agent orchestration platform that gives you complete control over your AI workforce.
+
+## Prerequisites
+
+- **Node.js** 20 or later
+- **PostgreSQL** 16 with pgvector extension
+- **Docker** (optional, for database setup)
+
+## Quick Start
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/capibot/capibot.git
+cd capibot
+```
+
+### 2. Set up the database
+
+```bash
+docker-compose up -d
+```
+
+This starts PostgreSQL 16 with pgvector enabled on port 5432.
+
+### 3. Configure environment
+
+```bash
+cp .env.example .env
+```
+
+Edit `.env` with your LLM provider API keys and preferences:
+
+```env
+CAPIBOT_PROVIDER_PRIORITY=anthropic,ollama
+ANTHROPIC_API_KEY=your-key-here
+CAPIBOT_API_KEY=your-secret-api-key
+```
+
+### 4. Install and start
+
+```bash
+npm install
+npm run start:dev
+```
+
+CapiBot will be running at `http://localhost:3000`.
+
+## Next Steps
+
+- [Configuration](docs/configuration) — Learn how to configure providers, channels, and agents
+- Connect your first messaging channel (Telegram, WhatsApp, or Slack)
+- Set up Mission Control for the full dashboard experience

@@ -1,0 +1,615 @@
+# Compétences (Skills)
+
+Les compétences sont la façon dont vous apprenez de nouvelles capacités aux agents CapiBot sans écrire de code. Pensez aux compétences comme des manuels de formation spécialisés que les agents peuvent lire pour apprendre à effectuer des tâches spécifiques.
+
+## Que Sont les Compétences ?
+
+Une compétence est un **fichier Markdown avec des instructions** qui apprend à un agent comment effectuer une tâche spécifique ou travailler avec un outil spécifique. Quand un agent a besoin de faire quelque chose, il lit la compétence pertinente et suit les instructions.
+
+```
+┌─────────────────────────────────────────────────────────┐
+│  Requête Utilisateur: "Planifier un rapport quotidien"  │
+│                                                         │
+│  Agent: "J'ai besoin de la compétence cron pour ceci"   │
+│                                                         │
+│  ┌──────────────┐                                       │
+│  │  Lire Skill  │                                       │
+│  │  "cron"      │                                       │
+│  └──────────────┘                                       │
+│         ↓                                               │
+│  ┌──────────────┐                                       │
+│  │  Suivre      │                                       │
+│  │  Instructions│                                       │
+│  └──────────────┘                                       │
+│         ↓                                               │
+│  ✓ Tâche Terminée                                       │
+└─────────────────────────────────────────────────────────┘
+```
+
+## Compétences Intégrées
+
+CapiBot vient avec 8 compétences intégrées prêtes à l'emploi :
+
+### 1. Composio — Intégration d'Applications Tiers
+
+**Ce que ça fait :** Connectez-vous à plus de 1000 applications (Notion, Linear, Jira, Slack, GitHub, etc.)
+
+**Quand l'utiliser :**
+
+- Créer des pages dans Notion
+- Créer des issues dans Linear/Jira
+- Envoyer des messages Slack
+- Toute intégration d'app
+
+**Exemple :**
+
+```
+Vous : Créez une page Notion avec mes notes de réunion
+
+Agent: [Utilise la compétence composio]
+       1. Vérifie quelles apps sont connectées
+       2. Trouve l'action "create page"
+       3. Exécute avec vos notes de réunion
+
+       ✅ Page "Meeting Notes" créée dans Notion
+```
+
+**Instructions clés :**
+
+- Vérifiez toujours les apps connectées d'abord
+- Listez les actions disponibles avant d'exécuter
+- Utilisez les slugs d'action exacts (ex. `NOTION_CREATE_NOTION_PAGE`)
+- Confirmez avant les opérations d'écriture
+
+### 2. Cron — Planification de Tâches
+
+**Ce que ça fait :** Planifiez des rappels et des tâches récurrentes
+
+**Quand l'utiliser :**
+
+- Rapports standup quotidiens
+- Résumés hebdomadaires
+- Rappels d'échéances
+- Vérifications de santé récurrentes
+
+**Exemple :**
+
+```
+Vous : Rappelez-moi de réviser l'article de blog tous les jours à 9h
+
+Agent: [Utilise la compétence cron]
+       Rappel quotidien planifié à 9:00 AM
+       Message: "Réviser l'article de blog"
+
+       ✅ Rappel quotidien défini
+```
+
+**Expressions de temps :**
+
+- "toutes les 20 minutes" → `every_seconds: 1200`
+- "toutes les heures" → `every_seconds: 3600`
+- "tous les jours à 8h" → `cron_expr: "0 8 * * *"`
+- "jours de semaine à 17h" → `cron_expr: "0 17 * * 1-5"`
+
+### 3. GitHub — Opérations de Dépôt
+
+**Ce que ça fait :** Travaillez avec les dépôts GitHub en utilisant le CLI `gh`
+
+**Quand l'utiliser :**
+
+- Créer des issues
+- Réviser des pull requests
+- Vérifier le statut du dépôt
+- Gérer les releases
+
+**Exemple :**
+
+```
+Vous : Vérifiez s'il y a des PRs ouvertes dans le dépôt capibot
+
+Agent: [Utilise la compétence github]
+       3 pull requests ouverts :
+       1. #45 - Corriger le bug d'authentification
+       2. #46 - Ajouter le support du mode sombre
+       3. #47 - Mettre à jour la documentation
+```
+
+### 4. Weather — Informations Météo
+
+**Ce que ça fait :** Obtenez la météo actuelle et les prévisions
+
+**Quand l'utiliser :**
+
+- Planifier des événements extérieurs
+- Préparation de voyage
+- Vérifications météo rapides
+
+**Exemple :**
+
+```
+Vous : Quel temps fait-il à Bogota aujourd'hui ?
+
+Agent: [Utilise la compétence weather]
+       Bogota, Colombie
+       ☁️  Partiellement nuageux
+       🌡️  18°C / 64°F
+       💧  65% humidité
+       🌬️  Brise légère
+```
+
+### 5. Summarize — Condensation de Texte
+
+**Ce que ça fait :** Résumez le contenu long
+
+**Quand l'utiliser :**
+
+- Résumer des articles web
+- Condenser des documents longs
+- Résumés de vidéos YouTube
+- Notes de réunion
+
+**Exemple :**
+
+```
+Vous : Résumez cet article: [longue URL]
+
+Agent: [Utilise la compétence summarize]
+       Voici le résumé (3 min de lecture) :
+
+       • Point clé 1...
+       • Point clé 2...
+       • Point clé 3...
+```
+
+### 6. TMux — Gestion de Sessions Terminal
+
+**Ce que ça fait :** Contrôlez à distance les sessions tmux
+
+**Quand l'utiliser :**
+
+- Gérer les processus longs
+- Gestion de serveur distant
+- Persistance de session
+
+**Exemple :**
+
+```
+Vous : Démarrez une session tmux pour les logs serveur
+
+Agent: [Utilise la compétence tmux]
+       Session tmux "server-logs" créée
+       Exécution: tail -f /var/log/server.log
+
+       Vous pouvez vous rattacher avec: tmux attach -t server-logs
+```
+
+### 7. Skill Creator — Créer de Nouvelles Compétences
+
+**Ce que ça fait :** Créez des compétences personnalisées pour des tâches spécialisées
+
+**Quand l'utiliser :**
+
+- Workflows uniques
+- Processus spécifiques à l'entreprise
+- Expertise de domaine
+- Tâches complexes répétées
+
+**Exemple :**
+
+```
+Vous : Créez une compétence pour traiter nos rapports de dépenses
+
+Agent: [Utilise la compétence skill-creator]
+       Je vais créer une compétence "expense-processor".
+
+       Que devrait faire cette compétence ?
+       1. Extraire les données des reçus
+       2. Catégoriser les dépenses
+       3. Générer des rapports
+       4. Exporter vers le système comptable
+```
+
+### 8. Playbook — Coordination Stratégique
+
+**Ce que ça fait :** Coordination de projet multi-phase pour les Entreprises IA
+
+**Quand l'utiliser :**
+
+- Développement MVP de startup
+- Campagnes marketing
+- Développement de fonctionnalités entreprise
+- Réponse aux incidents
+
+**Inclut :**
+
+- Cycle de vie 6 phases (Discovery, Strategy, Foundation, Build, Hardening, Launch, Operate)
+- Runbooks de scénarios
+- Templates de coordination d'agent
+- Portes de qualité
+
+## Comment Fonctionnent les Compétences
+
+### Divulgation Progressive
+
+Les compétences utilisent un système à trois niveaux pour être efficaces :
+
+**Niveau 1 : Métadonnées (Toujours dans le Contexte)**
+
+```yaml
+---
+name: composio
+description: "Utiliser plus de 1000 applications tierces via Composio..."
+---
+```
+
+- ~100 mots
+- Aide l'agent à décider quand utiliser la compétence
+
+**Niveau 2 : Corps SKILL.md (Quand Déclenché)**
+
+```markdown
+# Composio — Intégration d'Applications Tiers
+
+## Workflow
+
+1. Vérifiez quelles apps sont connectées
+2. Listez les actions disponibles
+3. Obtenez le schéma d'action
+4. Exécutez l'action
+```
+
+- Chargé uniquement quand la compétence est nécessaire
+- Contient les instructions réelles
+
+**Niveau 3 : Ressources Bundlées (Au Besoin)**
+
+```
+skill-folder/
+├── SKILL.md (instructions principales)
+├── scripts/ (scripts d'aide)
+├── references/ (docs détaillées)
+└── assets/ (templates, etc.)
+```
+
+- Chargé uniquement quand référencé
+- Garde le fichier de compétence principal léger
+
+### Déclenchement des Compétences
+
+Quand vous faites une requête, l'agent :
+
+1. **Lit les métadonnées de compétence** — Toutes les compétences installées
+2. **Sélectionne la compétence pertinente** — Basé sur la correspondance de description
+3. **Charge les instructions de compétence** — Contenu SKILL.md
+4. **Suit les instructions** — Exécute le workflow
+5. **Utilise les ressources bundlées** — Si nécessaire
+
+```
+Utilisateur: "Créer une page Notion"
+
+L'agent pense :
+├─ Vérifie les métadonnées de compétences
+│  ├─ "cron" — planification, pas pertinent
+│  ├─ "composio" — apps tierces ✓ MATCH
+│  ├─ "github" — dépôts, pas pertinent
+│  └─ "weather" — météo, pas pertinent
+│
+├─ Charge la compétence composio
+│  └─ Lit les instructions SKILL.md
+│
+├─ Exécute le workflow
+│  ├─ Vérifie les apps connectées
+│  ├─ Trouve l'action "create page"
+│  ├─ Obtient le schéma de paramètres
+│  └─ Exécute l'action
+│
+└─ Terminé ! Page Notion créée
+```
+
+## Gérer les Compétences
+
+### Voir les Compétences Installées
+
+**Accès :** Nav rail → **Skills**
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ Compétences                                             │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ Compétences Intégrées                                   │
+│                                                         │
+│ 🔌 Composio        Intégration d'apps                   │
+│ 🕐 Cron            Planification                        │
+│ 🐙 GitHub          Ops dépôts                           │
+│ 🌤️  Weather          Infos météo                        │
+│ 📝 Summarize       Condensation de texte                │
+│ 💻 TMux            Sessions terminal                    │
+│ ✨ Skill Creator   Créer des compétences                │
+│ 📖 Playbook        Coordination stratégique             │
+│                                                         │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ Compétences Communautaire                               │
+│ [Parcourir le Registre]                                 │
+│                                                         │
+└─────────────────────────────────────────────────────────┘
+```
+
+### Détails de la Compétence
+
+Cliquez sur n'importe quelle compétence pour voir :
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ 🔌 Composio                                [Configurer] │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ Utiliser plus de 1000 applications tierces (Notion,     │
+│ Linear, Jira, Slack, GitHub, etc.) via Composio.        │
+│ Découvrez les apps connectées, listez les actions,      │
+│ et exécutez-les.                                        │
+│                                                         │
+│ Version: 1.1.0                                         │
+│ Auteur: CapiBot Team                                   │
+│                                                         │
+│ Aperçu des Instructions:                               │
+│ ━━━━━━━━━━━━━━━━━━━━                                   │
+│ ## Workflow                                             │
+│                                                         │
+│ ### 1. Vérifiez quelles apps sont connectées            │
+│ composio(mode: "list_apps")                             │
+│                                                         │
+│ ### 2. Découvrez les actions disponibles...             │
+│ ━━━━━━━━━━━━━━━━━━━━                                   │
+│                                                         │
+│ [Voir Instructions Complètes]  [Tester Compétence]      │
+│                                                         │
+└─────────────────────────────────────────────────────────┘
+```
+
+### Installer de Nouvelles Compétences
+
+**Depuis le Registre Communautaire :**
+
+1. Cliquez sur **"Parcourir le Registre"**
+2. Recherchez ou parcourez les catégories
+3. Cliquez sur la compétence pour voir les détails
+4. Cliquez sur **"Installer"**
+5. Compétence disponible immédiatement
+
+**Depuis un Fichier :**
+
+1. Cliquez sur **"+ Installer depuis Fichier"**
+2. Téléchargez le fichier `.skill`
+3. Vérifiez l'installation
+4. Compétence disponible immédiatement
+
+### Tester les Compétences
+
+Avant de compter sur une nouvelle compétence, testez-la :
+
+```
+Compétence: composio
+Test: Créer une page test dans Notion
+
+✅ Test réussi
+   Page "Test" créée dans Notion
+
+   La compétence fonctionne correctement.
+```
+
+### Supprimer les Compétences
+
+**Pour supprimer une compétence :**
+
+1. Trouvez la compétence dans le panneau Compétences
+2. Cliquez sur le menu **"..."**
+3. Sélectionnez **"Désinstaller"**
+4. Confirmez la suppression
+
+**Note :** Les compétences intégrées ne peuvent pas être supprimées.
+
+## Créer des Compétences Personnalisées
+
+### Quand Créer une Compétence
+
+Créez une compétence personnalisée quand :
+
+✅ **Workflow Unique**
+
+- Processus spécifique à l'entreprise
+- Méthodologie propriétaire
+- Intégration d'outil personnalisé
+
+✅ **Tâches Complexes Répétées**
+
+- Fait fréquemment
+- Processus multi-étapes
+- Nécessite des connaissances de domaine
+
+✅ **Connaissances Spécialisées**
+
+- Expertise industrielle
+- Standards d'entreprise
+- Meilleures pratiques
+
+✅ **Besoins d'Intégration**
+
+- API personnalisée
+- Outils internes
+- Systèmes propriétaires
+
+### Exemple : Créer une Compétence Expense Processor
+
+**Scénario :** Votre équipe traite des rapports de dépenses chaque semaine avec des étapes spécifiques.
+
+**Étape 1 : Définir la Compétence**
+
+```
+Nom: expense-processor
+Description: "Traiter les rapports de dépenses suivant la politique entreprise.
+Extraire les données des reçus, catégoriser les dépenses, valider contre
+les limites de politique, et générer des rapports de remboursement."
+```
+
+**Étape 2 : Écrire SKILL.md**
+
+```markdown
+---
+name: expense-processor
+description: "Traiter les rapports de dépenses..."
+---
+
+# Expense Report Processor
+
+## Workflow
+
+1. **Extraire les Données**
+   - Lire les images de reçus
+   - Extraire: date, marchand, montant, catégorie
+   - Valider les totaux
+
+2. **Catégoriser**
+   - Repas: limite $75
+   - Voyage: pas de limite
+   - Fournitures: limite $100
+   - Divertissement: limite $50
+
+3. **Valider la Politique**
+   - Vérifier les limites par catégorie
+   - Signaler les exceptions
+   - Noter les approbations nécessaires
+
+4. **Générer le Rapport**
+   - Créer un résumé
+   - Exporter en CSV
+   - Soumettre à la comptabilité
+
+## Catégories et Limites
+
+| Catégorie      | Limite    | Nécessite Approbation |
+| ------------- | -------- | ----------------- |
+| Repas         | $75/repas | >$75              |
+| Voyage        | Pas de limite | -                 |
+| Fournitures      | $100     | >$100             |
+| Divertissement | $50      | >$50              |
+```
+
+**Étape 3 : Tester la Compétence**
+
+```
+Vous : Traiter ce rapport de dépenses [reçus]
+
+Agent: [Utilise la compétence expense-processor]
+
+       Traitement de 5 reçus...
+
+       ✅ Tous dans les limites de politique
+
+       Résumé:
+       • Repas: $67, $45 (2 repas)
+       • Voyage: $340 (vol)
+       • Fournitures: $23
+
+       Total: $475
+       Rapport généré: expense-report-week1.csv
+```
+
+## Bonnes Pratiques pour les Compétences
+
+### Pour les Utilisateurs de Compétences
+
+1. **Connaissez Vos Compétences** — Révisez ce qui est installé
+2. **Testez les Nouvelles Compétences** — Avant de vous y fier
+3. **Donnez du Feedback** — Aidez à améliorer les compétences
+4. **Gardez à Jour** — Installez les dernières versions
+
+### Pour les Créateurs de Compétences
+
+1. **Descriptions Claires** — Aidez les agents à déclencher correctement
+2. **Instructions Concises** — Restez sous 500 lignes
+3. **Divulgation Progressive** — Utilisez les références pour les détails
+4. **Testez Complètement** — Scénarios du monde réel
+5. **Contrôle de Version** — Suivez les changements
+
+### Anatomie d'une Excellente Compétence
+
+**Bonne Structure SKILL.md :**
+
+```markdown
+---
+name: my-skill
+description: "Description claire et complète de ce que cette 
+compétence fait et quand l'utiliser."
+---
+
+# Ma Compétence
+
+## Démarrage Rapide
+
+Aperçu bref et exemple simple
+
+## Workflow
+
+Instructions étape par étape
+
+## Exemples
+
+Cas d'usage courants
+
+## Avancé
+
+Liens vers les références pour les détails
+```
+
+**Mauvaise Structure SKILL.md :**
+
+```markdown
+---
+name: my-skill
+description: "Fait des trucs"  ← Trop vague !
+---
+
+# Ma Compétence
+
+Beaucoup de texte expliquant la théorie... ← Trop verbeux !
+
+Plus d'informations de fond... ← Pas actionnable !
+```
+
+## Dépannage
+
+**La Compétence ne Se Déclenche Pas :**
+
+- Vérifiez que la description est claire et spécifique
+- Vérifiez que la compétence est installée
+- Essayez une requête plus spécifique
+- Peut avoir besoin de mentionner la compétence par nom
+
+**La Compétence Se Déclenche Mauvais :**
+
+- La description peut être trop large
+- Ajoutez des déclencheurs plus spécifiques
+- Envisagez de diviser en plusieurs compétences
+
+**Les Instructions de Compétence sont Peu Claires :**
+
+- Lisez SKILL.md vous-même
+- Mettez à jour avec des étapes plus claires
+- Ajoutez plus d'exemples
+- Testez avec différentes entrées
+
+**La Compétence est Obsolète :**
+
+- Vérifiez les mises à jour
+- Révisez la dernière documentation
+- Mettez à jour les ressources bundlées
+- Envisagez de créer une nouvelle version
+
+## Prochaines Étapes
+
+- Apprenez les [Catégories d'Outils](tool-categories)
+- Explorez les [Outils d'Entreprise](company-tools)
+- Créez votre première compétence personnalisée
+- Parcourez le [Registre Communautaire](docs/integrations)

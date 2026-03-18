@@ -1,0 +1,614 @@
+# Skills
+
+Skills são como você ensina agentes CapiBot novas capacidades sem escrever código. Pense em skills como manuais de treinamento especializados que agentes podem ler para aprender como fazer tarefas específicas.
+
+## O Que São Skills?
+
+Uma skill é um **arquivo Markdown com instruções** que ensina um agente como realizar uma tarefa específica ou trabalhar com uma ferramenta específica. Quando um agente precisa fazer algo, ele lê a skill relevante e segue as instruções.
+
+```
+┌─────────────────────────────────────────────────────────┐
+│  Requisição do Usuário: "Agendar um relatório diário"                │
+│                                                         │
+│  Agente: "Preciso da skill cron para isso"                │
+│                                                         │
+│  ┌──────────────┐                                       │
+│  │  Ler Skill   │                                       │
+│  │  "cron"      │                                       │
+│  └──────────────┘                                       │
+│         ↓                                               │
+│  ┌──────────────┐                                       │
+│  │  Seguir      │                                       │
+│  │  Instruções  │                                       │
+│  └──────────────┘                                       │
+│         ↓                                               │
+│  ✓ Tarefa Completa                                        │
+└─────────────────────────────────────────────────────────┘
+```
+
+## Skills Embutidas
+
+O CapiBot vem com 8 skills embutidas prontas para uso:
+
+### 1. Composio — Integração com Apps de Terceiros
+
+**O que faz:** Conecte a 1000+ apps (Notion, Linear, Jira, Slack, GitHub, etc.)
+
+**Quando usar:**
+
+- Criando páginas no Notion
+- Criando issues no Linear/Jira
+- Enviando mensagens no Slack
+- Qualquer integração de app
+
+**Exemplo:**
+
+```
+Você: Crie uma página no Notion com minhas notas de reunião
+
+Agente: [Usa skill composio]
+        1. Verifica quais apps estão conectados
+        2. Encontra a ação "create page"
+        3. Executa com suas notas de reunião
+
+        ✅ Página "Notas de Reunião" criada no Notion
+```
+
+**Instruções principais:**
+
+- Sempre verifique apps conectados primeiro
+- Liste ações disponíveis antes de executar
+- Use slugs de ação exatos (ex: `NOTION_CREATE_NOTION_PAGE`)
+- Confirme antes de operações de escrita
+
+### 2. Cron — Agendamento de Tarefas
+
+**O que faz:** Agende lembretes e tarefas recorrentes
+
+**Quando usar:**
+
+- Relatórios de standup diários
+- Resumos semanais
+- Lembretes de prazos
+- Verificações de saúde recorrentes
+
+**Exemplo:**
+
+```
+Você: Lembre-me de revisar o blog post todo dia às 9h
+
+Agente: [Usa skill cron]
+        Lembretes diários agendados às 9:00 AM
+        Mensagem: "Revisar blog post"
+
+        ✅ Lembretes diários configurados
+```
+
+**Expressões de tempo:**
+
+- "a cada 20 minutos" → `every_seconds: 1200`
+- "a cada hora" → `every_seconds: 3600`
+- "todo dia às 8h" → `cron_expr: "0 8 * * *"`
+- "dias úteis às 17h" → `cron_expr: "0 17 * * 1-5"`
+
+### 3. GitHub — Operações de Repositório
+
+**O que faz:** Trabalhe com repos GitHub usando o CLI `gh`
+
+**Quando usar:**
+
+- Criando issues
+- Revisando pull requests
+- Verificando status de repositório
+- Gerenciando releases
+
+**Exemplo:**
+
+```
+Você: Verifique se há PRs abertos no repo capibot
+
+Agente: [Usa skill github]
+        3 pull requests abertos:
+        1. #45 - Corrigir bug de autenticação
+        2. #46 - Adicionar suporte a dark mode
+        3. #47 - Atualizar documentação
+```
+
+### 4. Weather — Informações de Clima
+
+**O que faz:** Obtenha clima atual e previsões
+
+**Quando usar:**
+
+- Planejando eventos ao ar livre
+- Preparação para viagem
+- Verificações rápidas de clima
+
+**Exemplo:**
+
+```
+Você: Como está o clima em Bogotá hoje?
+
+Agente: [Usa skill weather]
+        Bogotá, Colômbia
+        ☁️  Parcialmente nublado
+        🌡️  18°C / 64°F
+        💧  65% de umidade
+        🌬️  Brisa leve
+```
+
+### 5. Summarize — Condensação de Texto
+
+**O que faz:** Resuma conteúdo longo
+
+**Quando usar:**
+
+- Resumindo artigos da web
+- Condensando documentos longos
+- Resumos de vídeos YouTube
+- Notas de reunião
+
+**Exemplo:**
+
+```
+Você: Resuma este artigo: [URL longa]
+
+Agente: [Usa skill summarize]
+        Aqui está o resumo (3 min de leitura):
+
+        • Ponto principal 1...
+        • Ponto principal 2...
+        • Ponto principal 3...
+```
+
+### 6. TMux — Gerenciamento de Sessão de Terminal
+
+**O que faz:** Controle remoto de sessões tmux
+
+**Quando usar:**
+
+- Gerenciando processos de longa duração
+- Gerenciamento remoto de servidor
+- Persistência de sessão
+
+**Exemplo:**
+
+```
+Você: Inicie uma sessão tmux para os logs do servidor
+
+Agente: [Usa skill tmux]
+        Sessão tmux "server-logs" criada
+        Rodando: tail -f /var/log/server.log
+
+        Você pode reanexar com: tmux attach -t server-logs
+```
+
+### 7. Skill Creator — Criar Novas Skills
+
+**O que faz:** Crie skills customizadas para tarefas especializadas
+
+**Quando usar:**
+
+- Workflows únicos
+- Processos específicos da empresa
+- Expertise de domínio
+- Tarefas complexas repetidas
+
+**Exemplo:**
+
+```
+Você: Crie uma skill para processar nossos relatórios de despesas
+
+Agente: [Usa skill skill-creator]
+        Vou criar uma skill "expense-processor".
+
+        O que essa skill deve fazer?
+        1. Extrair dados de recibos
+        2. Categorizar despesas
+        3. Gerar relatórios
+        4. Exportar para sistema de contabilidade
+```
+
+### 8. Playbook — Coordenação Estratégica
+
+**O que faz:** Coordenação de projetos multi-fase para Empresas de IA
+
+**Quando usar:**
+
+- Desenvolvimento de MVP de startup
+- Campanhas de marketing
+- Desenvolvimento de feature enterprise
+- Resposta a incidentes
+
+**Inclui:**
+
+- Ciclo de vida de 6 fases (Discovery, Estratégia, Fundação, Build, Hardening, Lançamento, Operação)
+- Runbooks de cenário
+- Templates de coordenação de agentes
+- Portões de qualidade
+
+## Como Skills Funcionam
+
+### Divulgação Progressiva
+
+Skills usam um sistema de três níveis para serem eficientes:
+
+**Nível 1: Metadados (Sempre no Contexto)**
+
+```yaml
+---
+name: composio
+description: "Use 1000+ apps de terceiros via Composio..."
+---
+```
+
+- ~100 palavras
+- Ajuda agente a decidir quando usar a skill
+
+**Nível 2: Corpo do SKILL.md (Quando Disparado)**
+
+```markdown
+# Composio — Integração com App de Terceiros
+
+## Workflow
+
+1. Verifique quais apps estão conectados
+2. Liste ações disponíveis
+3. Obtenha schema da ação
+4. Execute ação
+```
+
+- Carregado apenas quando skill é necessária
+- Contém as instruções reais
+
+**Nível 3: Recursos Empacotados (Conforme Necessário)**
+
+```
+pasta-da-skill/
+├── SKILL.md (instruções principais)
+├── scripts/ (scripts auxiliares)
+├── references/ (docs detalhadas)
+└── assets/ (templates, etc.)
+```
+
+- Carregado apenas quando referenciado
+- Mantém arquivo principal da skill enxuto
+
+### Disparo de Skills
+
+Quando você faz uma requisição, o agente:
+
+1. **Lê metadados de skills** — Todas as skills instaladas
+2. **Seleciona skill relevante** — Baseado em correspondência de descrição
+3. **Carrega instruções da skill** — Conteúdo do SKILL.md
+4. **Segue instruções** — Executa o workflow
+5. **Usa recursos empacotados** — Se necessário
+
+```
+Usuário: "Crie uma página no Notion"
+
+Agente pensa:
+├─ Verifica metadados de skills
+│  ├─ "cron" — agendamento, não relevante
+│  ├─ "composio" — apps de terceiros ✓ MATCH
+│  ├─ "github" — repos, não relevante
+│  └─ "weather" — clima, não relevante
+│
+├─ Carrega skill composio
+│  └─ Lê instruções do SKILL.md
+│
+├─ Executa workflow
+│  ├─ Verifica apps conectados
+│  ├─ Encontra ação "create page"
+│  ├─ Obtém schema de parâmetros
+│  └─ Executa ação
+│
+└─ Pronto! Página do Notion criada
+```
+
+## Gerenciando Skills
+
+### Visualizando Skills Instaladas
+
+**Acesso:** Barra de navegação → **Skills**
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ Skills                                                  │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ Skills Embutidas                                         │
+│                                                         │
+│ 🔌 Composio        Integração de apps                      │
+│ 🕐 Cron            Agendamento                           │
+│ 🐙 GitHub          Operações de repo                       │
+│ 🌤️  Weather          Informações de clima                       │
+│ 📝 Summarize       Condensação de texto                    │
+│ 💻 TMux            Sessões de terminal                    │
+│ ✨ Skill Creator   Criar skills                        │
+│ 📖 Playbook        Coordenação estratégica               │
+│                                                         │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ Skills da Comunidade                                        │
+│ [Navegar Registry]                                       │
+│                                                         │
+└─────────────────────────────────────────────────────────┘
+```
+
+### Detalhes da Skill
+
+Clique em qualquer skill para ver:
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ 🔌 Composio                                [Configurar]  │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ Use 1000+ apps de terceiros (Notion, Linear, Jira,       │
+│ Slack, GitHub, etc.) via Composio. Descubra apps         │
+│ conectados, liste ações e execute-as.                   │
+│                                                         │
+│ Versão: 1.1.0                                         │
+│ Autor: Time CapiBot                                   │
+│                                                         │
+│ Pré-visualização de Instruções:                                  │
+│ ━━━━━━━━━━━━━━━━━━━━                                   │
+│ ## Workflow                                             │
+│                                                         │
+│ ### 1. Verifique quais apps estão conectados                    │
+│ composio(mode: "list_apps")                             │
+│                                                         │
+│ ### 2. Descubra ações disponíveis...                    │
+│ ━━━━━━━━━━━━━━━━━━━━                                   │
+│                                                         │
+│ [Ver Instruções Completas]  [Testar Skill]                  │
+│                                                         │
+└─────────────────────────────────────────────────────────┘
+```
+
+### Instalando Novas Skills
+
+**Do Registry da Comunidade:**
+
+1. Clique em **"Navegar Registry"**
+2. Busque ou navegue categorias
+3. Clique na skill para ver detalhes
+4. Clique em **"Instalar"**
+5. Skill disponível imediatamente
+
+**De Arquivo:**
+
+1. Clique em **"+ Instalar de Arquivo"**
+2. Faça upload de arquivo `.skill`
+3. Verifique instalação
+4. Skill disponível imediatamente
+
+### Testando Skills
+
+Antes de confiar em uma nova skill, teste-a:
+
+```
+Skill: composio
+Teste: Criar uma página de teste no Notion
+
+✅ Teste passou
+   Criada página "Teste" no Notion
+
+   A skill está funcionando corretamente.
+```
+
+### Removendo Skills
+
+**Para remover uma skill:**
+
+1. Encontre skill no painel Skills
+2. Clique em menu **"..."**
+3. Selecione **"Desinstalar"**
+4. Confirme remoção
+
+**Nota:** Skills embutidas não podem ser removidas.
+
+## Criando Skills Customizadas
+
+### Quando Criar uma Skill
+
+Crie uma skill customizada quando:
+
+✅ **Workflow Único**
+
+- Processo específico da empresa
+- Metodologia proprietária
+- Integração de ferramenta customizada
+
+✅ **Tarefas Complexas Repetidas**
+
+- Feitas frequentemente
+- Processo multi-passos
+- Requer conhecimento de domínio
+
+✅ **Conhecimento Especializado**
+
+- Expertise de indústria
+- Padrões da empresa
+- Boas práticas
+
+✅ **Necessidades de Integração**
+
+- API customizada
+- Ferramentas internas
+- Sistemas proprietários
+
+### Exemplo: Criando uma Skill de Processador de Despesas
+
+**Cenário:** Sua equipe processa relatórios de despesas semanalmente com passos específicos.
+
+**Passo 1: Defina a Skill**
+
+```
+Nome: expense-processor
+Descrição: "Processe relatórios de despesas seguindo política da empresa.
+Extraia dados de recibos, categorize despesas, valide contra
+limites de política e gere relatórios de reembolso."
+```
+
+**Passo 2: Escreva o SKILL.md**
+
+```markdown
+---
+name: expense-processor
+description: "Processe relatórios de despesas..."
+---
+
+# Processador de Relatório de Despesas
+
+## Workflow
+
+1. **Extrair Dados**
+   - Leia imagens de recibos
+   - Extraia: data, comerciante, valor, categoria
+   - Valide totais
+
+2. **Categorizar**
+   - Refeições: limite de $75
+   - Viagem: sem limite
+   - Suprimentos: limite de $100
+   - Entretenimento: limite de $50
+
+3. **Validar Política**
+   - Verifique limites por categoria
+   - Sinalize exceções
+   - Note aprovações necessárias
+
+4. **Gerar Relatório**
+   - Crie resumo
+   - Exporte para CSV
+   - Submeta para contabilidade
+
+## Categorias e Limites
+
+| Categoria      | Limite    | Requer Aprovação |
+| ------------- | -------- | ---------------- |
+| Refeições         | $75/refeição | >$75              |
+| Viagem        | Sem limite | -                 |
+| Suprimentos      | $100     | >$100             |
+| Entretenimento | $50      | >$50              |
+```
+
+**Passo 3: Teste a Skill**
+
+```
+Você: Processe este relatório de despesas [recibos]
+
+Agente: [Usa skill expense-processor]
+
+        Processando 5 recibos...
+
+        ✅ Todos dentro dos limites de política
+
+        Resumo:
+        • Refeições: $67, $45 (2 refeições)
+        • Viagem: $340 (voo)
+        • Suprimentos: $23
+
+        Total: $475
+        Relatório gerado: expense-report-week1.csv
+```
+
+## Boas Práticas de Skills
+
+### Para Usuários de Skills
+
+1. **Conheça Suas Skills** — Revise o que está instalado
+2. **Teste Novas Skills** — Antes de confiar nelas
+3. **Dê Feedback** — Ajude a melhorar skills
+4. **Mantenha Atualizado** — Instale versões mais recentes
+
+### Para Criadores de Skills
+
+1. **Descrições Claras** — Ajude agentes a disparar corretamente
+2. **Instruções Concisas** — Mantenha abaixo de 500 linhas
+3. **Divulgação Progressiva** — Use referências para detalhes
+4. **Teste Exaustivamente** — Cenários do mundo real
+5. **Controle de Versão** — Acompanhe mudanças
+
+### Anatomia de uma Ótima Skill
+
+**Boa Estrutura de SKILL.md:**
+
+```markdown
+---
+name: minha-skill
+description: "Descrição clara e abrangente do que esta 
+skill faz e quando usar."
+---
+
+# Minha Skill
+
+## Início Rápido
+
+Visão geral breve e exemplo simples
+
+## Workflow
+
+Instruções passo a passo
+
+## Exemplos
+
+Casos de uso comuns
+
+## Avançado
+
+Links para referências de detalhes
+```
+
+**Má Estrutura de SKILL.md:**
+
+```markdown
+---
+name: minha-skill
+description: "Faz coisas"  ← Muito vago!
+---
+
+# Minha Skill
+
+Muito texto explicando a teoria... ← Muito verboso!
+
+Mais informação de background... ← Não acionável!
+```
+
+## Solução de Problemas
+
+**Skill Não Disparando:**
+
+- Verifique se descrição é clara e específica
+- Verifique se skill está instalada
+- Tente requisição mais específica
+- Pode precisar mencionar skill pelo nome
+
+**Skill Disparando Errado:**
+
+- Descrição pode ser muito ampla
+- Adicione gatilhos mais específicos
+- Considere dividir em múltiplas skills
+
+**Instruções da Skill Não Claras:**
+
+- Leia você mesmo o SKILL.md
+- Atualize com passos mais claros
+- Adicione mais exemplos
+- Teste com diferentes inputs
+
+**Skill Desatualizada:**
+
+- Verifique por atualizações
+- Revise documentação mais recente
+- Atualize recursos empacotados
+- Considere criar nova versão
+
+## Próximos Passos
+
+- Aprenda sobre [Categorias de Ferramentas](tool-categories)
+- Explore [Ferramentas de Empresa](company-tools)
+- Crie sua primeira skill customizada
+- Navegue no [Registry da Comunidade](docs/integrations)

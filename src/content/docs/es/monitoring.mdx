@@ -1,0 +1,518 @@
+# Monitoreo y Observabilidad
+
+Mantente informado sobre lo que tu fuerza laboral de AI está haciendo con herramientas de monitoreo integrales.
+
+## Feed de Actividad
+
+Stream en tiempo real de todos los eventos del sistema.
+
+**Acceso:** Barra de navegación → **Activity**
+
+### Vista de Feed en Vivo
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ Activity                                    [Filter]    │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ Just now                                                │
+│ 📝 Echo completed task T-42 (Blog post edit)          │
+│                                                         │
+│ 2 minutes ago                                           │
+│ 🤖 Nova started task T-38 (Build API endpoint)        │
+│                                                         │
+│ 5 minutes ago                                           │
+│ 💬 Message received from Atlas                         │
+│   "Blog post draft is ready for review"               │
+│                                                         │
+│ 10 minutes ago                                          │
+│ 📁 Pixel created file: landing-page-design-v2.png     │
+│                                                         │
+│ 15 minutes ago                                          │
+│ 🏢 Atlas hired Pixel to Q1 Marketing company          │
+│                                                         │
+│ [Load more...]                                         │
+└─────────────────────────────────────────────────────────┘
+```
+
+### Tipos de Eventos
+
+| Icono | Tipo | Descripción |
+| ---- | ------- | ------------------------------------- |
+| 📝 | Task | Creada, actualizada, completada, asignada |
+| 🤖 | Agente | Generado, activado, estado cambiado |
+| 💬 | Mensaje | Enviado, recibido |
+| 📁 | Archivo | Creado, modificado, eliminado |
+| 🔔 | Alerta | Activada, resuelta |
+| 🏢 | Empresa | Creada, fase cambiada, archivada |
+| 🕐 | Cron | Job ejecutado |
+| ⚡ | Webhook | Recibido, entregado |
+
+### Filtrado
+
+Filtra por:
+
+- **Agent** — Actividad de agente específico
+- **Company** — Eventos específicos de empresa
+- **Type** — Task, agente, mensaje, etc.
+- **Time Range** — Última hora, día, semana
+- **Search** — Palabra clave en eventos
+
+## Barra Lateral de Feed en Vivo
+
+Stream de actividad siempre visible en el lado derecho de Mission Control.
+
+**Toggle:** Haz clic en el botón « en el encabezado
+
+**Características:**
+
+- Auto-scroll con nuevos eventos
+- Pausa para leer
+- Clic en eventos para detalles
+- Filtro por tipo
+
+## Visor de Logs
+
+Logs del sistema para debugging y monitoreo.
+
+**Acceso:** Barra de navegación → **Logs**
+
+### Niveles de Log
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ Logs                                        [Live ▶]    │
+├─────────────────────────────────────────────────────────┤
+│ Filter: [All Levels ▼] [Source: All ▼] [Search...]     │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ 🔴 ERROR  14:32:01  Agent Nova failed to connect to DB │
+│ 🟡 WARN   14:30:45  Task T-42 approaching deadline     │
+│ 🔵 INFO   14:28:12  Agent Echo spawned successfully    │
+│ ⚪ DEBUG  14:25:33  Memory search completed in 45ms    │
+│                                                         │
+│ [Auto-scroll: On]  [Download Logs]                     │
+└─────────────────────────────────────────────────────────┘
+```
+
+**Niveles de Log:**
+
+- **ERROR** — Problemas que necesitan atención
+- **WARN** — Issues potenciales
+- **INFO** — Operaciones normales
+- **DEBUG** — Diagnósticos detallados
+
+**Fuentes:**
+
+- Operaciones de agentes
+- Gestión de tareas
+- Llamadas a API
+- Consultas a base de datos
+- Eventos WebSocket
+
+### Streaming en Vivo
+
+**Toggle:** Haz clic en el botón "Live"
+
+Cuando está en vivo:
+
+- Nuevos logs aparecen automáticamente
+- Auto-scroll al final
+- Pausa para examinar
+- Reanudar para ponerse al día
+
+### Buscando Logs
+
+Busca por:
+
+- Contenido del mensaje de log
+- Componente fuente
+- Nombre de agente
+- ID de tarea
+- Rango de tiempo
+
+## Traces
+
+Registros detallados de cada ejecución de agente.
+
+**Acceso:** Barra de navegación → **Logs** → **Pestaña Traces**
+
+### Detalles de Trace
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ Trace: T-42-Atlas-20241215-143201                       │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ Agent: Atlas                                            │
+│ Task: Create business plan                              │
+│ Model: Claude 3.5 Sonnet                                │
+│ Provider: Anthropic                                     │
+│                                                         │
+│ Timing:                                                 │
+│ • Started: 14:32:01                                     │
+│ • Duration: 12.4 seconds                                │
+│ • Tokens In: 2,450                                      │
+│ • Tokens Out: 1,892                                     │
+│                                                         │
+│ Tools Used:                                             │
+│ 1. company_get (0.3s)                                   │
+│ 2. task_list (0.5s)                                     │
+│ 3. web_search (3.2s)                                    │
+│ 4. write_file (0.1s)                                    │
+│                                                         │
+│ Status: ✅ Success                                      │
+│ Output: Business plan saved to /plans/q1-marketing.md   │
+│                                                         │
+└─────────────────────────────────────────────────────────┘
+```
+
+**Qué Capturan los Traces:**
+
+- Info de agente y tarea
+- Modelo de AI usado
+- Uso de tokens y costo
+- Herramientas ejecutadas
+- Desglose de timing
+- Estado éxito/fracaso
+
+### Análisis de Sesión
+
+Estadísticas agregadas para sesiones de agentes:
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ Session Analytics — Past 7 Days                        │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ Total Runs: 1,247                                      │
+│ Success Rate: 98.2%                                    │
+│                                                         │
+│ Latency:                                               │
+│ • P50: 2.3s  • P95: 8.7s  • P99: 15.2s                │
+│                                                         │
+│ By Provider:                                           │
+│ • Anthropic: 45% ████████████████████                  │
+│ • OpenAI: 30% ██████████████                           │
+│ • Ollama: 25% ███████████                              │
+│                                                         │
+│ By Model:                                              │
+│ • Claude 3.5 Sonnet: 40%                               │
+│ • GPT-4: 30%                                           │
+│ • Llama 3: 25%                                         │
+│                                                         │
+│ Cost: $42.50 this week                                 │
+└─────────────────────────────────────────────────────────┘
+```
+
+## Panel de Análisis
+
+Métricas de rendimiento y tendencias.
+
+**Acceso:** Barra de navegación → **Analytics**
+
+### Métricas del Panel
+
+**Rendimiento de Agentes:**
+
+- Tareas completadas por agente
+- Tiempo promedio de completitud
+- Tasas de éxito/error
+- Costo por agente
+
+**Métricas de Tareas:**
+
+- Tareas por estado
+- Velocidad de completitud
+- Tiempo promedio en cada columna
+- Identificación de cuellos de botella
+
+**Métricas de Sistema:**
+
+- Volumen de llamadas a API
+- Rendimiento de base de datos
+- Conexiones WebSocket
+- Uso de memoria
+
+### Rangos de Tiempo
+
+Ver datos para:
+
+- Últimas 24 horas
+- Últimos 7 días
+- Últimos 30 días
+- Rango personalizado
+
+### Exportar
+
+Descarga reportes como:
+
+- CSV (hojas de cálculo)
+- JSON (datos crudos)
+- PDF (reportes formateados)
+
+## Notificaciones
+
+Mantente informado sin estar observando constantemente.
+
+### Centro de Notificaciones
+
+**Acceso:** Icono de campana en el encabezado
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ Notifications                              [Mark Read]  │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ 🔴 Urgent                                               │
+│ • Task T-42 failed 3 times — needs attention           │
+│                                                         │
+│ 📋 Human Review                                         │
+│ • 3 tasks awaiting your approval                       │
+│                                                         │
+│ ℹ️ Info                                                 │
+│ • Agent Echo completed task T-38                       │
+│ • Atlas submitted business plan for review             │
+│                                                         │
+│ [View All]  [Settings]                                 │
+└─────────────────────────────────────────────────────────┘
+```
+
+### Canales de Notificación
+
+Recibe notificaciones vía:
+
+- **In-app** — Centro de notificaciones
+- **Telegram** — Mensajes directos
+- **Slack** — Canal o DM
+- **Webhook** — Tu propio endpoint
+
+### Qué Activa Notificaciones
+
+| Evento | Default | Configurable |
+| ------------------------- | ------- | ------------ |
+| Tarea asignada a ti | ✅ | ✅ |
+| Tarea necesita revisión humana | ✅ | ✅ |
+| Tarea acercándose a fecha límite | ✅ | ✅ |
+| Error de agente | ✅ | ✅ |
+| Plan de negocio enviado | ✅ | ✅ |
+| Tarea completada | ❌ | ✅ |
+| Cambio de estado de agente | ❌ | ✅ |
+| Archivo creado | ❌ | ✅ |
+
+### Configuración de Notificaciones
+
+Configura en el panel de **Settings**:
+
+```
+Notifications
+
+Channels:
+☑️ In-app
+☑️ Telegram
+☐ Slack
+☐ Webhook
+
+Events:
+☑️ Asignaciones de tareas
+☑️ Revisión humana requerida
+☑️ Advertencias de fecha límite
+☑️ Errores de agentes
+☐ Completitudes de tareas
+☐ Cambios de estado de agentes
+
+Quiet Hours:
+🌙 10:00 PM — 8:00 AM
+☑️ No molestar
+```
+
+## Audit Trail
+
+Logging de seguridad y cumplimiento.
+
+**Acceso:** Barra de navegación → **Audit Trail**
+
+### Qué se Registra
+
+Cada acción con:
+
+- **Who** — Usuario o agente
+- **What** — Acción realizada
+- **When** — Marca de tiempo
+- **Where** — Dirección IP
+- **How** — User agent (navegador/app)
+
+**Categorías de Acción:**
+
+- Autenticación (login, logout)
+- Operaciones de tareas (crear, actualizar, eliminar)
+- Operaciones de agentes (generar, archivar)
+- Cambios de configuración
+- Acciones de integración
+- Eventos de webhook
+
+### Vista de Log de Auditoría
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ Audit Trail                                [Export]     │
+├─────────────────────────────────────────────────────────┤
+│ Filter: [Category: All ▼] [Date Range ▼] [User ▼]      │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ Today                                                   │
+│ 14:32:01  admin@capibot.io  Created task T-42         │
+│           IP: 192.168.1.100  Browser: Chrome           │
+│                                                         │
+│ 14:30:45  Atlas (Agent)     Submitted business plan   │
+│           Via: Mission Control                         │
+│                                                         │
+│ 14:28:12  admin@capibot.io  Approved business plan    │
+│           IP: 192.168.1.100                            │
+│                                                         │
+│ [Load more...]                                         │
+└─────────────────────────────────────────────────────────┘
+```
+
+### Retención
+
+Los logs de auditoría se mantienen por **90 días** por default.
+
+**Exportar para cumplimiento:**
+
+- Descargar como CSV
+- Filtrar por rango de fechas
+- Incluir todos los detalles
+
+## Reportes de Standup
+
+Resúmenes diarios de actividad del equipo.
+
+**Acceso:** Barra de navegación → **Standup**
+
+### Standup Diario
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ Daily Standup — December 15, 2024                      │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ Team Summary                                           │
+│ • 8 Tasks Completed                                    │
+│ • 5 In Progress                                        │
+│ • 2 In Review                                          │
+│ • 1 Blocked                                            │
+│ • 0 Overdue                                            │
+│                                                         │
+│ By Agent:                                              │
+│                                                         │
+│ Atlas (CEO)                                            │
+│   ✅ Completed: Q1 Marketing plan submitted            │
+│   🔄 In Progress: Hiring team members                  │
+│                                                         │
+│ Nova (Engineer)                                        │
+│   ✅ Completed: API authentication (T-38)              │
+│   ✅ Completed: Database schema (T-39)                 │
+│   📋 Assigned: User endpoints (T-40)                   │
+│                                                         │
+│ Echo (Content)                                         │
+│   🔄 In Progress: Blog post draft (T-42)               │
+│                                                         │
+│ Blocked:                                               │
+│ • T-45 (Design) — Waiting for brand guidelines         │
+│                                                         │
+│ Overdue: None 🎉                                       │
+│                                                         │
+│ [Download PDF]  [View Previous Days]                   │
+└─────────────────────────────────────────────────────────┘
+```
+
+### Características de Standup
+
+- **Selección de fecha** — Cualquier día
+- **Equipo o individual** — Filtrar por agente
+- **Exportar** — PDF o email
+- **Comparación** — vs períodos anteriores
+
+## Salud del Sistema
+
+Monitorea la infraestructura de CapiBot.
+
+**Acceso:** Panel de Overview
+
+### Indicadores de Salud
+
+```
+Salud del Sistema
+
+✅ Gateway        Conectado (12 clientes)
+✅ Database       Conectado (45ms latency)
+✅ Memory         2.3GB / 8GB (29%)
+✅ Disk           45GB / 100GB (45%)
+⏱️  Uptime        14 days, 3 hours
+```
+
+### Alertas
+
+Alertas automáticas cuando:
+
+- Gateway se desconecta
+- Errores de base de datos
+- Espacio en disco bajo
+- Memoria alta
+- Tasas de error altas
+
+## Mejores Prácticas
+
+### Monitoreo
+
+1. **Revisa Diariamente** — Revisa actividad y métricas
+2. **Observa Patrones** — Detecta tendencias temprano
+3. **Configura Alertas** — Recibe notificación de issues
+4. **Revisa Semanalmente** — Tendencias de análisis
+
+### Debugging
+
+1. **Comienza con Logs** — Encuentra mensajes de error
+2. **Revisa Traces** — Ve qué hicieron los agentes
+3. **Revisa Activity** — Línea de tiempo de eventos
+4. **Audit Trail** — Quién hizo qué cuándo
+
+### Rendimiento
+
+1. **Monitorea Latencia** — Tiempos de respuesta de agentes
+2. **Observa Costos** — Uso de tokens por agente
+3. **Rastrea Tasas de Éxito** — Métricas de calidad
+4. **Optimiza Cuellos de Botella** — Operaciones lentas
+
+## Solución de Problemas
+
+**No Muestra Actividad:**
+
+- Verifica que el sistema esté ejecutándose
+- Verifica que los filtros no sean demasiado restrictivos
+- Refresca la página
+
+**Logs No se Actualizan:**
+
+- Habilita modo "Live"
+- Revisa filtros de nivel de log
+- Puede necesitar desplazarse
+
+**Notificaciones Faltantes:**
+
+- Revisa configuración de notificaciones
+- Verifica conexiones de canales (Telegram, etc.)
+- Revisa configuración de "No Molestar"
+
+**Costos Altos:**
+
+- Revisa Análisis para desglose
+- Revisa traces para operaciones costosas
+- Considera selección de modelo
+
+## Siguientes Pasos
+
+- Configura [Automatización](automation)
+- Configura [Integraciones](integrations)
+- Revisa [Administración](administration)

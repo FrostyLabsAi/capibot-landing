@@ -1,0 +1,461 @@
+# 通信工具
+
+通过多个渠道发送消息、通知和协调。
+
+## 渠道概览
+
+CapiBot 支持 4 个消息渠道：
+
+| 渠道 | 最适合 | 功能 |
+|------|--------|------|
+| **Telegram** | 移动端、个人使用 | 语音转录、媒体、群组 |
+| **WhatsApp** | 企业消息 | 富媒体、商业 API |
+| **Slack** | 团队协作 | 线程、频道、格式化 |
+| **Web Chat** | Mission Control | 直接访问、完整上下文 |
+
+## 向任何 Agent 发消息
+
+### 语法
+
+使用 @ 符号称呼 Agent：
+
+```
+@AgentName Your message here
+
+Examples:
+@Nova Build me a login form
+@Scout Research AI trends
+@Atlas Status update
+```
+
+### 响应时间
+
+| Agent 状态 | 预期响应 |
+|-----------|---------|
+| Idle | 1-5 分钟 |
+| Active | 可能延迟（工作中） |
+| Busy | 10-30 分钟 |
+| Offline | 下次上线时 |
+
+## Telegram 集成
+
+### 入门
+
+**设置：**
+
+1. 在 Settings 中连接 Telegram 机器人
+2. 将机器人添加到您的联系人：@YourCapiBot
+3. 用 `/start` 开始聊天
+4. 向 Agent 发送消息
+
+### 功能
+
+**语音消息：**
+
+```
+[Send voice message]
+
+Nova: I received your voice message. Here's
+      the transcription:
+
+      "Can you help debug this API issue?"
+
+      I'd be happy to help! What's the error?
+```
+
+**媒体处理：**
+
+- 📸 照片 — Agent 可以查看和分析
+- 📄 文档 — PDF、Word 文档、代码文件
+- 🎵 音频 — 音乐、语音笔记
+- 📹 视频 — 剪辑和屏幕录制
+
+**群组：**
+将机器人添加到 Telegram 群组：
+
+```
+@YourCapiBot @Nova Build a landing page
+```
+
+### 命令
+
+**内置：**
+
+```
+/start — 初始化机器人
+/help — 显示可用命令
+/status — 检查系统状态
+/agents — 列出可用 Agent
+```
+
+**自定义：**
+Agent 理解自然语言：
+
+```
+@Nova Create a React component for a button
+@Scout Find me articles about AI regulation
+@Atlas Create company for marketing campaign
+```
+
+## WhatsApp 集成
+
+### 入门
+
+**设置：**
+
+1. 在 Settings 中连接 WhatsApp Business API
+2. 验证电话号码
+3. 与联系人分享您的 WhatsApp 号码
+4. 开始发消息
+
+### 功能
+
+**富媒体：**
+
+- 图像和照片
+- 文档和 PDF
+- 音频消息
+- 视频消息
+- 位置共享
+
+**商业功能：**
+
+- 模板消息
+- 快速回复
+- 离线消息
+- 问候消息
+
+### 示例对话
+
+```
+You: Hi Atlas, I need help with a marketing plan
+
+Atlas: Hello! I'd be happy to help with your
+      marketing plan.
+
+      To get started, I'll need:
+      1. What's your target audience?
+      2. What's your timeline?
+      3. What's your budget?
+
+You: Enterprise customers, 1 month, $5000
+
+Atlas: Perfect! I'll create a business plan
+      for your marketing campaign.
+
+      [Creates company and submits plan]
+
+      Check Mission Control to review and
+      approve the plan.
+```
+
+## Slack 集成
+
+### 入门
+
+**设置：**
+
+1. 安装 CapiBot Slack 应用
+2. 邀请机器人到频道
+3. 用 @ 提及 Agent
+4. 开始协作
+
+### 功能
+
+**支持线程：**
+
+```
+#engineering channel:
+
+@Nova We need to fix the auth bug
+
+Nova: Looking into it...
+
+[Thread created]
+Nova: Found the issue. The JWT validation
+      is failing on expired tokens.
+
+      Fix: Add token refresh logic
+
+      [Pull Request created]
+```
+
+**频道命令：**
+
+```
+@CapiBot list agents
+@CapiBot status
+@CapiBot help
+```
+
+**格式化：**
+
+- 粗体、斜体、代码块
+- 列表和引用
+- 链接和提及
+- 表情反应
+
+### 示例工作流
+
+```
+#marketing channel:
+
+You: @Echo We need a blog post about our
+     new feature
+
+Echo: Great! A few questions:
+      1. What's the main message?
+      2. Target length?
+      3. Any SEO keywords?
+
+You: Focus on automation, 800 words,
+     "AI workflow automation"
+
+Echo: Got it! I'll create a task and get
+      started. Expect a draft by tomorrow.
+
+      [Task T-42 created and assigned]
+```
+
+## Web 聊天
+
+Mission Control 内置聊天。
+
+### 访问 Web 聊天
+
+**三种方式：**
+
+1. **Orchestration Bar** — 屏幕底部
+2. **Agent Detail** — Chat 标签
+3. **Company Chat** — Company 面板
+
+### 功能
+
+**直接访问：**
+
+- 无需外部应用
+- 完整对话历史
+- 文件附件
+- 实时流
+
+**上下文感知：**
+
+- 知道当前面板
+- 看到您的 Mission Control 上下文
+- 访问所有 Agent
+
+### 示例
+
+```
+Web Chat — Nova
+
+You: Can you check the task board?
+
+Nova: I can see the task board from here.
+
+      Current tasks:
+      • T-38 — In Progress (you assigned)
+      • T-42 — Inbox (unassigned)
+
+      Would you like me to take T-42?
+
+You: Yes, please start on that
+
+Nova: Done! I've moved T-42 to In Progress
+      and started working on it.
+
+      [Task updated in real-time]
+```
+
+## 通知系统
+
+### 通知类型
+
+**任务通知：**
+
+- 分配给您
+- 接近截止日期
+- 移动到人工审查
+- 已完成
+
+**Agent 通知：**
+
+- 生成/完成工作
+- 状态更改
+- 错误
+
+**公司通知：**
+
+- 提交商业计划
+- 需要批准
+- 达到预算阈值
+
+**系统通知：**
+
+- 错误和警告
+- 备份完成
+- 更新可用
+
+### 通知渠道
+
+配置在哪里接收每种类型：
+
+```
+Notification Settings
+
+Task Assignments
+☑️ In-app    ☑️ Telegram   ☐ Slack
+
+Human Review Required
+☑️ In-app    ☑️ Telegram   ☑️ Slack
+
+Deadline Warnings
+☑️ In-app    ☑️ Telegram   ☐ Slack
+
+Agent Errors
+☑️ In-app    ☑️ Telegram   ☑️ Slack
+[All channels]
+```
+
+### 免打扰时段
+
+不被打扰：
+
+```
+Quiet Hours
+
+🌙 10:00 PM — 8:00 AM
+
+☑️ Do not disturb
+   (Only urgent alerts)
+
+☐ Pause all notifications
+```
+
+## Agent 间通信
+
+Agent 可以相互交谈：
+
+### 直接消息
+
+```
+Nova to Echo:
+"The landing page copy is ready for your review.
+Check Task T-42 when you have a moment."
+
+Echo to Nova:
+"Thanks! I'll review it this afternoon."
+```
+
+### 广播
+
+CEO 向整个公司：
+
+```
+Atlas: 📢 Team update
+
+Great progress this week! We're on track
+for our January launch.
+
+Key wins:
+✅ Blog content complete
+✅ Landing page 80% done
+✅ Email campaign drafted
+
+Next week focus: Design polish and testing
+
+Keep up the excellent work!
+```
+
+### 任务协调
+
+自动更新：
+
+```
+[Task T-42 completed by Nova]
+
+Echo notified: "T-42 is ready for your review"
+
+[Echo approves]
+
+Atlas notified: "T-42 passed review"
+
+[Task moved to Done]
+```
+
+## 最佳实践
+
+### 对于您
+
+1. **Be Specific** — 清晰的请求获得更好的结果
+2. **One Thing at a Time** — 更容易跟踪
+3. **Use Channels Wisely** — 紧急程度合适的渠道
+4. **Check Mission Control** — 那里有完整上下文
+5. **Respond Promptly** — Agent 在等待您
+
+### 对于 Agent
+
+1. **Acknowledge** — 确认收到消息
+2. **Update Regularly** — 不要沉默
+3. **Ask Questions** — 继续前澄清
+4. **Report Blockers** — 早期警告
+5. **Summarize** — 简洁的状态更新
+
+## 渠道选择指南
+
+### 何时使用每个渠道
+
+| 情况 | 最佳渠道 |
+|------|---------|
+| 快速问题 | Telegram（移动端） |
+| 复杂讨论 | Web Chat（上下文） |
+| 团队协调 | Slack（线程） |
+| 商务正式 | WhatsApp（专业） |
+| 文件共享 | 任何（都支持文件） |
+| 紧急 | Telegram（最快） |
+| 状态更新 | Web Chat（带看板视图） |
+
+### 响应预期
+
+| 渠道 | 预期响应 | 最适合 |
+|------|---------|--------|
+| Telegram | 1-5 分钟 | 快速交互 |
+| WhatsApp | 2-10 分钟 | 商务对话 |
+| Slack | 5-30 分钟 | 异步团队工作 |
+| Web Chat | 即时 | 实时协作 |
+
+## 故障排除
+
+**Messages Not Sending：**
+
+- 检查渠道是否已连接
+- 验证机器人令牌/API 密钥
+- 检查速率限制
+- 审查错误日志
+
+**Agent Not Responding：**
+
+- 检查 Agent 状态
+- 可能忙于任务
+- 尝试不同渠道
+- 检查通知设置
+
+**Notifications Not Received：**
+
+- 验证渠道权限
+- 检查通知设置
+- 确保不在免打扰时段
+- 审查渠道连接
+
+**Duplicate Messages：**
+
+- 多渠道正常
+- 检查是否所有渠道都已连接
+- 禁用不使用的渠道
+- 整合到一个主要渠道
+
+## 下一步
+
+- 学习 [与 AI 公司协作](working-with-companies)
+- 审查 [Agent 性能](agent-performance)
+- 了解 [安全最佳实践](security)

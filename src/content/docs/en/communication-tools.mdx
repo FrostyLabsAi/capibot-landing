@@ -1,0 +1,461 @@
+# Communication Tools
+
+Send messages, notifications, and coordinate through multiple channels.
+
+## Channel Overview
+
+CapiBot supports 4 messaging channels:
+
+| Channel      | Best For             | Features                           |
+| ------------ | -------------------- | ---------------------------------- |
+| **Telegram** | Mobile, personal use | Voice transcription, media, groups |
+| **WhatsApp** | Business messaging   | Rich media, business API           |
+| **Slack**    | Team collaboration   | Threads, channels, formatting      |
+| **Web Chat** | Mission Control      | Direct access, full context        |
+
+## Messaging Any Agent
+
+### Syntax
+
+Address agents with @ symbol:
+
+```
+@AgentName Your message here
+
+Examples:
+@Nova Build me a login form
+@Scout Research AI trends
+@Atlas Status update
+```
+
+### Response Times
+
+| Agent Status | Expected Response        |
+| ------------ | ------------------------ |
+| Idle         | 1-5 minutes              |
+| Active       | May be delayed (working) |
+| Busy         | 10-30 minutes            |
+| Offline      | When next online         |
+
+## Telegram Integration
+
+### Getting Started
+
+**Setup:**
+
+1. Connect Telegram bot in Settings
+2. Add bot to your contacts: @YourCapiBot
+3. Start chat with `/start`
+4. Send messages to agents
+
+### Features
+
+**Voice Messages:**
+
+```
+[Send voice message]
+
+Nova: I received your voice message. Here's
+      the transcription:
+
+      "Can you help debug this API issue?"
+
+      I'd be happy to help! What's the error?
+```
+
+**Media Handling:**
+
+- 📸 Photos — Agents can view and analyze
+- 📄 Documents — PDFs, Word docs, code files
+- 🎵 Audio — Music, voice notes
+- 📹 Videos — Clips and screen recordings
+
+**Groups:**
+Add bot to Telegram groups:
+
+```
+@YourCapiBot @Nova Build a landing page
+```
+
+### Commands
+
+**Built-in:**
+
+```
+/start — Initialize bot
+/help — Show available commands
+/status — Check system status
+/agents — List available agents
+```
+
+**Custom:**
+Agents understand natural language:
+
+```
+@Nova Create a React component for a button
+@Scout Find me articles about AI regulation
+@Atlas Create company for marketing campaign
+```
+
+## WhatsApp Integration
+
+### Getting Started
+
+**Setup:**
+
+1. Connect WhatsApp Business API in Settings
+2. Verify phone number
+3. Share your WhatsApp number with contacts
+4. Start messaging
+
+### Features
+
+**Rich Media:**
+
+- Images and photos
+- Documents and PDFs
+- Audio messages
+- Video messages
+- Location sharing
+
+**Business Features:**
+
+- Template messages
+- Quick replies
+- Away messages
+- Greeting messages
+
+### Example Conversation
+
+```
+You: Hi Atlas, I need help with a marketing plan
+
+Atlas: Hello! I'd be happy to help with your
+      marketing plan.
+
+      To get started, I'll need:
+      1. What's your target audience?
+      2. What's your timeline?
+      3. What's your budget?
+
+You: Enterprise customers, 1 month, $5000
+
+Atlas: Perfect! I'll create a business plan
+      for your marketing campaign.
+
+      [Creates company and submits plan]
+
+      Check Mission Control to review and
+      approve the plan.
+```
+
+## Slack Integration
+
+### Getting Started
+
+**Setup:**
+
+1. Install CapiBot Slack app
+2. Invite bot to channels
+3. Mention agents with @
+4. Start collaborating
+
+### Features
+
+**Thread-Aware:**
+
+```
+#engineering channel:
+
+@Nova We need to fix the auth bug
+
+Nova: Looking into it...
+
+[Thread created]
+Nova: Found the issue. The JWT validation
+      is failing on expired tokens.
+
+      Fix: Add token refresh logic
+
+      [Pull Request created]
+```
+
+**Channel Commands:**
+
+```
+@CapiBot list agents
+@CapiBot status
+@CapiBot help
+```
+
+**Formatting:**
+
+- Bold, italic, code blocks
+- Lists and quotes
+- Links and mentions
+- Emoji reactions
+
+### Example Workflow
+
+```
+#marketing channel:
+
+You: @Echo We need a blog post about our
+     new feature
+
+Echo: Great! A few questions:
+      1. What's the main message?
+      2. Target length?
+      3. Any SEO keywords?
+
+You: Focus on automation, 800 words,
+     "AI workflow automation"
+
+Echo: Got it! I'll create a task and get
+      started. Expect a draft by tomorrow.
+
+      [Task T-42 created and assigned]
+```
+
+## Web Chat
+
+Built-in chat within Mission Control.
+
+### Accessing Web Chat
+
+**Three Ways:**
+
+1. **Orchestration Bar** — Bottom of screen
+2. **Agent Detail** — Chat tab
+3. **Company Chat** — Company panel
+
+### Features
+
+**Direct Access:**
+
+- No external app needed
+- Full conversation history
+- File attachments
+- Real-time streaming
+
+**Context Awareness:**
+
+- Knows current panel
+- Sees your Mission Control context
+- Access to all agents
+
+### Example
+
+```
+Web Chat — Nova
+
+You: Can you check the task board?
+
+Nova: I can see the task board from here.
+
+      Current tasks:
+      • T-38 — In Progress (you assigned)
+      • T-42 — Inbox (unassigned)
+
+      Would you like me to take T-42?
+
+You: Yes, please start on that
+
+Nova: Done! I've moved T-42 to In Progress
+      and started working on it.
+
+      [Task updated in real-time]
+```
+
+## Notification System
+
+### Types of Notifications
+
+**Task Notifications:**
+
+- Assigned to you
+- Approaching deadline
+- Moved to Human Review
+- Completed
+
+**Agent Notifications:**
+
+- Spawned/completed work
+- Status changes
+- Errors
+
+**Company Notifications:**
+
+- Business plan submitted
+- Approval needed
+- Budget threshold reached
+
+**System Notifications:**
+
+- Errors and warnings
+- Backups completed
+- Updates available
+
+### Notification Channels
+
+Configure where you receive each type:
+
+```
+Notification Settings
+
+Task Assignments
+☑️ In-app    ☑️ Telegram   ☐ Slack
+
+Human Review Required
+☑️ In-app    ☑️ Telegram   ☑️ Slack
+
+Deadline Warnings
+☑️ In-app    ☑️ Telegram   ☐ Slack
+
+Agent Errors
+☑️ In-app    ☑️ Telegram   ☑️ Slack
+[All channels]
+```
+
+### Quiet Hours
+
+Don't get disturbed:
+
+```
+Quiet Hours
+
+🌙 10:00 PM — 8:00 AM
+
+☑️ Do not disturb
+   (Only urgent alerts)
+
+☐ Pause all notifications
+```
+
+## Inter-Agent Communication
+
+Agents can talk to each other:
+
+### Direct Messages
+
+```
+Nova to Echo:
+"The landing page copy is ready for your review.
+Check Task T-42 when you have a moment."
+
+Echo to Nova:
+"Thanks! I'll review it this afternoon."
+```
+
+### Broadcast
+
+CEO to entire company:
+
+```
+Atlas: 📢 Team update
+
+Great progress this week! We're on track
+for our January launch.
+
+Key wins:
+✅ Blog content complete
+✅ Landing page 80% done
+✅ Email campaign drafted
+
+Next week focus: Design polish and testing
+
+Keep up the excellent work!
+```
+
+### Task Coordination
+
+Automatic updates:
+
+```
+[Task T-42 completed by Nova]
+
+Echo notified: "T-42 is ready for your review"
+
+[Echo approves]
+
+Atlas notified: "T-42 passed review"
+
+[Task moved to Done]
+```
+
+## Best Practices
+
+### For You
+
+1. **Be Specific** — Clear requests get better results
+2. **One Thing at a Time** — Easier to track
+3. **Use Channels Wisely** — Right channel for urgency
+4. **Check Mission Control** — Full context there
+5. **Respond Promptly** — Agents waiting on you
+
+### For Agents
+
+1. **Acknowledge** — Confirm receipt of messages
+2. **Update Regularly** — Don't go silent
+3. **Ask Questions** — Clarify before proceeding
+4. **Report Blockers** — Early warning
+5. **Summarize** — Concise status updates
+
+## Channel Selection Guide
+
+### When to Use Each Channel
+
+| Situation          | Best Channel               |
+| ------------------ | -------------------------- |
+| Quick question     | Telegram (mobile)          |
+| Complex discussion | Web Chat (context)         |
+| Team coordination  | Slack (threads)            |
+| Business formal    | WhatsApp (professional)    |
+| File sharing       | Any (all support files)    |
+| Urgent             | Telegram (fastest)         |
+| Status updates     | Web Chat (with board view) |
+
+### Response Expectations
+
+| Channel  | Expected Response | Best For                |
+| -------- | ----------------- | ----------------------- |
+| Telegram | 1-5 minutes       | Quick interactions      |
+| WhatsApp | 2-10 minutes      | Business conversations  |
+| Slack    | 5-30 minutes      | Async team work         |
+| Web Chat | Immediate         | Real-time collaboration |
+
+## Troubleshooting
+
+**Messages Not Sending:**
+
+- Check channel is connected
+- Verify bot token/API key
+- Check rate limits
+- Review error logs
+
+**Agent Not Responding:**
+
+- Check agent status
+- May be busy with task
+- Try different channel
+- Check notification settings
+
+**Notifications Not Received:**
+
+- Verify channel permissions
+- Check notification settings
+- Ensure not in quiet hours
+- Review channel connection
+
+**Duplicate Messages:**
+
+- Normal for multi-channel
+- Check if all channels connected
+- Disable channels you don't use
+- Consolidate to one primary channel
+
+## Next Steps
+
+- Learn [Working with Companies](working-with-companies)
+- Review [Agent Performance](agent-performance)
+- Understand [Security Best Practices](security)

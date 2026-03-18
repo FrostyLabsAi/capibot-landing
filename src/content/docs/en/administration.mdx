@@ -1,0 +1,525 @@
+# Administration
+
+System configuration and management settings.
+
+**Access:** Nav rail → **Settings**
+
+## Settings Panel
+
+The settings panel is organized into categories:
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ Settings                                                │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ Categories:                                             │
+│ • General                    ← Current                │
+│ • LLM Providers                                        │
+│ • Channels                                             │
+│ • Data Retention                                       │
+│ • Security                                             │
+│ • Advanced                                             │
+│                                                         │
+└─────────────────────────────────────────────────────────┘
+```
+
+## General Settings
+
+### System Configuration
+
+```
+General Settings
+
+System Name
+[My AI Workforce                    ]
+
+Default Language
+[English ▼]
+
+Time Zone
+[America/New_York ▼]
+
+Date Format
+[MM/DD/YYYY ▼]
+```
+
+### Display Preferences
+
+```
+Display
+
+Theme
+○ Light  ● Dark  ○ Auto
+
+Density
+○ Comfortable  ● Compact
+
+Sidebar
+☑️ Show Live Feed by default
+☑️ Auto-collapse completed tasks
+☐ Show agent avatars in lists
+```
+
+### Notifications
+
+```
+Notification Preferences
+
+In-App Notifications
+☑️ Enable desktop notifications
+☑️ Play sound on alert
+☐ Show notification count in title
+
+Email Notifications
+☐ Send daily summary
+☐ Notify on system errors
+☐ Weekly analytics report
+```
+
+## LLM Provider Settings
+
+Configure which AI models to use.
+
+### Provider Priority
+
+```
+LLM Provider Priority
+
+When CapiBot needs AI, it tries providers in this order:
+
+1. 🥇 Anthropic Claude
+2. 🥈 Google Gemini
+3. 🥉 Kimi (Moonshot)
+4.    GLM (Zhipu AI)
+5.    MiniMax
+6.    Ollama (local)
+
+[Add Provider] [Reorder]
+```
+
+**How Failover Works:**
+
+1. Primary provider (Claude) attempts request
+2. If fails, automatically tries the next configured provider
+3. Continues until success or all fail
+
+### Provider Configuration
+
+**Anthropic:**
+
+```
+API Key: [sk-ant-********************************    ]
+Model: [Claude 3.5 Sonnet ▼]
+Max Tokens: 4096
+Temperature: 0.7
+[Test Connection]
+```
+
+**Ollama (Local):**
+
+```
+Base URL: [http://localhost:11434           ]
+Model: [llama3.1:latest ▼]
+[Refresh Models]
+```
+
+**Google Gemini:**
+
+```
+API Key: [************************************    ]
+Model: [Gemini 1.5 Pro ▼]
+[Verify Key]
+```
+
+### Model Override
+
+Per-agent model selection:
+
+```
+Morgan (CEO) → Claude (default)
+Nova (Engineer) → Gemini (faster coding)
+Scout (Research) → Claude (better analysis)
+```
+
+## Channel Settings
+
+Configure messaging channels.
+
+### Telegram
+
+```
+Telegram Bot Configuration
+
+Bot Token: [123456789:ABCdefGHIjkl...      ]
+Status: ✅ Connected
+Bot Username: @MyCapiBot
+
+User Allowlist
+☑️ Enable allowlist
+Allowed users: @username1, @username2
+☐ Allow any user (not recommended)
+
+Features
+☑️ Voice message transcription
+☑️ File handling
+☑️ Typing indicators
+[Save] [Test Connection]
+```
+
+### WhatsApp
+
+```
+WhatsApp Business API
+
+API Key: [********************************    ]
+Phone Number: +1 (555) 123-4567
+Status: ✅ Connected
+
+Webhook URL: https://your-domain.com/webhooks/whatsapp
+Verify Token: [********************************    ]
+
+Media Handling
+☑️ Download images
+☑️ Download documents
+☐ Download audio (requires storage)
+Maximum file size: 16 MB
+[Save] [Test Message]
+```
+
+### Slack
+
+```
+Slack App Configuration
+
+Bot Token: [xoxb-1234-5678-...              ]
+Status: ✅ Connected
+Workspace: MyWorkspace
+
+Channels
+#general — ✅ Active
+#engineering — ✅ Active
+#marketing — ⏸️ Paused
+
+Features
+☑️ Thread-aware messaging
+☑️ Rich formatting
+☑️ File sharing
+[Save] [Invite to Channel]
+```
+
+## Data Retention
+
+Control how long data is kept.
+
+```
+Data Retention Policies
+
+Auto-cleanup automatically removes old data.
+
+Activities        Keep for [30 ▼] days
+Notifications     Keep for [7 ▼] days
+Audit Logs        Keep for [90 ▼] days
+Comms/Messages    Keep for [15 ▼] days
+Webhook History   Keep for [30 ▼] days
+Traces            Keep for [30 ▼] days
+Files             Keep for [90 ▼] days
+Completed Tasks   Keep for [365 ▼] days
+
+☑️ Enable auto-cleanup
+☐ Archive before delete
+[Save Changes]
+```
+
+**Why Auto-Cleanup?**
+
+- Reduces database size
+- Improves performance
+- Maintains privacy
+- Controls costs
+
+**Important Data is Never Deleted:**
+
+- Active tasks
+- Agent memories
+- Knowledge base
+- Company information
+- Settings
+
+## Security Settings
+
+### Authentication
+
+```
+Authentication
+
+API Key Authentication
+Master API Key: [CAPIBOT_************************    ]
+[Regenerate] [Copy]
+
+Session Settings
+Session duration: [7 ▼] days
+☑️ Require secure cookies
+☑️ Validate IP address
+☐ Allow multiple sessions per user
+
+Dev Mode
+☐ Enable dev mode (⚠️ Not for production)
+```
+
+### Access Control
+
+```
+Access Control
+
+IP Allowlist
+☐ Enable IP restrictions
+Allowed IPs: 192.168.1.0/24, 10.0.0.5
+
+User Allowlist (Telegram)
+@username1, @username2, @username3
+☐ Allow any Telegram user
+
+Host Allowlist
+localhost, capibot.io, *.internal.com
+```
+
+### Content Security
+
+```
+Content Security Policy
+
+☑️ Enable CSP headers
+☑️ Block inline scripts
+☑️ Restrict object sources
+☑️ Validate form actions
+
+Shell Security
+☑️ Block dangerous shell patterns
+☑️ Restrict to workspace
+☑️ Timeout commands (default: 30s)
+Maximum shell output: ~10KB per call
+```
+
+## Advanced Settings
+
+### System Performance
+
+```
+Performance
+
+Connection Pooling
+Max database connections: [10 ▼]
+Connection timeout: [30 ▼] seconds
+
+Caching
+☑️ Enable response caching
+Cache duration: [60 ▼] seconds
+
+Rate Limiting
+API rate limit: [100 ▼] requests/minute
+Webhook rate limit: [100 ▼] requests/minute
+```
+
+### Logging
+
+```
+Logging
+
+Log Level
+[Info ▼] (Debug, Info, Warn, Error)
+
+Log Destinations
+☑️ Console
+☐ File: /var/log/capibot/
+☐ External (syslog)
+
+Sensitive Data
+☐ Log API keys (not recommended)
+☐ Log full prompts
+☑️ Mask sensitive data
+```
+
+### Backup & Recovery
+
+```
+Backup Settings
+
+Automatic Backups
+☑️ Enable daily backups
+Backup time: [02:00 ▼]
+Retention: [7 ▼] days
+
+Backup Contents
+☑️ Database
+☑️ File storage
+☑️ Configuration
+☐ Logs
+
+Manual Backup
+[Create Backup Now]
+
+Last Backup: Dec 14, 2024 02:00 AM
+Status: ✅ Success (245 MB)
+[Download] [Restore]
+```
+
+## User Management
+
+If running multi-user CapiBot:
+
+```
+User Management
+
+Current Users: 3
+
+┌─────────────────┬──────────────┬────────────┐
+│ User            │ Role         │ Last Active│
+├─────────────────┼──────────────┼────────────┤
+│ admin@capibot.io│ Admin        │ 2 min ago  │
+│ user1@company.io│ User         │ 1 hour ago │
+│ user2@company.io│ User         │ 1 day ago  │
+└─────────────────┴──────────────┴────────────┘
+
+[Invite User] [Export Users]
+```
+
+### User Roles
+
+**Admin:**
+
+- Full system access
+- Manage settings
+- Manage users
+- View audit logs
+
+**User:**
+
+- Create/manage companies
+- Manage assigned agents
+- View own tasks
+- Limited settings access
+
+## Import / Export
+
+### Export Data
+
+```
+Export Your Data
+
+What to Export
+☑️ Companies and teams
+☑️ Agents and configurations
+☑️ Tasks and history
+☑️ Knowledge base
+☐ Logs and traces
+
+Format
+● JSON (machine readable)
+○ Markdown (human readable)
+○ CSV (spreadsheets)
+
+[Export Data]
+```
+
+### Import Data
+
+```
+Import Data
+
+⚠️ Import will merge with existing data.
+Conflicting items will be skipped.
+
+Select file: [Browse...]
+Supported formats: .json, .zip
+
+[Preview Import] [Import Data]
+```
+
+## System Information
+
+View system status:
+
+```
+System Information
+
+Version: CapiBot v1.2.3
+Build: 2024.12.15-abc123
+License: MIT (Open Source)
+
+Runtime
+Node.js: v20.10.0
+Uptime: 14 days, 3 hours
+Memory: 2.3GB / 8GB
+
+Database
+PostgreSQL: 16.1
+Size: 1.2 GB
+Connections: 3 / 10
+
+Check for Updates
+Current: v1.2.3
+Latest: v1.2.3 ✅ Up to date
+```
+
+## Best Practices
+
+### Configuration
+
+1. **Document Changes** — Note why you changed settings
+2. **Test First** — Try changes in dev environment
+3. **Backup First** — Before major changes
+4. **Start Conservative** — Tighten gradually
+5. **Review Regularly** — Monthly settings audit
+
+### Security
+
+1. **Strong API Keys** — Use auto-generated keys
+2. **Rotate Regularly** — Every 90 days
+3. **Least Privilege** — Minimum required access
+4. **Monitor Logs** — Watch for unusual activity
+5. **Keep Updated** — Latest version for security patches
+
+### Performance
+
+1. **Right-size Pool** — Match DB connections to usage
+2. **Cache Wisely** — Don't cache dynamic content
+3. **Clean Regularly** — Auto-cleanup old data
+4. **Monitor Resources** — Watch memory and disk
+5. **Optimize Queries** — Check slow query logs
+
+## Troubleshooting
+
+**Settings Not Saving:**
+
+- Check permissions
+- Verify values are valid
+- Review error messages
+- Try refreshing page
+
+**Connection Test Fails:**
+
+- Verify API keys
+- Check network connectivity
+- Review firewall rules
+- Check service status
+
+**Performance Issues:**
+
+- Lower connection pool size
+- Reduce cache duration
+- Enable auto-cleanup
+- Check database size
+
+**Security Alerts:**
+
+- Review audit logs
+- Check access patterns
+- Verify allowlists
+- Rotate compromised keys
+
+## Next Steps
+
+- Review [Security Best Practices](security)
+- Learn about [Agent Performance](agent-performance)
+- Explore [Tool Categories](tool-categories)

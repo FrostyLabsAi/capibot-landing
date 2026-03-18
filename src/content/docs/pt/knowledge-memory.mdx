@@ -1,0 +1,423 @@
+# Conhecimento e Memória
+
+Seus agentes de IA lembram de tudo. Entender como a memória funciona ajuda você a obter melhores resultados e construir sistemas mais inteligentes.
+
+## Tipos de Memória
+
+O CapiBot tem quatro tipos de memória, cada um servindo propósitos diferentes:
+
+### 1. Memória do Agente (Pessoal)
+
+Cada agente tem suas próprias notas e aprendizados:
+
+```
+Memória da Nova
+
+📄 preferencias-projeto.md
+  - Prefere TypeScript ao invés de JavaScript
+  - Gosta de arquitetura baseada em componentes
+  - Familiar com padrões de API do cliente
+
+📄 guia-estilo-codigo.md
+  - Usa indentação de 2 espaços
+  - Prefere componentes funcionais
+  - Sempre adiciona PropTypes
+
+📄 recursos-uteis.md
+  - Links para design system interno
+  - Documentação de API do cliente
+  - Funções utilitárias comuns
+```
+
+**O que armazena:**
+
+- Preferências aprendidas de interações
+- Conhecimento específico de projeto
+- Guias de estilo e padrões
+- Recursos e links úteis
+- Lições de trabalho anterior
+
+**Acesso:** Apenas o agente pode ler/escrever sua própria memória
+
+### 2. Base de Conhecimento (Compartilhada)
+
+Informação acessível a todos os agentes:
+
+```
+Base de Conhecimento
+
+📁 Decisões
+  ├── decisoes-arquitetura.md
+  └── escolhas-tecnologia.md
+
+📁 Lições
+  ├── o-que-funcionou.md
+  └── o-que-nao-funcionou.md
+
+📁 Projetos
+  ├── especificacoes-projeto-alpha.md
+  └── cronograma-projeto-beta.md
+
+📁 Compromissos
+  └── cronograma-entregas.md
+```
+
+**O que armazena:**
+
+- Decisões e racional
+- Lições aprendidas
+- Documentação de projeto
+- Compromissos e prazos
+- Preferências e padrões
+
+**Acesso:** Todos os agentes podem ler; você controla acesso de escrita
+
+### 3. Conhecimento da Empresa (Escopo Limitado)
+
+Informação específica de uma Empresa de IA:
+
+```
+Conhecimento da Empresa de Marketing Q1
+
+📄 Resumo Executivo
+  Missão: Lançar campanha de conscientização de produto
+  Alvo: Clientes enterprise
+  Cronograma: 4 semanas
+  Orçamento: $10.000
+
+📄 Diretrizes de Marca
+  Cores: #FF6B35, #004E89
+  Tom: Profissional mas amigável
+  Regras de uso do logo...
+
+📄 Mensagens da Campanha
+  Proposições de valor principais...
+  Personas alvo...
+  Posicionamento competitivo...
+
+📁 Entregáveis
+  ├── blog-post-1-final.md
+  ├── landing-page-design.png
+  └── analise-competitiva.pdf
+```
+
+**O que armazena:**
+
+- Resumo executivo (injetado no contexto de todos os agentes)
+- Guias específicos da empresa
+- Entregáveis concluídos
+- Documentação de processos
+
+**Acesso:** Apenas agentes naquela empresa
+
+### 4. Memória de Conversação
+
+Contexto de conversas em andamento:
+
+```
+Contexto da Sessão Atual
+
+Você: Pesquise nossos 5 principais concorrentes
+Nova: Vou pesquisar seus concorrentes. Em qual
+      indústria devo focar?
+Você: Ferramentas de analytics SaaS
+Nova: Entendido. Vou focar em analytics SaaS.
+      Devo incluir comparação de preços?
+Você: Sim, preço é importante
+```
+
+**O que armazena:**
+
+- Histórico recente de conversação
+- Contexto da thread atual
+- Perguntas/esclarecimentos pendentes
+
+**Acesso:** Agentes na conversação atual
+
+## Como a Memória Funciona
+
+### Quando Agentes Lembram
+
+Agentes lembram automaticamente quando:
+
+- ✅ Você diz preferências
+- ✅ Eles completam trabalho com sucesso
+- ✅ Eles aprendem com erros
+- ✅ Você salva informação explicitamente
+- ✅ Eles leem arquivos e documentos
+
+### Injeção de Memória
+
+Antes de cada execução de agente, memória relevante é injetada:
+
+```
+[Memória do Agente] + [Base de Conhecimento] + [Conhecimento da Empresa]
+         ↓
+    Contexto do Agente
+         ↓
+    Resposta/Ação
+```
+
+Isso significa que agentes sempre têm contexto relevante sem você precisar repetir.
+
+### Persistência de Memória
+
+**Curto Prazo:**
+
+- Conversação atual
+- Contexto de sessão
+- Detalhes de tarefa ativa
+
+**Longo Prazo:**
+
+- Memória pessoal do agente (salva em arquivos)
+- Entradas da base de conhecimento
+- Conhecimento da empresa
+- Tudo armazenado em PostgreSQL
+
+## Navegador de Memória
+
+Acesso pela barra de navegação: **Memory**
+
+### Visão em Árvore de Arquivos
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ Navegador de Memória                            [+ Novo]       │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ 📁 /                                                    │
+│ ├── 📁 agents/                                          │
+│ │   ├── 📁 nova/                                        │
+│ │   │   ├── 📄 preferencias.md                          │
+│ │   │   └── 📄 guia-estilo.md                           │
+│ │   └── 📁 echo/                                        │
+│ │       └── 📄 voz-marca.md                             │
+│ ├── 📁 knowledge/                                       │
+│ │   ├── 📄 decisoes.md                                  │
+│ │   └── 📁 projetos/                                    │
+│ └── 📁 companies/                                       │
+│     └── 📁 marketing-q1/                                │
+│         ├── 📄 resumo-executivo.md                      │
+│         └── 📁 entregaveis/                             │
+│                                                         │
+└─────────────────────────────────────────────────────────┘
+```
+
+**Navegação:**
+
+- Clique em pastas para expandir/recolher
+- Clique em arquivos para ver conteúdo
+- Clique direito para menu de contexto
+- Arraste para organizar
+
+### Visualizador de Arquivos
+
+Veja qualquer arquivo de memória:
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ nova/preferencias.md                       [Editar] [Excluir]│
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│ # Preferências da Nova                                  │
+│                                                         │
+│ ## Estilo de Código                                     │
+│ - Use TypeScript para todo código novo                 │
+│ - Prefira componentes funcionais ao invés de classes            │
+│ - Adicione comentários JSDoc para funções públicas            │
+│                                                         │
+│ ## Arquitetura                                          │
+│ - Design baseado em componentes                               │
+│ - Mantenha componentes pequenos (menos de 200 linhas)          │
+│ - Use hooks customizados para reutilização de lógica          │
+│                                                         │
+│ ## Específico do Cliente                                      │
+│ - A API deles usa snake_case                            │
+│ - Autenticação é baseada em JWT                         │
+│ - Limite de taxa: 100 req/min                           │
+│                                                         │
+└─────────────────────────────────────────────────────────┘
+```
+
+### Busca
+
+Encontre informação em toda a memória:
+
+```
+Buscar: "autenticação API"
+
+Resultados:
+📄 nova/preferencias.md (mencionado 2 vezes)
+📄 documentacao-api.md (mencionado 5 vezes)
+📄 especificacoes-projeto-alpha.md (mencionado 1 vez)
+```
+
+**Modos de Busca:**
+
+- **Híbrida** — Semântica + busca de texto (padrão)
+- **Vetorial** — Busca baseada em significado
+- **Texto** — Correspondência de palavras-chave
+
+## Busca Semântica
+
+Encontre informação por significado, não apenas palavras-chave.
+
+### Como Funciona
+
+Alimentado por pgvector + embeddings Ollama:
+
+1. **Conteúdo convertido para vetores** — Captura significado
+2. **Busca convertida para vetor** — Sua busca
+3. **Correspondência de similaridade** — Encontra significados mais próximos
+4. **Resultados ranqueados** — Mais relevantes primeiro
+
+### Exemplos
+
+**Busca por palavra-chave pode perder:**
+
+```
+Buscar: "segurança de login"
+
+Semântica encontra:
+- "boas práticas de autenticação"
+- "requisitos de senha"
+- "manuseio de token JWT"
+- "gerenciamento de sessão"
+```
+
+**Correspondência de conceito:**
+
+```
+Buscar: "como acelerar o website"
+
+Semântica encontra:
+- "otimização de performance"
+- "estratégias de cache"
+- "compressão de imagem"
+- "lazy loading"
+```
+
+### Usando Busca Semântica
+
+1. Vá para painel Memory
+2. Digite query de busca
+3. Selecione modo de busca: **Híbrida** ou **Vetorial**
+4. Navegue resultados
+5. Clique para ver conteúdo completo
+
+## Criando Conhecimento
+
+### Método 1: Criação Direta
+
+1. Vá para painel Memory
+2. Clique em **"+ Novo"**
+3. Escolha localização:
+   - Memória do agente
+   - Base de conhecimento
+   - Conhecimento da empresa
+4. Escreva conteúdo em Markdown
+5. Salve
+
+### Método 2: Da Tarefa
+
+Quando tarefa completa:
+
+- Entregáveis salvos automaticamente no conhecimento da empresa
+- Notas do agente adicionadas à memória do agente
+- Decisões registradas na base de conhecimento
+
+### Método 3: Via Mensagem
+
+```
+Você: @Atlas Lembre-se que sempre usamos
+      azul para botões primários
+Atlas: Anotado! Vou salvar isso na base de conhecimento
+       da empresa.
+```
+
+### Método 4: Aba de Conhecimento da Empresa
+
+Em qualquer Empresa de IA:
+
+1. Vá para aba Knowledge
+2. Clique em "+ Adicionar Entrada"
+3. Escreva guia, link ou referência
+4. Categorize (Links, Referências, Guias)
+5. Salve
+
+## Boas Práticas
+
+### Para Memória do Agente
+
+1. **Deixe Agentes Auto-Documentarem** — Eles salvam informação útil
+2. **Revise Periodicamente** — Limpe informação desatualizada
+3. **Mantenha Relevante** — Delete memórias de projetos antigos
+4. **Cure Guias de Estilo** — Garanta consistência
+
+### Para Base de Conhecimento
+
+1. **Documente Decisões** — Por que você escolheu X ao invés de Y
+2. **Registre Lições** — O que funcionou e o que não
+3. **Organize por Categoria** — Fácil de encontrar
+4. **Mantenha Atualizado** — Informação antiga é confusa
+
+### Para Conhecimento da Empresa
+
+1. **Escreva Resumo Executivo** — Contexto para todos os agentes
+2. **Salve Entregáveis** — Referencie trabalho concluído
+3. **Documente Processos** — Como sua empresa trabalha
+4. **Arquive Quando Concluir** — Mantenha empresas atuais limpas
+
+## Gerenciamento de Memória
+
+### Limpeza
+
+Sistema limpa automaticamente dados antigos:
+
+- Atividades: 30 dias
+- Comunicações: 15 dias
+- Notificações: 7 dias
+- Logs de auditoria: 90 dias
+
+### Limpeza Manual
+
+**Arquivar Projetos Antigos:**
+
+1. Vá para navegador de Memory
+2. Encontre pastas de projetos antigos
+3. Clique direito → Arquivar
+4. Preservado mas não pesquisável
+
+**Excluir Não Utilizados:**
+
+1. Revise memórias de agentes
+2. Delete preferências desatualizadas
+3. Remova guias de estilo antigos
+
+## Solução de Problemas
+
+**Agente Esquece Preferências:**
+
+- Verifique se memória do agente existe
+- Verifique se formato de arquivo é Markdown válido
+- Pode precisar reafirmar preferência
+
+**Busca Não Encontra:**
+
+- Tente palavras-chave diferentes
+- Use busca semântica
+- Verifique se arquivo está indexado (mudanças recentes)
+
+**Memória Demais:**
+
+- Respostas de agente mais lentas
+- Limpe memórias antigas
+- Arquive projetos concluídos
+- Foque em informação relevante
+
+## Próximos Passos
+
+- Aprenda sobre [Monitoramento](monitoring)
+- Configure [Automação](automation)
+- Explore [Integrações](integrations)
