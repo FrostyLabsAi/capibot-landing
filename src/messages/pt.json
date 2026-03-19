@@ -533,84 +533,104 @@
     "configDesc": "Defina sua ordem de provedores preferida. Se um falhar, o CapiBot troca instantaneamente para o próximo. Suporte a substituição de modelo por agente."
   },
   "pricing": {
-    "tag": "Preços",
-    "heading": "Escolha seu nível de comando",
-    "subheading": "Preços simples, sem surpresas. Comece em minutos e escale conforme cresce.",
-    "preLaunch": "Preço de pré-lançamento.",
-    "preLaunchDesc": "Entre na lista de espera para garantir taxas de membro fundador quando lançarmos.",
+    "tag": "Precos",
+    "heading": "Escolha seu nivel de controle",
+    "subheading": "Todos os planos incluem todos os recursos. Todos os modelos de IA. Agentes e empresas ilimitados. Escolha quantos creditos voce precisa.",
+    "preLaunch": "Precos de lancamento.",
+    "preLaunchDesc": "Cada plano inclui sua propria instancia privada com infraestrutura dedicada.",
     "monthly": "Mensal",
     "annual": "Anual",
     "save": "Economize 20%",
+    "creditsLabel": "creditos/mes",
     "tiers": [
       {
         "name": "Starter",
-        "description": "Tudo que você precisa para começar rapidamente. Sem dores de cabeça de operações.",
+        "description": "Perfeito para uso pessoal. Sua propria plataforma privada de agentes IA.",
         "price": "$19",
         "priceAnnual": "$15",
-        "priceDetail": "/mês",
+        "priceDetail": "/mes",
+        "credits": "500",
         "features": [
+          "500 creditos por mes",
+          "Todos os modelos de IA incluidos",
+          "Agentes e empresas ilimitados",
           "Todas as 36 ferramentas integradas",
-          "Canais Telegram e Web Chat",
-          "Painel Mission Control",
-          "Memória e busca semântica",
-          "Integrações Composio",
-          "Suporte por email"
+          "4 canais de mensagens",
+          "Instancia privada dedicada"
         ]
       },
       {
         "name": "Pro",
-        "description": "Para equipes e usuários avançados que precisam de todos os canais e automação completa.",
+        "description": "Para usuarios avancados com multiplas empresas IA e fluxos de trabalho.",
         "price": "$49",
         "priceAnnual": "$39",
-        "priceDetail": "/mês",
+        "priceDetail": "/mes",
+        "credits": "1,500",
         "features": [
-          "Tudo no Starter",
-          "Todos os 4 canais de mensagem",
-          "Recurso AI Companies",
-          "Automação de webhook e cron",
-          "Failover automático de provedor",
-          "Suporte por email prioritário"
+          "1,500 creditos por mes",
+          "Todos os modelos de IA incluidos",
+          "Agentes e empresas ilimitados",
+          "Todas as 36 ferramentas integradas",
+          "Suporte prioritario por email",
+          "Instancia privada dedicada"
         ]
       },
       {
         "name": "Scale",
-        "description": "Infraestrutura dedicada, SLAs personalizados e suporte hands-on para equipes maiores.",
-        "price": "$149",
-        "priceAnnual": "$119",
-        "priceDetail": "/mês",
+        "description": "Automacao de alto volume com espaco para crescer.",
+        "price": "$99",
+        "priceAnnual": "$79",
+        "priceDetail": "/mes",
+        "credits": "5,000",
         "features": [
-          "Tudo no Pro",
-          "Infraestrutura dedicada",
-          "SLA personalizado",
-          "Integração SSO e SAML",
+          "5,000 creditos por mes",
+          "Todos os modelos de IA incluidos",
+          "Agentes e empresas ilimitados",
+          "Todas as 36 ferramentas integradas",
+          "Suporte prioritario",
+          "Instancia privada dedicada"
+        ]
+      },
+      {
+        "name": "Enterprise",
+        "description": "Capacidade maxima para equipes e organizacoes.",
+        "price": "$199",
+        "priceAnnual": "$159",
+        "priceDetail": "/mes",
+        "credits": "15,000",
+        "features": [
+          "15,000 creditos por mes",
+          "Todos os modelos de IA incluidos",
+          "Agentes e empresas ilimitados",
+          "Todas as 36 ferramentas integradas",
           "Engenheiro de suporte dedicado",
-          "Garantia de uptime 99,9%"
+          "SLA personalizado disponivel"
         ]
       }
     ],
-    "comparisonTitle": "Comparação de Recursos",
+    "comparisonTitle": "Incluido em Todos os Planos",
     "comparisonFeatures": [
-      "Orquestração de Agentes",
-      "Todas as Ferramentas Integradas",
+      "Instancia Privada Dedicada",
+      "Todos os Modelos de IA (Sonnet, Opus, GPT-4o, Kimi, etc.)",
+      "Agentes Ilimitados",
+      "Empresas IA Ilimitadas",
+      "Todas as 36 Ferramentas Integradas",
       "Painel Mission Control",
-      "Canais de Mensagem",
-      "Memória e pgvector",
-      "Integração Composio",
-      "Ecossistema de Skills",
-      "AI Companies",
-      "Agendamento Cron",
-      "Suporte a Webhooks",
-      "LLM Multi-Provedor",
-      "Failover Automático",
-      "Suporte Prioritário",
-      "Infraestrutura Dedicada",
-      "SLA Personalizado"
+      "4 Canais de Mensagens",
+      "Memoria e Busca Semantica",
+      "Integracoes Composio",
+      "Orquestracao de Empresas IA",
+      "Automacao Cron e Webhooks",
+      "LLM Multi-Provedor com Failover",
+      "Ecossistema de Skills"
     ],
-    "openSourceNote": "Todos os planos incluem 14 dias de teste gratuito.",
-    "starOnGithub": "Sem cartão de crédito",
-    "enterpriseNote": "Precisa de um plano personalizado?",
+    "allPlansNote": "Todos os recursos em todos os planos.",
+    "allPlansDesc": "A unica diferenca sao os creditos. Escolha o plano que combina com seu uso.",
+    "enterpriseNote": "Precisa de mais de 15,000 creditos?",
     "enterpriseCta": "Fale conosco",
-    "annualNote": "cobrado anualmente"
+    "annualNote": "cobrado anualmente",
+    "getStarted": "Comecar",
+    "creditExplainer": "1 credito = 1 acao com modelos padrao. Modelos premium como Sonnet (5 creditos) e Opus (10 creditos) usam mais."
   },
   "faq": {
     "tag": "FAQ",

@@ -535,82 +535,102 @@
   "pricing": {
     "tag": "Pricing",
     "heading": "Choose your level of command",
-    "subheading": "Simple pricing, no surprises. Start in minutes and scale as you grow.",
-    "preLaunch": "Pre-launch pricing.",
-    "preLaunchDesc": "Join the waitlist to lock in founding member rates when we go live.",
+    "subheading": "All plans include every feature. All AI models. Unlimited agents and companies. Just pick how many credits you need.",
+    "preLaunch": "Launch pricing.",
+    "preLaunchDesc": "Every plan includes your own private instance with dedicated infrastructure.",
     "monthly": "Monthly",
     "annual": "Annual",
     "save": "Save 20%",
+    "creditsLabel": "credits/month",
     "tiers": [
       {
         "name": "Starter",
-        "description": "Everything you need to get up and running fast. No ops headaches.",
+        "description": "Perfect for personal use. Your own private AI agent platform.",
         "price": "$19",
         "priceAnnual": "$15",
         "priceDetail": "/month",
+        "credits": "500",
         "features": [
+          "500 credits per month",
+          "All AI models included",
+          "Unlimited agents & companies",
           "All 36 built-in tools",
-          "Telegram & Web Chat channels",
-          "Mission Control dashboard",
-          "Memory & semantic search",
-          "Composio integrations",
-          "Email support"
+          "4 messaging channels",
+          "Dedicated private instance"
         ]
       },
       {
         "name": "Pro",
-        "description": "For teams and power users who need every channel and full automation.",
+        "description": "For power users running multiple AI companies and workflows.",
         "price": "$49",
         "priceAnnual": "$39",
         "priceDetail": "/month",
+        "credits": "1,500",
         "features": [
-          "Everything in Starter",
-          "All 4 messaging channels",
-          "AI Companies feature",
-          "Webhook & cron automation",
-          "Automatic provider failover",
-          "Priority email support"
+          "1,500 credits per month",
+          "All AI models included",
+          "Unlimited agents & companies",
+          "All 36 built-in tools",
+          "Priority email support",
+          "Dedicated private instance"
         ]
       },
       {
         "name": "Scale",
-        "description": "Dedicated infrastructure, custom SLAs, and hands-on support for larger teams.",
-        "price": "$149",
-        "priceAnnual": "$119",
+        "description": "High-volume automation with room to grow.",
+        "price": "$99",
+        "priceAnnual": "$79",
         "priceDetail": "/month",
+        "credits": "5,000",
         "features": [
-          "Everything in Pro",
-          "Dedicated infrastructure",
-          "Custom SLA",
-          "SSO & SAML integration",
+          "5,000 credits per month",
+          "All AI models included",
+          "Unlimited agents & companies",
+          "All 36 built-in tools",
+          "Priority support",
+          "Dedicated private instance"
+        ]
+      },
+      {
+        "name": "Enterprise",
+        "description": "Maximum capacity for teams and organizations.",
+        "price": "$199",
+        "priceAnnual": "$159",
+        "priceDetail": "/month",
+        "credits": "15,000",
+        "features": [
+          "15,000 credits per month",
+          "All AI models included",
+          "Unlimited agents & companies",
+          "All 36 built-in tools",
           "Dedicated support engineer",
-          "99.9% uptime guarantee"
+          "Custom SLA available"
         ]
       }
     ],
-    "comparisonTitle": "Feature Comparison",
+    "comparisonTitle": "What's Included in Every Plan",
     "comparisonFeatures": [
-      "Agent Orchestration",
-      "All Built-in Tools",
+      "Dedicated Private Instance",
+      "All AI Models (Sonnet, Opus, GPT-4o, Kimi, etc.)",
+      "Unlimited Agents",
+      "Unlimited AI Companies",
+      "All 36 Built-in Tools",
       "Mission Control Dashboard",
-      "Messaging Channels",
-      "Memory & pgvector",
-      "Composio Integration",
-      "Skills Ecosystem",
-      "AI Companies",
-      "Cron Scheduling",
-      "Webhook Support",
-      "Multi-Provider LLM",
-      "Automatic Failover",
-      "Priority Support",
-      "Dedicated Infrastructure",
-      "Custom SLA"
+      "4 Messaging Channels",
+      "Memory & Semantic Search",
+      "Composio Integrations",
+      "AI Company Orchestration",
+      "Cron & Webhook Automation",
+      "Multi-Provider LLM with Failover",
+      "Skills Ecosystem"
     ],
-    "openSourceNote": "All plans include a 14-day free trial.",
-    "starOnGithub": "No credit card required",
-    "enterpriseNote": "Need a custom plan?",
+    "allPlansNote": "Every feature on every plan.",
+    "allPlansDesc": "The only difference is credits. Pick the plan that matches your usage.",
+    "enterpriseNote": "Need more than 15,000 credits?",
     "enterpriseCta": "Talk to us",
-    "annualNote": "billed annually"
+    "annualNote": "billed annually",
+    "getStarted": "Get Started",
+    "creditExplainer": "1 credit = 1 action with standard models. Premium models like Sonnet (5 credits) and Opus (10 credits) use more."
   },
   "faq": {
     "tag": "FAQ",

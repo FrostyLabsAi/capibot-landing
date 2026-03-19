@@ -2,32 +2,30 @@
 
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { Star, Check, X, ArrowRight } from 'lucide-react';
+import { Star, Check, ArrowRight, Coins } from 'lucide-react';
 import { SectionHeader } from '@/components/shared/SectionHeader';
 
-const comparisonGrid: Array<{ starter: boolean | string; pro: boolean | string; scale: boolean | string }> = [
-	{ starter: true, pro: true, scale: true },           // Agent Orchestration
-	{ starter: true, pro: true, scale: true },           // All Built-in Tools
-	{ starter: true, pro: true, scale: true },           // Mission Control Dashboard
-	{ starter: '2', pro: '4', scale: '4' },              // Messaging Channels
-	{ starter: true, pro: true, scale: true },           // Memory & pgvector
-	{ starter: true, pro: true, scale: true },           // Composio Integration
-	{ starter: true, pro: true, scale: true },           // Skills Ecosystem
-	{ starter: false, pro: true, scale: true },          // AI Companies
-	{ starter: true, pro: true, scale: true },           // Cron Scheduling
-	{ starter: false, pro: true, scale: true },          // Webhook Support
-	{ starter: true, pro: true, scale: true },           // Multi-Provider LLM
-	{ starter: false, pro: true, scale: true },          // Automatic Failover
-	{ starter: false, pro: true, scale: true },          // Priority Support
-	{ starter: false, pro: false, scale: true },         // Dedicated Infrastructure
-	{ starter: false, pro: false, scale: true },         // Custom SLA
-];
+// LemonSqueezy checkout URLs per tier (monthly / annual)
+const CHECKOUT_URLS: Record<string, { monthly: string; annual: string }> = {
+	starter: {
+		monthly: process.env.NEXT_PUBLIC_LS_STARTER_MONTHLY || '',
+		annual: process.env.NEXT_PUBLIC_LS_STARTER_ANNUAL || '',
+	},
+	pro: {
+		monthly: process.env.NEXT_PUBLIC_LS_PRO_MONTHLY || '',
+		annual: process.env.NEXT_PUBLIC_LS_PRO_ANNUAL || '',
+	},
+	scale: {
+		monthly: process.env.NEXT_PUBLIC_LS_SCALE_MONTHLY || '',
+		annual: process.env.NEXT_PUBLIC_LS_SCALE_ANNUAL || '',
+	},
+	enterprise: {
+		monthly: process.env.NEXT_PUBLIC_LS_ENTERPRISE_MONTHLY || '',
+		annual: process.env.NEXT_PUBLIC_LS_ENTERPRISE_ANNUAL || '',
+	},
+};
 
-function FeatureCell({ value }: { value: boolean | string }) {
-	if (value === true) return <Check className="w-5 h-5 text-[var(--sage)] mx-auto" />;
-	if (value === false) return <X className="w-4 h-4 text-[var(--charcoal)]/20 mx-auto" />;
-	return <span className="text-xs font-medium text-[var(--gold)]">{value}</span>;
-}
+const TIER_KEYS = ['starter', 'pro', 'scale', 'enterprise'] as const;
 
 interface PricingSectionProps {
 	onJoinWaitlist: () => void;
@@ -71,86 +69,109 @@ export function PricingSection({ onJoinWaitlist }: PricingSectionProps) {
 					</span>
 				</div>
 
-				{/* Pricing Cards */}
-				<div className="grid grid-cols-1 lg:grid-cols-[1fr_1.4fr_1fr] gap-8 items-stretch mb-16">
-					{[0, 1, 2].map((idx) => {
-						const isMiddle = idx === 1;
+				{/* Pricing Cards — 4 tiers */}
+				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch mb-12">
+					{[0, 1, 2, 3].map((idx) => {
+						const isPopular = idx === 1;
+						const tierKey = TIER_KEYS[idx];
+						const checkoutUrl = annual ? CHECKOUT_URLS[tierKey].annual : CHECKOUT_URLS[tierKey].monthly;
+						const hasCheckout = !!checkoutUrl;
+
 						return (
 							<div
 								key={idx}
-								className={`${isMiddle ? 'card-editorial relative ring-2 ring-[var(--terracotta)]' : 'card-glass'} p-8 flex flex-col`}
+								className={`${isPopular ? 'card-editorial relative ring-2 ring-[var(--terracotta)]' : 'card-glass'} p-6 flex flex-col`}
 							>
-								{isMiddle && (
-									<div className="absolute -top-4 right-8 bg-[var(--terracotta)] text-white text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider shadow-lg">
+								{isPopular && (
+									<div className="absolute -top-4 right-6 bg-[var(--terracotta)] text-white text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider shadow-lg">
 										Most Popular
 									</div>
 								)}
-								<div className="mb-6">
-									<h3 className="text-2xl font-semibold mb-2" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
+
+								<div className="mb-4">
+									<h3 className="text-xl font-semibold mb-1" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
 										{t(`tiers.${idx}.name`)}
 									</h3>
-									<p className="text-sm text-[var(--charcoal)]">{t(`tiers.${idx}.description`)}</p>
+									<p className="text-xs text-[var(--charcoal)]">{t(`tiers.${idx}.description`)}</p>
 								</div>
-								<div className="mb-6">
-									<span className="text-4xl font-bold">{annual ? t(`tiers.${idx}.priceAnnual`) : t(`tiers.${idx}.price`)}</span>
-									<span className="text-[var(--charcoal)]"> {t(`tiers.${idx}.priceDetail`)}</span>
+
+								<div className="mb-2">
+									<span className="text-3xl font-bold">{annual ? t(`tiers.${idx}.priceAnnual`) : t(`tiers.${idx}.price`)}</span>
+									<span className="text-[var(--charcoal)] text-sm"> {t(`tiers.${idx}.priceDetail`)}</span>
 								</div>
-								<ul className="space-y-4 mb-10 flex-1">
+
+								{/* Credits highlight */}
+								<div className="flex items-center gap-2 mb-6 px-3 py-2 rounded-lg bg-[var(--gold)]/5 border border-[var(--gold)]/15">
+									<Coins className="w-4 h-4 text-[var(--gold)] shrink-0" />
+									<span className="text-sm font-semibold text-[var(--espresso)]">
+										{t(`tiers.${idx}.credits`)}
+									</span>
+									<span className="text-xs text-[var(--charcoal)]">
+										{t('creditsLabel')}
+									</span>
+								</div>
+
+								<ul className="space-y-3 mb-8 flex-1">
 									{[0, 1, 2, 3, 4, 5].map((fIdx) => (
-										<li key={fIdx} className="flex items-center gap-3">
-											<Check className={`w-5 h-5 ${isMiddle && fIdx === 0 ? 'text-[var(--gold)]' : 'text-[var(--terracotta)]'}`} />
-											<span className={`text-sm ${isMiddle && fIdx === 0 ? 'font-semibold' : ''}`}>
+										<li key={fIdx} className="flex items-start gap-2.5">
+											<Check className={`w-4 h-4 mt-0.5 shrink-0 ${fIdx === 0 ? 'text-[var(--gold)]' : 'text-[var(--terracotta)]'}`} />
+											<span className={`text-sm ${fIdx === 0 ? 'font-semibold' : ''}`}>
 												{t(`tiers.${idx}.features.${fIdx}`)}
 											</span>
 										</li>
 									))}
 								</ul>
-								<button
-									onClick={onJoinWaitlist}
-									className={`${isMiddle ? 'btn-savannah btn-savannah-primary' : idx === 2 ? 'btn-savannah bg-black text-white hover:bg-[var(--espresso)]' : 'btn-savannah btn-savannah-secondary'} w-full cursor-pointer`}
-								>
-									{tNav('joinWaitlist')}
-									{isMiddle && <ArrowRight className="w-4 h-4" />}
-								</button>
+
+								{hasCheckout ? (
+									<a
+										href={checkoutUrl}
+										className={`${isPopular ? 'btn-savannah btn-savannah-primary' : idx === 3 ? 'btn-savannah bg-black text-white hover:bg-[var(--espresso)]' : 'btn-savannah btn-savannah-secondary'} w-full cursor-pointer inline-flex items-center justify-center gap-2`}
+									>
+										{t('getStarted')}
+										{isPopular && <ArrowRight className="w-4 h-4" />}
+									</a>
+								) : (
+									<button
+										onClick={onJoinWaitlist}
+										className={`${isPopular ? 'btn-savannah btn-savannah-primary' : idx === 3 ? 'btn-savannah bg-black text-white hover:bg-[var(--espresso)]' : 'btn-savannah btn-savannah-secondary'} w-full cursor-pointer`}
+									>
+										{tNav('joinWaitlist')}
+										{isPopular && <ArrowRight className="w-4 h-4" />}
+									</button>
+								)}
 							</div>
 						);
 					})}
 				</div>
 
-				{/* Comparison Table */}
-				<div className="card-editorial p-6 lg:p-8 overflow-x-auto">
-					<h3 className="text-xl font-semibold text-[var(--espresso)] mb-6" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
+				{/* Credit explainer */}
+				<div className="text-center mb-16">
+					<p className="text-sm text-[var(--charcoal)]/60">
+						{t('creditExplainer')}
+					</p>
+				</div>
+
+				{/* What's Included — all checkmarks (no more X's) */}
+				<div className="card-editorial p-6 lg:p-8">
+					<h3 className="text-xl font-semibold text-[var(--espresso)] mb-2" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
 						{t('comparisonTitle')}
 					</h3>
-					<table className="comparison-table">
-						<thead>
-							<tr>
-								<th className="text-left">Feature</th>
-								<th>{t('tiers.0.name')}</th>
-								<th>{t('tiers.1.name')}</th>
-								<th>{t('tiers.2.name')}</th>
-							</tr>
-						</thead>
-						<tbody>
-							{comparisonGrid.map((row, idx) => (
-								<tr key={idx}>
-									<td>{t(`comparisonFeatures.${idx}`)}</td>
-									<td><FeatureCell value={row.starter} /></td>
-									<td><FeatureCell value={row.pro} /></td>
-									<td><FeatureCell value={row.scale} /></td>
-								</tr>
-							))}
-						</tbody>
-					</table>
+					<p className="text-sm text-[var(--charcoal)] mb-6">
+						{t('allPlansNote')} {t('allPlansDesc')}
+					</p>
+					<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+						{Array.from({ length: 13 }).map((_, idx) => (
+							<div key={idx} className="flex items-center gap-2.5 py-1.5">
+								<Check className="w-4 h-4 text-[var(--sage)] shrink-0" />
+								<span className="text-sm text-[var(--espresso)]">
+									{t(`comparisonFeatures.${idx}`)}
+								</span>
+							</div>
+						))}
+					</div>
 				</div>
 
 				<div className="mt-10 text-center space-y-3">
-					<p className="text-[var(--charcoal)]/60 text-sm font-medium">
-						{t('openSourceNote')}{' '}
-						<span className="text-[var(--terracotta)] font-semibold">
-							{t('starOnGithub')}
-						</span>
-					</p>
 					<p className="text-[var(--charcoal)]/40 text-sm">
 						{t('enterpriseNote')}{' '}
 						<a href="mailto:hello@capibot.io" className="text-[var(--terracotta)] underline">
