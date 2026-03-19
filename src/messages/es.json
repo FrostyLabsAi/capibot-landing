@@ -639,43 +639,43 @@
     "items": [
       {
         "q": "¿Qué es CapiBot?",
-        "a": "CapiBot es una plataforma de orquestación de agentes de IA de código abierto. Te permite ejecutar más de 150 agentes de IA especializados que pueden colaborar, ejecutar tareas e incluso formar empresas autónomas — todo autoalojado en tu propia infraestructura."
+        "a": "CapiBot es una plataforma privada de orquestación de agentes IA. Cada usuario obtiene su propia instancia dedicada con más de 150 agentes especializados que pueden colaborar, ejecutar tareas y formar empresas IA autónomas — todo ejecutándose en infraestructura exclusivamente tuya."
       },
       {
-        "q": "¿CapiBot es realmente gratis?",
-        "a": "La plataforma principal es de código abierto y gratis para siempre. Puedes autoalojarla en tu propio hardware. Ofrecemos planes de alojamiento gestionado (Pro) y enterprise para equipos que quieren una experiencia hands-off."
+        "q": "¿Cómo funciona el precio?",
+        "a": "Todos los planes incluyen todas las funciones, todos los modelos de IA y agentes y empresas ilimitados. La única diferencia es el número de créditos mensuales. Los modelos estándar cuestan 1 crédito por acción, mientras que modelos premium como Sonnet (5 créditos) y Opus (10 créditos) cuestan más."
       },
       {
-        "q": "¿Qué proveedores LLM soporta CapiBot?",
-        "a": "CapiBot soporta Anthropic, Google Gemini, Ollama (local), Kimi (Moonshot), GLM y MiniMax. Puedes configurar orden de prioridad y failover automático entre proveedores."
+        "q": "¿Qué modelos de IA puedo usar?",
+        "a": "Todos — en cualquier plan. CapiBot soporta Claude (Haiku, Sonnet, Opus), GPT-4o, Google Gemini, Kimi, Qwen, GLM, MiniMax y modelos locales via Ollama. Puedes configurar orden de prioridad y failover automático entre proveedores."
       },
       {
-        "q": "¿Puedo ejecutarlo completamente local?",
-        "a": "Sí. Empareja CapiBot con Ollama y un modelo local, y todo se ejecuta en tu máquina — ningún dato sale de tu red. PostgreSQL es el único requisito de infraestructura."
-      },
-      {
-        "q": "¿Qué son AI Companies?",
-        "a": "AI Companies son la funcionalidad estrella de CapiBot. Un agente CEO redacta un plan de negocios, contrata agentes especialistas, crea tareas y ejecuta — con supervisión humana configurable en cada paso."
+        "q": "¿Qué son las Empresas IA?",
+        "a": "Las Empresas IA son la función principal de CapiBot. Un agente CEO redacta un plan de negocio, contrata agentes especialistas de un catálogo de 145+, crea tareas y ejecuta — con supervisión humana configurable en cada paso."
       },
       {
         "q": "¿Cómo funciona la supervisión humana?",
-        "a": "En modo gestionado, todas las tareas creadas por el CEO requieren aprobación humana antes de la ejecución. Puedes aprobar planes, decisiones de contratación y presupuestos. O cambia a modo completamente autónomo cuando estés seguro."
+        "a": "En modo gestionado, todas las tareas creadas por el CEO requieren aprobación humana antes de ejecutarse. Puedes aprobar planes, decisiones de contratación y presupuestos. O cambiar al modo completamente autónomo cuando tengas confianza."
       },
       {
-        "q": "¿Qué canales de mensajería están soportados?",
-        "a": "Telegram, WhatsApp, Slack y un chat web integrado en Mission Control. Cada canal soporta mensajes enriquecidos, multimedia y transcripción de voz donde aplique."
+        "q": "¿Qué canales de mensajería soporta?",
+        "a": "Telegram, WhatsApp, Slack y un chat web integrado en Mission Control. Cada canal soporta mensajes enriquecidos, multimedia y transcripción de voz."
       },
       {
         "q": "¿Mis datos son privados?",
-        "a": "Completamente. CapiBot es autoalojado — tus datos permanecen en tu infraestructura. No hay telemetría, no hay recolección de datos y no hay bloqueo de proveedor. Tú lo posees todo."
+        "a": "Completamente. Cada usuario obtiene su propia instancia dedicada con su propia base de datos. Tus datos nunca se comparten con otros usuarios. Sin telemetría, sin recolección de datos, sin infraestructura compartida."
       },
       {
-        "q": "¿Cómo conecto apps externas?",
-        "a": "A través de Composio, que proporciona acceso a miles de apps vía una API unificada. También puedes escribir skills personalizados como archivos Markdown — sin cambios de código necesarios."
+        "q": "¿Para qué se usan los créditos?",
+        "a": "Los créditos se consumen cuando tus agentes realizan acciones que requieren un modelo de IA — enviar mensajes, procesar tareas, tomar decisiones. Las operaciones del sistema como heartbeats y monitoreo programado son gratuitas."
       },
       {
-        "q": "¿Cuándo lanza CapiBot?",
-        "a": "Estamos en pre-lanzamiento. Únete a la lista de espera para obtener acceso anticipado, actualizaciones de producto y precios de miembro fundador bloqueados para siempre."
+        "q": "¿Cómo conecto aplicaciones externas?",
+        "a": "A través de Composio, que proporciona acceso a miles de aplicaciones via una API unificada incluyendo Gmail, Google Docs, Notion y más. También puedes crear skills personalizados como archivos Markdown."
+      },
+      {
+        "q": "¿Cómo empiezo?",
+        "a": "Elige un plan, completa el pago, elige tu nombre de usuario, y tu instancia privada estará activa en 60 segundos en usuario.capibot.io. Sin configuración, sin ops."
       }
     ]
   },

@@ -639,27 +639,23 @@
     "items": [
       {
         "q": "What is CapiBot?",
-        "a": "CapiBot is an open-source AI agent orchestration platform. It lets you run 150+ specialized AI agents that can collaborate, execute tasks, and even form autonomous companies — all self-hosted on your own infrastructure."
+        "a": "CapiBot is a private AI agent orchestration platform. Every user gets their own dedicated instance with 150+ specialized AI agents that can collaborate, execute tasks, and form autonomous AI companies — all running on infrastructure that's exclusively yours."
       },
       {
-        "q": "Is CapiBot really free?",
-        "a": "The core platform is open source and free forever. You can self-host it on your own hardware. We offer paid managed hosting (Pro) and enterprise plans for teams who want a hands-off experience."
+        "q": "How does pricing work?",
+        "a": "All plans include every feature, every AI model, and unlimited agents and companies. The only difference between plans is the number of monthly credits. Standard models cost 1 credit per action, while premium models like Sonnet (5 credits) and Opus (10 credits) cost more. You choose how to spend your credits."
       },
       {
-        "q": "What LLM providers does CapiBot support?",
-        "a": "CapiBot supports Anthropic, Google Gemini, Ollama (local), Kimi (Moonshot), GLM, and MiniMax. You can configure priority order and automatic failover between providers."
-      },
-      {
-        "q": "Can I run it fully locally?",
-        "a": "Yes. Pair CapiBot with Ollama and a local model, and everything runs on your machine — no data ever leaves your network. PostgreSQL is the only infrastructure requirement."
+        "q": "What AI models can I use?",
+        "a": "All of them — on every plan. CapiBot supports Claude (Haiku, Sonnet, Opus), GPT-4o, Google Gemini, Kimi, Qwen, GLM, MiniMax, and local models via Ollama. You can configure priority order and automatic failover between providers."
       },
       {
         "q": "What are AI Companies?",
-        "a": "AI Companies are CapiBot's flagship feature. A CEO agent drafts a business plan, hires specialist agents, creates tasks, and executes — with configurable human oversight at every step."
+        "a": "AI Companies are CapiBot's flagship feature. A CEO agent drafts a business plan, hires specialist agents from a roster of 145+, creates tasks, and executes — with configurable human oversight at every step."
       },
       {
         "q": "How does human oversight work?",
-        "a": "In managed mode, all CEO-created tasks require human approval before execution. You can approve plans, hiring decisions, and budgets. Or switch to fully autonomous mode when you're confident."
+        "a": "In managed mode, all CEO-created tasks require human approval before execution. You can approve plans, hiring decisions, and budgets through the Mission Control dashboard. Or switch to fully autonomous mode when you're confident."
       },
       {
         "q": "What messaging channels are supported?",
@@ -667,15 +663,19 @@
       },
       {
         "q": "Is my data private?",
-        "a": "Completely. CapiBot is self-hosted — your data stays on your infrastructure. There's no telemetry, no data collection, and no vendor lock-in. You own everything."
+        "a": "Completely. Every user gets their own dedicated instance with its own database. Your data is never shared with other users. There's no telemetry, no data collection, and no shared infrastructure."
+      },
+      {
+        "q": "What are credits used for?",
+        "a": "Credits are consumed when your agents take actions that require an AI model — sending messages, processing tasks, making decisions. System operations like heartbeat checks and scheduled monitoring are free and don't use credits."
       },
       {
         "q": "How do I connect external apps?",
-        "a": "Through Composio, which provides access to thousands of apps via a unified API. You can also write custom skills as Markdown files — no code changes needed."
+        "a": "Through Composio, which provides access to thousands of apps via a unified API including Gmail, Google Docs, Notion, and more. You can also write custom skills as Markdown files — no code changes needed."
       },
       {
-        "q": "When does CapiBot launch?",
-        "a": "We're in pre-launch. Join the waitlist to get early access, product updates, and founding member pricing locked in forever."
+        "q": "How do I get started?",
+        "a": "Pick a plan, complete checkout, choose your username, and your private instance is live within 60 seconds at username.capibot.io. No setup, no configuration, no ops work required."
       }
     ]
   },
