@@ -1,12 +1,24 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { CheckCircle, Loader2, AlertCircle, ArrowRight } from 'lucide-react';
 
 type Step = 'loading' | 'setup' | 'provisioning' | 'ready' | 'error';
 
 export default function WelcomePage() {
+	return (
+		<Suspense fallback={
+			<div className="min-h-screen bg-[var(--sand-light)] flex items-center justify-center">
+				<Loader2 className="w-8 h-8 animate-spin text-[var(--terracotta)]" />
+			</div>
+		}>
+			<WelcomeContent />
+		</Suspense>
+	);
+}
+
+function WelcomeContent() {
 	const searchParams = useSearchParams();
 	const [step, setStep] = useState<Step>('loading');
 	const [username, setUsername] = useState('');
