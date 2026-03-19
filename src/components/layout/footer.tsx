@@ -3,6 +3,7 @@
 import { useState, type FormEvent } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowRight, Check } from 'lucide-react';
 
 export function Footer() {
@@ -47,7 +48,7 @@ export function Footer() {
 					{/* Brand */}
 					<div className="lg:col-span-2">
 						<div className="flex items-center gap-3 mb-4">
-							<img src="/capybara-icon.png" alt="CapiBot" className="w-8 h-8 rounded-full" />
+							<Image src="/capybara-icon.png" alt="CapiBot" width={32} height={32} className="w-8 h-8 rounded-full" />
 							<span className="font-semibold text-lg text-white" style={{ fontFamily: 'var(--font-heading)' }}>
 								{t('brand')}
 							</span>

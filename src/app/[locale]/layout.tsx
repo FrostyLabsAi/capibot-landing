@@ -3,9 +3,26 @@ import { NextIntlClientProvider, hasLocale } from 'next-intl';
 import { getMessages, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import Script from 'next/script';
+import { Cormorant_Garamond, DM_Sans } from 'next/font/google';
 import { locales } from '@/i18n/config';
 import { Nav } from '@/components/layout/nav';
 import '@/styles/globals.css';
+
+const cormorant = Cormorant_Garamond({
+	subsets: ['latin'],
+	weight: ['400', '500', '600', '700'],
+	style: ['normal', 'italic'],
+	variable: '--font-cormorant',
+	display: 'swap',
+});
+
+const dmSans = DM_Sans({
+	subsets: ['latin'],
+	weight: ['400', '500', '600', '700'],
+	style: ['normal', 'italic'],
+	variable: '--font-dm-sans',
+	display: 'swap',
+});
 
 export function generateStaticParams() {
 	return locales.map((locale) => ({ locale }));
@@ -53,13 +70,7 @@ export default async function LocaleLayout({
 	const messages = await getMessages();
 
 	return (
-		<html lang={locale}>
-			<head>
-				<link
-					href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
-					rel="stylesheet"
-				/>
-			</head>
+		<html lang={locale} className={`${cormorant.variable} ${dmSans.variable}`}>
 			<Script src="https://www.googletagmanager.com/gtag/js?id=G-V950RCCZZG" strategy="afterInteractive" />
 			<Script id="gtag-init" strategy="afterInteractive">{`
 				window.dataLayer = window.dataLayer || [];

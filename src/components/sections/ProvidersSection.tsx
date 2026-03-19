@@ -1,6 +1,4 @@
-'use client';
-
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 import { Radio, Settings, ArrowRight, Check, X, RefreshCw } from 'lucide-react';
 import { SectionHeader } from '@/components/shared/SectionHeader';
 import {
@@ -45,8 +43,8 @@ const providers = [
 	},
 ];
 
-export function ProvidersSection() {
-	const t = useTranslations('providers');
+export async function ProvidersSection() {
+	const t = await getTranslations('providers');
 
 	return (
 		<section id="providers" className="py-24 lg:py-32">

@@ -1,6 +1,4 @@
-'use client';
-
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 import {
 	AnthropicLogo,
 	GoogleLogo,
@@ -21,8 +19,8 @@ const techLogos = [
 	{ key: 'composio', logo: <ComposioLogo size={24} /> },
 ] as const;
 
-export function TrustBar() {
-	const t = useTranslations('trustBar');
+export async function TrustBar() {
+	const t = await getTranslations('trustBar');
 
 	return (
 		<section className="py-12 lg:py-16 border-y border-[var(--sand-dark)]/20">

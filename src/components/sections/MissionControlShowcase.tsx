@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
+import Image from 'next/image';
 import {
 	Zap, Activity, HardDrive, Shield, Bell, Settings,
 	LayoutDashboard, KanbanSquare, Clock, Globe, GitBranch, Users,
@@ -103,9 +104,11 @@ export function MissionControlShowcase() {
 					{/* Right: Screenshot */}
 					<div className="relative">
 						<ImageLightbox src={tabImages[activeTab]} alt={`Mission Control \u2014 ${t(`tabs.${tabId}`)}`} className="rounded-2xl overflow-hidden border-2 border-white/10 shadow-2xl">
-							<img
+							<Image
 								src={tabImages[activeTab]}
 								alt={`Mission Control \u2014 ${t(`tabs.${tabId}`)}`}
+								width={1200}
+								height={800}
 								className="w-full h-auto"
 							/>
 						</ImageLightbox>

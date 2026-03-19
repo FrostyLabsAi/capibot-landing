@@ -1,13 +1,11 @@
-'use client';
-
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 import { AnimatedCounter } from '@/components/shared/AnimatedCounter';
 
 const statTargets = [36, 8, 6, 4];
 const statSuffixes = ['', '', '', ''];
 
-export function StatsBar() {
-	const t = useTranslations('statsBar');
+export async function StatsBar() {
+	const t = await getTranslations('statsBar');
 
 	return (
 		<section className="py-16 lg:py-20 bg-[var(--espresso)] relative overflow-hidden">

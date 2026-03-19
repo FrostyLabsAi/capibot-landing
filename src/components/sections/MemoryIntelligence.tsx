@@ -1,6 +1,5 @@
-'use client';
-
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
+import Image from 'next/image';
 import { Database, Search, Brain, Trash2, Sparkles, Terminal } from 'lucide-react';
 import { SectionHeader } from '@/components/shared/SectionHeader';
 import { ImageLightbox } from '@/components/shared/ImageLightbox';
@@ -14,8 +13,8 @@ const featureIcons = [
 
 const searchModeKeys = ['hybrid', 'vector', 'text'] as const;
 
-export function MemoryIntelligence() {
-	const t = useTranslations('memory');
+export async function MemoryIntelligence() {
+	const t = await getTranslations('memory');
 
 	return (
 		<section id="memory" className="py-24 lg:py-32">
@@ -61,9 +60,11 @@ Results (hybrid mode, 3 matches):
 					{/* Right: Screenshot */}
 					<div>
 						<ImageLightbox src="/img/memory.png" alt="CapiBot Memory Browser — Knowledge Base with semantic search" className="rounded-2xl overflow-hidden border border-[var(--sand-dark)]/20 shadow-lg mb-6">
-							<img
+							<Image
 								src="/img/memory.png"
 								alt="CapiBot Memory Browser — Knowledge Base with semantic search"
+								width={1200}
+								height={800}
 								className="w-full h-auto"
 							/>
 						</ImageLightbox>

@@ -1,6 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
+import Image from 'next/image';
 import { Layers, ArrowRight, Sparkles, BookOpen } from 'lucide-react';
 import { SectionHeader } from '@/components/shared/SectionHeader';
 import { ImageLightbox } from '@/components/shared/ImageLightbox';
@@ -44,9 +45,11 @@ export function SkillsIntegrations({ onJoinWaitlist }: SkillsIntegrationsProps) 
 
 						{/* Integrations Screenshot */}
 						<ImageLightbox src="/img/integrations.png" alt="CapiBot Integrations — Connected apps, Composio, and OAuth management" className="rounded-xl overflow-hidden border border-[var(--sand-dark)]/20 shadow-sm mb-6">
-							<img
+							<Image
 								src="/img/integrations.png"
 								alt="CapiBot Integrations — Connected apps, Composio, and OAuth management"
+								width={1200}
+								height={800}
 								className="w-full h-auto"
 							/>
 						</ImageLightbox>

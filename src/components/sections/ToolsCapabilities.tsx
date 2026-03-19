@@ -1,6 +1,4 @@
-'use client';
-
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 import { FileText, Terminal, Globe, Search, Clock, Users, Zap, ShieldCheck } from 'lucide-react';
 import { SectionHeader } from '@/components/shared/SectionHeader';
 
@@ -21,8 +19,8 @@ const categoryColors = ['var(--sage)', '#4285F4', 'var(--terracotta)', 'var(--go
 // Row 3: [4 compact: span-1] [5 featured: span-2]
 const featuredIndices = new Set([0, 3, 5]);
 
-export function ToolsCapabilities() {
-	const t = useTranslations('tools');
+export async function ToolsCapabilities() {
+	const t = await getTranslations('tools');
 
 	return (
 		<section id="tools" className="py-24 lg:py-32">

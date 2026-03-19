@@ -1,6 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
+import Image from 'next/image';
 import { Building2, Users, ClipboardCheck, Brain, Shield, Target, ArrowRight, ChevronRight, Bot, MessageSquare } from 'lucide-react';
 import { SectionHeader } from '@/components/shared/SectionHeader';
 import { ImageLightbox } from '@/components/shared/ImageLightbox';
@@ -112,9 +113,11 @@ export function AICompanySection({ onJoinWaitlist }: AICompanySectionProps) {
 
 					{/* Screenshot */}
 					<ImageLightbox src="/img/company.png" alt={t('companyImgAlt')} className="rounded-2xl overflow-hidden border border-[var(--sand-dark)]/20 shadow-lg">
-						<img
+						<Image
 							src="/img/company.png"
 							alt={t('companyImgAlt')}
+							width={1200}
+							height={800}
 							className="w-full h-auto"
 						/>
 					</ImageLightbox>

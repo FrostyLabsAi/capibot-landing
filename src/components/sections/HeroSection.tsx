@@ -1,6 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
+import Image from 'next/image';
 import { ArrowRight, Check, Sparkles, Zap, Bot, Layers, MessageSquare } from 'lucide-react';
 import { AnimatedCounter } from '@/components/shared/AnimatedCounter';
 
@@ -94,9 +95,12 @@ export function HeroSection({ onScrollTo }: HeroSectionProps) {
 					<div className="order-1 lg:order-2 relative">
 						<div className="relative">
 							<div className="relative z-10 glass-morphism-hero p-8 lg:p-12">
-								<img
+								<Image
 									src="/capybara-mascot.png"
 									alt="CapiBot AI Agent Platform"
+									width={1200}
+									height={800}
+									priority
 									className="w-full max-w-md mx-auto drop-shadow-2xl rounded-3xl"
 								/>
 							</div>

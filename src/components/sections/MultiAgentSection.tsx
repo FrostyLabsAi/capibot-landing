@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
+import Image from 'next/image';
 import {
 	Bot, Code, Search, FileText, Zap, ChevronRight, Layers,
 	Heart, MessageCircle, GitBranch, Shield, Crown, Users, Briefcase,
@@ -98,9 +99,11 @@ export function MultiAgentSection() {
 						</div>
 					</div>
 					<ImageLightbox src="/img/150agents.png" alt="CapiBot Agent Roster \u2014 Browse and hire from 150 agents across 12+ categories" className="rounded-2xl overflow-hidden border border-[var(--sand-dark)]/20 shadow-lg">
-						<img
+						<Image
 							src="/img/150agents.png"
 							alt="CapiBot Agent Roster \u2014 Browse and hire from 150 agents across 12+ categories"
+							width={1200}
+							height={800}
 							className="w-full h-auto"
 						/>
 					</ImageLightbox>

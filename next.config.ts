@@ -13,6 +13,7 @@ const withMDX = createMDX({
 });
 
 const nextConfig: NextConfig = {
+	output: 'standalone',
 	pageExtensions: ['ts', 'tsx', 'md', 'mdx'],
 };
 

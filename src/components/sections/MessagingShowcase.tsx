@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
+import NextImage from 'next/image';
 import { MessageSquare, Mic, Image, FileText, Hash, Phone } from 'lucide-react';
 import { SectionHeader } from '@/components/shared/SectionHeader';
 import { ImageLightbox } from '@/components/shared/ImageLightbox';
@@ -103,9 +104,11 @@ export function MessagingShowcase() {
 						{/* Screenshot if available */}
 						{channelScreenshots[activeChannel] && (
 							<ImageLightbox src={channelScreenshots[activeChannel]!} alt={`${t(`channels.${activeChannel}.name`)} in Mission Control`} className="rounded-2xl overflow-hidden border border-[var(--sand-dark)]/20 shadow-lg">
-								<img
+														<NextImage
 									src={channelScreenshots[activeChannel]!}
 									alt={`${t(`channels.${activeChannel}.name`)} in Mission Control`}
+									width={1200}
+									height={800}
 									className="w-full h-auto"
 								/>
 							</ImageLightbox>
