@@ -710,6 +710,7 @@
     "resourcesTitle": "Recursos",
     "resourceLinks": {
       "github": "GitHub",
+      "twitter": "X (Twitter)",
       "joinWaitlist": "Unirse a la Lista de Espera",
       "compare": "Comparación: CapiBot vs OpenClaw"
     },
