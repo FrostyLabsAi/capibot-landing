@@ -49,7 +49,7 @@ services:
     restart: "no"
 
   capibot:
-    image: ghcr.io/capibot/capibot-backend:latest
+    image: ghcr.io/frostylabsai/capibot-backend:latest
     restart: unless-stopped
     depends_on:
       postgres:
@@ -82,7 +82,7 @@ services:
       retries: 3
 
   mission-control:
-    image: ghcr.io/capibot/capibot-mc:latest
+    image: ghcr.io/frostylabsai/capibot-mc:latest
     restart: unless-stopped
     depends_on:
       capibot:
