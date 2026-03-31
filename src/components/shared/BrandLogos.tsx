@@ -123,3 +123,15 @@ export function MiniMaxLogo({ className = '', size = 24 }: LogoProps) {
 		/>
 	);
 }
+
+export function QwenLogo({ className = '', size = 24 }: LogoProps) {
+	return (
+		<img
+			src="/img/qwen-icon.png"
+			alt="Qwen"
+			width={size}
+			height={size}
+			className={`object-contain ${className}`}
+		/>
+	);
+}

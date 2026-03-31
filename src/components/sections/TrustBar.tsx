@@ -2,6 +2,10 @@ import { getTranslations } from 'next-intl/server';
 import {
 	AnthropicLogo,
 	GoogleLogo,
+	QwenLogo,
+	KimiLogo,
+	MiniMaxLogo,
+	GLMLogo,
 	PostgreSQLLogo,
 	PuppeteerLogo,
 	LangChainLogo,
@@ -12,6 +16,10 @@ import {
 const techLogos = [
 	{ key: 'anthropic', logo: <AnthropicLogo size={24} /> },
 	{ key: 'google', logo: <GoogleLogo size={24} /> },
+	{ key: 'qwen', logo: <QwenLogo size={24} /> },
+	{ key: 'kimi', logo: <KimiLogo size={24} /> },
+	{ key: 'minimax', logo: <MiniMaxLogo size={24} /> },
+	{ key: 'glm', logo: <GLMLogo size={24} /> },
 	{ key: 'postgresql', logo: <PostgreSQLLogo size={28} /> },
 	{ key: 'puppeteer', logo: <PuppeteerLogo size={24} /> },
 	{ key: 'langchain', logo: <LangChainLogo size={24} /> },

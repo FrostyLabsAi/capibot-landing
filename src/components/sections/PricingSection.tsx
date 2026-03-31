@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { Star, Check, ArrowRight, Coins } from 'lucide-react';
+import { Star, Check, ArrowRight, Coins, Server } from 'lucide-react';
 import { SectionHeader } from '@/components/shared/SectionHeader';
 
 // LemonSqueezy checkout URLs per tier (monthly / annual)
@@ -160,7 +160,7 @@ export function PricingSection({ onJoinWaitlist }: PricingSectionProps) {
 						{t('allPlansNote')} {t('allPlansDesc')}
 					</p>
 					<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-						{Array.from({ length: 13 }).map((_, idx) => (
+						{Array.from({ length: 14 }).map((_, idx) => (
 							<div key={idx} className="flex items-center gap-2.5 py-1.5">
 								<Check className="w-4 h-4 text-[var(--sage)] shrink-0" />
 								<span className="text-sm text-[var(--espresso)]">
@@ -168,6 +168,46 @@ export function PricingSection({ onJoinWaitlist }: PricingSectionProps) {
 								</span>
 							</div>
 						))}
+					</div>
+				</div>
+
+				{/* Self-Hosted Section */}
+				<div className="mt-16 card-editorial p-6 lg:p-8">
+					<div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+						<div className="flex-1">
+							<div className="flex items-center gap-2 mb-3">
+								<Server className="w-5 h-5 text-[var(--terracotta)]" />
+								<span className="text-sm font-medium text-[var(--terracotta)]">{t('selfHostedTag')}</span>
+							</div>
+							<div className="flex items-baseline gap-3 mb-2">
+								<h3 className="text-2xl font-semibold text-[var(--espresso)]" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
+									{t('selfHostedName')}
+								</h3>
+								<span className="text-3xl font-bold text-[var(--espresso)]">{t('selfHostedPrice')}</span>
+								<span className="text-sm text-[var(--charcoal)]/60">{t('selfHostedPriceDetail')}</span>
+							</div>
+							<p className="text-sm text-[var(--charcoal)] mb-4 max-w-lg">
+								{t('selfHostedDescription')}
+							</p>
+							<div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+								{Array.from({ length: 6 }).map((_, idx) => (
+									<div key={idx} className="flex items-center gap-2.5">
+										<Check className="w-4 h-4 text-[var(--sage)] shrink-0" />
+										<span className="text-sm text-[var(--espresso)]">
+											{t(`selfHostedFeatures.${idx}`)}
+										</span>
+									</div>
+								))}
+							</div>
+						</div>
+						<div className="shrink-0">
+							<a
+								href={process.env.NEXT_PUBLIC_LS_SELFHOSTED || '/en/docs/self-hosted'}
+								className="inline-flex items-center gap-2 rounded-full px-8 py-3 text-sm font-semibold bg-[var(--terracotta)] text-white hover:opacity-90 transition-opacity"
+							>
+								{t('selfHostedCta')} <ArrowRight className="w-4 h-4" />
+							</a>
+						</div>
 					</div>
 				</div>
 

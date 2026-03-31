@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import Link from 'next/link';
 import Image from 'next/image';
+import { usePathname, useRouter } from 'next/navigation';
 import { Menu, X, ArrowRight } from 'lucide-react';
 import { locales, localeNames, type Locale } from '@/i18n/config';
 
@@ -40,8 +41,13 @@ const NavLink = ({ href, children, mobile = false }: { href: string; children: R
 export function Nav() {
 	const t = useTranslations('nav');
 	const locale = useLocale();
+	const pathname = usePathname();
+	const router = useRouter();
 	const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 	const [scrolled, setScrolled] = useState(false);
+
+	// Check if we're on the landing page (just /{locale} or /{locale}/)
+	const isLandingPage = pathname === `/${locale}` || pathname === `/${locale}/`;
 
 	useEffect(() => {
 		const onScroll = () => setScrolled(window.scrollY > 50);
@@ -50,9 +56,15 @@ export function Nav() {
 	}, []);
 
 	const scrollToSection = (id: string) => {
-		const el = document.getElementById(id);
-		if (el) {
-			el.scrollIntoView({ behavior: 'smooth' });
+		if (isLandingPage) {
+			const el = document.getElementById(id);
+			if (el) {
+				el.scrollIntoView({ behavior: 'smooth' });
+				setMobileMenuOpen(false);
+			}
+		} else {
+			// Navigate to landing page with hash
+			router.push(`/${locale}#${id}`);
 			setMobileMenuOpen(false);
 		}
 	};

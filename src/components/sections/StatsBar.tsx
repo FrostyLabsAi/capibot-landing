@@ -1,8 +1,8 @@
 import { getTranslations } from 'next-intl/server';
 import { AnimatedCounter } from '@/components/shared/AnimatedCounter';
 
-const statTargets = [36, 8, 6, 4];
-const statSuffixes = ['', '', '', ''];
+const statTargets = [43, 604, 7, 4];
+const statSuffixes = ['+', '', '', ''];
 
 export async function StatsBar() {
 	const t = await getTranslations('statsBar');

@@ -11,7 +11,7 @@
     "tag": "AI Agent Orchestration Platform",
     "heading": "Build It. Ship It. ",
     "headingAccent": "Chill.",
-    "description": "From a single AI assistant to a full autonomous company — CapiBot gives you 36 built-in tools, 8 skill packs, and complete control over how much autonomy your agents get. Private. Secure. Yours.",
+    "description": "From a single AI assistant to a full autonomous company — CapiBot gives you 43+ built-in tools, 600+ skills, 280+ agents, and complete control over how much autonomy your agents get. Private. Secure. Yours.",
     "ctaPrimary": "Join the Waitlist",
     "ctaSecondary": "See What It Can Do",
     "badges": {
@@ -27,7 +27,7 @@
     },
     "floatingBadges": {
       "agents": "Live in 5 Min",
-      "telegram": "150 Built-in Agents",
+      "telegram": "280+ Built-in Agents",
       "missionControl": "Mission Control",
       "aiCompanies": "AI Companies"
     }
@@ -37,6 +37,10 @@
     "tech": {
       "anthropic": "Anthropic",
       "google": "Google",
+      "qwen": "Qwen",
+      "kimi": "Kimi",
+      "minimax": "MiniMax",
+      "glm": "GLM",
       "postgresql": "PostgreSQL",
       "puppeteer": "Puppeteer",
       "langchain": "LangChain",
@@ -83,7 +87,7 @@
         "description": "Managed or fully autonomous mode"
       },
       {
-        "title": "150 Agent Roster",
+        "title": "280+ Agent Roster",
         "description": "12+ categories to hire from"
       },
       {
@@ -108,7 +112,7 @@
         "label": "Built-in Tools"
       },
       {
-        "label": "Skill Packs"
+        "label": "Skills"
       },
       {
         "label": "AI Providers"
@@ -183,7 +187,7 @@
         "Quick actions and notification center"
       ],
       "agents": [
-        "Browse 150 agents across 12 categories",
+        "Browse 280+ agents across 18 categories",
         "Agent detail pages with session history",
         "Activate, configure, and monitor agents"
       ],
@@ -255,7 +259,7 @@
       "intern": "Intern"
     },
     "tierSpawned": "(spawned on demand)",
-    "rosterTitle": "Agent Roster — pre-built agents across 12 categories",
+    "rosterTitle": "Agent Roster — 280+ pre-built agents across 18 categories",
     "categories": [
       "CEOs",
       "Engineering",
@@ -356,7 +360,7 @@
   },
   "tools": {
     "tag": "Tools & Capabilities",
-    "heading": "28+ tools at your agents' fingertips",
+    "heading": "43+ tools at your agents' fingertips",
     "subheading": "From file editing to browser automation, your agents have everything they need to get real work done.",
     "categories": [
       {
@@ -554,7 +558,7 @@
           "500 credits per month",
           "All AI models included",
           "Unlimited agents & companies",
-          "All 36 built-in tools",
+          "All 43+ built-in tools",
           "4 messaging channels",
           "Dedicated private instance"
         ]
@@ -570,7 +574,7 @@
           "1,500 credits per month",
           "All AI models included",
           "Unlimited agents & companies",
-          "All 36 built-in tools",
+          "All 43+ built-in tools",
           "Priority email support",
           "Dedicated private instance"
         ]
@@ -586,7 +590,7 @@
           "5,000 credits per month",
           "All AI models included",
           "Unlimited agents & companies",
-          "All 36 built-in tools",
+          "All 43+ built-in tools",
           "Priority support",
           "Dedicated private instance"
         ]
@@ -602,7 +606,7 @@
           "15,000 credits per month",
           "All AI models included",
           "Unlimited agents & companies",
-          "All 36 built-in tools",
+          "All 43+ built-in tools",
           "Dedicated support engineer",
           "Custom SLA available"
         ]
@@ -611,18 +615,19 @@
     "comparisonTitle": "What's Included in Every Plan",
     "comparisonFeatures": [
       "Dedicated Private Instance",
-      "All AI Models (Sonnet, Opus, GPT-4o, Kimi, etc.)",
-      "Unlimited Agents",
+      "All AI Models (Sonnet, Opus, GPT-4o, Kimi, Qwen, etc.)",
+      "280+ Pre-built Agents",
+      "600+ Skills",
+      "16 Company Templates",
+      "All 43+ Built-in Tools",
       "Unlimited AI Companies",
-      "All 36 Built-in Tools",
       "Mission Control Dashboard",
       "4 Messaging Channels",
       "Memory & Semantic Search",
       "Composio Integrations",
       "AI Company Orchestration",
       "Cron & Webhook Automation",
-      "Multi-Provider LLM with Failover",
-      "Skills Ecosystem"
+      "Multi-Provider LLM with Failover"
     ],
     "allPlansNote": "Every feature on every plan.",
     "allPlansDesc": "The only difference is credits. Pick the plan that matches your usage.",
@@ -630,7 +635,21 @@
     "enterpriseCta": "Talk to us",
     "annualNote": "billed annually",
     "getStarted": "Get Started",
-    "creditExplainer": "1 credit = 1 action with standard models. Premium models like Sonnet (5 credits) and Opus (10 credits) use more."
+    "creditExplainer": "1 credit = 1 action with standard models. Premium models like Sonnet (5 credits) and Opus (10 credits) use more.",
+    "selfHostedTag": "Prefer to run it yourself?",
+    "selfHostedName": "Self-Hosted",
+    "selfHostedPrice": "$39",
+    "selfHostedPriceDetail": "/month",
+    "selfHostedDescription": "Run CapiBot on your own hardware with your own API keys. Full platform, no usage limits, total privacy.",
+    "selfHostedFeatures": [
+      "Unlimited agents & companies",
+      "Bring your own LLM keys (no credits needed)",
+      "All 43+ built-in tools & 600+ skills",
+      "16 one-click company templates",
+      "One-command install (Linux, macOS, Windows)",
+      "Full data privacy — nothing leaves your machine"
+    ],
+    "selfHostedCta": "Get Started"
   },
   "faq": {
     "tag": "FAQ",
@@ -639,7 +658,7 @@
     "items": [
       {
         "q": "What is CapiBot?",
-        "a": "CapiBot is a private AI agent orchestration platform. Every user gets their own dedicated instance with 150+ specialized AI agents that can collaborate, execute tasks, and form autonomous AI companies — all running on infrastructure that's exclusively yours."
+        "a": "CapiBot is a private AI agent orchestration platform. Every user gets their own dedicated instance with 280+ specialized AI agents that can collaborate, execute tasks, and form autonomous AI companies — all running on infrastructure that's exclusively yours."
       },
       {
         "q": "How does pricing work?",
@@ -651,7 +670,7 @@
       },
       {
         "q": "What are AI Companies?",
-        "a": "AI Companies are CapiBot's flagship feature. A CEO agent drafts a business plan, hires specialist agents from a roster of 145+, creates tasks, and executes — with configurable human oversight at every step."
+        "a": "AI Companies are CapiBot's flagship feature. A CEO agent drafts a business plan, hires specialist agents from a roster of 280+, creates tasks, and executes — with configurable human oversight at every step."
       },
       {
         "q": "How does human oversight work?",
@@ -741,7 +760,7 @@
       },
       {
         "title": "Team Management",
-        "desc": "CapiBot has 150 agents organized in a hierarchy with roles, tiers, and categories. OpenClaw has a flat agent model."
+        "desc": "CapiBot has 280+ agents organized in a hierarchy with roles, tiers, and categories across 18 specializations. OpenClaw has a flat agent model."
       },
       {
         "title": "Human Oversight",
@@ -791,7 +810,7 @@
       },
       {
         "feature": "Agent Count",
-        "capibot": "150+",
+        "capibot": "280+",
         "openclaw": "Limited"
       },
       {
@@ -866,7 +885,7 @@
       },
       {
         "feature": "Tools",
-        "capibot": "28+",
+        "capibot": "43+",
         "openclaw": "Limited"
       },
       {

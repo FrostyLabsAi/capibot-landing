@@ -11,7 +11,7 @@
     "tag": "Plataforma de Orquestación de Agentes de IA",
     "heading": "Build It. Ship It. ",
     "headingAccent": "Chill.",
-    "description": "Desde un asistente de IA único hasta una empresa autónoma completa — CapiBot te ofrece 36 herramientas integradas, 8 paquetes de skills y control total sobre el nivel de autonomía de tus agentes. Privado. Seguro. Tuyo.",
+    "description": "Desde un asistente de IA único hasta una empresa autónoma completa — CapiBot te ofrece 43+ herramientas integradas, 600+ skills, 280+ agentes y control total sobre el nivel de autonomía de tus agentes. Privado. Seguro. Tuyo.",
     "ctaPrimary": "Unirse a la Lista de Espera",
     "ctaSecondary": "Ver Qué Puede Hacer",
     "badges": {
@@ -27,7 +27,7 @@
     },
     "floatingBadges": {
       "agents": "En Vivo en 5 Min",
-      "telegram": "150 Agentes Integrados",
+      "telegram": "280+ Agentes Integrados",
       "missionControl": "Mission Control",
       "aiCompanies": "Empresas de IA"
     }
@@ -37,6 +37,10 @@
     "tech": {
       "anthropic": "Anthropic",
       "google": "Google",
+      "qwen": "Qwen",
+      "kimi": "Kimi",
+      "minimax": "MiniMax",
+      "glm": "GLM",
       "postgresql": "PostgreSQL",
       "puppeteer": "Puppeteer",
       "langchain": "LangChain",
@@ -83,7 +87,7 @@
         "description": "Modo gestionado o completamente autónomo"
       },
       {
-        "title": "Roster de 150 Agentes",
+        "title": "Roster de 280+ Agentes",
         "description": "12+ categorías para contratar"
       },
       {
@@ -108,7 +112,7 @@
         "label": "Herramientas Integradas"
       },
       {
-        "label": "Paquetes de Skills"
+        "label": "Skills"
       },
       {
         "label": "Proveedores de IA"
@@ -183,7 +187,7 @@
         "Acciones rápidas y centro de notificaciones"
       ],
       "agents": [
-        "Explora 150 agentes en 12 categorías",
+        "Explora 280+ agentes en 18 categorías",
         "Páginas de detalle de agentes con historial de sesiones",
         "Activa, configura y monitorea agentes"
       ],
@@ -255,7 +259,7 @@
       "intern": "Interno"
     },
     "tierSpawned": "(generado bajo demanda)",
-    "rosterTitle": "Roster de Agentes — agentes preconstruidos en 12 categorías",
+    "rosterTitle": "Roster de Agentes — agentes preconstruidos en 18 categorías",
     "categories": [
       "CEOs",
       "Ingeniería",
@@ -356,7 +360,7 @@
   },
   "tools": {
     "tag": "Herramientas y Capacidades",
-    "heading": "Más de 28 herramientas al alcance de tus agentes",
+    "heading": "Más de 43 herramientas al alcance de tus agentes",
     "subheading": "Desde edición de archivos hasta automatización de navegador, tus agentes tienen todo lo que necesitan para hacer trabajo real.",
     "categories": [
       {
@@ -554,7 +558,7 @@
           "500 creditos por mes",
           "Todos los modelos de IA incluidos",
           "Agentes y empresas ilimitados",
-          "Las 36 herramientas integradas",
+          "Las 43+ herramientas integradas",
           "4 canales de mensajeria",
           "Instancia privada dedicada"
         ]
@@ -570,7 +574,7 @@
           "1,500 creditos por mes",
           "Todos los modelos de IA incluidos",
           "Agentes y empresas ilimitados",
-          "Las 36 herramientas integradas",
+          "Las 43+ herramientas integradas",
           "Soporte prioritario por email",
           "Instancia privada dedicada"
         ]
@@ -586,7 +590,7 @@
           "5,000 creditos por mes",
           "Todos los modelos de IA incluidos",
           "Agentes y empresas ilimitados",
-          "Las 36 herramientas integradas",
+          "Las 43+ herramientas integradas",
           "Soporte prioritario",
           "Instancia privada dedicada"
         ]
@@ -602,7 +606,7 @@
           "15,000 creditos por mes",
           "Todos los modelos de IA incluidos",
           "Agentes y empresas ilimitados",
-          "Las 36 herramientas integradas",
+          "Las 43+ herramientas integradas",
           "Ingeniero de soporte dedicado",
           "SLA personalizado disponible"
         ]
@@ -614,7 +618,7 @@
       "Todos los Modelos de IA (Sonnet, Opus, GPT-4o, Kimi, etc.)",
       "Agentes Ilimitados",
       "Empresas IA Ilimitadas",
-      "Las 36 Herramientas Integradas",
+      "Las 43+ Herramientas Integradas",
       "Panel de Mission Control",
       "4 Canales de Mensajeria",
       "Memoria y Busqueda Semantica",
@@ -639,7 +643,7 @@
     "items": [
       {
         "q": "¿Qué es CapiBot?",
-        "a": "CapiBot es una plataforma privada de orquestación de agentes IA. Cada usuario obtiene su propia instancia dedicada con más de 150 agentes especializados que pueden colaborar, ejecutar tareas y formar empresas IA autónomas — todo ejecutándose en infraestructura exclusivamente tuya."
+        "a": "CapiBot es una plataforma privada de orquestación de agentes IA. Cada usuario obtiene su propia instancia dedicada con más de 280 agentes especializados que pueden colaborar, ejecutar tareas y formar empresas IA autónomas — todo ejecutándose en infraestructura exclusivamente tuya."
       },
       {
         "q": "¿Cómo funciona el precio?",
@@ -651,7 +655,7 @@
       },
       {
         "q": "¿Qué son las Empresas IA?",
-        "a": "Las Empresas IA son la función principal de CapiBot. Un agente CEO redacta un plan de negocio, contrata agentes especialistas de un catálogo de 145+, crea tareas y ejecuta — con supervisión humana configurable en cada paso."
+        "a": "Las Empresas IA son la función principal de CapiBot. Un agente CEO redacta un plan de negocio, contrata agentes especialistas de un catálogo de 280+, crea tareas y ejecuta — con supervisión humana configurable en cada paso."
       },
       {
         "q": "¿Cómo funciona la supervisión humana?",
@@ -741,7 +745,7 @@
       },
       {
         "title": "Gestión de Equipos",
-        "desc": "CapiBot tiene 150 agentes organizados en una jerarquía con roles, niveles y categorías. OpenClaw tiene un modelo de agente plano."
+        "desc": "CapiBot tiene 280+ agentes organizados en una jerarquía con roles, niveles y categorías en 18 especializaciones. OpenClaw tiene un modelo de agente plano."
       },
       {
         "title": "Supervisión Humana",
@@ -791,7 +795,7 @@
       },
       {
         "feature": "Cantidad de Agentes",
-        "capibot": "150+",
+        "capibot": "280+",
         "openclaw": "Limitado"
       },
       {
@@ -866,7 +870,7 @@
       },
       {
         "feature": "Herramientas",
-        "capibot": "28+",
+        "capibot": "43+",
         "openclaw": "Limitado"
       },
       {

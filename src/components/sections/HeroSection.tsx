@@ -12,7 +12,7 @@ const heroBadgeIcons = [
 	<MessageSquare key="channels" className="w-4 h-4" />,
 ];
 
-const heroBadgeTargets = [8, 36, 6, 4];
+const heroBadgeTargets = [604, 43, 7, 4];
 const heroBadgeKeys = ['skills', 'tools', 'providers', 'channels'] as const;
 const trustPillKeys = ['quickSetup', 'privateData', 'noVendorLock'] as const;
 const floatingBadgeKeys = ['agents', 'telegram', 'missionControl', 'aiCompanies'] as const;
