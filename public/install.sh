@@ -30,8 +30,13 @@ echo ""
 # ── License Key ──
 LICENSE_KEY="${1:-}"
 if [ -z "$LICENSE_KEY" ]; then
-	echo -n "Enter your license key (CAPI-XXXX-XXXX-XXXX-XXXX): "
-	read -r LICENSE_KEY
+	if [ -t 0 ]; then
+		echo -n "Enter your license key (CAPI-XXXX-XXXX-XXXX-XXXX): "
+		read -r LICENSE_KEY
+	else
+		err "License key required. Usage: curl -fsSL https://capibot.io/install.sh | bash -s CAPI-XXXX-XXXX-XXXX-XXXX"
+		exit 1
+	fi
 fi
 
 if [[ ! "$LICENSE_KEY" =~ ^CAPI-[A-F0-9]{4}-[A-F0-9]{4}-[A-F0-9]{4}-[A-F0-9]{4}$ ]]; then
@@ -88,8 +93,11 @@ JWT_SECRET=$(openssl rand -hex 32)
 GATEWAY_TOKEN=$(openssl rand -base64 32 | tr -d '/+=' | head -c 44)
 SESSION_SECRET=$(openssl rand -hex 32)
 
-echo -n "Choose an admin password (or press Enter to generate one): "
-read -r ADMIN_PASSWORD
+if [ -t 0 ]; then
+	# Interactive — ask user
+	echo -n "Choose an admin password (or press Enter to generate one): "
+	read -r ADMIN_PASSWORD
+fi
 if [ -z "$ADMIN_PASSWORD" ]; then
 	ADMIN_PASSWORD=$(openssl rand -base64 16 | tr -d '/+=' | head -c 16)
 	warn "Generated admin password: ${BOLD}${ADMIN_PASSWORD}${NC}"
