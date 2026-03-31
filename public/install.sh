@@ -93,6 +93,7 @@ JWT_SECRET=$(openssl rand -hex 32)
 GATEWAY_TOKEN=$(openssl rand -base64 32 | tr -d '/+=' | head -c 44)
 SESSION_SECRET=$(openssl rand -hex 32)
 
+ADMIN_PASSWORD=""
 if [ -t 0 ]; then
 	# Interactive — ask user
 	echo -n "Choose an admin password (or press Enter to generate one): "
