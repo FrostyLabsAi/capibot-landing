@@ -41,7 +41,11 @@
       "puppeteer": "Puppeteer",
       "langchain": "LangChain",
       "ollama": "Ollama",
-      "composio": "Composio"
+      "composio": "Composio",
+      "qwen": "Qwen",
+      "kimi": "Kimi",
+      "minimax": "MiniMax",
+      "glm": "GLM"
     }
   },
   "aiCompany": {
@@ -622,7 +626,8 @@
       "Orchestration d'Entreprises IA",
       "Automatisation Cron et Webhooks",
       "LLM Multi-Fournisseur avec Failover",
-      "Ecosysteme de Skills"
+      "Ecosysteme de Skills",
+      "Multi-Provider LLM with Failover"
     ],
     "allPlansNote": "Toutes les fonctionnalites dans tous les plans.",
     "allPlansDesc": "La seule difference est le nombre de credits. Choisissez le plan adapte a votre usage.",
@@ -630,7 +635,21 @@
     "enterpriseCta": "Contactez-nous",
     "annualNote": "facture annuellement",
     "getStarted": "Commencer",
-    "creditExplainer": "1 credit = 1 action avec les modeles standard. Les modeles premium comme Sonnet (5 credits) et Opus (10 credits) en utilisent plus."
+    "creditExplainer": "1 credit = 1 action avec les modeles standard. Les modeles premium comme Sonnet (5 credits) et Opus (10 credits) en utilisent plus.",
+    "selfHostedTag": "Prefer to run it yourself?",
+    "selfHostedName": "Self-Hosted",
+    "selfHostedPrice": "$39",
+    "selfHostedPriceDetail": "/month",
+    "selfHostedDescription": "Run CapiBot on your own hardware with your own API keys. Full platform, no usage limits, total privacy.",
+    "selfHostedFeatures": [
+      "Unlimited agents & companies",
+      "Bring your own LLM keys (no credits needed)",
+      "All 43+ built-in tools & 600+ skills",
+      "16 one-click company templates",
+      "One-command install (Linux, macOS, Windows)",
+      "Full data privacy — nothing leaves your machine"
+    ],
+    "selfHostedCta": "Get Started"
   },
   "faq": {
     "tag": "FAQ",

@@ -615,18 +615,19 @@
     "comparisonTitle": "Incluido en Todos los Planes",
     "comparisonFeatures": [
       "Instancia Privada Dedicada",
-      "Todos los Modelos de IA (Sonnet, Opus, GPT-4o, Kimi, etc.)",
-      "Agentes Ilimitados",
-      "Empresas IA Ilimitadas",
+      "Todos los Modelos de IA (Sonnet, Opus, GPT-4o, Kimi, Qwen, etc.)",
+      "280+ Agentes Pre-construidos",
+      "600+ Skills",
+      "16 Plantillas de Empresas",
       "Las 43+ Herramientas Integradas",
+      "Empresas IA Ilimitadas",
       "Panel de Mission Control",
       "4 Canales de Mensajeria",
       "Memoria y Busqueda Semantica",
       "Integraciones Composio",
       "Orquestacion de Empresas IA",
       "Automatizacion Cron y Webhooks",
-      "LLM Multi-Proveedor con Failover",
-      "Ecosistema de Skills"
+      "LLM Multi-Proveedor con Failover"
     ],
     "allPlansNote": "Todas las funciones en todos los planes.",
     "allPlansDesc": "La unica diferencia son los creditos. Elige el plan que se ajuste a tu uso.",
@@ -634,7 +635,21 @@
     "enterpriseCta": "Habla con nosotros",
     "annualNote": "facturado anualmente",
     "getStarted": "Comenzar",
-    "creditExplainer": "1 credito = 1 accion con modelos estandar. Modelos premium como Sonnet (5 creditos) y Opus (10 creditos) usan mas."
+    "creditExplainer": "1 credito = 1 accion con modelos estandar. Modelos premium como Sonnet (5 creditos) y Opus (10 creditos) usan mas.",
+    "selfHostedTag": "Prefer to run it yourself?",
+    "selfHostedName": "Self-Hosted",
+    "selfHostedPrice": "$39",
+    "selfHostedPriceDetail": "/month",
+    "selfHostedDescription": "Run CapiBot on your own hardware with your own API keys. Full platform, no usage limits, total privacy.",
+    "selfHostedFeatures": [
+      "Unlimited agents & companies",
+      "Bring your own LLM keys (no credits needed)",
+      "All 43+ built-in tools & 600+ skills",
+      "16 one-click company templates",
+      "One-command install (Linux, macOS, Windows)",
+      "Full data privacy — nothing leaves your machine"
+    ],
+    "selfHostedCta": "Get Started"
   },
   "faq": {
     "tag": "Preguntas Frecuentes",

@@ -41,7 +41,11 @@
       "puppeteer": "Puppeteer",
       "langchain": "LangChain",
       "ollama": "Ollama",
-      "composio": "Composio"
+      "composio": "Composio",
+      "qwen": "Qwen",
+      "kimi": "Kimi",
+      "minimax": "MiniMax",
+      "glm": "GLM"
     }
   },
   "aiCompany": {
@@ -622,7 +626,8 @@
       "AI公司编排",
       "Cron和Webhook自动化",
       "多供应商LLM故障转移",
-      "技能生态系统"
+      "技能生态系统",
+      "Multi-Provider LLM with Failover"
     ],
     "allPlansNote": "所有计划包含所有功能。",
     "allPlansDesc": "唯一的区别是积分。选择适合您使用量的计划。",
@@ -630,7 +635,21 @@
     "enterpriseCta": "联系我们",
     "annualNote": "按年计费",
     "getStarted": "开始使用",
-    "creditExplainer": "1积分 = 标准模型1次操作。Sonnet（5积分）和Opus（10积分）等高级模型消耗更多。"
+    "creditExplainer": "1积分 = 标准模型1次操作。Sonnet（5积分）和Opus（10积分）等高级模型消耗更多。",
+    "selfHostedTag": "Prefer to run it yourself?",
+    "selfHostedName": "Self-Hosted",
+    "selfHostedPrice": "$39",
+    "selfHostedPriceDetail": "/month",
+    "selfHostedDescription": "Run CapiBot on your own hardware with your own API keys. Full platform, no usage limits, total privacy.",
+    "selfHostedFeatures": [
+      "Unlimited agents & companies",
+      "Bring your own LLM keys (no credits needed)",
+      "All 43+ built-in tools & 600+ skills",
+      "16 one-click company templates",
+      "One-command install (Linux, macOS, Windows)",
+      "Full data privacy — nothing leaves your machine"
+    ],
+    "selfHostedCta": "Get Started"
   },
   "faq": {
     "tag": "常见问题",

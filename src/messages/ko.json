@@ -41,7 +41,11 @@
       "puppeteer": "Puppeteer",
       "langchain": "LangChain",
       "ollama": "Ollama",
-      "composio": "Composio"
+      "composio": "Composio",
+      "qwen": "Qwen",
+      "kimi": "Kimi",
+      "minimax": "MiniMax",
+      "glm": "GLM"
     }
   },
   "aiCompany": {
@@ -622,7 +626,8 @@
       "AI 회사 오케스트레이션",
       "Cron & Webhook 자동화",
       "멀티 프로바이더 LLM 페일오버",
-      "스킬 에코시스템"
+      "스킬 에코시스템",
+      "Multi-Provider LLM with Failover"
     ],
     "allPlansNote": "모든 요금제에 모든 기능.",
     "allPlansDesc": "유일한 차이는 크레딧입니다. 사용량에 맞는 요금제를 선택하세요.",
@@ -630,7 +635,21 @@
     "enterpriseCta": "문의하기",
     "annualNote": "연간 결제",
     "getStarted": "시작하기",
-    "creditExplainer": "1 크레딧 = 표준 모델 1회 작업. Sonnet(5 크레딧), Opus(10 크레딧) 등 프리미엄 모델은 더 많이 사용합니다."
+    "creditExplainer": "1 크레딧 = 표준 모델 1회 작업. Sonnet(5 크레딧), Opus(10 크레딧) 등 프리미엄 모델은 더 많이 사용합니다.",
+    "selfHostedTag": "Prefer to run it yourself?",
+    "selfHostedName": "Self-Hosted",
+    "selfHostedPrice": "$39",
+    "selfHostedPriceDetail": "/month",
+    "selfHostedDescription": "Run CapiBot on your own hardware with your own API keys. Full platform, no usage limits, total privacy.",
+    "selfHostedFeatures": [
+      "Unlimited agents & companies",
+      "Bring your own LLM keys (no credits needed)",
+      "All 43+ built-in tools & 600+ skills",
+      "16 one-click company templates",
+      "One-command install (Linux, macOS, Windows)",
+      "Full data privacy — nothing leaves your machine"
+    ],
+    "selfHostedCta": "Get Started"
   },
   "faq": {
     "tag": "FAQ",
