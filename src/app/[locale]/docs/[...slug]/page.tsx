@@ -31,6 +31,9 @@ const docs: Record<string, () => Promise<{ default: React.ComponentType }>> = {
 	'agent-performance': () => import('@/content/docs/en/agent-performance.mdx'),
 	'security': () => import('@/content/docs/en/security.mdx'),
 	
+	// Deployment
+	'self-hosted': () => import('@/content/docs/en/self-hosted.mdx'),
+
 	// Legacy (for backwards compatibility)
 	'getting-started': () => import('@/content/docs/en/getting-started.mdx'),
 	'configuration': () => import('@/content/docs/en/configuration.mdx'),

@@ -1,0 +1,114 @@
+# CapiBot Self-Hosted Stack
+# https://capibot.io/docs/self-hosted
+#
+# 1. Copy .env.example to .env and fill in your values
+# 2. Copy .env.mc.example to .env.mc and fill in your values
+# 3. Run: docker compose up -d
+
+services:
+  postgres:
+    image: pgvector/pgvector:pg16
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: capibot
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: capibot
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - internal
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U capibot"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  ollama:
+    image: ollama/ollama:latest
+    restart: unless-stopped
+    volumes:
+      - ollama-data:/root/.ollama
+    networks:
+      - internal
+    healthcheck:
+      test: ["CMD", "ollama", "list"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  ollama-init:
+    image: ollama/ollama:latest
+    depends_on:
+      ollama:
+        condition: service_healthy
+    entrypoint: ["sh", "-c", "ollama pull nomic-embed-text"]
+    environment:
+      OLLAMA_HOST: http://ollama:11434
+    networks:
+      - internal
+    restart: "no"
+
+  capibot:
+    image: ghcr.io/capibot/capibot-backend:latest
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+      ollama:
+        condition: service_healthy
+    env_file:
+      - .env
+    environment:
+      NODE_ENV: production
+      CAPIBOT_DEPLOYMENT_MODE: self-hosted
+      CAPIBOT_POSTGRES_URL: postgresql://capibot:${DB_PASSWORD}@postgres:5432/capibot
+      CAPIBOT_PORT: "3000"
+      CAPIBOT_WS_PORT: "3001"
+      CAPIBOT_WORKSPACE: /data/workspace
+      LICENSE_SERVER_URL: https://capibot.io/api/licenses
+      OLLAMA_HOST: http://ollama:11434
+      EMBEDDING_MODEL: nomic-embed-text
+    volumes:
+      - workspace-data:/data/workspace
+    ports:
+      - "${CAPIBOT_API_PORT:-3000}:3000"
+      - "${CAPIBOT_WS_PORT:-3001}:3001"
+    networks:
+      - internal
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:3000/api/capabilities"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  mission-control:
+    image: ghcr.io/capibot/capibot-mc:latest
+    restart: unless-stopped
+    depends_on:
+      capibot:
+        condition: service_healthy
+    env_file:
+      - .env.mc
+    environment:
+      NODE_ENV: production
+      PORT: "3000"
+      CAPIBOT_GATEWAY_HOST: capibot
+      CAPIBOT_GATEWAY_PORT: "3001"
+    ports:
+      - "${MC_PORT:-3002}:3000"
+    networks:
+      - internal
+    healthcheck:
+      test: ["CMD", "curl", "-sf", "http://localhost:3000/login"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+volumes:
+  postgres-data:
+  workspace-data:
+  ollama-data:
+
+networks:
+  internal:
+    driver: bridge

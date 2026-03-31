@@ -1,9 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server';
 import crypto from 'crypto';
+import { Resend } from 'resend';
+import { selfHostedLicenseEmail } from '@/lib/email-templates';
 
 const WEBHOOK_SECRET = process.env.LEMONSQUEEZY_WEBHOOK_SECRET || '';
 const PROVISIONER_URL = process.env.PROVISIONER_URL || 'http://localhost:4000';
 const PROVISIONER_ADMIN_KEY = process.env.PROVISIONER_ADMIN_KEY || '';
+const SELFHOSTED_PRODUCT_ID = process.env.LEMONSQUEEZY_SELFHOSTED_PRODUCT_ID || '';
 
 function verifySignature(payload: string, signature: string): boolean {
 	if (!WEBHOOK_SECRET) return false;
@@ -49,19 +52,51 @@ export async function POST(request: NextRequest) {
 	try {
 		switch (eventName) {
 			case 'subscription_created': {
-				// If tenant_slug is in custom_data, auto-provision
-				// Otherwise, the welcome page flow handles it
-				const slug = customData.tenant_slug;
-				if (slug) {
-					await callProvisioner('/api/tenants', 'POST', {
-						slug,
+				const productId = String(event.data?.attributes?.product_id || '');
+				const isSelfHosted = SELFHOSTED_PRODUCT_ID && productId === SELFHOSTED_PRODUCT_ID;
+
+				if (isSelfHosted) {
+					// Self-hosted BYOK — create license, email key to user
+					const licRes = await callProvisioner('/api/licenses', 'POST', {
 						email: customerEmail,
-						subscriptionId,
-						customerId: event.data?.attributes?.customer_id?.toString(),
+						subscription_id: subscriptionId,
+						plan_tier: 'self-hosted-byok',
 					});
-					console.log(`[webhook/ls] Auto-provisioned tenant: ${slug}`);
+
+					if (!licRes.ok) {
+						console.error('[webhook/ls] Failed to create self-hosted license');
+						return NextResponse.json({ error: 'License creation failed' }, { status: 500 });
+					}
+
+					const { license } = await licRes.json();
+
+					// Email the license key + install instructions to the customer
+					if (process.env.RESEND_API_KEY) {
+						const resend = new Resend(process.env.RESEND_API_KEY);
+						const email = selfHostedLicenseEmail(license.key);
+						await resend.emails.send({
+							from: 'CapiBot <noreply@capibot.io>',
+							to: customerEmail,
+							subject: email.subject,
+							html: email.html,
+						});
+					}
+
+					console.log(`[webhook/ls] Self-hosted license created for ${customerEmail}: ${license.key}`);
 				} else {
-					console.log(`[webhook/ls] Subscription created, awaiting welcome page setup`);
+					// Hosted tenant — existing provisioning flow
+					const slug = customData.tenant_slug;
+					if (slug) {
+						await callProvisioner('/api/tenants', 'POST', {
+							slug,
+							email: customerEmail,
+							subscriptionId,
+							customerId: event.data?.attributes?.customer_id?.toString(),
+						});
+						console.log(`[webhook/ls] Auto-provisioned tenant: ${slug}`);
+					} else {
+						console.log(`[webhook/ls] Subscription created, awaiting welcome page setup`);
+					}
 				}
 				break;
 			}
@@ -69,7 +104,7 @@ export async function POST(request: NextRequest) {
 			case 'subscription_cancelled':
 			case 'subscription_expired':
 			case 'subscription_payment_failed': {
-				// Find and stop the tenant
+				// Stop hosted tenant if exists
 				const tenantsRes = await callProvisioner('/api/tenants', 'GET');
 				if (tenantsRes.ok) {
 					const { tenants } = await tenantsRes.json();
@@ -79,11 +114,16 @@ export async function POST(request: NextRequest) {
 						console.log(`[webhook/ls] Stopped tenant: ${tenant.slug} (${eventName})`);
 					}
 				}
+
+				// Suspend self-hosted license if exists
+				await callProvisioner(`/api/licenses/by-subscription/${subscriptionId}/suspend`, 'POST');
+				console.log(`[webhook/ls] Suspended license for subscription ${subscriptionId} (${eventName})`);
 				break;
 			}
 
 			case 'subscription_resumed':
 			case 'subscription_payment_success': {
+				// Resume hosted tenant if exists
 				const tenantsRes = await callProvisioner('/api/tenants', 'GET');
 				if (tenantsRes.ok) {
 					const { tenants } = await tenantsRes.json();
@@ -93,6 +133,10 @@ export async function POST(request: NextRequest) {
 						console.log(`[webhook/ls] Resumed tenant: ${tenant.slug} (${eventName})`);
 					}
 				}
+
+				// Reactivate self-hosted license if exists
+				await callProvisioner(`/api/licenses/by-subscription/${subscriptionId}/reactivate`, 'POST');
+				console.log(`[webhook/ls] Reactivated license for subscription ${subscriptionId} (${eventName})`);
 				break;
 			}
 

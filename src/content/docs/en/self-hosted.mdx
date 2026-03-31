@@ -1,0 +1,216 @@
+# Self-Hosted Installation
+
+Run CapiBot on your own hardware with your own API keys. $39/mo flat — no usage limits, no credit system, full privacy.
+
+## What's Included
+
+The self-hosted stack runs 5 containers, all managed by Docker Compose:
+
+- **PostgreSQL** (pgvector) — database with vector search
+- **Ollama** — embedding model for semantic search (auto-configured)
+- **CapiBot** — backend API + WebSocket gateway
+- **Mission Control** — web dashboard
+- **Ollama Init** — one-shot model pull (runs once on first start)
+
+## Prerequisites
+
+- **4GB RAM** minimum (8GB recommended)
+- **Docker** — the Linux installer installs it automatically. Windows users need [Docker Desktop](https://docs.docker.com/desktop/install/windows-install/).
+- **LLM API keys** — at least one provider (Anthropic, OpenAI, Google AI, Alibaba/Qwen, Kimi, GLM, MiniMax)
+
+## Quick Start
+
+### 1. Get Your License Key
+
+Purchase a self-hosted plan at [capibot.io](https://capibot.io). Your license key will be emailed to you in the format `CAPI-XXXX-XXXX-XXXX-XXXX`.
+
+### 2. Run the Installer
+
+**Linux / macOS:**
+
+```bash
+curl -fsSL https://capibot.io/install.sh | bash -s CAPI-XXXX-XXXX-XXXX-XXXX
+```
+
+**Windows (PowerShell — run as Administrator):**
+
+```powershell
+irm https://capibot.io/install.ps1 -OutFile install.ps1; .\install.ps1 -LicenseKey CAPI-XXXX-XXXX-XXXX-XXXX
+```
+
+The installer handles everything:
+- Installs Docker if needed (Linux only)
+- Downloads the CapiBot configuration
+- Generates all security secrets automatically
+- Prompts for an admin password
+- Starts all containers
+
+### 3. Open the Dashboard
+
+Go to **http://localhost:3002** in your browser.
+
+Log in with username **admin** and the password shown during install.
+
+### 4. Add Your LLM API Key
+
+Go to **Integrations > Keys** and add at least one LLM provider key. You can also set keys in the `.env` file.
+
+## Manual Setup
+
+If you prefer to configure things yourself:
+
+```bash
+mkdir capibot && cd capibot
+curl -O https://capibot.io/self-hosted/docker-compose.yml
+curl -O https://capibot.io/self-hosted/.env.example
+curl -O https://capibot.io/self-hosted/.env.mc.example
+
+cp .env.example .env
+cp .env.mc.example .env.mc
+```
+
+Edit `.env` with your license key, a database password, and security secrets:
+
+```bash
+CAPIBOT_LICENSE_KEY=CAPI-XXXX-XXXX-XXXX-XXXX
+DB_PASSWORD=your-random-password
+CAPIBOT_API_KEY=your-random-64-char-hex
+JWT_SECRET=your-random-64-char-hex
+CAPIBOT_GATEWAY_TOKEN=your-random-base64
+CAPIBOT_ADMIN_PASSWORD=your-password
+```
+
+Edit `.env.mc` with matching values:
+
+```bash
+SESSION_SECRET=your-random-64-char-hex
+CAPIBOT_API_KEY=same-as-in-dotenv
+CAPIBOT_GATEWAY_TOKEN=same-as-in-dotenv
+```
+
+Generate random secrets:
+
+```bash
+openssl rand -hex 32
+```
+
+Then start:
+
+```bash
+docker compose up -d
+```
+
+## LLM Providers
+
+CapiBot supports multiple LLM providers. Set one or more API keys in `.env` or in the dashboard under **Integrations > Keys**.
+
+| Provider | Env Variable | Models |
+|----------|-------------|--------|
+| Anthropic | `ANTHROPIC_API_KEY` | Claude Sonnet, Opus, Haiku |
+| OpenAI | `OPENAI_API_KEY` | GPT-4o, GPT-4 Turbo |
+| Google AI | `GOOGLE_AI_API_KEY` | Gemini Pro, Flash |
+| Alibaba | `ALIBABA_API_KEY` | Qwen 3.5 Plus, Qwen 3 Max |
+| Kimi | `KIMI_API_KEY` | Kimi K2.5 |
+| GLM | `GLM_API_KEY` | GLM-5, GLM-4.7 |
+| MiniMax | `MINIMAX_API_KEY` | MiniMax M2.7 |
+| Ollama | Built-in | Llama 3.2 (optional LLM fallback) |
+
+Set provider priority in `.env`:
+
+```bash
+CAPIBOT_PROVIDER_PRIORITY=anthropic,gemini,alibaba,kimi,glm,minimax,ollama
+```
+
+### Alibaba Coding Plan
+
+The [Alibaba Coding Plan](https://www.alibabacloud.com/help/en/model-studio/coding-plan) ($50/mo) gives access to Qwen, Kimi, GLM, and MiniMax models through a single API key and endpoint. Set `ALIBABA_API_KEY` with your `sk-sp-` prefixed key to use all of them through one subscription.
+
+## Custom Domain
+
+Put a reverse proxy (Nginx, Caddy, Traefik) in front of CapiBot:
+
+- Dashboard: `yourdomain.com` -> `localhost:3002`
+- API: `api.yourdomain.com` -> `localhost:3000`
+- WebSocket: `ws.yourdomain.com` -> `localhost:3001` (requires WebSocket upgrade)
+
+Update `.env`:
+
+```bash
+CAPIBOT_WS_ALLOWED_ORIGINS=https://yourdomain.com,https://api.yourdomain.com
+```
+
+Update `.env.mc`:
+
+```bash
+MC_ALLOWED_HOSTS=yourdomain.com
+NEXT_PUBLIC_GATEWAY_HOST=ws.yourdomain.com
+```
+
+## Telegram Bot
+
+1. Create a bot via [@BotFather](https://t.me/BotFather)
+2. Add to `.env`: `TELEGRAM_BOT_TOKEN=123456:ABC-DEF...`
+3. Restart: `docker compose restart capibot`
+
+## Ollama LLM Fallback
+
+Ollama is bundled for embeddings (auto-pulls `nomic-embed-text`). To also use it as an LLM:
+
+```bash
+docker compose exec ollama ollama pull llama3.2
+```
+
+Add to `.env`:
+
+```bash
+OLLAMA_MODEL=llama3.2
+```
+
+## Updating
+
+```bash
+docker compose pull
+docker compose up -d
+```
+
+Your data persists in Docker volumes.
+
+## License
+
+- Validates on startup, then every 24 hours
+- **7-day grace period** if the license server is unreachable
+- After grace period, new agent runs are blocked but the dashboard stays accessible
+- To migrate machines, contact support to deactivate your current binding
+
+Check status:
+
+```bash
+curl -H "Authorization: Bearer YOUR_API_KEY" http://localhost:3000/api/license
+```
+
+## Troubleshooting
+
+### License activation failed
+
+- Verify `CAPIBOT_LICENSE_KEY` in `.env`
+- Check outbound HTTPS connectivity: `curl https://capibot.io/api/licenses/validate`
+- Check logs: `docker compose logs capibot | grep -i license`
+
+### Database connection issues
+
+- Check PostgreSQL: `docker compose ps`
+- Verify `DB_PASSWORD` matches in `.env`
+- Check logs: `docker compose logs postgres`
+
+### Mission Control can't connect
+
+- Verify `CAPIBOT_API_KEY` matches in both `.env` and `.env.mc`
+- Verify `CAPIBOT_GATEWAY_TOKEN` matches in both files
+- Check backend health: `curl http://localhost:3000/api/capabilities`
+
+### Reset everything
+
+```bash
+docker compose down -v   # Stops containers AND deletes all data
+docker compose up -d     # Fresh start
+```

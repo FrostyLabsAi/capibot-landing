@@ -19,7 +19,8 @@ import {
 	BarChart3,
 	MessageSquare,
 	Target,
-	Sparkles
+	Sparkles,
+	Server
 } from 'lucide-react';
 import { Footer } from '@/components/layout/footer';
 
@@ -64,6 +65,13 @@ const docsNavGroups = [
 			{ slug: 'tool-categories', icon: <Target className="w-4 h-4" />, label: 'Tool Categories' },
 			{ slug: 'company-tools', icon: <Building2 className="w-4 h-4" />, label: 'Company Tools' },
 			{ slug: 'communication-tools', icon: <MessageSquare className="w-4 h-4" />, label: 'Communication' },
+		],
+	},
+	{
+		id: 'deployment',
+		label: 'Deployment',
+		items: [
+			{ slug: 'self-hosted', icon: <Server className="w-4 h-4" />, label: 'Self-Hosted' },
 		],
 	},
 	{
