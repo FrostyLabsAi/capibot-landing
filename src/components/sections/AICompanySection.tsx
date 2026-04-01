@@ -115,6 +115,7 @@ export function AICompanySection() {
 							alt={t('companyImgAlt')}
 							width={1200}
 							height={800}
+							loading="lazy"
 							className="w-full h-auto"
 						/>
 					</ImageLightbox>

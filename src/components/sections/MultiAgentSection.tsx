@@ -104,6 +104,7 @@ export function MultiAgentSection() {
 							alt="CapiBot Agent Roster \u2014 Browse and hire from 150 agents across 12+ categories"
 							width={1200}
 							height={800}
+							loading="lazy"
 							className="w-full h-auto"
 						/>
 					</ImageLightbox>

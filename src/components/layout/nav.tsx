@@ -22,7 +22,7 @@ const NavLink = ({ href, children, mobile = false }: { href: string; children: R
 	
 	if (href.startsWith('/')) {
 		return (
-			<Link href={href} className={baseClasses}>
+			<Link href={href} prefetch={false} className={baseClasses}>
 				{children}
 			</Link>
 		);

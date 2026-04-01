@@ -109,6 +109,7 @@ export function MessagingShowcase() {
 									alt={`${t(`channels.${activeChannel}.name`)} in Mission Control`}
 									width={1200}
 									height={800}
+									loading="lazy"
 									className="w-full h-auto"
 								/>
 							</ImageLightbox>

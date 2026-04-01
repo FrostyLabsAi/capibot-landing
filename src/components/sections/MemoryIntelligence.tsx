@@ -65,6 +65,7 @@ Results (hybrid mode, 3 matches):
 								alt="CapiBot Memory Browser — Knowledge Base with semantic search"
 								width={1200}
 								height={800}
+								loading="lazy"
 								className="w-full h-auto"
 							/>
 						</ImageLightbox>

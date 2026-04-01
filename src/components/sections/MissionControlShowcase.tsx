@@ -109,6 +109,7 @@ export function MissionControlShowcase() {
 								alt={`Mission Control \u2014 ${t(`tabs.${tabId}`)}`}
 								width={1200}
 								height={800}
+								loading="lazy"
 								className="w-full h-auto"
 							/>
 						</ImageLightbox>

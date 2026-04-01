@@ -47,6 +47,7 @@ export function SkillsIntegrations() {
 								alt="CapiBot Integrations — Connected apps, Composio, and OAuth management"
 								width={1200}
 								height={800}
+								loading="lazy"
 								className="w-full h-auto"
 							/>
 						</ImageLightbox>
