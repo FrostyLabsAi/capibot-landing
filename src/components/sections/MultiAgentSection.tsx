@@ -98,9 +98,9 @@ export function MultiAgentSection() {
 							))}
 						</div>
 					</div>
-					<ImageLightbox src="/img/150agents.png" alt="CapiBot Agent Roster \u2014 Browse and hire from 150 agents across 12+ categories" className="rounded-2xl overflow-hidden border border-[var(--sand-dark)]/20 shadow-lg">
+					<ImageLightbox src="/img/150agents.webp" alt="CapiBot Agent Roster \u2014 Browse and hire from 150 agents across 12+ categories" className="rounded-2xl overflow-hidden border border-[var(--sand-dark)]/20 shadow-lg">
 						<Image
-							src="/img/150agents.png"
+							src="/img/150agents.webp"
 							alt="CapiBot Agent Roster \u2014 Browse and hire from 150 agents across 12+ categories"
 							width={1200}
 							height={800}

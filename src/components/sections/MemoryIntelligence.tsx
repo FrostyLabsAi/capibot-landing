@@ -59,9 +59,9 @@ Results (hybrid mode, 3 matches):
 
 					{/* Right: Screenshot */}
 					<div>
-						<ImageLightbox src="/img/memory.png" alt="CapiBot Memory Browser — Knowledge Base with semantic search" className="rounded-2xl overflow-hidden border border-[var(--sand-dark)]/20 shadow-lg mb-6">
+						<ImageLightbox src="/img/memory.webp" alt="CapiBot Memory Browser — Knowledge Base with semantic search" className="rounded-2xl overflow-hidden border border-[var(--sand-dark)]/20 shadow-lg mb-6">
 							<Image
-								src="/img/memory.png"
+								src="/img/memory.webp"
 								alt="CapiBot Memory Browser — Knowledge Base with semantic search"
 								width={1200}
 								height={800}

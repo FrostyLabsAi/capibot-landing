@@ -42,7 +42,7 @@ export function Footer() {
 					{/* Brand */}
 					<div className="lg:col-span-2">
 						<div className="flex items-center gap-3 mb-4">
-							<Image src="/capybara-icon.png" alt="CapiBot" width={32} height={32} className="w-8 h-8 rounded-full" />
+							<Image src="/capybara-icon.webp" alt="CapiBot" width={32} height={32} className="w-8 h-8 rounded-full" />
 							<span className="font-semibold text-lg text-white" style={{ fontFamily: 'var(--font-heading)' }}>
 								{t('brand')}
 							</span>

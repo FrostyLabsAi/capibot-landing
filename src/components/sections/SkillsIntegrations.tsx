@@ -41,9 +41,9 @@ export function SkillsIntegrations() {
 						<p className="text-sm text-[var(--charcoal)]/60 mb-6">{t('composioDesc')}</p>
 
 						{/* Integrations Screenshot */}
-						<ImageLightbox src="/img/integrations.png" alt="CapiBot Integrations — Connected apps, Composio, and OAuth management" className="rounded-xl overflow-hidden border border-[var(--sand-dark)]/20 shadow-sm mb-6">
+						<ImageLightbox src="/img/integrations.webp" alt="CapiBot Integrations — Connected apps, Composio, and OAuth management" className="rounded-xl overflow-hidden border border-[var(--sand-dark)]/20 shadow-sm mb-6">
 							<Image
-								src="/img/integrations.png"
+								src="/img/integrations.webp"
 								alt="CapiBot Integrations — Connected apps, Composio, and OAuth management"
 								width={1200}
 								height={800}

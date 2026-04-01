@@ -21,12 +21,12 @@ const tabIcons = [
 ];
 
 const tabImages = [
-	'/img/main_overview.png',
-	'/img/150agents.png',
-	'/img/taskboard.png',
-	'/img/memory.png',
-	'/img/skills.png',
-	'/img/tasks.png',
+	'/img/main_overview.webp',
+	'/img/150agents.webp',
+	'/img/taskboard.webp',
+	'/img/memory.webp',
+	'/img/skills.webp',
+	'/img/tasks.webp',
 ];
 
 const featureIcons = [

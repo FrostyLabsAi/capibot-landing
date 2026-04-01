@@ -35,7 +35,7 @@ export function GoogleLogo({ className = '', size = 24 }: LogoProps) {
 export function PostgreSQLLogo({ className = '', size = 24 }: LogoProps) {
 	return (
 		<Image
-			src="/img/PostgreSQL_idG_UafUz7_0.png"
+			src="/img/PostgreSQL_idG_UafUz7_0.webp"
 			alt="PostgreSQL"
 			width={size}
 			height={size}
@@ -47,7 +47,7 @@ export function PostgreSQLLogo({ className = '', size = 24 }: LogoProps) {
 export function OllamaLogo({ className = '', size = 24 }: LogoProps) {
 	return (
 		<Image
-			src="/img/ollama.png"
+			src="/img/ollama.webp"
 			alt="Ollama"
 			width={size}
 			height={size}
@@ -59,7 +59,7 @@ export function OllamaLogo({ className = '', size = 24 }: LogoProps) {
 export function LangChainLogo({ className = '', size = 24 }: LogoProps) {
 	return (
 		<Image
-			src="/img/langchain-icon.png"
+			src="/img/langchain-icon.webp"
 			alt="LangChain"
 			width={size}
 			height={size}
@@ -71,7 +71,7 @@ export function LangChainLogo({ className = '', size = 24 }: LogoProps) {
 export function PuppeteerLogo({ className = '', size = 24 }: LogoProps) {
 	return (
 		<Image
-			src="/img/puppeteer.png"
+			src="/img/puppeteer.webp"
 			alt="Puppeteer"
 			width={size}
 			height={size}
@@ -95,7 +95,7 @@ export function ComposioLogo({ className = '', size = 24 }: LogoProps) {
 export function KimiLogo({ className = '', size = 24 }: LogoProps) {
 	return (
 		<Image
-			src="/img/kimi-icon-rounded-corner.png"
+			src="/img/kimi-icon-rounded-corner.webp"
 			alt="Kimi"
 			width={size}
 			height={size}
@@ -131,7 +131,7 @@ export function MiniMaxLogo({ className = '', size = 24 }: LogoProps) {
 export function QwenLogo({ className = '', size = 24 }: LogoProps) {
 	return (
 		<Image
-			src="/img/qwen-icon.png"
+			src="/img/qwen-icon.webp"
 			alt="Qwen"
 			width={size}
 			height={size}

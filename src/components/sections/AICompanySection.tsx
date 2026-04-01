@@ -109,9 +109,9 @@ export function AICompanySection() {
 					</div>
 
 					{/* Screenshot */}
-					<ImageLightbox src="/img/company.png" alt={t('companyImgAlt')} className="rounded-2xl overflow-hidden border border-[var(--sand-dark)]/20 shadow-lg">
+					<ImageLightbox src="/img/company.webp" alt={t('companyImgAlt')} className="rounded-2xl overflow-hidden border border-[var(--sand-dark)]/20 shadow-lg">
 						<Image
-							src="/img/company.png"
+							src="/img/company.webp"
 							alt={t('companyImgAlt')}
 							width={1200}
 							height={800}

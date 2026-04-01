@@ -9,7 +9,7 @@ import { ImageLightbox } from '@/components/shared/ImageLightbox';
 
 const channelColors = ['#0088CC', '#25D366', '#4A154B', 'var(--terracotta)'];
 const channelMockupClasses = ['chat-mockup-telegram', 'chat-mockup-whatsapp', 'chat-mockup-slack', 'chat-mockup-web'];
-const channelScreenshots = [null, null, null, '/img/company_chat.png'];
+const channelScreenshots = [null, null, null, '/img/company_chat.webp'];
 
 const channelFeatureIcons = [
 	[<Mic key="0" className="w-4 h-4" />, <Image key="1" className="w-4 h-4" />, <FileText key="2" className="w-4 h-4" />, <MessageSquare key="3" className="w-4 h-4" />],

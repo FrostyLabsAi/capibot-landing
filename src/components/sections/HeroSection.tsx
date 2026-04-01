@@ -93,10 +93,10 @@ export function HeroSection() {
 						<div className="relative">
 							<div className="relative z-10 glass-morphism-hero p-8 lg:p-12">
 								<Image
-									src="/capybara-mascot.png"
+									src="/capybara-mascot.webp"
 									alt="CapiBot AI Agent Platform"
-									width={1200}
-									height={800}
+									width={512}
+									height={512}
 									priority
 									className="w-full max-w-md mx-auto drop-shadow-2xl rounded-3xl"
 								/>
