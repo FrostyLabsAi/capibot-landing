@@ -98,6 +98,8 @@ export function HeroSection() {
 									width={512}
 									height={512}
 									priority
+									unoptimized
+									fetchPriority="high"
 									className="w-full max-w-md mx-auto drop-shadow-2xl rounded-3xl"
 								/>
 							</div>
