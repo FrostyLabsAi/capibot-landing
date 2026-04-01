@@ -15,6 +15,10 @@ const withMDX = createMDX({
 const nextConfig: NextConfig = {
 	output: 'standalone',
 	pageExtensions: ['ts', 'tsx', 'md', 'mdx'],
+	images: {
+		formats: ['image/avif', 'image/webp'],
+		minimumCacheTTL: 31536000,
+	},
 };
 
 export default withNextIntl(withMDX(nextConfig));

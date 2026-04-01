@@ -6,11 +6,7 @@ import { Check, ArrowRight, Sparkles, Mail } from 'lucide-react';
 
 const BENEFITS_COUNT = 3;
 
-interface InstallCTAProps {
-	onJoinWaitlist?: () => void;
-}
-
-export function InstallCTA({ onJoinWaitlist }: InstallCTAProps) {
+export function InstallCTA() {
 	const [email, setEmail] = useState('');
 	const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
 	const [errorMessage, setErrorMessage] = useState('');
@@ -41,9 +37,6 @@ export function InstallCTA({ onJoinWaitlist }: InstallCTAProps) {
 			setStatus('error');
 		}
 	};
-
-	// Also allow parent to handle scroll
-	void onJoinWaitlist;
 
 	return (
 		<section id="waitlist" className="py-24 lg:py-32 relative overflow-hidden">

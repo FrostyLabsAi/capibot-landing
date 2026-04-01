@@ -4,6 +4,7 @@ import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { ArrowRight, Check, Sparkles, Zap, Bot, Layers, MessageSquare } from 'lucide-react';
 import { AnimatedCounter } from '@/components/shared/AnimatedCounter';
+import { scrollToSection } from '@/components/shared/scroll-to';
 
 const heroBadgeIcons = [
 	<Zap key="skills" className="w-4 h-4" />,
@@ -17,11 +18,7 @@ const heroBadgeKeys = ['skills', 'tools', 'providers', 'channels'] as const;
 const trustPillKeys = ['quickSetup', 'privateData', 'noVendorLock'] as const;
 const floatingBadgeKeys = ['agents', 'telegram', 'missionControl', 'aiCompanies'] as const;
 
-interface HeroSectionProps {
-	onScrollTo: (id: string) => void;
-}
-
-export function HeroSection({ onScrollTo }: HeroSectionProps) {
+export function HeroSection() {
 	const t = useTranslations('hero');
 
 	return (
@@ -66,14 +63,14 @@ export function HeroSection({ onScrollTo }: HeroSectionProps) {
 						{/* CTAs */}
 						<div className="flex flex-wrap gap-4 mb-8 hero-animate" style={{ '--index': 4 } as React.CSSProperties}>
 							<button
-								onClick={() => onScrollTo('waitlist')}
+								onClick={() => scrollToSection('waitlist')}
 								className="btn-savannah btn-savannah-primary cursor-pointer"
 							>
 								{t('ctaPrimary')}
 								<ArrowRight className="w-4 h-4" />
 							</button>
 							<button
-								onClick={() => onScrollTo('features')}
+								onClick={() => scrollToSection('features')}
 								className="btn-savannah btn-savannah-secondary cursor-pointer"
 							>
 								{t('ctaSecondary')}

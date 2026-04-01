@@ -1,7 +1,11 @@
 /**
  * Brand logos using actual icon files from /public/img/.
  * AnthropicLogo keeps inline SVG since there's no icon file for it.
+ * SVG logos use raw <img> (no optimization benefit from Next.js Image).
+ * PNG logos use Next.js <Image> for automatic WebP/AVIF conversion + sizing.
  */
+
+import Image from 'next/image';
 
 interface LogoProps {
 	className?: string;
@@ -30,7 +34,7 @@ export function GoogleLogo({ className = '', size = 24 }: LogoProps) {
 
 export function PostgreSQLLogo({ className = '', size = 24 }: LogoProps) {
 	return (
-		<img
+		<Image
 			src="/img/PostgreSQL_idG_UafUz7_0.png"
 			alt="PostgreSQL"
 			width={size}
@@ -42,7 +46,7 @@ export function PostgreSQLLogo({ className = '', size = 24 }: LogoProps) {
 
 export function OllamaLogo({ className = '', size = 24 }: LogoProps) {
 	return (
-		<img
+		<Image
 			src="/img/ollama.png"
 			alt="Ollama"
 			width={size}
@@ -54,7 +58,7 @@ export function OllamaLogo({ className = '', size = 24 }: LogoProps) {
 
 export function LangChainLogo({ className = '', size = 24 }: LogoProps) {
 	return (
-		<img
+		<Image
 			src="/img/langchain-icon.png"
 			alt="LangChain"
 			width={size}
@@ -66,7 +70,7 @@ export function LangChainLogo({ className = '', size = 24 }: LogoProps) {
 
 export function PuppeteerLogo({ className = '', size = 24 }: LogoProps) {
 	return (
-		<img
+		<Image
 			src="/img/puppeteer.png"
 			alt="Puppeteer"
 			width={size}
@@ -90,7 +94,7 @@ export function ComposioLogo({ className = '', size = 24 }: LogoProps) {
 
 export function KimiLogo({ className = '', size = 24 }: LogoProps) {
 	return (
-		<img
+		<Image
 			src="/img/kimi-icon-rounded-corner.png"
 			alt="Kimi"
 			width={size}
@@ -126,7 +130,7 @@ export function MiniMaxLogo({ className = '', size = 24 }: LogoProps) {
 
 export function QwenLogo({ className = '', size = 24 }: LogoProps) {
 	return (
-		<img
+		<Image
 			src="/img/qwen-icon.png"
 			alt="Qwen"
 			width={size}

@@ -1,5 +1,3 @@
-'use client';
-
 import { type ReactNode } from 'react';
 import { HeroSection } from '@/components/sections/HeroSection';
 import { AICompanySection } from '@/components/sections/AICompanySection';
@@ -27,29 +25,20 @@ export function LandingPage({
 	memoryIntelligence,
 	providersSection,
 }: LandingPageProps) {
-	const scrollToSection = (id: string) => {
-		const el = document.getElementById(id);
-		if (el) {
-			el.scrollIntoView({ behavior: 'smooth' });
-		}
-	};
-
-	const scrollToWaitlist = () => scrollToSection('waitlist');
-
 	return (
 		<>
-			<HeroSection onScrollTo={scrollToSection} />
+			<HeroSection />
 			{trustBar}
-			<AICompanySection onJoinWaitlist={scrollToWaitlist} />
+			<AICompanySection />
 			{statsBar}
 			<MessagingShowcase />
 			<MissionControlShowcase />
 			<MultiAgentSection />
 			{toolsCapabilities}
-			<SkillsIntegrations onJoinWaitlist={scrollToWaitlist} />
+			<SkillsIntegrations />
 			{memoryIntelligence}
 			{providersSection}
-			<PricingSection onJoinWaitlist={scrollToWaitlist} />
+			<PricingSection />
 			<FAQSection />
 			<InstallCTA />
 			<Footer />

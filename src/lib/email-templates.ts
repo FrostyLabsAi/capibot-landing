@@ -17,7 +17,7 @@ export function selfHostedLicenseEmail(licenseKey: string): { subject: string; h
 
 		<!-- Header -->
 		<div style="text-align:center;margin-bottom:32px;">
-			<img src="https://capibot.io/capybara-icon.png" alt="CapiBot" width="64" height="64" style="border-radius:50%;margin-bottom:16px;" />
+			<img src="https://capibot.io/android-chrome-192x192.png" alt="CapiBot" width="64" height="64" style="border-radius:50%;margin-bottom:16px;" />
 			<h1 style="margin:0;font-size:24px;color:#ffffff;">Welcome to CapiBot Self-Hosted!</h1>
 			<p style="margin:8px 0 0;color:#9ca3af;font-size:14px;">Your private AI workforce is ready to deploy.</p>
 		</div>

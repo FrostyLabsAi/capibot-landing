@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
+import Image from 'next/image';
 import Link from 'next/link';
 import {
 	ArrowRight,
@@ -104,7 +105,7 @@ export function OpenClawComparison() {
 				<div className="max-w-7xl mx-auto px-6 lg:px-8">
 					<div className="flex items-center justify-between h-16 lg:h-20">
 						<Link href={`/${locale}`} className="flex items-center gap-3">
-							<img src="/capybara-icon.png" alt="CapiBot" className="w-10 h-10 rounded-full" />
+							<Image src="/capybara-icon.png" alt="CapiBot" width={40} height={40} className="w-10 h-10 rounded-full" />
 							<span className="font-semibold text-xl text-[var(--espresso)]" style={{ fontFamily: 'var(--font-heading)' }}>CapiBot</span>
 						</Link>
 

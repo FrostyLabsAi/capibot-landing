@@ -5,6 +5,7 @@ import { useTranslations, useLocale } from 'next-intl';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight, Check } from 'lucide-react';
+import { scrollToSection } from '@/components/shared/scroll-to';
 
 export function Footer() {
 	const t = useTranslations('footer');
@@ -31,13 +32,6 @@ export function Footer() {
 			}
 		} catch {
 			setStatus('error');
-		}
-	};
-
-	const scrollToSection = (id: string) => {
-		const el = document.getElementById(id);
-		if (el) {
-			el.scrollIntoView({ behavior: 'smooth' });
 		}
 	};
 

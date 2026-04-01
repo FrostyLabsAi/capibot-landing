@@ -19,7 +19,7 @@ export async function GET() {
 			>
 				{/* Capybara icon */}
 				<img
-					src="https://capibot.io/capybara-icon.png"
+					src="https://capibot.io/android-chrome-192x192.png"
 					width={120}
 					height={120}
 					style={{ borderRadius: '50%', marginBottom: 24 }}

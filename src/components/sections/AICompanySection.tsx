@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { Building2, Users, ClipboardCheck, Brain, Shield, Target, ArrowRight, ChevronRight, Bot, MessageSquare } from 'lucide-react';
 import { SectionHeader } from '@/components/shared/SectionHeader';
 import { ImageLightbox } from '@/components/shared/ImageLightbox';
+import { scrollToWaitlist } from '@/components/shared/scroll-to';
 
 const phaseKeys = ['briefing', 'planning', 'approved', 'operating'] as const;
 const phaseColors = ['var(--sand-dark)', 'var(--gold)', 'var(--terracotta)', 'var(--sage)'];
@@ -24,11 +25,7 @@ const featureIcons = [
 	<Building2 key="5" className="w-4 h-4" />,
 ];
 
-interface AICompanySectionProps {
-	onJoinWaitlist: () => void;
-}
-
-export function AICompanySection({ onJoinWaitlist }: AICompanySectionProps) {
+export function AICompanySection() {
 	const t = useTranslations('aiCompany');
 
 	return (
@@ -125,7 +122,7 @@ export function AICompanySection({ onJoinWaitlist }: AICompanySectionProps) {
 
 				<div className="text-center">
 					<button
-						onClick={onJoinWaitlist}
+						onClick={scrollToWaitlist}
 						className="btn-savannah btn-savannah-primary cursor-pointer"
 					>
 						{t('cta')}

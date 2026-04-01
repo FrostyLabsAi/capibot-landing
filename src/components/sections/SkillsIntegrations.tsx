@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { Layers, ArrowRight, Sparkles, BookOpen } from 'lucide-react';
 import { SectionHeader } from '@/components/shared/SectionHeader';
 import { ImageLightbox } from '@/components/shared/ImageLightbox';
+import { scrollToWaitlist } from '@/components/shared/scroll-to';
 
 const composioApps = [
 	'Gmail', 'Google Docs', 'Notion', 'Linear', 'Jira', 'Salesforce',
@@ -13,11 +14,7 @@ const composioApps = [
 	'Todoist', 'ClickUp', 'Monday', 'Freshdesk', 'Zoho', 'Pipedrive',
 ];
 
-interface SkillsIntegrationsProps {
-	onJoinWaitlist: () => void;
-}
-
-export function SkillsIntegrations({ onJoinWaitlist }: SkillsIntegrationsProps) {
+export function SkillsIntegrations() {
 	const t = useTranslations('skills');
 
 	return (
@@ -77,7 +74,7 @@ export function SkillsIntegrations({ onJoinWaitlist }: SkillsIntegrationsProps) 
 						</div>
 
 						<button
-							onClick={onJoinWaitlist}
+							onClick={scrollToWaitlist}
 							className="mt-6 text-sm font-semibold text-[var(--terracotta)] flex items-center gap-1 hover:gap-2 transition-all cursor-pointer"
 						>
 							{t('composioCtaText')} <ArrowRight className="w-4 h-4" />

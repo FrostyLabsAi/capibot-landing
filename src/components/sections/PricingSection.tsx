@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { Star, Check, ArrowRight, Coins, Server } from 'lucide-react';
 import { SectionHeader } from '@/components/shared/SectionHeader';
+import { scrollToWaitlist } from '@/components/shared/scroll-to';
 
 // LemonSqueezy checkout URLs per tier (monthly / annual)
 const CHECKOUT_URLS: Record<string, { monthly: string; annual: string }> = {
@@ -27,11 +28,7 @@ const CHECKOUT_URLS: Record<string, { monthly: string; annual: string }> = {
 
 const TIER_KEYS = ['starter', 'pro', 'scale', 'enterprise'] as const;
 
-interface PricingSectionProps {
-	onJoinWaitlist: () => void;
-}
-
-export function PricingSection({ onJoinWaitlist }: PricingSectionProps) {
+export function PricingSection() {
 	const [annual, setAnnual] = useState(false);
 	const t = useTranslations('pricing');
 	const tNav = useTranslations('nav');
@@ -132,7 +129,7 @@ export function PricingSection({ onJoinWaitlist }: PricingSectionProps) {
 									</a>
 								) : (
 									<button
-										onClick={onJoinWaitlist}
+										onClick={scrollToWaitlist}
 										className={`${isPopular ? 'btn-savannah btn-savannah-primary' : idx === 3 ? 'btn-savannah bg-black text-white hover:bg-[var(--espresso)]' : 'btn-savannah btn-savannah-secondary'} w-full cursor-pointer`}
 									>
 										{tNav('joinWaitlist')}
