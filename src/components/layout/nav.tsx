@@ -97,7 +97,14 @@ export function Nav() {
 							value={locale}
 							onChange={(e) => {
 								const newLocale = e.target.value;
-								window.location.pathname = window.location.pathname.replace(`/${locale}`, `/${newLocale}`);
+								const path = window.location.pathname;
+									const localePattern = new RegExp(`^/(${locales.join('|')})(/|$)`);
+									const match = path.match(localePattern);
+									if (match) {
+										window.location.pathname = path.replace(localePattern, `/${newLocale}$2`);
+									} else {
+										window.location.pathname = `/${newLocale}${path}`;
+									}
 							}}
 							className="text-xs bg-transparent border border-[var(--sand-dark)]/30 rounded-full px-3 py-1.5 text-[var(--charcoal)] cursor-pointer"
 						>
@@ -141,7 +148,14 @@ export function Nav() {
 							value={locale}
 							onChange={(e) => {
 								const newLocale = e.target.value;
-								window.location.pathname = window.location.pathname.replace(`/${locale}`, `/${newLocale}`);
+								const path = window.location.pathname;
+									const localePattern = new RegExp(`^/(${locales.join('|')})(/|$)`);
+									const match = path.match(localePattern);
+									if (match) {
+										window.location.pathname = path.replace(localePattern, `/${newLocale}$2`);
+									} else {
+										window.location.pathname = `/${newLocale}${path}`;
+									}
 							}}
 							className="text-sm bg-transparent border border-[var(--sand-dark)]/30 rounded-lg px-3 py-2 text-[var(--charcoal)] cursor-pointer"
 						>
