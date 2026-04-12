@@ -170,6 +170,21 @@ export function Footer() {
 						{t('copyright')} {t('madeIn')}
 					</p>
 					<div className="flex items-center gap-4">
+						<a href="https://aiagentsdirectory.com/agent/capibot?utm_source=badge&utm_medium=referral&utm_campaign=free_listing&utm_content=capibot" target="_blank" rel="noopener noreferrer">
+							<img src="https://aiagentsdirectory.com/featured-badge.svg?v=2024" alt="CapiBot - Featured AI Agent on AI Agents Directory" width={200} height={50} />
+						</a>
+						<a
+							href="https://www.agenthunter.io?utm_source=badge&utm_medium=embed&utm_campaign=CapiBot"
+							target="_blank"
+							rel="noopener noreferrer"
+							className="inline-flex items-center gap-2 rounded-lg border border-amber-400 bg-amber-50 px-3 py-2 no-underline transition-all hover:brightness-105"
+						>
+							<img src="https://www.agenthunter.io/logo-light.svg" alt="AgentHunter Badge" className="h-10 w-10" />
+							<div className="flex flex-col">
+								<p className="m-0 text-xs text-amber-800">AgentHunter</p>
+								<p className="m-0 text-sm font-semibold text-amber-950">Featured AI Agent</p>
+							</div>
+						</a>
 						<a href="https://x.com/CapiBotai" target="_blank" rel="noopener noreferrer" className="text-[var(--sand-dark)] hover:text-white transition-colors" aria-label="Follow us on X">
 							<svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
 								<path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
