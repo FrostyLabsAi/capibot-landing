@@ -25,36 +25,66 @@ import { Footer } from '@/components/layout/footer';
 import { locales, localeNames, type Locale } from '@/i18n/config';
 
 const comparisonData: { capibot: boolean | string; openclaw: boolean | string }[] = [
+	// 0. Open source
 	{ capibot: true, openclaw: true },
+	// 1. Self-hosted
 	{ capibot: true, openclaw: true },
-	{ capibot: '6 providers', openclaw: '4+ providers' },
-	{ capibot: true, openclaw: false },
-	{ capibot: true, openclaw: true },
-	{ capibot: '11 operations', openclaw: true },
-	{ capibot: 'PostgreSQL + pgvector', openclaw: 'Markdown files' },
-	{ capibot: true, openclaw: false },
-	{ capibot: true, openclaw: false },
-	{ capibot: '150 agents, 21 roles', openclaw: 'Single agent' },
-	{ capibot: '12+ categories', openclaw: false },
+	// 2. Intended user
+	{ capibot: 'Founders, solopreneurs, small teams', openclaw: 'Technical personal use' },
+	// 3. Primary interface
+	{ capibot: 'Web app', openclaw: 'CLI + Gateway daemon' },
+	// 4. Installation
+	{ capibot: 'Sign up in a browser', openclaw: 'npm install -g + daemon setup' },
+	// 5. Runtime required
+	{ capibot: 'None (runs in browser)', openclaw: 'Node 22.16+ or 24' },
+	// 6. Initial setup time
+	{ capibot: 'Minutes', openclaw: 'Hours (per official docs)' },
+	// 7. Configuration
+	{ capibot: 'Web UI', openclaw: 'Config files + openclaw doctor' },
+	// 8. Agent model
+	{ capibot: 'Team of 281 across 18 categories', openclaw: 'Single personal assistant' },
+	// 9. Agent hierarchy
+	{ capibot: 'CEO / Specialist / Intern', openclaw: 'Flat (single agent)' },
+	// 10. Pre-built company templates
+	{ capibot: '16 one-click templates', openclaw: false },
+	// 11. AI Companies
 	{ capibot: 'Full lifecycle', openclaw: false },
+	// 12. Task approval workflow
+	{ capibot: 'Plans, hires, budgets', openclaw: 'Per-action DM confirmation' },
+	// 13. Managed mode
+	{ capibot: 'Every task reviewed', openclaw: false },
+	// 14. Mission Control dashboard
+	{ capibot: '28-panel web dashboard', openclaw: 'Gateway Web UI' },
+	// 15. Kanban task board
 	{ capibot: true, openclaw: false },
-	{ capibot: 'Managed mode', openclaw: 'Confirm prompt (bypassable)' },
-	{ capibot: 'Per-agent + per-company', openclaw: false },
-	{ capibot: 'Sentinel auditor agent', openclaw: false },
+	// 16. Quality review agent
+	{ capibot: 'Sentinel auditor', openclaw: false },
+	// 17. Task states
 	{ capibot: '6 statuses', openclaw: false },
-	{ capibot: 'Plans, hiring, budget', openclaw: false },
-	{ capibot: '90-day retention', openclaw: false },
-	{ capibot: true, openclaw: 'WebSocket (CVE-2026-25253)' },
-	{ capibot: '80+ patterns', openclaw: 'Limited' },
-	{ capibot: true, openclaw: false },
-	{ capibot: 'Curated built-in', openclaw: '800+ malicious skills found' },
+	// 18. Messaging channels
+	{ capibot: 'Telegram, WhatsApp, Slack, Web', openclaw: '20+ (OpenClaw wins here)' },
+	// 19. Voice
+	{ capibot: 'Groq transcription', openclaw: 'Voice Wake + Talk Mode' },
+	// 20. LLM providers
+	{ capibot: '6 with automatic failover', openclaw: 'Multiple with model failover' },
+	// 21. Memory system
+	{ capibot: 'PostgreSQL + pgvector', openclaw: 'Markdown files' },
+	// 22. Semantic memory search
+	{ capibot: 'Hybrid vector + text', openclaw: false },
+	// 23. Agent personalities
+	{ capibot: 'SOUL.md per agent', openclaw: 'N/A (single agent)' },
+	// 24. Skills ecosystem
+	{ capibot: '605 curated, built-in', openclaw: 'Bundled + community store' },
+	// 25. Cron scheduling
 	{ capibot: true, openclaw: true },
-	{ capibot: true, openclaw: false },
-	{ capibot: 'Coming soon', openclaw: 'Planned' },
-	{ capibot: 'CapiBot Node', openclaw: false },
-	{ capibot: true, openclaw: false },
-	{ capibot: true, openclaw: false },
-	{ capibot: true, openclaw: false },
+	// 26. Webhook support
+	{ capibot: 'Incoming & outgoing, HMAC verified', openclaw: true },
+	// 27. Audit trail
+	{ capibot: '90-day retention', openclaw: 'Logging' },
+	// 28. API key management
+	{ capibot: 'Encrypted vault', openclaw: 'Config files' },
+	// 29. Shell sandboxing
+	{ capibot: '80+ patterns (runtime filter)', openclaw: 'Docker sandbox (container isolation)' },
 ];
 
 const advantageIcons = [Shield, DollarSign, Eye, Users, LayoutDashboard, Settings];

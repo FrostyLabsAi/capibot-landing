@@ -749,217 +749,97 @@
   "openClaw": {
     "tag": "Comparison",
     "heading": "CapiBot vs OpenClaw",
-    "description": "Both are open-source AI agent platforms. But CapiBot was built to solve the problems OpenClaw users keep running into: security vulnerabilities, runaway costs, no team management, and no real human oversight.",
+    "description": "CapiBot and OpenClaw are both open-source, self-hosted AI assistant platforms. They take very different approaches to who they are for. OpenClaw is a CLI-driven personal assistant built for technical users who want to tinker with Node, daemons, and config files. CapiBot is a web app your grandma could use — but powerful enough to run entire AI companies with teams of agents.",
     "ctaPrimary": "Join the Waitlist",
     "ctaSecondary": "See the Comparison",
     "shortVersionTitle": "The short version",
     "shortVersion": [
       {
-        "title": "Security First",
-        "desc": "CapiBot blocks 80+ dangerous shell patterns by default. OpenClaw runs arbitrary code with no guardrails."
+        "title": "Zero setup",
+        "desc": "CapiBot is a web app. Sign in, pick a template, go. OpenClaw needs Node 24, a global npm install, a Gateway daemon, and a pairing code for every messaging channel you want to connect."
       },
       {
-        "title": "Team Management",
-        "desc": "CapiBot has 280+ agents organized in a hierarchy with roles, tiers, and categories across 18 specializations. OpenClaw has a flat agent model."
+        "title": "A team, not a single assistant",
+        "desc": "CapiBot ships with 281 pre-built agents across 18 categories — organized as CEOs, specialists, and interns. OpenClaw is a single personal assistant by design."
       },
       {
-        "title": "Human Oversight",
-        "desc": "CapiBot's managed mode requires approval for plans, hiring, and budgets. OpenClaw has no built-in approval workflow."
+        "title": "Run AI Companies",
+        "desc": "CapiBot has a full company lifecycle: briefing, planning, hiring, budgets, and human approval at every gate. OpenClaw has no concept of a multi-agent company."
       }
     ],
-    "whyTitle": "Why teams choose CapiBot",
-    "whySubtitle": "Six areas where CapiBot goes beyond what OpenClaw offers.",
+    "whyTitle": "Why founders choose CapiBot",
+    "whySubtitle": "Six reasons non-technical founders pick CapiBot over OpenClaw.",
     "advantages": [
       {
-        "title": "Security & Sandboxing",
-        "description": "80+ blocked shell patterns, API key guards, audit trails, and HMAC webhook verification out of the box."
+        "title": "No terminal required",
+        "description": "CapiBot runs in your browser. OpenClaw is installed with `npm install -g openclaw`, configured through CLI commands, and diagnosed with `openclaw doctor` when something breaks. If that sentence intimidated you, CapiBot is for you."
       },
       {
-        "title": "Agent Hierarchy",
-        "description": "CEOs, specialists, and interns across 12+ categories — not a flat list of interchangeable bots."
+        "title": "A pre-built team of 281 agents",
+        "description": "Hire a market researcher, a technical writer, an SDR, or a full team of them. Each agent is pre-loaded with the skills and tools it needs. OpenClaw gives you one personal assistant and expects you to configure it yourself."
       },
       {
-        "title": "AI Companies",
-        "description": "Full company lifecycle: briefing, planning, approval, and operating — with human oversight at every gate."
+        "title": "AI Companies with one click",
+        "description": "16 company templates cover SaaS founder, consulting firm, content studio, and more. Pick one and CapiBot deploys a CEO, hires the team, and starts planning. OpenClaw has no equivalent."
       },
       {
-        "title": "Mission Control",
-        "description": "A 28-panel professional dashboard vs. a basic chat interface. Real observability and management."
+        "title": "Mission Control dashboard",
+        "description": "A 28-panel web dashboard for every agent, task, company, credit, and error trend in one place. OpenClaw's control plane is a Gateway WebSocket daemon with a basic Web UI."
       },
       {
-        "title": "Multi-Provider Failover",
-        "description": "Automatic failover across 6 LLM providers with configurable priority and per-agent model overrides."
+        "title": "Managed by default",
+        "description": "Every plan, hire, and budget decision your AI team makes comes to you for approval before it executes. Review it, edit it, or send it back. You are the boss."
       },
       {
-        "title": "Memory & Knowledge",
-        "description": "Persistent semantic memory with pgvector, SOUL.md personalities, and shared knowledge bases."
+        "title": "Multi-provider failover",
+        "description": "Automatic failover across 6 LLM providers with configurable priority. If Claude is down, your agents switch to Kimi. If Kimi is down, they fall back to local Ollama."
       }
     ],
-    "comparisonTitle": "Feature-by-feature comparison",
-    "comparisonSubtitle": "A detailed look at what each platform offers.",
+    "comparisonTitle": "Feature-by-feature",
+    "comparisonSubtitle": "An honest comparison. Both projects are open source, both are self-hosted, both work well for what they are built for — but they are built for different people.",
     "comparisonRows": [
-      {
-        "feature": "Open Source",
-        "capibot": "Yes",
-        "openclaw": "Yes"
-      },
-      {
-        "feature": "Self-Hosted",
-        "capibot": "Yes",
-        "openclaw": "Yes"
-      },
-      {
-        "feature": "Agent Count",
-        "capibot": "280+",
-        "openclaw": "Limited"
-      },
-      {
-        "feature": "Agent Hierarchy",
-        "capibot": "CEO / Specialist / Intern",
-        "openclaw": "Flat"
-      },
-      {
-        "feature": "Agent Categories",
-        "capibot": "12+",
-        "openclaw": "None"
-      },
-      {
-        "feature": "AI Companies",
-        "capibot": "Full lifecycle",
-        "openclaw": "No"
-      },
-      {
-        "feature": "Human Oversight",
-        "capibot": "Managed & autonomous modes",
-        "openclaw": "No"
-      },
-      {
-        "feature": "Approval Workflow",
-        "capibot": "Plans, hiring, budgets",
-        "openclaw": "No"
-      },
-      {
-        "feature": "Mission Control Dashboard",
-        "capibot": "28 panels",
-        "openclaw": "Basic UI"
-      },
-      {
-        "feature": "Kanban Task Board",
-        "capibot": "Yes",
-        "openclaw": "No"
-      },
-      {
-        "feature": "Memory System",
-        "capibot": "PostgreSQL + pgvector",
-        "openclaw": "Basic"
-      },
-      {
-        "feature": "Semantic Search",
-        "capibot": "Hybrid vector + text",
-        "openclaw": "No"
-      },
-      {
-        "feature": "SOUL.md Personalities",
-        "capibot": "Yes",
-        "openclaw": "No"
-      },
-      {
-        "feature": "LLM Providers",
-        "capibot": "6 with failover",
-        "openclaw": "Limited"
-      },
-      {
-        "feature": "Automatic Failover",
-        "capibot": "Yes",
-        "openclaw": "No"
-      },
-      {
-        "feature": "Messaging Channels",
-        "capibot": "4 (Telegram, WhatsApp, Slack, Web)",
-        "openclaw": "Limited"
-      },
-      {
-        "feature": "Voice Transcription",
-        "capibot": "Groq-powered",
-        "openclaw": "No"
-      },
-      {
-        "feature": "Tools",
-        "capibot": "43+",
-        "openclaw": "Limited"
-      },
-      {
-        "feature": "Shell Security",
-        "capibot": "80+ patterns blocked",
-        "openclaw": "No restrictions"
-      },
-      {
-        "feature": "Composio Integration",
-        "capibot": "1000+ apps",
-        "openclaw": "No"
-      },
-      {
-        "feature": "Skills Ecosystem",
-        "capibot": "Markdown-based + community",
-        "openclaw": "No"
-      },
-      {
-        "feature": "Cron Scheduling",
-        "capibot": "Built-in",
-        "openclaw": "No"
-      },
-      {
-        "feature": "Webhook Support",
-        "capibot": "Incoming & outgoing",
-        "openclaw": "Limited"
-      },
-      {
-        "feature": "Audit Trail",
-        "capibot": "Full logging",
-        "openclaw": "No"
-      },
-      {
-        "feature": "API Key Management",
-        "capibot": "Built-in vault",
-        "openclaw": "Manual"
-      },
-      {
-        "feature": "Real-time Updates",
-        "capibot": "WebSocket + SSE",
-        "openclaw": "Polling"
-      },
-      {
-        "feature": "Knowledge Base",
-        "capibot": "Per-company docs",
-        "openclaw": "No"
-      },
-      {
-        "feature": "Subagent Spawning",
-        "capibot": "Dynamic",
-        "openclaw": "No"
-      },
-      {
-        "feature": "Inter-Agent Communication",
-        "capibot": "Built-in",
-        "openclaw": "No"
-      },
-      {
-        "feature": "Quality Reviews",
-        "capibot": "Automated + manual",
-        "openclaw": "No"
-      }
+      { "feature": "Open source", "capibot": "Yes", "openclaw": "Yes" },
+      { "feature": "Self-hosted", "capibot": "Yes", "openclaw": "Yes" },
+      { "feature": "Intended user", "capibot": "Founders, solopreneurs, small teams", "openclaw": "Technical personal use" },
+      { "feature": "Primary interface", "capibot": "Web app", "openclaw": "CLI + Gateway daemon" },
+      { "feature": "Installation", "capibot": "Sign up in a browser", "openclaw": "npm install -g + daemon setup" },
+      { "feature": "Runtime required", "capibot": "None (runs in browser)", "openclaw": "Node 22.16+ or 24" },
+      { "feature": "Initial setup time", "capibot": "Minutes", "openclaw": "Hours (per official docs)" },
+      { "feature": "Configuration", "capibot": "Web UI", "openclaw": "Config files + `openclaw doctor`" },
+      { "feature": "Agent model", "capibot": "Team of 281 across 18 categories", "openclaw": "Single personal assistant" },
+      { "feature": "Agent hierarchy", "capibot": "CEO / Specialist / Intern", "openclaw": "Flat (single agent)" },
+      { "feature": "Pre-built company templates", "capibot": "16 one-click templates", "openclaw": "N/A" },
+      { "feature": "AI Companies", "capibot": "Full lifecycle (briefing, hiring, budgets)", "openclaw": "No" },
+      { "feature": "Task approval workflow", "capibot": "Plans, hires, budgets", "openclaw": "Per-action DM confirmation" },
+      { "feature": "Managed mode", "capibot": "Every task reviewed", "openclaw": "N/A" },
+      { "feature": "Mission Control dashboard", "capibot": "28-panel web dashboard", "openclaw": "Gateway Web UI" },
+      { "feature": "Kanban task board", "capibot": "Yes", "openclaw": "No" },
+      { "feature": "Quality review agent", "capibot": "Sentinel auditor", "openclaw": "No" },
+      { "feature": "Task states", "capibot": "6 statuses", "openclaw": "No" },
+      { "feature": "Messaging channels", "capibot": "Telegram, WhatsApp, Slack, Web", "openclaw": "20+ (OpenClaw wins here)" },
+      { "feature": "Voice", "capibot": "Groq transcription", "openclaw": "Voice Wake + Talk Mode" },
+      { "feature": "LLM providers", "capibot": "6 with automatic failover", "openclaw": "Multiple with model failover" },
+      { "feature": "Memory system", "capibot": "PostgreSQL + pgvector", "openclaw": "Markdown files" },
+      { "feature": "Semantic memory search", "capibot": "Hybrid vector + text", "openclaw": "No" },
+      { "feature": "Agent personalities", "capibot": "SOUL.md per agent", "openclaw": "N/A (single agent)" },
+      { "feature": "Skills ecosystem", "capibot": "605 curated, built-in", "openclaw": "Bundled + community store" },
+      { "feature": "Cron scheduling", "capibot": "Built-in", "openclaw": "Built-in" },
+      { "feature": "Webhook support", "capibot": "Incoming & outgoing, HMAC verified", "openclaw": "Yes" },
+      { "feature": "Audit trail", "capibot": "90-day retention", "openclaw": "Logging" },
+      { "feature": "API key management", "capibot": "Encrypted vault in Mission Control", "openclaw": "Config files" },
+      { "feature": "Shell sandboxing", "capibot": "80+ blocked patterns (runtime filter)", "openclaw": "Docker sandbox (container isolation)" }
     ],
     "forYouTitle": "CapiBot is for you if...",
     "forYouItems": [
-      "You want AI agents that actually work as a team, not isolated chatbots",
-      "Security matters — you need sandboxing, audit trails, and access control",
-      "You want human oversight without micromanaging every action",
-      "You need a real dashboard, not just a chat window",
-      "You want to self-host and own your data completely",
-      "You need multi-provider LLM support with automatic failover",
-      "You want an open-source core with no vendor lock-in"
+      "You do not want to install Node, run terminal commands, or restart a daemon",
+      "You want an AI team — not a single personal assistant",
+      "You want to deploy a full AI company with one click",
+      "You want human oversight on plans, hires, and budgets without micromanaging every action",
+      "You need a real web dashboard, not a CLI",
+      "You want multi-provider LLM support with automatic failover",
+      "You are a founder first, not a systems admin"
     ],
-    "ctaTitle": "Ready to upgrade from OpenClaw?",
+    "ctaTitle": "Ready to try CapiBot?",
     "ctaDesc": "Join the waitlist for early access and founding member pricing. CapiBot is launching soon.",
     "backToHome": "Back to Home"
   }

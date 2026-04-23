@@ -63,6 +63,17 @@ const nextConfig: NextConfig = {
 				],
 			},
 			{
+				// Bare root (before middleware rewrites to /en) — must match original path
+				source: '/',
+				headers: [
+					...securityHeaders,
+					{
+						key: 'Cache-Control',
+						value: 'public, s-maxage=3600, stale-while-revalidate=86400',
+					},
+				],
+			},
+			{
 				// Static assets (JS, CSS, images)
 				source: '/_next/static/:path*',
 				headers: [

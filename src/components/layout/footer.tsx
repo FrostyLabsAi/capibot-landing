@@ -174,6 +174,13 @@ export function Footer() {
 							<img src="https://aiagentsdirectory.com/featured-badge.svg?v=2024" alt="CapiBot - Featured AI Agent on AI Agents Directory" width={200} height={50} />
 						</a>
 						<a
+							href="https://www.saashub.com/capibot?utm_source=badge&utm_campaign=badge&utm_content=capibot&badge_variant=color&badge_kind=approved"
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							<img src="https://cdn-b.saashub.com/img/badges/approved-color.png?v=1" alt="CapiBot badge" className="max-w-[150px]" />
+						</a>
+						<a
 							href="https://www.agenthunter.io?utm_source=badge&utm_medium=embed&utm_campaign=CapiBot"
 							target="_blank"
 							rel="noopener noreferrer"
